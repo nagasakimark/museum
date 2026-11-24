@@ -1,0 +1,6 @@
+{
+  "name": "museum",
+  "private": true,
+  "scripts": { "build": "sh tools/build.sh" },
+  "devDependencies": { "three": "^0.187.0", "esbuild": "^0.28.2" }
+}
