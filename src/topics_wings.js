@@ -6,11 +6,14 @@ import { WINGS_N3 } from "./wings/n3_jhs.js";
 import { WINGS_N4 } from "./wings/n4_summer.js";
 import { WINGS_O1 } from "./wings/o1_animals.js";
 import { WINGS_O2 } from "./wings/o2_animals.js";
+import { WINGS_N5 } from "./wings/n5_seasons.js";
+import { WINGS_N6 } from "./wings/n6_home.js";
+import { WINGS_N8 } from "./wings/n8_school.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
-export const BACKLINKS = {
+const BACK1 = {
   "pets": ["pets-as-family", "animal-families"],
   "daily-life": ["generations", "family-names-world"],
   "time": ["generations"],
@@ -59,3 +62,21 @@ export const BACKLINKS = {
   "rocks-gems": ["cave-deep-earth"],
   "environment": ["wetlands-mangroves"],
 };
+
+const BACK2 = {
+  // N5 seasons
+  "weather": ["why-seasons"], "solar-system": ["why-seasons"], "summer-world": ["why-seasons"],
+  "months1": ["seasons-72"], "months2": ["seasons-72"],
+  "writing": ["haiku-seasons", "libraries-world"], "japan-traditions": ["haiku-seasons", "japanese-home"], "proverbs": ["haiku-seasons"],
+  "fruits": ["shun-food"], "vegetables": ["shun-food"], "nagasaki-food": ["shun-food"], "japanese-food": ["shun-food"],
+  "birds": ["animals-through-seasons"], "insects": ["animals-through-seasons"],
+  // N6 home
+  "houses-world": ["japanese-home", "rooms-world"], "inventions": ["home-objects-history"], "japan-inventions": ["home-objects-history"],
+  "daily-life": ["chores-world"], "environment": ["chores-world"], "science-fun": ["how-home-works"], "generations": ["home-objects-history"],
+  // N8 school places
+  "school-subjects": ["inside-japanese-school"], "school-events": ["inside-japanese-school"], "jhs-life-japan": ["inside-japanese-school"],
+  "world-tales": ["libraries-world"], "toys-tales": ["libraries-world"], "secondary-schools-world": ["school-buildings-world"],
+};
+
+export const BACKLINKS = {};
+for (const m of [BACK1, BACK2]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
