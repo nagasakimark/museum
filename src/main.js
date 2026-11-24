@@ -6,10 +6,12 @@ import { MORE } from "./topics_more.js";
 import { ART } from "./topics_art.js";
 import { PHILOSOPHY } from "./topics_philosophy.js";
 import { BATCH1 } from "./topics_batch1.js";
+import { WINGS, BACKLINKS } from "./topics_wings.js";
 import { DETAILS } from "./details/index.js";
 
 // ================= content =================
-const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1 };
+const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS };
+for (const [id, extra] of Object.entries(BACKLINKS)) if (TOPICS[id]) TOPICS[id].links = [...new Set([...(TOPICS[id].links || []), ...extra])];
 const GROUPS = Object.fromEntries(DATA.groups.map(g => [g.id, g]));
 const STATUS = {
   LC: { ja: "今は しんぱい なし", en: "Least Concern", c: "#3a9d5d" },
@@ -38,7 +40,7 @@ for (const [id, t] of Object.entries(TOPICS)) {
   } else if (t.groups) {
     list = DATA.groups.map(g => ({ ja: g.ja, en: g.en, img: g.img, fact: g.ja_text, rows: [["📷 しゃしん", g.animal[0], g.animal[1]]] }));
   } else {
-    list = (t.items || []).map(([ja, en, pic, fact, rows, year]) => ({ ja, en, pic, fact, rows: (rows || []).concat(year ? [["📅 年代", year, ""]] : []), year }));
+    list = (t.items || []).map(([ja, en, pic, fact, rows, year, x]) => ({ ja, en, pic, fact, rows: (rows || []).concat(year ? [["📅 年代", year, ""]] : []), year, status: x?.s, statusSource: x?.src }));
   }
   list.forEach((it, i) => {
     it.key = id + ":" + i; it.topic = id;
@@ -254,6 +256,7 @@ const LAYOUTS = {
 function pickLayout(t) {
   if (t.layout) return t.layout;
   if (t.lobby) return "square";
+  if (t.timeline) return "long";
   const n = t.list.length, x = Math.random();
   if (n >= 12) return t.timeline ? "long" : "wide";
   if (n <= 7 && x < .35) return "small";

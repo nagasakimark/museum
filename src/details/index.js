@@ -9,6 +9,7 @@ import { SCIENCE1 } from "./science1.js";
 import { ART1 } from "./art1.js";
 import { ART2 } from "./art2.js";
 import { FINAL1 } from "./final1.js";
-const parts = [ANIMAL_DETAILS, COUNTRY_DETAILS, EVERYDAY1, EVERYDAY2, NATURE1, WORLD1, SCIENCE1, ART1, ART2, FINAL1];
+import { WING_DETAILS } from "../wings/index.js";
+const parts = [ANIMAL_DETAILS, COUNTRY_DETAILS, EVERYDAY1, EVERYDAY2, NATURE1, WORLD1, SCIENCE1, ART1, ART2, FINAL1, ...WING_DETAILS];
 export const DETAILS = {};
 for (const p of parts) for (const [topic, items] of Object.entries(p)) Object.assign(DETAILS[topic] ||= {}, items);

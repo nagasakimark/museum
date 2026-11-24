@@ -1,8 +1,9 @@
 // node tools/coverage.mjs  — how many exhibits have a longer explanation, and which keys don't match an exhibit
 import { NATURE } from "../src/topics_nature.js"; import { WORLD } from "../src/topics_world.js"; import { MORE } from "../src/topics_more.js";
 import { ART } from "../src/topics_art.js"; import { PHILOSOPHY } from "../src/topics_philosophy.js"; import { BATCH1 } from "../src/topics_batch1.js";
+import { WINGS } from "../src/topics_wings.js";
 import { DETAILS } from "../src/details/index.js"; import { DATA } from "../src/data.js";
-const T = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1 };
+const T = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS };
 const R = { ocean: "ocean", polar: "polar", rainforest: "rainforest", savanna: "savanna", desert: "desert", forest: "forest", japan: "japan-animals" };
 let total = 0, done = 0; const unknown = [], todo = [];
 for (const [id, t] of Object.entries(T)) {
