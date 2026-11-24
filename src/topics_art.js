@@ -3,7 +3,7 @@
 export const ART = {
   "art-timeline": { ja: "美術の 歴史 タイムライン", en: "A Timeline of Art", c: "#8a3a2a", layout: "long", timeline: true,
     intro: "どうくつの かべの 絵から 今の アートまで。入り口から 順番に 歩くと、美術の 歴史を 旅できます。",
-    links: ["art-movements", "art-japan-history", "art-world-crafts", "art-mediums", "heroes", "landmarks"],
+    links: ["art-movements", "art-japan-history", "art-world-crafts", "art-mediums", "heroes", "landmarks", "paintings-france", "paintings-netherlands", "japanese-painters", "sculpture-world"],
     items: [
       ["ラスコーの どうくつ画", "Lascaux cave paintings", "🐂", "フランスの どうくつに、ウマや ウシが えがかれて います。", [["🌍 場所", "フランス", "France"]], "約2万年前"],
       ["縄文土器", "Jomon pottery", "🏺", "日本で 作られた、世界でも とても 古い 土器の 1つです。", [["🌍 場所", "日本", "Japan"]], "約1万年以上前"],
@@ -39,7 +39,7 @@ export const ART = {
     ] },
   "art-japan-history": { ja: "日本の 美術", en: "Japanese Art Through Time", c: "#9a2a2a", layout: "long", timeline: true,
     intro: "縄文時代から 現代まで。日本の 美術の 流れを たどろう。",
-    links: ["art-timeline", "japan-traditions", "art", "japan", "nagasaki", "art-mediums"],
+    links: ["art-timeline", "japan-traditions", "art", "japan", "nagasaki", "art-mediums", "japanese-painters"],
     items: [
       ["縄文土器", "Jomon pottery", "🏺", "なわを 転がして もようを つけた 土器。「縄文」の 名前の もとです。", [], "約1万年以上前"],
       ["はにわ", "haniwa", "🗿", "古墳の まわりに ならべられた 土の 人形。人や 動物、家の 形も あります。", [], "3〜6世紀"],

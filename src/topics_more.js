@@ -16,7 +16,7 @@ export const MORE = {
     ] },
   "stationery": { ja: "文房具", en: "Stationery", c: "#8a6a3a",
     intro: "Do you have a pencil? 毎日 使う 文房具にも ひみつが あります。",
-    links: ["school-subjects", "town", "inventions", "colors-shapes", "japan-inventions"],
+    links: ["school-subjects", "town", "inventions", "colors-shapes", "japan-inventions", "wasei-eigo"],
     items: [
       ["えんぴつ", "pencil", "✏️", "1本の えんぴつで、50kmちかくの 線が 書けると いわれて います。"],
       ["消しゴム", "eraser", "🧽", "むかしは パンで 字を 消して いた ことも ありました。"],
@@ -43,7 +43,7 @@ export const MORE = {
     ] },
   "feelings": { ja: "気持ち", en: "Feelings", c: "#d08a2a",
     intro: "How are you? I'm happy! 気持ちを 英語で 言って みよう。",
-    links: ["human-body", "school-events", "colors-shapes", "pets"],
+    links: ["human-body", "school-events", "colors-shapes", "pets", "living-together"],
     items: [
       ["うれしい", "happy", "😄", "笑うと、まわりの 人も 笑顔に なりやすいと いわれます。"],
       ["悲しい", "sad", "😢", "なみだには、気持ちを 落ち着かせる はたらきも あると いわれます。"],
@@ -84,7 +84,7 @@ export const MORE = {
     ] },
   "earth-science": { ja: "地球の しくみ", en: "How the Earth Works", c: "#a2482e",
     intro: "地球の 中は どうなって いるの？ 火山や 地しんの しくみを 学ぼう。",
-    links: ["rocks-gems", "geo-records", "japan-islands", "weather", "solar-system"],
+    links: ["rocks-gems", "geo-records", "japan-islands", "weather", "solar-system", "bosai"],
     items: [
       ["地球の 中", "inside the Earth", "🌍", "地球は ゆで卵のように、からの 下に マントル、まん中に 「核」が あります。"],
       ["火山", "volcano", "🌋", "地下の とけた 岩 (マグマ) が ふき出して できます。日本には 111の 活火山が あります。"],
@@ -122,7 +122,7 @@ export const MORE = {
     ] },
   "heroes": { ja: "世界の 偉人", en: "Heroes of History", c: "#7a5a2a",
     intro: "Who is your hero? 世界を かえた 人たちを しょうかい します。",
-    links: ["inventions", "science-fun", "money", "japan", "space-explore", "art"],
+    links: ["inventions", "science-fun", "money", "japan", "space-explore", "art", "philosophers"],
     items: [
       ["トーマス・エジソン", "Thomas Edison", "💡", "アメリカの 発明家。電球や 映画の 機械など、1000いじょうの 特許を とりました。"],
       ["マリー・キュリー", "Marie Curie", "🔬", "ノーベル賞を 2回 受賞した 科学者。女性で はじめての ノーベル賞でした。"],
@@ -174,7 +174,7 @@ export const MORE = {
     ] },
   "world-tales": { ja: "世界の 物語", en: "Stories from Around the World", c: "#5a3a7a",
     intro: "世界には、何百年も 語りつがれて きた 物語が あります。",
-    links: ["toys-tales", "europe", "asia", "writing", "art"],
+    links: ["toys-tales", "europe", "asia", "writing", "art", "proverbs"],
     items: [
       ["ウサギと カメ", "The Tortoise and the Hare", "🐢", "ギリシャの 「イソップ物語」。こつこつ がんばる 大切さを 教えて くれます。"],
       ["シンデレラ", "Cinderella", "👠", "世界中に にた お話が ある、とても 古い 物語です。"],
@@ -198,7 +198,7 @@ export const MORE = {
     ] },
   "environment": { ja: "地球を 守ろう", en: "Protect the Earth", c: "#3a8a5a",
     intro: "What can we do for the earth? わたしたちに できる ことを 考えよう。",
-    links: ["ocean", "plants", "weather", "animal-records", "science-fun", "endangered-japan"],
+    links: ["ocean", "plants", "weather", "animal-records", "science-fun", "endangered-japan", "sdgs"],
     items: [
       ["3R", "Reduce, Reuse, Recycle", "♻️", "へらす (Reduce)、くり返し 使う (Reuse)、資源に もどす (Recycle)。"],
       ["海の プラスチック", "plastic in the ocean", "🌊", "海に 流れた プラスチックは、魚や ウミガメが 食べて しまう ことが あります。"],
@@ -323,7 +323,7 @@ export const MORE = {
     ] },
   "breakfast-world": { ja: "世界の 朝ごはん", en: "Breakfast Around the World", c: "#c2803a",
     intro: "What do you eat for breakfast? 国に よって 朝ごはんも いろいろ。",
-    links: ["daily-life", "world-dishes", "japanese-food", "fruits", "regions"],
+    links: ["daily-life", "world-dishes", "japanese-food", "fruits", "regions", "school-lunch-world"],
     items: [
       ["日本", "Japan", "🍚", "ごはん、みそしる、焼き魚、なっとう。パンの 家も 多いですね。"],
       ["イギリス", "the UK", "🍳", "たまご、ベーコン、ソーセージ、焼いた トマト、豆の 「フル・ブレックファスト」。"],

@@ -4,9 +4,11 @@ import { NATURE } from "./topics_nature.js";
 import { WORLD } from "./topics_world.js";
 import { MORE } from "./topics_more.js";
 import { ART } from "./topics_art.js";
+import { PHILOSOPHY } from "./topics_philosophy.js";
+import { BATCH1 } from "./topics_batch1.js";
 
 // ================= content =================
-const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART };
+const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1 };
 const GROUPS = Object.fromEntries(DATA.groups.map(g => [g.id, g]));
 const STATUS = {
   LC: { ja: "今は しんぱい なし", en: "Least Concern", c: "#3a9d5d" },
@@ -41,7 +43,7 @@ for (const [id, t] of Object.entries(TOPICS)) {
   t.list = list;
 }
 const ALL_ITEMS = Object.values(TOPICS).reduce((n, t) => n + t.list.length, 0);
-const HUBS = ["animals", "regions", "japan", "solar-system", "world-dishes", "ball-sports", "jobs-dream", "inventions", "nagasaki", "dinosaurs", "heroes", "science-fun", "aquarium", "town", "art", "art-timeline", "art-world-crafts", "human-body", "japan-islands", "games-world"];
+const HUBS = ["animals", "regions", "japan", "solar-system", "world-dishes", "ball-sports", "jobs-dream", "inventions", "nagasaki", "dinosaurs", "heroes", "science-fun", "aquarium", "town", "art", "art-timeline", "art-world-crafts", "human-body", "japan-islands", "games-world", "philosophy-questions", "hello-world", "nagasaki-city", "orchestra", "sdgs"];
 const LOBBY = {
   id: "lobby", ja: "ロビー", en: "Lobby", c: "#6b4d2c", lobby: true,
   list: [
@@ -223,7 +225,7 @@ const roomBox = (x, z, hx, hz, m = 0) => ({ minX: x - hx - m, maxX: x + hx + m, 
 const LAYOUTS = {
   square: { w: 22, d: 22, h: 5.4 },
   small: { w: 14, d: 14, h: 4.6 },
-  long: { w: 13, d: 42, h: 5.8 },
+  long: { w: 13, d: 50, h: 5.8 },
   wide: { w: 32, d: 20, h: 6.2 },
   tall: { w: 18, d: 18, h: 8 },
 };
@@ -231,6 +233,7 @@ function pickLayout(t) {
   if (t.layout) return t.layout;
   if (t.lobby) return "square";
   const n = t.list.length, x = Math.random();
+  if (n >= 12) return t.timeline ? "long" : "wide";
   if (n <= 7 && x < .35) return "small";
   if (n >= 8 && x < .22) return "long";
   if (x < .32) return "wide";
@@ -256,7 +259,7 @@ function corridorBox(x0, z0, dir, len) {
 function pickTopics(r, n) {
   const t = TOPICS[r.topic.id] || r.topic;
   const parentTopic = r.parent != null ? rooms[r.parent].topic.id : null;
-  let pool = (t.links || HUBS).filter(id => id !== parentTopic && id !== t.id);
+  let pool = (t.links || HUBS).filter(id => TOPICS[id] && id !== parentTopic && id !== t.id);
   pool = shuffle(pool).sort((a, b) => (visitCount[a] || 0) - (visitCount[b] || 0));
   return pool.slice(0, n);
 }
@@ -272,7 +275,8 @@ function planExits(r) {
     r.exits.S = { closed: true, label: ["いりぐち", "Entrance"] };
     return;
   }
-  const n = Math.random() < 0.55 ? 3 : 2;
+  const n = r.topic.timeline ? 1 : Math.random() < 0.55 ? 3 : 2;
+  if (r.topic.timeline && r.entry) { const far = OPP[r.entry]; sides.sort((a, b) => (b === far) - (a === far)); }
   const picks = pickTopics(r, n);
   const mystery = Math.random() < 0.35;
   // keep trying walls until we have n doors (or run out of walls)
@@ -292,7 +296,9 @@ function planExits(r) {
 function tryExit(r, side, topic, mystery) {
   const [dx, dz] = DIRS[side];
   const x0 = r.x + dx * r.hx, z0 = r.z + dz * r.hz;
-  const layouts = [pickLayout(topic), "square", "small"];
+  // fallbacks must still hold every exhibit (+ intro)
+  const need = topic.list.length + 1, CAP = { small: 8, tall: 12, square: 12, wide: 20, long: 18 };
+  const layouts = [...new Set([pickLayout(topic), ...(topic.timeline ? ["long"] : ["square", "wide", "small"])])].filter(l => CAP[l] >= need || l === topic.layout);
   for (const layout of layouts) for (const len of shuffle([3, 5, 8]).concat([12, 18, 26])) {
     const { hx, hz } = dims(layout, OPP[side]);
     const cx = x0 + dx * (len + hx), cz = z0 + dz * (len + hz);
@@ -527,6 +533,8 @@ function build(r) {
     if (r.layout === "long") { const span = (longX ? r.hx : r.hz) - 8; for (let k = -span; k <= span; k += 11) addBench(r, r.x + (longX ? k : 0), r.z + (longX ? 0 : k), longX); }
     else if (r.layout !== "small") addBench(r, r.x, r.z, longX);
   }
+  if (slots.length < items.length) console.warn("room too small", t.id, r.layout, slots.length, items.length);
+  r.shortfall = Math.max(0, items.length - slots.length);
   slots.slice(0, items.length).forEach((s, i) => addExhibit(r, s, items[i]));
   // track rails along every wall that carries lights
   for (const side of Object.keys(DIRS)) {

@@ -8,7 +8,7 @@ export const NATURE = {
   },
   "ocean": { ja: "海の 動物", en: "Ocean", c: "#5d8fae", animals: "ocean",
     intro: "地球の 表面の 7わりは 海です。いちばん 大きい 動物も、海に すんで います。",
-    links: ["deepsea", "polar", "japan-animals", "geo-records", "japanese-food", "vehicles", "animal-records"] },
+    links: ["deepsea", "polar", "japan-animals", "geo-records", "japanese-food", "vehicles", "animal-records", "aquarium"] },
   "polar": { ja: "北極と 南極", en: "Polar Regions", c: "#7fa3bd", animals: "polar",
     intro: "ホッキョクグマは 北極、ペンギンは 南極に すむので、2つは 出会いません！",
     links: ["ocean", "birds", "winter-sports", "weather", "europe", "geo-records"] },
@@ -70,7 +70,7 @@ export const NATURE = {
     ] },
   "pets": { ja: "ペット", en: "Pets", c: "#c07a55",
     intro: "いっしょに くらす 動物たち。New Horizon で 習う 「I have a dog.」も ここに あります。",
-    links: ["farm", "birds", "jobs-town", "forest", "animals"],
+    links: ["farm", "birds", "jobs-town", "forest", "animals", "dog-breeds"],
     items: [
       ["イヌ", "dog", "🐕", "においを かぐ 力は 人の 何千倍。においで いろいろな ことが わかります。"],
       ["ネコ", "cat", "🐈", "1日に 12〜16時間も ねむります。ひげで せまい 場所を 通れるか はかります。"],

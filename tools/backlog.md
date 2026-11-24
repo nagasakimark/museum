@@ -24,9 +24,11 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (85 topics)
+## ✅ Built (106 topics)
 
-animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums
+animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
+philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
+hello-world, school-lunch-world, orchestra `wide`, composers `timeline`, world-instruments, world-dance, paintings-france, paintings-netherlands, japanese-painters, sculpture-world, nagasaki-city, nagasaki-food, wasei-eigo, words-from-japanese (was japanese-words-english), sdgs `wide`, bosai
 
 ---
 
@@ -98,16 +100,16 @@ animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insec
 - **south-america-2** 南アメリカ もっと — Chile (long country), Colombia (coffee, flowers), Ecuador (Galápagos, equator), Bolivia (salt flats), Venezuela (Angel Falls), Uruguay, Paraguay
 - **africa-2** アフリカ もっと — Ethiopia (coffee's home), Nigeria (big cities, Nollywood), Senegal (pink lake), Rwanda (gorillas, clean cities), Botswana (Okavango), Namibia (dunes), Zambia & Zimbabwe (Victoria Falls), Uganda, Ghana (more)
 - **pacific-islands** 太平洋の 島々 — Palau, Samoa, Tonga, Tuvalu, Kiribati (first new year), Vanuatu, Solomon Islands, Hawaii (USA), Tahiti, Easter Island (Chile), Guam, Saipan
-- **hello-world** 世界の 「こんにちは」 `long` — 30+ languages with kana reading: English, Chinese, Korean, Spanish, French, German, Italian, Portuguese, Russian, Arabic, Hindi, Thai, Vietnamese, Indonesian, Tagalog, Swahili, Hawaiian, Māori, Ainu (イランカラプテ), Okinawan (はいさい), Nagasaki dialect, sign language
+- ✅ ~~**hello-world**~~ 世界の 「こんにちは」 `long` — 30+ languages with kana reading: English, Chinese, Korean, Spanish, French, German, Italian, Portuguese, Russian, Arabic, Hindi, Thai, Vietnamese, Indonesian, Tagalog, Swahili, Hawaiian, Māori, Ainu (イランカラプテ), Okinawan (はいさい), Nagasaki dialect, sign language
 - **numbers-languages** 1から10を 世界の ことばで — English, Chinese, Korean, Spanish, French, Swahili, Hindi, Thai, Japanese (hitotsu/ichi), Roman numerals, Arabic numerals' journey
 - **traditional-clothes** 世界の 民族衣装 — kimono, yukata, hanbok, qipao, sari, kilt, dirndl, poncho, kente, áo dài, hula skirt (respectful), Sámi gákti, sombrero, fez
 - **world-new-year** 世界の お正月 — Japan (osechi, hatsumode), China (Spring Festival), Korea (Seollal, tteokguk), Spain (12 grapes), Scotland (Hogmanay), Thailand (Songkran), Iran (Nowruz), Ethiopia (Enkutatash), fireworks in Sydney
-- **school-lunch-world** 世界の 給食 — Japan, Korea, France, Finland (free lunch), USA, Brazil, India (midday meal), Italy, UK, China; Japanese kyushoku manners (serving duty)
+- ✅ ~~**school-lunch-world**~~ 世界の 給食 — Japan, Korea, France, Finland (free lunch), USA, Brazil, India (midday meal), Italy, UK, China; Japanese kyushoku manners (serving duty)
 - **schools-world** 世界の 学校 — school year start months, uniforms or not, school buses, Finnish schools, outdoor classes, school sizes, Japanese cleaning time (soji) admired abroad, randoseru
 - **markets-world** 世界の 市場 — Tsukiji/Toyosu (tuna), floating markets (Thailand), Grand Bazaar (Istanbul), Christmas markets (Germany), night markets (Taiwan), souks (Morocco), farmers' markets
 - **world-transport** 世界の のりもの — tuk-tuk, gondola, double-decker bus, cable car (San Francisco), jeepney, rickshaw, dog sled, camel caravan, reed boats (Titicaca), Venice vaporetto, Swiss mountain trains
 - **world-houses-2** 世界の 家 II — Cappadocia cave houses, Hobbit-like turf houses (Iceland), Toraja houses (Indonesia), Tulou (China), trulli (Italy), stilt houses (Malaysia), houseboats (Kerala)
-- **world-dance** 世界の おどり — ballet (France/Russia), flamenco, hula, haka (Māori), samba, tango, Irish step dance, Bharatanatyam, K-pop dance, Bon odori, Awa odori, Yosakoi, Eisa (Okinawa)
+- ✅ ~~**world-dance**~~ 世界の おどり — ballet (France/Russia), flamenco, hula, haka (Māori), samba, tango, Irish step dance, Bharatanatyam, K-pop dance, Bon odori, Awa odori, Yosakoi, Eisa (Okinawa)
 - **world-theatre** 世界の げき — kabuki, noh, bunraku, kyogen, Peking opera, Shakespeare (Globe Theatre), puppetry (Czech), shadow puppets (Indonesia wayang), musicals, rakugo
 - **lucky-symbols** 世界の 「えんぎもの」 — maneki-neko, daruma, four-leaf clover, horseshoe, ladybird, red envelope, number 8 (China), number 7 (West), evil-eye charm (Türkiye, as craft), dreamcatcher (respectfully), koinobori, kadomatsu
 - **mythical-creatures** 世界の 空想の 生きもの — dragon (East vs West), phoenix, unicorn, kappa, tengu (friendly framing), kitsune, mermaid, Pegasus, griffin, Nessie, yeti, Kirin (legendary), baku (eats bad dreams) — keep friendly, no scary images
@@ -121,8 +123,8 @@ animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insec
 - **pref-kinki** 近畿の 県 — Osaka, Kyoto, Hyogo, Nara, Mie, Shiga, Wakayama
 - **pref-chugoku-shikoku** 中国・四国の 県 `long` — Tottori, Shimane, Okayama, Hiroshima (food, Miyajima — no war content), Yamaguchi, Tokushima, Kagawa, Ehime, Kochi
 - **pref-kyushu-okinawa** 九州・沖縄の 県 `long` — Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima, Okinawa
-- **nagasaki-city** 長崎市 たんけん — Glover Garden, Oura area (architecture), Dejima, Chinatown (Shinchi), Megane-bashi (spectacles bridge), Mt Inasa, Nagasaki Penguin Aquarium, Dutch Slope, Peace Park (gentle: "a place to wish for peace"), streetcars (チンチン電車), Nagasaki Port, Tomachi area
-- **nagasaki-food** 長崎の 食べもの — champon, sara-udon, castella, Turkish rice, kakuni-manju, chirin-chirin ice, Sasebo burger, Goto udon, Shimabara somen, Shippoku cuisine, milk shake (eaten with a spoon), biwa (loquat)
+- ✅ ~~**nagasaki-city**~~ 長崎市 たんけん — Glover Garden, Oura area (architecture), Dejima, Chinatown (Shinchi), Megane-bashi (spectacles bridge), Mt Inasa, Nagasaki Penguin Aquarium, Dutch Slope, Peace Park (gentle: "a place to wish for peace"), streetcars (チンチン電車), Nagasaki Port, Tomachi area
+- ✅ ~~**nagasaki-food**~~ 長崎の 食べもの — champon, sara-udon, castella, Turkish rice, kakuni-manju, chirin-chirin ice, Sasebo burger, Goto udon, Shimabara somen, Shippoku cuisine, milk shake (eaten with a spoon), biwa (loquat)
 - **nagasaki-prefecture** 長崎県 めぐり — Sasebo (Kujukushima), Huis Ten Bosch, Hasami ware, Unzen hot springs, Shimabara (castle, water town carp), Iki, Tsushima, Goto, Hirado (first Dutch trading post), Omura (flowers), Isahaya bay
 - **nagasaki-festivals** 長崎の 行事 — Kunchi, Peiron, Lantern Festival, Shoro-nagashi (lantern boats, respectful), Hata-age (kite fighting), Nagasaki Christmas lights, Hydrangea festival (Ajisai is the city flower)
 - **japanese-castles** 日本の お城 — Himeji, Matsumoto, Inuyama, Hikone, Matsue, Kochi, Matsuyama, Osaka, Nagoya (golden shachihoko), Kumamoto, Shimabara (Nagasaki), Hirado; parts of a castle
@@ -132,8 +134,8 @@ animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insec
 - **crafts-japan** 日本の 伝統工芸 — Arita ware, Hasami ware, Wajima lacquer, kokeshi, daruma, Edo kiriko glass, Nambu iron kettles, washi paper, Kyoto yuzen dyeing, Hakata dolls, folding fans (sensu), furoshiki, Japanese knives
 - **wagashi-seasons** 季節の 和がし — sakura-mochi, kashiwa-mochi, mizu-yokan, warabi-mochi, tsukimi dango, chestnut kinton, kagami-mochi, taiyaki, dorayaki, daifuku, monaka, konpeito (Portuguese origin)
 - **regional-dishes** 日本の ご当地グルメ — okonomiyaki (Osaka/Hiroshima), takoyaki, Hakata ramen, Sapporo miso ramen, kiritanpo, Sendai gyutan, Utsunomiya gyoza, Nagoya miso-katsu, Okinawa soba, goya champuru, Kagawa udon, Nagasaki champon
-- **japanese-words-english** 英語に なった 日本語 — tsunami, karaoke, emoji, sushi, origami, anime, manga, bonsai, tofu, futon, typhoon (via Chinese), kaizen, umami, kawaii, ninja, judo
-- **wasei-eigo** 和製英語に 気をつけて! — "salaryman", "consent" (=outlet), "mansion" (=apartment), "naive", "baby car" (=stroller), "Y-shirt" (=dress shirt), "cunning" (=cheating), "free dial", "note PC", "pierce" (=earrings), "shaapen" (=mechanical pencil)
+- ✅ ~~**japanese-words-english**~~ 英語に なった 日本語 — tsunami, karaoke, emoji, sushi, origami, anime, manga, bonsai, tofu, futon, typhoon (via Chinese), kaizen, umami, kawaii, ninja, judo
+- ✅ ~~**wasei-eigo**~~ 和製英語に 気をつけて! — "salaryman", "consent" (=outlet), "mansion" (=apartment), "naive", "baby car" (=stroller), "Y-shirt" (=dress shirt), "cunning" (=cheating), "free dial", "note PC", "pierce" (=earrings), "shaapen" (=mechanical pencil)
 - **japan-unesco** 日本の 世界遺産 `wide` — Mt Fuji, Himeji Castle, Yakushima, Shirakawa-go, Itsukushima, Horyuji, Kyoto, Nara, Nikko, Shiretoko, Ogasawara, Amami/Tokunoshima/Yanbaru, Mozu tombs (Kofun), Jomon sites, Tomioka silk mill, Iwami silver mine, Hiraizumi, Okinawa gusuku sites, Nagasaki churches (as heritage architecture only, neutral wording)
 - **japan-history** 日本の 歴史 `timeline` — Jomon, Yayoi (rice farming), Kofun, Asuka (Horyuji), Nara (Todaiji), Heian (kana, Tale of Genji), Kamakura, Muromachi (Kinkakuji, noh), Azuchi-Momoyama (castles), Edo (Dejima, ukiyo-e), Meiji (railway, schools), Taisho, Showa (Tokyo Olympics 1964, Shinkansen), Heisei, Reiwa — gentle overview only, no war detail
 - **japanese-mountains** 日本の 山 — Fuji, Kita-dake, Hotaka, Yarigatake, Daisetsuzan, Mt Aso, Unzen (Nagasaki), Sakurajima, Mt Takao, Mt Inasa, Japanese Alps; mountain day (Aug 11)
@@ -180,20 +182,20 @@ animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insec
 ## G. Art, Music & Performance (art must stay calm & family-friendly)
 
 - **paintings-italy-spain** イタリア・スペインの 名画 — Mona Lisa, Arcimboldo's fruit-and-vegetable portraits, Raphael's School of Athens, Canaletto's Venice views, Velázquez's Las Meninas, Murillo's children (calm), Sorolla's beaches, Miró's colourful shapes
-- **paintings-netherlands** オランダの 名画 — Vermeer (Milkmaid, Girl with a Pearl Earring, View of Delft), Rembrandt (self-portraits, Night Watch as group portrait), Van Gogh (Sunflowers, Bedroom in Arles, Almond Blossom), Mondrian, Escher
-- **paintings-france** フランスの 名画 — Monet (Impression Sunrise, Water Lilies), Renoir (calm scenes only), Degas (dancers), Cézanne (apples), Seurat (La Grande Jatte), Rousseau (tiger in jungle), Matisse (The Snail cut-outs), Millet (The Gleaners)
+- ✅ ~~**paintings-netherlands**~~ オランダの 名画 — Vermeer (Milkmaid, Girl with a Pearl Earring, View of Delft), Rembrandt (self-portraits, Night Watch as group portrait), Van Gogh (Sunflowers, Bedroom in Arles, Almond Blossom), Mondrian, Escher
+- ✅ ~~**paintings-france**~~ フランスの 名画 — Monet (Impression Sunrise, Water Lilies), Renoir (calm scenes only), Degas (dancers), Cézanne (apples), Seurat (La Grande Jatte), Rousseau (tiger in jungle), Matisse (The Snail cut-outs), Millet (The Gleaners)
 - **paintings-uk-usa** イギリス・アメリカの 名画 — Constable (The Hay Wain), Turner (sunsets), Beatrix Potter illustrations, Whistler, Hopper (Nighthawks), Georgia O'Keeffe (flowers), Grandma Moses, Warhol, Calder mobiles
 - **art-asia** アジアの 美術 — Chinese landscape painting, calligraphy, Along the River at Qingming (scroll), Korean folk painting (minhwa: tigers & magpies), Mughal miniatures (gardens), Thai temple murals (architecture), batik (Indonesia)
-- **japanese-painters** 日本の 画家 — Sesshu, Hasegawa Tohaku (Pine Trees), Ogata Korin (Irises), Ito Jakuchu, Maruyama Okyo, Hokusai, Hiroshige, Yokoyama Taikan (Fuji), Higashiyama Kaii (blue landscapes), Okamoto Taro (Tower of the Sun), Kusama Yayoi
-- **sculpture-world** 世界の ちょうぞう — Moai, Great Sphinx, Terracotta Army, Kamakura Daibutsu (landmark), Little Mermaid (Copenhagen), Merlion, Statue of Liberty, Tower of the Sun, Cloud Gate (Chicago), Spoonbridge and Cherry, Hachiko statue
+- ✅ ~~**japanese-painters**~~ 日本の 画家 — Sesshu, Hasegawa Tohaku (Pine Trees), Ogata Korin (Irises), Ito Jakuchu, Maruyama Okyo, Hokusai, Hiroshige, Yokoyama Taikan (Fuji), Higashiyama Kaii (blue landscapes), Okamoto Taro (Tower of the Sun), Kusama Yayoi
+- ✅ ~~**sculpture-world**~~ 世界の ちょうぞう — Moai, Great Sphinx, Terracotta Army, Kamakura Daibutsu (landmark), Little Mermaid (Copenhagen), Merlion, Statue of Liberty, Tower of the Sun, Cloud Gate (Chicago), Spoonbridge and Cherry, Hachiko statue
 - **architecture-timeline** 建物の 歴史 `timeline` — pyramids, Parthenon, Colosseum, Horyuji, Angkor Wat, Gothic cathedrals (architecture), Taj Mahal, Himeji Castle, Eiffel Tower, Sydney Opera House, Tokyo Skytree, Burj Khalifa
 - **architects** 有名な 建築家 — Gaudí (Sagrada Família, Park Güell), Frank Lloyd Wright (Fallingwater, old Imperial Hotel), Tange Kenzo, Ando Tadao (Church of Light — as architecture), Kuma Kengo (National Stadium), Zaha Hadid, Le Corbusier
 - **picture-books** 世界の 絵本の れきし — Peter Rabbit (Beatrix Potter, PD), Alice illustrations (Tenniel, PD), Japanese picture-book culture, kamishibai (paper theatre), pop-up books; describe modern books in text only (no character images)
 - **manga-anime-history** まんがと アニメの れきし `timeline` — Choju-giga, Hokusai Manga, kamishibai, early animation, Tezuka Osamu (text only), anime around the world, how animation works (flip books, frames) — no copyrighted characters
 - **photography** 写真の れきし — camera obscura, first photo (Niépce), Daguerre, film cameras, instant cameras, digital cameras, smartphones, famous nature photos (described)
-- **composers** 有名な 作曲家 `timeline` — Vivaldi (Four Seasons), Bach, Mozart, Beethoven (Ode to Joy, sung in Japan every December), Chopin, Tchaikovsky (Nutcracker), Debussy, Taki Rentaro (Kojo no Tsuki), Yamada Kosaku (Akatombo)
-- **orchestra** オーケストラの 楽器 `wide` — strings (violin, viola, cello, double bass, harp), woodwind (flute, oboe, clarinet, bassoon), brass (trumpet, horn, trombone, tuba), percussion (timpani, xylophone, cymbals, triangle), conductor
-- **world-instruments** 世界の 楽器 — koto, shakuhachi, taiko, sanshin (Okinawa), erhu, gayageum, sitar, tabla, didgeridoo, bagpipes, steel drum, ukulele, kalimba, djembe, accordion, alphorn, panpipes, balalaika
+- ✅ ~~**composers**~~ 有名な 作曲家 `timeline` — Vivaldi (Four Seasons), Bach, Mozart, Beethoven (Ode to Joy, sung in Japan every December), Chopin, Tchaikovsky (Nutcracker), Debussy, Taki Rentaro (Kojo no Tsuki), Yamada Kosaku (Akatombo)
+- ✅ ~~**orchestra**~~ オーケストラの 楽器 `wide` — strings (violin, viola, cello, double bass, harp), woodwind (flute, oboe, clarinet, bassoon), brass (trumpet, horn, trombone, tuba), percussion (timpani, xylophone, cymbals, triangle), conductor
+- ✅ ~~**world-instruments**~~ 世界の 楽器 — koto, shakuhachi, taiko, sanshin (Okinawa), erhu, gayageum, sitar, tabla, didgeridoo, bagpipes, steel drum, ukulele, kalimba, djembe, accordion, alphorn, panpipes, balalaika
 - **music-genres** 音楽の ジャンル — classical, jazz, rock, pop, hip-hop (as dance/music, clean), reggae, samba, bossa nova, flamenco, K-pop, J-pop, enka, min'yo, film music, video-game music
 - **dance-japan** 日本の おどり — Bon odori, Awa odori, Yosakoi, Eisa, Kagura (as performing art), Nihon-buyo, Soran-bushi (school dance!)
 - **crafts-to-make** 作って みよう — origami crane, paper fortune teller, paper planes, kirigami snowflakes, string figures (ayatori), clay pots, tie-dye, leaf rubbings, simple weaving
@@ -236,9 +238,9 @@ animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insec
 - **jobs-az** しごと A to Z `long` — actor, baker, carpenter, dentist, engineer, florist, gardener, hairdresser, illustrator, journalist, keeper, lawyer, musician, nurse, office worker, pilot, quiz-show host, reporter, scientist, teacher, umpire, vet, waiter, x-ray technician, yoga teacher, zookeeper
 - **explorers** 世界の 探検家 — Amundsen (South Pole), Hillary & Tenzing (Everest), Uemura Naomi, Shirase Nobu (Antarctica), Jacques Cousteau (ocean), Yuri Gagarin, Neil Armstrong, Mae Jemison, Jane Goodall, Ino Tadataka; no colonial conquest stories
 - **women-science** 科学者に なった 女性たち — Marie Curie, Ada Lovelace, Katherine Johnson, Rachel Carson, Jane Goodall, Dorothy Hodgkin, Mukai Chiaki, Yasui Kono, Ogino Ginko (first licensed female doctor in Japan)
-- **sdgs** SDGs 17の 目標 `wide` — one exhibit per goal (no poverty … partnerships), each with a kid-sized action
+- ✅ ~~**sdgs**~~ SDGs 17の 目標 `wide` — one exhibit per goal (no poverty … partnerships), each with a kid-sized action
 - **children-rights** 子どもの 権利 — UN Convention basics: right to play, learn, be safe, be heard, have a name, health; Children's Day
-- **bosai** 防災 そなえよう — emergency kit, evacuation drills, typhoon prep, earthquake "drop, cover, hold on", 119/110, hazard maps, Disaster Prevention Day (Sept 1); calm and practical, no damage images
+- ✅ ~~**bosai**~~ 防災 そなえよう — emergency kit, evacuation drills, typhoon prep, earthquake "drop, cover, hold on", 119/110, hazard maps, Disaster Prevention Day (Sept 1); calm and practical, no damage images
 - **community** 町を 支える 人 — volunteers, neighbourhood clean-ups, crossing guards, librarians, post carriers, recycling centre staff, local festivals' organisers
 - **world-records-human** 人の 世界一 — tallest building, longest bridge, biggest pizza, largest origami crane, longest train, deepest dive, fastest train, most people dancing Bon odori (keep safe & fun)
 
@@ -261,3 +263,20 @@ animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insec
 - **world-firsts-japan** 日本で 生まれた はじめて — instant noodles, karaoke, emoji, QR code, blue LED, tactile paving, pictograms, bullet train, electric rice cooker, conveyor-belt sushi, portable music player, (verify each claim before building)
 - **space-records** 宇宙の 世界一 — biggest planet, hottest planet, tallest volcano (Olympus Mons), longest day (Venus), most moons (Saturn), fastest planet (Mercury), coldest place
 - **mystery-room-ideas** ? ふしぎな へや (random rooms) — "What's this object?" guessing room, "Which country?" room, "Odd one out" room, "Old vs new" room (phones, cameras, TVs)
+
+## M. Philosophy & Thinking (kid-friendly; open questions, no religious claims)
+
+Built: philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together
+
+- **thought-experiments-2** 考える 実験 II — Plato's cave (as a shadow-puppet story), the Ring of Gyges (would you be good if invisible?), Buridan's donkey (two equal haystacks), Theseus II (your body's cells renew), Mary's room (seeing red for the first time), brain-in-a-jar → "Is this a dream?", Twin Earth (simple version), Newcomb-style choice games kept simple
+- **paradoxes** ふしぎな パラドックス — liar paradox ("This sentence is false"), barber paradox, grandfather paradox (time travel), Achilles II, the unexpected test, infinite hotel (Hilbert's hotel), the birthday paradox (23 people), Monty Hall (game-show door puzzle)
+- **logic-puzzles** 論理パズル — knights and knaves, river crossing (wolf, goat, cabbage), Einstein's riddle (simple), truth tables with emoji, syllogisms ("All cats are animals…"), spot the mistake in an argument
+- **eastern-thinkers** アジアの 思想家 — Confucius (Analects sayings for kids), Mencius (people are born good — sprout analogy), Laozi (water), Zhuangzi (useless tree story), Han Feizi (rules), Tiruvalluvar (Tamil wisdom couplets), Kaibara Ekiken (health & learning), Ninomiya Sontoku, Nitobe Inazo (Bushido written in English; 5000-yen note)
+- **western-thinkers** ヨーロッパの 思想家 — Thales (everything is water), Pythagoras (numbers & music), Heraclitus (you can't step in the same river twice), Diogenes (simple living — gentle), Epicurus (happiness = friends & simple pleasures), Seneca (time is precious), Montaigne (essays — "What do I know?"), Locke (blank slate), Rousseau (education & nature), Mill (freedom), Hannah Arendt (thinking for yourself)
+- **philosophy-of-happiness** 幸せの 考え方 — gratitude, flow (doing what you love), friendship, kindness research, ikigai, hygge (Denmark), lagom (Sweden), sisu (Finland), pura vida (Costa Rica), ubuntu (Southern Africa: "I am because we are")
+- **world-wisdom-words** 世界の 心の ことば — ubuntu, hygge, lagom, sisu, aloha spirit, pura vida, mottainai, ikigai, wabi-sabi, ichi-go ichi-e, "carpe diem", "hakuna matata" (Swahili phrase, not the film)
+- **ethics-for-kids** みんなで 考えよう — sharing, honesty (the boy who cried wolf), keeping promises, helping others, fairness vs equality (bike/stool picture), animal welfare, caring for the planet, online kindness
+- **critical-thinking** 考える 力の 道具 — ask "why?" five times, facts vs opinions, checking sources, cause and effect, comparing viewpoints, mind maps, debate rules, changing your mind is OK
+- **philosophy-of-science** 科学の 考え方 — observation, hypothesis, experiment, Galileo's falling balls, Occam's razor, peer review (simple), "science changes when we learn more"
+- **time-philosophy** 時間って 何？ — Heraclitus' river, Augustine's "I know until you ask me" (quote only, neutral), time zones, relativity for kids (twins), 一生の 長さ in heartbeats, why time flies when you're having fun
+- **mind-and-feelings** 心の ふしぎ — memory, dreams, emotions (Inside-Out style without characters), habits (Aristotle), growth mindset, mindfulness breathing, empathy

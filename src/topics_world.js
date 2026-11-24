@@ -79,7 +79,7 @@ export const WORLD = {
     ] },
   "landmarks": { ja: "世界の たてもの", en: "World Landmarks", c: "#8a6d3b",
     intro: "世界には、何百年、何千年も 前に 作られた すごい たてものが あります。",
-    links: ["europe", "asia", "africa", "americas", "japan", "geo-records", "inventions"],
+    links: ["europe", "asia", "africa", "americas", "japan", "geo-records", "inventions", "sculpture-world"],
     items: [
       ["エッフェル塔", "Eiffel Tower", "🗼", "フランス・パリ。1889年の 万国博覧会の ために 作られました。"],
       ["自由の女神", "Statue of Liberty", "🗽", "アメリカ・ニューヨーク。フランスから おくられた 像です。"],
@@ -106,7 +106,7 @@ export const WORLD = {
     ] },
   "writing": { ja: "世界の 文字", en: "Writing Systems", c: "#5d4a7a",
     intro: "世界には いろいろな 文字が あります。右から 左へ 書く 文字も あるよ！",
-    links: ["regions", "asia", "europe", "school-subjects", "japan-traditions", "inventions"],
+    links: ["regions", "asia", "europe", "school-subjects", "japan-traditions", "inventions", "hello-world", "words-from-japanese"],
     items: [
       ["ひらがな", "hiragana", "あ", "1000年 いじょう 前に、漢字を くずして 生まれた 日本の 文字です。"],
       ["アルファベット", "alphabet", "Aa", "英語は 26文字の アルファベットで 書きます。大文字と 小文字が あります。"],
@@ -134,7 +134,7 @@ export const WORLD = {
     ] },
   "nagasaki": { ja: "長崎の ひみつ", en: "Secrets of Nagasaki", c: "#2f6f9f",
     intro: "わたしたちの 長崎。むかしから 外国と つながって きた、とくべつな 町です。",
-    links: ["japan", "europe", "japanese-food", "festivals-world", "japan-animals", "months2", "vehicles"],
+    links: ["japan", "europe", "japanese-food", "festivals-world", "japan-animals", "months2", "vehicles", "nagasaki-city", "nagasaki-food"],
     items: [
       ["出島", "Dejima", "🏝️", "江戸時代、日本が オランダと 貿易を した 場所。外国の 文化の 入り口でした。"],
       ["ペーロン", "Peiron boat race", "🚣", "中国から 伝わった ボートレース。長崎の 夏の 行事です。"],
@@ -161,7 +161,7 @@ export const WORLD = {
     ] },
   "japan-traditions": { ja: "日本の 文化", en: "Japanese Culture", c: "#8f3b5a",
     intro: "Can you play kendama? 日本で 長く 大切に されて きた 文化を しょうかい します。",
-    links: ["japan", "months1", "months2", "instruments", "writing", "olympics"],
+    links: ["japan", "months1", "months2", "instruments", "writing", "olympics", "japanese-values", "world-dance"],
     items: [
       ["けん玉", "kendama", "🎯", "玉を 皿に のせたり、けんに さしたり する あそび。世界大会も あります。"],
       ["折り紙", "origami", "📄", "1まいの 紙から つるや かぶとを 作ります。「origami」は 世界で 通じる ことばです。"],
@@ -209,7 +209,7 @@ export const WORLD = {
     ] },
   "festivals-world": { ja: "世界の お祭り", en: "Festivals Around the World", c: "#d2693a",
     intro: "世界中に、色とりどりの お祭りが あります。",
-    links: ["months2", "asia", "europe", "americas", "nagasaki", "instruments"],
+    links: ["months2", "asia", "europe", "americas", "nagasaki", "instruments", "world-dance"],
     items: [
       ["春節", "Lunar New Year", "🧧", "中国などの お正月。赤い ふくろに 入った お年玉を もらいます。"],
       ["ホーリー", "Holi", "🎨", "インドの 春の お祭り。色の こなを かけ合います。"],
@@ -354,7 +354,7 @@ export const WORLD = {
     ] },
   "instruments": { ja: "楽器", en: "Musical Instruments", c: "#8a4a8a",
     intro: "Can you play the piano? 世界の いろいろな 楽器を 見て みよう。",
-    links: ["japan-traditions", "festivals-world", "jobs-dream", "school-subjects", "europe"],
+    links: ["japan-traditions", "festivals-world", "jobs-dream", "school-subjects", "europe", "orchestra", "world-instruments"],
     items: [
       ["ピアノ", "piano", "🎹", "けんばんの 数は 88こ。白い けんと 黒い けんが あります。"],
       ["ギター", "guitar", "🎸", "ふつうの ギターには 6本の 弦が あります。"],
