@@ -16,7 +16,7 @@
   #room b { font-size: 20px; } #room span { font-size: 14px; color: #6b4d2c; font-weight: 700; }
   #topright { top: 10px; right: 12px; display: flex; gap: 8px; align-items: flex-start; pointer-events: auto; }
   #seen { background: #fff8e3; border: 2px solid #e8c25a; border-radius: 12px; padding: 6px 12px; font-weight: 700; font-size: 15px; }
-  #fs, #home { border: 0; border-radius: 12px; padding: 7px 12px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
+  #fs, #home, #helpbtn { border: 0; border-radius: 12px; padding: 7px 12px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
   #mapwrap { bottom: 12px; left: 12px; padding: 4px; background: rgba(255,253,248,.88); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
   #map { display: block; border-radius: 8px; }
   #hint { bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(44,33,24,.85); color: #fff;
@@ -61,6 +61,28 @@
   .pbtn { position: absolute; border: 0; background: rgba(255,255,255,.92); border-radius: 50%; width: 44px; height: 44px;
     font-size: 22px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
   #close { top: 10px; right: 10px; } #prev { bottom: 10px; left: 10px; } #next { bottom: 10px; left: 62px; }
+  .about { font-size: 16.5px; line-height: 1.75; margin: 4px 0 12px; }
+  .about p { margin: 0 0 8px; }
+  .say { background: #eaf4fb; border: 2px solid #bcdcf0; border-radius: 12px; padding: 10px 14px; margin: 10px 0; }
+  .say-h { font-weight: 800; color: #2f6f9f; margin-bottom: 6px; font-size: 15px; }
+  .say .line { display: flex; flex-direction: column; padding: 4px 0; border-top: 1px dashed #cfe3f1; }
+  .say .line:first-of-type { border-top: 0; }
+  .say .line b { font-family: 'Nunito', 'Trebuchet MS', system-ui, sans-serif; font-size: 19px; color: #1d4f75; }
+  .say .line span { font-size: 13.5px; color: #555; }
+  #help { position: fixed; inset: 0; z-index: 15; background: rgba(30,22,14,.55); display: flex; align-items: center; justify-content: center; }
+  #help[hidden] { display: none; }
+  .help-card { width: min(860px, 94vw); max-height: 94vh; overflow: auto; background: #fffdf8; border-radius: 20px; padding: 20px 28px; box-shadow: 0 10px 40px rgba(0,0,0,.35); text-align: center; }
+  .help-card h2 { margin: 0; font-size: 28px; }
+  .help-en { font-family: 'Nunito', system-ui, sans-serif; font-weight: 800; color: #2f6f9f; font-size: 18px; margin-bottom: 12px; }
+  .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; text-align: left; }
+  .hk { display: flex; gap: 12px; align-items: center; background: #f6f1e7; border-radius: 12px; padding: 8px 12px; }
+  .hk b { display: block; font-size: 15.5px; line-height: 1.4; } .hk i { font-size: 13px; }
+  .keys { display: flex; gap: 4px; flex: none; min-width: 92px; justify-content: center; }
+  .keys.big { font-size: 30px; }
+  kbd { display: inline-block; min-width: 38px; padding: 6px 8px; border-radius: 8px; background: #fff; border: 2px solid #6b4d2c; border-bottom-width: 4px; font: 700 18px system-ui, sans-serif; text-align: center; }
+  kbd.wide { min-width: 76px; }
+  #help-ok { margin-top: 14px; border: 0; border-radius: 999px; padding: 12px 34px; background: #e8731c; color: #fff; font: inherit; font-weight: 800; font-size: 20px; cursor: pointer; }
+  #help-ok span { font-size: 14px; opacity: .9; }
   #loading { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; background: #f4efe6; z-index: 20; }
 </style>
 </head>
@@ -68,13 +90,28 @@
 <div id="app"></div>
 <div id="loading">よみこみ中… Loading…</div>
 <div class="hud" id="room"></div>
-<div class="hud" id="topright"><div id="seen"></div><button id="home" title="Back to the lobby">🏠 ロビー</button><button id="fs" title="Full screen">⛶ 大きく</button></div>
+<div class="hud" id="topright"><div id="seen"></div><button id="helpbtn" title="How to play">❓</button><button id="home" title="Back to the lobby">🏠 ロビー</button><button id="fs" title="Full screen">⛶ 大きく</button></div>
 <div class="hud" id="mapwrap"><canvas id="map" width="190" height="150"></canvas></div>
 <div class="hud" id="hint" hidden></div>
 <div class="hud" id="banner"></div>
 <div id="pad">
   <span></span><button data-btn="arrowup" aria-label="forward">⬆</button><span></span>
   <button data-btn="arrowleft" aria-label="turn left">⟲</button><button data-btn="arrowdown" aria-label="back">⬇</button><button data-btn="arrowright" aria-label="turn right">⟳</button>
+</div>
+<div id="help" hidden>
+  <div class="help-card">
+    <h2>ようこそ、せかい はくぶつかんへ！</h2>
+    <div class="help-en">Welcome to the World Museum!</div>
+    <div class="help-grid">
+      <div class="hk"><span class="keys"><kbd>↑</kbd><kbd>↓</kbd></span><div><b>前へ・後ろへ 歩く</b><i>Walk forward / back</i></div></div>
+      <div class="hk"><span class="keys"><kbd>←</kbd><kbd>→</kbd></span><div><b>向きを かえる</b><i>Turn left / right</i></div></div>
+      <div class="hk"><span class="keys big">🖐️</span><div><b>トラックパッドや 画面を ドラッグして 見回す</b><i>Drag on the trackpad or touchscreen to look around</i></div></div>
+      <div class="hk"><span class="keys"><kbd class="wide">Enter</kbd></span><div><b>え の 前で Enter … くわしく 見る / とじる</b><i>Press Enter at an exhibit to open or close it</i></div></div>
+      <div class="hk"><span class="keys big">🚪</span><div><b>ドアを くぐると 新しい へやへ！ 「？」の ドアは どこへ 行くか ひみつ</b><i>Go through doors to find new rooms</i></div></div>
+      <div class="hk"><span class="keys big">🏠</span><div><b>まよったら 「ロビー」ボタン</b><i>Lost? Press the Lobby button</i></div></div>
+    </div>
+    <button id="help-ok">はじめる！ <span>Let's go! (Enter)</span></button>
+  </div>
 </div>
 <div id="panel" hidden>
   <div id="card">

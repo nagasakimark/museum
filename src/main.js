@@ -6,6 +6,7 @@ import { MORE } from "./topics_more.js";
 import { ART } from "./topics_art.js";
 import { PHILOSOPHY } from "./topics_philosophy.js";
 import { BATCH1 } from "./topics_batch1.js";
+import { DETAILS } from "./details/index.js";
 
 // ================= content =================
 const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1 };
@@ -32,15 +33,36 @@ for (const [id, t] of Object.entries(TOPICS)) {
       else if (BIOME[a.room]) rows.push(["🏞️ すみか", ...BIOME[a.room]]);
       rows.push(["🍽️ 食べもの", a.eats.map(e => e[0]).join("、"), a.eats.map(e => e[1]).join(", ")]);
       rows.push(["🧬 なかま", g.ja, g.en]);
-      return { ja: a.ja, en: a.en, img: a.img, fact: a.fact, rows, status: a.status, statusSource: a.statusSource };
+      return { id: a.id, ja: a.ja, en: a.en, img: a.img, fact: a.fact, rows, status: a.status, statusSource: a.statusSource, animal: a };
     });
   } else if (t.groups) {
     list = DATA.groups.map(g => ({ ja: g.ja, en: g.en, img: g.img, fact: g.ja_text, rows: [["📷 しゃしん", g.animal[0], g.animal[1]]] }));
   } else {
     list = (t.items || []).map(([ja, en, pic, fact, rows, year]) => ({ ja, en, pic, fact, rows: (rows || []).concat(year ? [["📅 年代", year, ""]] : []), year }));
   }
-  list.forEach((it, i) => { it.key = id + ":" + i; it.topic = id; });
+  list.forEach((it, i) => {
+    it.key = id + ":" + i; it.topic = id;
+    // longer explanation + English practice lines, written per exhibit in src/details/
+    const d = DETAILS[id]?.[it.id || it.en];
+    if (d) { it.about = d[0]; it.say = d.slice(1).map(x => x.split(" / ")); }
+    if (!it.say?.length) it.say = templateSay(id, it);
+  });
   t.list = list;
+}
+function templateSay(id, it) {
+  const row = k => (it.rows || []).find(r => r[0].includes(k));
+  const an = w => /^[aeiou]/i.test(w) ? "an" : "a";
+  if (it.animal) {
+    const a = it.animal, c = a.countries[0], e = a.eats[0];
+    return [[`This is ${an(a.en)} ${a.en}.`, `これは ${a.ja}です。`],
+      [`It lives in ${c[1]}.`, `${c[0].replace(/\(.*\)/, "")}に すんで います。`],
+      [`It eats ${e[1]}.`, `${e[0]}を 食べます。`]];
+  }
+  const cap = row("首都"), food = row("食べもの");
+  if (cap || food) return [[`I want to go to ${it.en}.`, `${it.ja}に 行きたいです。`],
+    ...(cap ? [[`The capital is ${cap[2]}.`, `首都は ${cap[1]}です。`]] : []),
+    ...(food ? [[`I want to eat ${food[2]}.`, `${food[1]}を 食べたいです。`]] : [])];
+  return [];
 }
 const ALL_ITEMS = Object.values(TOPICS).reduce((n, t) => n + t.list.length, 0);
 const HUBS = ["animals", "regions", "japan", "solar-system", "world-dishes", "ball-sports", "jobs-dream", "inventions", "nagasaki", "dinosaurs", "heroes", "science-fun", "aquarium", "town", "art", "art-timeline", "art-world-crafts", "human-body", "japan-islands", "games-world", "philosophy-questions", "hello-world", "nagasaki-city", "orchestra", "sdgs"];
@@ -600,6 +622,8 @@ const keys = new Set(), btnHeld = new Set();
 const panel = document.getElementById("panel");
 const panelOpen = () => !panel.hidden;
 addEventListener("keydown", e => {
+  const hp = document.getElementById("help");
+  if (hp && !hp.hidden) { if (["Enter", " ", "Escape"].includes(e.key)) { hp.hidden = true; try { localStorage.setItem("museum-help-seen", "1"); } catch { } e.preventDefault(); } return; }
   if (panelOpen()) {
     if (["Escape", "Enter", " "].includes(e.key)) { closePanel(); e.preventDefault(); }
     else if (e.key === "ArrowRight") { stepPanel(1); e.preventDefault(); }
@@ -686,7 +710,10 @@ function openPanel(ex) {
     const pic = ex.img ? `<img src="${ex.img}" alt="">` : `<div class="bigpic" style="--c:${t.c}"><canvas width="560" height="560"></canvas></div>`;
     body.innerHTML = `${pic}<div class="info"><div class="crumb">${esc(t.ja)} ・ ${esc(t.en)}</div><h2>${esc(ex.ja)}</h2><div class="en big">${esc(ex.en)}</div>
       ${ex.rows.map(([k, j, e]) => `<div class="row"><span class="k">${esc(k)}</span><span>${esc(j)} <i>${esc(e)}</i></span></div>`).join("")}
-      <p class="fact">💡 ${esc(ex.fact)}</p>${ex.status ? statusScale(ex.status, ex.statusSource) : ""}</div>`;
+      <p class="fact">💡 ${esc(ex.fact)}</p>
+      ${ex.about ? `<div class="about">${ex.about.split("\n").map(p => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
+      ${ex.say?.length ? `<div class="say"><div class="say-h">🗣️ 英語で 言って みよう！ <i>Let's say it!</i></div>${ex.say.map(([e, j]) => `<div class="line"><b>${esc(e)}</b><span>${esc(j || "")}</span></div>`).join("")}</div>` : ""}
+      ${ex.status ? statusScale(ex.status, ex.statusSource) : ""}</div>`;
     const c = body.querySelector("canvas");
     if (c) { const g = c.getContext("2d"); drawPic(g, ex.pic, 280, 280, 520); }
     markSeen(ex.key);
@@ -762,4 +789,12 @@ function showBanner(r) {
 enterRoom(0);
 if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose };
 document.getElementById("loading").remove();
+const help = document.getElementById("help");
+const showHelp = () => { help.hidden = false; keys.clear(); };
+const hideHelp = () => { help.hidden = true; try { localStorage.setItem("museum-help-seen", "1"); } catch { } };
+document.getElementById("help-ok").addEventListener("click", hideHelp);
+document.getElementById("helpbtn").addEventListener("click", showHelp);
+help.addEventListener("click", e => { if (e.target === help) hideHelp(); });
+let helpSeen = false; try { helpSeen = !!localStorage.getItem("museum-help-seen"); } catch { }
+if (!helpSeen) showHelp();
 requestAnimationFrame(frame);
