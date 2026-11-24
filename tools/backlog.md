@@ -18,13 +18,14 @@ Each built topic becomes one room. Doors between rooms come from each topic's `l
 - **No external links in the app.** Credits go in `site/README.md`.
 - **Facts:** well established and checkable. Conservation statuses use the IUCN Red List (the Japan Red List for Japanese subspecies).
 - **Photos:** Wikimedia Commons, downloaded on Mark's laptop (`tools/fetch.py`). Every photo is checked by eye before use.
+- **Every exhibit** needs: a one-line fact, a 2–3 sentence explanation (`src/details/*.js`, keyed by topic → English name / animal id) and 1–3 English lines in New Horizon patterns ("EN / JA"). Check with `node tools/coverage.mjs -v`.
 - **Size:** 6–11 exhibits per normal room, and up to ~16 for `long` / `timeline` rooms.
 
 Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, `long` (gallery), `timeline` (long gallery, walk-through order with years).
 
 ---
 
-## ✅ Built (106 topics)
+## ✅ Built (106 topics) — all 896 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
