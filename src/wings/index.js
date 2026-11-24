@@ -8,4 +8,5 @@ import { DETAILS_O2 } from "./o2_animals.js";
 import { DETAILS_N5 } from "./n5_seasons.js";
 import { DETAILS_N6 } from "./n6_home.js";
 import { DETAILS_N8 } from "./n8_school.js";
-export const WING_DETAILS = [DETAILS_N1, DETAILS_N2, DETAILS_N3, DETAILS_N4, DETAILS_O1, DETAILS_O2, DETAILS_N5, DETAILS_N6, DETAILS_N8];
+import { DETAILS_N7 } from "./n7_extremes.js";
+export const WING_DETAILS = [DETAILS_N1, DETAILS_N2, DETAILS_N3, DETAILS_N4, DETAILS_O1, DETAILS_O2, DETAILS_N5, DETAILS_N6, DETAILS_N8, DETAILS_N7];

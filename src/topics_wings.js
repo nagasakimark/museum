@@ -9,8 +9,9 @@ import { WINGS_O2 } from "./wings/o2_animals.js";
 import { WINGS_N5 } from "./wings/n5_seasons.js";
 import { WINGS_N6 } from "./wings/n6_home.js";
 import { WINGS_N8 } from "./wings/n8_school.js";
+import { WINGS_N7 } from "./wings/n7_extremes.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -75,6 +76,9 @@ const BACK2 = {
   "daily-life": ["chores-world"], "environment": ["chores-world"], "science-fun": ["how-home-works"], "generations": ["home-objects-history"],
   // N8 school places
   "school-subjects": ["inside-japanese-school"], "school-events": ["inside-japanese-school"], "jhs-life-japan": ["inside-japanese-school"],
+  // N7 extremes
+  "animal-records": ["big-small-animals", "fast-slow"], "geo-records": ["long-short-tall", "hot-cold"], "vehicles": ["fast-slow"],
+  "landmarks": ["long-short-tall"], "rocks-gems": ["old-new", "heavy-light"], "dinosaurs": ["old-new"], "instruments": ["loud-quiet"],
   "world-tales": ["libraries-world"], "toys-tales": ["libraries-world"], "secondary-schools-world": ["school-buildings-world"],
 };
 

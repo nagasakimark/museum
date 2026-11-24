@@ -26,13 +26,13 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (149 topics) — all 1333 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (156 topics) — all 1393 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
 hello-world, school-lunch-world, orchestra `wide`, composers `timeline`, world-instruments, world-dance, paintings-france, paintings-netherlands, japanese-painters, sculpture-world, nagasaki-city, nagasaki-food, wasei-eigo, words-from-japanese (was japanese-words-english), sdgs `wide`, bosai
 
-Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older rooms): N1 families, N2 can, N3 junior high, N4 summer, N5 seasons, N6 home, N8 school places, and all 11 O animal sister rooms. Next up: N7 (biggest & smallest), then section C countries with N9/N10. Item tuples may carry a 7th element `{ s: "EN", src: "japan" }` for a Red List status.
+Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older rooms): N1 families, N2 can, N3 junior high, N4 summer, N5 seasons, N6 home, N7 biggest & smallest, N8 school places, and all 11 O animal sister rooms. Next up: section C countries with N9 flags / N10 maps, then N11–N14. Item tuples may carry a 7th element `{ s: "EN", src: "japan" }` for a Red List status.
 
 ---
 
@@ -335,13 +335,13 @@ Each wing is 3–5 rooms that link to each other and to related built rooms (sug
 - ✅ ~~**chores-world**~~ 世界の お手伝い — Japanese students cleaning their school (soji), chores children do in different countries, laundry hung outside vs dryers, folding (furoshiki and Marie Kondo-style folding, text only), recycling sorting in Japan (many categories; Kamikatsu town sorts 45 ways!), home robots → "I wash the dishes. I can cook curry." [environment, daily-life, robots-can]
 
 ### N7. Biggest & smallest (adjectives, opposites, comparisons) `tall` — *each exhibit is a pair of real extremes*
-- **big-small-animals** いちばん 大きい・小さい 生きもの — blue whale vs bumblebee bat; ostrich egg vs hummingbird egg; giant squid vs smallest fish (Paedocypris); Goliath frog vs Paedophryne (smallest frog); African elephant vs Etruscan shrew; giant panda baby (tiny: ~1/900 of mum) — "big / small, bigger / biggest" [animal-records]
-- **fast-slow** はやい・おそい — peregrine falcon vs three-toed sloth; sailfish vs seahorse; cheetah vs garden snail; Shinkansen vs glacier; light vs sound (thunder delay counting); the fastest and slowest things in space
-- **hot-cold** あつい・つめたい — Sun's core vs absolute zero; Death Valley vs Antarctica (Vostok); boiling and freezing water; dry ice (−79°C) vs a hot spring; hottest planet (Venus) vs coldest (Uranus); bodies (human 36–37°C, birds ~41°C)
-- **heavy-light** おもい・かるい — blue whale vs feather; aerogel (lightest solid, "frozen smoke"); osmium (densest metal); a cloud weighs about as much as 100 elephants; a bowling ball vs a balloon; why big ships float [floating-boats]
-- **old-new** 古い・新しい — oldest rocks (~4 billion years), oldest tree (bristlecone ~4,800 years), Jōmon Sugi (Yakushima), oldest company (Kongō Gumi, Japan, 578), oldest wooden building (Hōryūji), newest island (Nishinoshima), newest element names (nihonium — discovered in Japan!)
-- **long-short-tall** 長い・みじかい・高い — Nile vs shortest river (Roe River, USA); giraffe neck (same 7 bones as us); Burj Khalifa vs tiny houses; Japan's longest place names; shortest flight (Westray–Papa Westray, ~1.5 min); tallest and shortest dog breeds
-- **loud-quiet** うるさい・しずか — blue whale call, pistol shrimp snap, howler monkey, the quietest room in the world (anechoic chamber), owl's silent flight (inspired quieter Shinkansen pantograph — Japanese engineer) [sound-science]
+- ✅ ~~**big-small-animals**~~ いちばん 大きい・小さい 生きもの — blue whale vs bumblebee bat; ostrich egg vs hummingbird egg; giant squid vs smallest fish (Paedocypris); Goliath frog vs Paedophryne (smallest frog); African elephant vs Etruscan shrew; giant panda baby (tiny: ~1/900 of mum) — "big / small, bigger / biggest" [animal-records]
+- ✅ ~~**fast-slow**~~ はやい・おそい — peregrine falcon vs three-toed sloth; sailfish vs seahorse; cheetah vs garden snail; Shinkansen vs glacier; light vs sound (thunder delay counting); the fastest and slowest things in space
+- ✅ ~~**hot-cold**~~ あつい・つめたい — Sun's core vs absolute zero; Death Valley vs Antarctica (Vostok); boiling and freezing water; dry ice (−79°C) vs a hot spring; hottest planet (Venus) vs coldest (Uranus); bodies (human 36–37°C, birds ~41°C)
+- ✅ ~~**heavy-light**~~ おもい・かるい — blue whale vs feather; aerogel (lightest solid, "frozen smoke"); osmium (densest metal); a cloud weighs about as much as 100 elephants; a bowling ball vs a balloon; why big ships float [floating-boats]
+- ✅ ~~**old-new**~~ 古い・新しい — oldest rocks (~4 billion years), oldest tree (bristlecone ~4,800 years), Jōmon Sugi (Yakushima), oldest company (Kongō Gumi, Japan, 578), oldest wooden building (Hōryūji), newest island (Nishinoshima), newest element names (nihonium — discovered in Japan!)
+- ✅ ~~**long-short-tall**~~ 長い・みじかい・高い — Nile vs shortest river (Roe River, USA); giraffe neck (same 7 bones as us); Burj Khalifa vs tiny houses; Japan's longest place names; shortest flight (Westray–Papa Westray, ~1.5 min); tallest and shortest dog breeds
+- ✅ ~~**loud-quiet**~~ うるさい・しずか — blue whale call, pistol shrimp snap, howler monkey, the quietest room in the world (anechoic chamber), owl's silent flight (inspired quieter Shinkansen pantograph — Japanese engineer) [sound-science]
 
 ### N8. School places (NH5 "Where is the music room?")
 - ✅ ~~**inside-japanese-school**~~ 学校の 部屋の ひみつ — getabako and indoor shoes (rare abroad), the nurse's office (hokenshitsu), science room (Bunsen burners, skeleton models), music room (why composer portraits hang there), library (NDC number system — the Japanese version of Dewey), gym (doubles as an evacuation shelter), school pools (most Japanese schools have one — very unusual worldwide), school garden and rabbit hutch, broadcasting room, staff room, randoseru (from the Dutch "ransel") → "Where is the music room? It's on the second floor." [school-subjects, town]
