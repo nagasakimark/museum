@@ -13,8 +13,10 @@ import { WINGS_N7 } from "./wings/n7_extremes.js";
 import { WINGS_C1 } from "./wings/c1_asia.js";
 import { WINGS_C2 } from "./wings/c2_europe.js";
 import { WINGS_C3 } from "./wings/c3_world.js";
+import { WINGS_N10 } from "./wings/n10_maps.js";
+import { WINGS_N11_14 } from "./wings/n11_14.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -82,12 +84,23 @@ const BACK2 = {
   // C countries
   "asia": ["southeast-asia", "south-asia", "west-asia"], "europe": ["nordic", "western-europe-2", "eastern-europe"],
   "americas": ["central-america-caribbean", "south-america-2"], "africa": ["africa-2"], "oceania": ["pacific-islands"],
-  "regions": ["southeast-asia", "africa-2", "south-america-2", "nordic"],
+  "regions": ["southeast-asia", "africa-2", "south-america-2", "nordic", "continents-oceans"],
   // N7 extremes
   "animal-records": ["big-small-animals", "fast-slow"], "geo-records": ["long-short-tall", "hot-cold"], "vehicles": ["fast-slow"],
   "landmarks": ["long-short-tall"], "rocks-gems": ["old-new", "heavy-light"], "dinosaurs": ["old-new"], "instruments": ["loud-quiet"],
   "world-tales": ["libraries-world"], "toys-tales": ["libraries-world"], "secondary-schools-world": ["school-buildings-world"],
 };
 
+const BACK3 = {
+  // N10 maps
+  "japan-islands": ["islands-world", "japan-geography"], "japan": ["japan-geography"], "geo-records": ["continents-oceans"],
+  "time": ["time-zones-world", "units-history"], "earth-science": ["continents-oceans"],
+  // N11-N14
+  "festivals-world": ["holidays-world"], "months1": ["japanese-holidays", "holidays-world"], "months2": ["holidays-world"],
+  "numbers": ["units-history"], "science-fun": ["magnets", "measuring-tools"], "robots": ["how-computers-work"],
+  "inventions": ["how-computers-work"], "words-from-japanese": ["how-internet-works"], "japan-inventions": ["how-internet-works"],
+  "human-body": ["senses"], "animal-superpowers": ["senses"], "living-together": ["how-internet-works"],
+};
+
 export const BACKLINKS = {};
-for (const m of [BACK1, BACK2]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
+for (const m of [BACK1, BACK2, BACK3]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
