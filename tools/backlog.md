@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (339 topics) — all 3062 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (346 topics) — all 3127 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -86,10 +86,10 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**earth-timeline**~~ 地球 46億年の 旅 `timeline` — Earth forms, first ocean, first life, Snowball Earth, Cambrian explosion, first fish, plants on land, first amphibians, dinosaurs, flowering plants, dinosaurs end, mammals rise, ice ages, humans
 - ✅ ~~**moons**~~ 太陽系の 月 — Moon, Phobos, Europa (ice ocean), Io (volcanoes), Ganymede (largest), Titan (thick air), Enceladus (geysers), Triton, Charon; Japanese moon-rabbit story
 - ✅ ~~**constellations**~~ 星座の 物語 — Orion, Big Dipper, Cassiopeia, Southern Cross, Pleiades (Subaru), Summer Triangle (Vega, Altair, Deneb — Tanabata), Scorpius, Leo, zodiac signs, how to find the North Star
-- **telescopes-observatories** 天文台と 望遠鏡 — Galileo's telescope, Subaru Telescope (Hawaii, Japan), Hubble, James Webb, ALMA (Chile), Nobeyama, planetarium, radio telescopes
+- ✅ ~~**telescopes-observatories**~~ 天文台と 望遠鏡 — Galileo's telescope, Subaru Telescope (Hawaii, Japan), Hubble, James Webb, ALMA (Chile), Nobeyama, planetarium, radio telescopes
 - ✅ ~~**comets-asteroids**~~ すい星と 小わくせい — Halley's Comet, Hale-Bopp, Itokawa, Ryugu, Ceres, meteor showers (Perseids, Geminids), meteorites, Hayabusa missions
 - ✅ ~~**space-japan**~~ 日本の 宇宙開発 `timeline` — Pencil rocket (1955), Osumi satellite (1970), Kibo module, Japanese astronauts (Mohri, Mukai, Wakata, Noguchi, Hoshide, Yui, Furukawa, Onishi, Kanai), H-II/H3 rockets, Hayabusa 1/2, SLIM moon landing (2024)
-- **astronaut-life** 宇宙での くらし — sleeping, eating, toilets (lightly), exercise, washing hair, floating water, view of Earth, spacesuits, training, mission patches
+- ✅ ~~**astronaut-life**~~ 宇宙での くらし — sleeping, eating, toilets (lightly), exercise, washing hair, floating water, view of Earth, spacesuits, training, mission patches
 
 ## C. World Cultures & Countries
 
@@ -105,16 +105,16 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**africa-2**~~ アフリカ もっと — Ethiopia (coffee's home), Nigeria (big cities, Nollywood), Senegal (pink lake), Rwanda (gorillas, clean cities), Botswana (Okavango), Namibia (dunes), Zambia & Zimbabwe (Victoria Falls), Uganda, Ghana (more)
 - ✅ ~~**pacific-islands**~~ 太平洋の 島々 — Palau, Samoa, Tonga, Tuvalu, Kiribati (first new year), Vanuatu, Solomon Islands, Hawaii (USA), Tahiti, Easter Island (Chile), Guam, Saipan
 - ✅ ~~**hello-world**~~ 世界の 「こんにちは」 `long` — 30+ languages with kana reading: English, Chinese, Korean, Spanish, French, German, Italian, Portuguese, Russian, Arabic, Hindi, Thai, Vietnamese, Indonesian, Tagalog, Swahili, Hawaiian, Māori, Ainu (イランカラプテ), Okinawan (はいさい), Nagasaki dialect, sign language
-- **numbers-languages** 1から10を 世界の ことばで — English, Chinese, Korean, Spanish, French, Swahili, Hindi, Thai, Japanese (hitotsu/ichi), Roman numerals, Arabic numerals' journey
+- ✅ ~~**numbers-languages**~~ 1から10を 世界の ことばで — English, Chinese, Korean, Spanish, French, Swahili, Hindi, Thai, Japanese (hitotsu/ichi), Roman numerals, Arabic numerals' journey
 - ✅ ~~**traditional-clothes**~~ 世界の 民族衣装 — kimono, yukata, hanbok, qipao, sari, kilt, dirndl, poncho, kente, áo dài, hula skirt (respectful), Sámi gákti, sombrero, fez
 - ✅ ~~**world-new-year**~~ 世界の お正月 — Japan (osechi, hatsumode), China (Spring Festival), Korea (Seollal, tteokguk), Spain (12 grapes), Scotland (Hogmanay), Thailand (Songkran), Iran (Nowruz), Ethiopia (Enkutatash), fireworks in Sydney
 - ✅ ~~**school-lunch-world**~~ 世界の 給食 — Japan, Korea, France, Finland (free lunch), USA, Brazil, India (midday meal), Italy, UK, China; Japanese kyushoku manners (serving duty)
 - **schools-world** 世界の 学校 — school year start months, uniforms or not, school buses, Finnish schools, outdoor classes, school sizes, Japanese cleaning time (soji) admired abroad, randoseru
 - ✅ ~~**markets-world**~~ 世界の 市場 — Tsukiji/Toyosu (tuna), floating markets (Thailand), Grand Bazaar (Istanbul), Christmas markets (Germany), night markets (Taiwan), souks (Morocco), farmers' markets
-- **world-transport** 世界の のりもの — tuk-tuk, gondola, double-decker bus, cable car (San Francisco), jeepney, rickshaw, dog sled, camel caravan, reed boats (Titicaca), Venice vaporetto, Swiss mountain trains
-- **world-houses-2** 世界の 家 II — Cappadocia cave houses, Hobbit-like turf houses (Iceland), Toraja houses (Indonesia), Tulou (China), trulli (Italy), stilt houses (Malaysia), houseboats (Kerala)
+- ✅ ~~**world-transport**~~ 世界の のりもの — tuk-tuk, gondola, double-decker bus, cable car (San Francisco), jeepney, rickshaw, dog sled, camel caravan, reed boats (Titicaca), Venice vaporetto, Swiss mountain trains
+- ✅ ~~**world-houses-2**~~ 世界の 家 II — Cappadocia cave houses, Hobbit-like turf houses (Iceland), Toraja houses (Indonesia), Tulou (China), trulli (Italy), stilt houses (Malaysia), houseboats (Kerala)
 - ✅ ~~**world-dance**~~ 世界の おどり — ballet (France/Russia), flamenco, hula, haka (Māori), samba, tango, Irish step dance, Bharatanatyam, K-pop dance, Bon odori, Awa odori, Yosakoi, Eisa (Okinawa)
-- **world-theatre** 世界の げき — kabuki, noh, bunraku, kyogen, Peking opera, Shakespeare (Globe Theatre), puppetry (Czech), shadow puppets (Indonesia wayang), musicals, rakugo
+- ✅ ~~**world-theatre**~~ 世界の げき — kabuki, noh, bunraku, kyogen, Peking opera, Shakespeare (Globe Theatre), puppetry (Czech), shadow puppets (Indonesia wayang), musicals, rakugo
 - ✅ ~~**lucky-symbols**~~ 世界の 「えんぎもの」 — maneki-neko, daruma, four-leaf clover, horseshoe, ladybird, red envelope, number 8 (China), number 7 (West), evil-eye charm (Türkiye, as craft), dreamcatcher (respectfully), koinobori, kadomatsu
 - ✅ ~~**mythical-creatures**~~ 世界の 空想の 生きもの — dragon (East vs West), phoenix, unicorn, kappa, tengu (friendly framing), kitsune, mermaid, Pegasus, griffin, Nessie, yeti, Kirin (legendary), baku (eats bad dreams) — keep friendly, no scary images
 - ✅ ~~**birthdays-world**~~ 世界の たんじょう日 — Happy Birthday song history, cake & candles, birthday noodles (China, long life), seaweed soup (Korea), piñata (Mexico), ear-pulling (Hungary), 7-5-3 (Japan), coming-of-age day
@@ -265,7 +265,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - **maps-compass** 地図と 方位 — compass rose, north/south/east/west, map symbols, Ino's map, world map projections (true size!), globes, GPS, treasure-map game (Hamanomachi-style directions)
 - **colors-languages** 色の ことば — red/aka, blue vs green (ao), rainbow colours in different countries, colour meanings around the world, traffic lights
 - **world-firsts-japan** 日本で 生まれた はじめて — instant noodles, karaoke, emoji, QR code, blue LED, tactile paving, pictograms, bullet train, electric rice cooker, conveyor-belt sushi, portable music player, (verify each claim before building)
-- **space-records** 宇宙の 世界一 — biggest planet, hottest planet, tallest volcano (Olympus Mons), longest day (Venus), most moons (Saturn), fastest planet (Mercury), coldest place
+- ✅ ~~**space-records**~~ 宇宙の 世界一 — biggest planet, hottest planet, tallest volcano (Olympus Mons), longest day (Venus), most moons (Saturn), fastest planet (Mercury), coldest place
 - **mystery-room-ideas** ? ふしぎな へや (random rooms) — "What's this object?" guessing room, "Which country?" room, "Odd one out" room, "Old vs new" room (phones, cameras, TVs)
 
 ## P. Weird & Wonderful — fun first, still educational (wing: ふしぎ・おもしろ)
