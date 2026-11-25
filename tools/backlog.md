@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (312 topics) — all 2812 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (317 topics) — all 2860 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -289,18 +289,18 @@ Mysteries are framed as "evidence → what do you think?"; no disappearances or 
 - **vending-gachapon** 自動販売機と ガチャガチャ — why Japan has ~4 million machines, hot & cold in one machine, odd ones (dashi, umbrellas, corn soup), the first vending machine (Hero of Alexandria's holy water), capsule toys
 - **fake-food** 食品サンプルの ひみつ — how plastic food is made, Kappabashi street, why visitors love it, history (1920s), wax → plastic, make-your-own experiences
 - **roller-coasters** ジェットコースターの 科学 — why you don't fall out of a loop, g-force, record coasters (Japan's Fuji-Q), wooden vs steel, Ferris wheel history, free-fall towers
-- **famous-animals** 歴史に のこる 動物 — Hachikō, Tama the station-master cat, Balto, Owen & Mzee, Paul the octopus, Ham the space chimp (returned safe), Hachiko-like loyal animals worldwide
-- **animal-islands-japan** 動物の 島 — cat islands (Tashirojima, Aoshima), Nara's bowing deer, snow monkeys in hot springs, Okunoshima rabbits (bunnies only), Miyajima deer, Kōjima monkeys washing sweet potatoes
-- **cambrian-weirdos** 恐竜より 前の ふしぎ生物 `timeline` — Ediacaran life, Anomalocaris, Hallucigenia (drawn upside down), Opabinia (5 eyes), Wiwaxia, trilobites, Dunkleosteus, Meganeura, Arthropleura, Dimetrodon (not a dinosaur!)
+- ✅ ~~**famous-animals**~~ 歴史に のこる 動物 — Hachikō, Tama the station-master cat, Balto, Owen & Mzee, Paul the octopus, Ham the space chimp (returned safe), Hachiko-like loyal animals worldwide
+- ✅ ~~**animal-islands-japan**~~ 動物の 島 — cat islands (Tashirojima, Aoshima), Nara's bowing deer, snow monkeys in hot springs, Okunoshima rabbits (bunnies only), Miyajima deer, Kōjima monkeys washing sweet potatoes
+- ✅ ~~**cambrian-weirdos**~~ 恐竜より 前の ふしぎ生物 `timeline` — Ediacaran life, Anomalocaris, Hallucigenia (drawn upside down), Opabinia (5 eyes), Wiwaxia, trilobites, Dunkleosteus, Meganeura, Arthropleura, Dimetrodon (not a dinosaur!)
 - **tiny-world** 小さな 世界 — tardigrades, diatoms, butterfly-wing scales, pollen, snowflakes (Nakaya Ukichirō), dust mites, red blood cells, salt crystals, how microscopes work
 - **hidden-places** 地下の ひみつの 場所 — G-Cans (Tokyo), Derinkuyu, Coober Pedy, Wieliczka salt mine, Hang Sơn Đoòng, Svalbard seed vault, Seikan Tunnel, Ōya stone quarry (Tochigi)
 - **weird-buildings** 世界の ふしぎな たてもの — cube houses, Dancing House, Sagrada Família, Atomium, library with giant books, upside-down houses, Hundertwasser houses, Nakagin capsule tower
 - **strange-nature** 地球の ふしぎな 景色 — firefly squid (Toyama), rainbow eucalyptus, Kawah Ijen blue fire, frozen bubbles (Lake Abraham), Pamukkale, Giant's Causeway, rainbow mountains, Lake Hillier (pink lake)
 - **optical-illusions** → see section L (it lives in this wing)
 - **be-a-detective** 名たんていに なろう — fingerprints, footprint casts, invisible ink, code wheels, Sherlock Holmes' method, Edogawa Ranpo (pen name from Poe), deduction puzzles — no crimes
-- **ninja** 忍者の ほんとう — ninja didn't usually wear black, Iga & Kōka, shinobi tools (makibishi, mizugumo myth), walking quietly, codes & disguises, ninja museums today
+- ✅ ~~**ninja**~~ 忍者の ほんとう — ninja didn't usually wear black, Iga & Kōka, shinobi tools (makibishi, mizugumo myth), walking quietly, codes & disguises, ninja museums today
 - **accidental-inventions** 失敗から 生まれた 発明 — potato chips, microwave, penicillin, Post-it notes, Velcro, Slinky, cornflakes, Play-Doh, X-rays, superglue
-- **kid-inventors** 子どもの 発明家 — popsicle (11), earmuffs (15), trampoline (16), Braille (started at 12), swim fins (Franklin, 11), Japanese student inventions contest
+- ✅ ~~**kid-inventors**~~ 子どもの 発明家 — popsicle (11), earmuffs (15), trampoline (16), Braille (started at 12), swim fins (Franklin, 11), Japanese student inventions contest
 - **chindogu** 珍道具 — Kawakami Kenji's "un-useless" inventions: chopstick fan, tissue-box hat, butter stick, umbrella tie; then design your own
 
 ## M. Philosophy & Thinking (kid-friendly; open questions, no religious claims)
