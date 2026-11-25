@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (256 topics) — all 2293 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (262 topics) — all 2345 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -185,14 +185,14 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## G. Art, Music & Performance (art must stay calm & family-friendly)
 
-- **paintings-italy-spain** イタリア・スペインの 名画 — Mona Lisa, Arcimboldo's fruit-and-vegetable portraits, Raphael's School of Athens, Canaletto's Venice views, Velázquez's Las Meninas, Murillo's children (calm), Sorolla's beaches, Miró's colourful shapes
+- ✅ ~~**paintings-italy-spain**~~ イタリア・スペインの 名画 — Mona Lisa, Arcimboldo's fruit-and-vegetable portraits, Raphael's School of Athens, Canaletto's Venice views, Velázquez's Las Meninas, Murillo's children (calm), Sorolla's beaches, Miró's colourful shapes
 - ✅ ~~**paintings-netherlands**~~ オランダの 名画 — Vermeer (Milkmaid, Girl with a Pearl Earring, View of Delft), Rembrandt (self-portraits, Night Watch as group portrait), Van Gogh (Sunflowers, Bedroom in Arles, Almond Blossom), Mondrian, Escher
 - ✅ ~~**paintings-france**~~ フランスの 名画 — Monet (Impression Sunrise, Water Lilies), Renoir (calm scenes only), Degas (dancers), Cézanne (apples), Seurat (La Grande Jatte), Rousseau (tiger in jungle), Matisse (The Snail cut-outs), Millet (The Gleaners)
-- **paintings-uk-usa** イギリス・アメリカの 名画 — Constable (The Hay Wain), Turner (sunsets), Beatrix Potter illustrations, Whistler, Hopper (Nighthawks), Georgia O'Keeffe (flowers), Grandma Moses, Warhol, Calder mobiles
-- **art-asia** アジアの 美術 — Chinese landscape painting, calligraphy, Along the River at Qingming (scroll), Korean folk painting (minhwa: tigers & magpies), Mughal miniatures (gardens), Thai temple murals (architecture), batik (Indonesia)
+- ✅ ~~**paintings-uk-usa**~~ イギリス・アメリカの 名画 — Constable (The Hay Wain), Turner (sunsets), Beatrix Potter illustrations, Whistler, Hopper (Nighthawks), Georgia O'Keeffe (flowers), Grandma Moses, Warhol, Calder mobiles
+- ✅ ~~**art-asia**~~ アジアの 美術 — Chinese landscape painting, calligraphy, Along the River at Qingming (scroll), Korean folk painting (minhwa: tigers & magpies), Mughal miniatures (gardens), Thai temple murals (architecture), batik (Indonesia)
 - ✅ ~~**japanese-painters**~~ 日本の 画家 — Sesshu, Hasegawa Tohaku (Pine Trees), Ogata Korin (Irises), Ito Jakuchu, Maruyama Okyo, Hokusai, Hiroshige, Yokoyama Taikan (Fuji), Higashiyama Kaii (blue landscapes), Okamoto Taro (Tower of the Sun), Kusama Yayoi
 - ✅ ~~**sculpture-world**~~ 世界の ちょうぞう — Moai, Great Sphinx, Terracotta Army, Kamakura Daibutsu (landmark), Little Mermaid (Copenhagen), Merlion, Statue of Liberty, Tower of the Sun, Cloud Gate (Chicago), Spoonbridge and Cherry, Hachiko statue
-- **architecture-timeline** 建物の 歴史 `timeline` — pyramids, Parthenon, Colosseum, Horyuji, Angkor Wat, Gothic cathedrals (architecture), Taj Mahal, Himeji Castle, Eiffel Tower, Sydney Opera House, Tokyo Skytree, Burj Khalifa
+- ✅ ~~**architecture-timeline**~~ 建物の 歴史 `timeline` — pyramids, Parthenon, Colosseum, Horyuji, Angkor Wat, Gothic cathedrals (architecture), Taj Mahal, Himeji Castle, Eiffel Tower, Sydney Opera House, Tokyo Skytree, Burj Khalifa
 - **architects** 有名な 建築家 — Gaudí (Sagrada Família, Park Güell), Frank Lloyd Wright (Fallingwater, old Imperial Hotel), Tange Kenzo, Ando Tadao (Church of Light — as architecture), Kuma Kengo (National Stadium), Zaha Hadid, Le Corbusier
 - **picture-books** 世界の 絵本の れきし — Peter Rabbit (Beatrix Potter, PD), Alice illustrations (Tenniel, PD), Japanese picture-book culture, kamishibai (paper theatre), pop-up books; describe modern books in text only (no character images)
 - **manga-anime-history** まんがと アニメの れきし `timeline` — Choju-giga, Hokusai Manga, kamishibai, early animation, Tezuka Osamu (text only), anime around the world, how animation works (flip books, frames) — no copyrighted characters
@@ -200,8 +200,8 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**composers**~~ 有名な 作曲家 `timeline` — Vivaldi (Four Seasons), Bach, Mozart, Beethoven (Ode to Joy, sung in Japan every December), Chopin, Tchaikovsky (Nutcracker), Debussy, Taki Rentaro (Kojo no Tsuki), Yamada Kosaku (Akatombo)
 - ✅ ~~**orchestra**~~ オーケストラの 楽器 `wide` — strings (violin, viola, cello, double bass, harp), woodwind (flute, oboe, clarinet, bassoon), brass (trumpet, horn, trombone, tuba), percussion (timpani, xylophone, cymbals, triangle), conductor
 - ✅ ~~**world-instruments**~~ 世界の 楽器 — koto, shakuhachi, taiko, sanshin (Okinawa), erhu, gayageum, sitar, tabla, didgeridoo, bagpipes, steel drum, ukulele, kalimba, djembe, accordion, alphorn, panpipes, balalaika
-- **music-genres** 音楽の ジャンル — classical, jazz, rock, pop, hip-hop (as dance/music, clean), reggae, samba, bossa nova, flamenco, K-pop, J-pop, enka, min'yo, film music, video-game music
-- **dance-japan** 日本の おどり — Bon odori, Awa odori, Yosakoi, Eisa, Kagura (as performing art), Nihon-buyo, Soran-bushi (school dance!)
+- ✅ ~~**music-genres**~~ 音楽の ジャンル — classical, jazz, rock, pop, hip-hop (as dance/music, clean), reggae, samba, bossa nova, flamenco, K-pop, J-pop, enka, min'yo, film music, video-game music
+- ✅ ~~**dance-japan**~~ 日本の おどり — Bon odori, Awa odori, Yosakoi, Eisa, Kagura (as performing art), Nihon-buyo, Soran-bushi (school dance!)
 - **crafts-to-make** 作って みよう — origami crane, paper fortune teller, paper planes, kirigami snowflakes, string figures (ayatori), clay pots, tie-dye, leaf rubbings, simple weaving
 
 ## H. Sports & Games
