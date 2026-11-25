@@ -45,8 +45,9 @@ import { WINGS_Q1 } from "./wings/q1_nature.js";
 import { WINGS_Q2 } from "./wings/q2_nature.js";
 import { WINGS_Q3 } from "./wings/q3_world.js";
 import { WINGS_Q4 } from "./wings/q4_language.js";
+import { WINGS_Q5 } from "./wings/q5_science.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1, ...WINGS_K1, ...WINGS_J1, ...WINGS_H1, ...WINGS_C4, ...WINGS_G1, ...WINGS_A2, ...WINGS_A3, ...WINGS_D3, ...WINGS_A4, ...WINGS_B2, ...WINGS_K2, ...WINGS_P1, ...WINGS_P2, ...WINGS_P3, ...WINGS_P4, ...WINGS_P5, ...WINGS_P6, ...WINGS_Q1, ...WINGS_Q2, ...WINGS_Q3, ...WINGS_Q4 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1, ...WINGS_K1, ...WINGS_J1, ...WINGS_H1, ...WINGS_C4, ...WINGS_G1, ...WINGS_A2, ...WINGS_A3, ...WINGS_D3, ...WINGS_A4, ...WINGS_B2, ...WINGS_K2, ...WINGS_P1, ...WINGS_P2, ...WINGS_P3, ...WINGS_P4, ...WINGS_P5, ...WINGS_P6, ...WINGS_Q1, ...WINGS_Q2, ...WINGS_Q3, ...WINGS_Q4, ...WINGS_Q5 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -165,6 +166,14 @@ const BACK4 = {
 
 // Each later batch gets its own object so keys never collide.
 const EXTRA = [
+  {
+    "transport-history": ["flight", "floating-boats"],
+    "vehicles": ["flight"],
+    "states-of-matter": ["floating-boats"],
+    "how-computers-work": ["computers-history", "coding", "internet-safety"],
+    "how-internet-works": ["internet-safety", "computers-history"],
+    "robots": ["coding"],
+  },
   {
     "architecture-timeline": ["shrines-temples"],
     "landmarks": ["shrines-temples"],

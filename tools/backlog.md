@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (353 topics) — all 3195 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (358 topics) — all 3240 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -171,12 +171,12 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**sound-science**~~ 音の 科学 — vibration, echoes, speed of sound, string telephones, animal hearing (bats, dolphins), musical pitch, ear parts, loudest/quietest sounds
 - ✅ ~~**water-cycle**~~ 水の 旅 — evaporation, clouds, rain, rivers, ocean, ice, groundwater, water treatment, how much water we use
 - ✅ ~~**states-of-matter**~~ 固体・液体・気体 — ice/water/steam, melting, freezing, dry ice, slime (non-Newtonian), air has weight, balloons
-- **flight** 空を とぶ しくみ — wings and lift, gliders, paper planes (records), hot-air balloons (Montgolfier), helicopters, birds vs planes, Wright Flyer
-- **floating-boats** うく しくみ — buoyancy, Archimedes, ships made of steel float, submarines, life jackets, ice floats
+- ✅ ~~**flight**~~ 空を とぶ しくみ — wings and lift, gliders, paper planes (records), hot-air balloons (Montgolfier), helicopters, birds vs planes, Wright Flyer
+- ✅ ~~**floating-boats**~~ うく しくみ — buoyancy, Archimedes, ships made of steel float, submarines, life jackets, ice floats
 - **inventions-timeline** 発明の タイムライン `timeline` — wheel, writing, paper, compass, printing, telescope, steam engine, telephone, light bulb, car, airplane, TV, computer, internet, smartphone
-- **computers-history** コンピューターの 歴史 `timeline` — abacus, Babbage, ENIAC, transistors, home computers, Famicom/NES era (text), laptops, smartphones, AI
-- **internet-safety** インターネットを 安全に — passwords, personal information, asking an adult, kind comments, screen time, recognising fake news, privacy settings (age-appropriate)
-- **coding** プログラミングの 考え方 — sequence, loops, if/then, bugs (first "bug" was a moth), Scratch-style blocks, robots following instructions, binary numbers
+- ✅ ~~**computers-history**~~ コンピューターの 歴史 `timeline` — abacus, Babbage, ENIAC, transistors, home computers, Famicom/NES era (text), laptops, smartphones, AI
+- ✅ ~~**internet-safety**~~ インターネットを 安全に — passwords, personal information, asking an adult, kind comments, screen time, recognising fake news, privacy settings (age-appropriate)
+- ✅ ~~**coding**~~ プログラミングの 考え方 — sequence, loops, if/then, bugs (first "bug" was a moth), Scratch-style blocks, robots following instructions, binary numbers
 - **energy** エネルギーの いろいろ — solar, wind, hydro, geothermal (Japan), biomass, batteries, saving energy at home (neutral; no nuclear debate)
 - **materials** もの の ざいりょう — wood, metal, glass, plastic, paper, cotton, wool, silk, rubber, bamboo, recycling each
 - **microscope-world** けんびきょうの せかい — snowflakes, pollen, hair, salt crystals, onion cells, plankton, butterfly wing scales, tardigrade (water bear)
