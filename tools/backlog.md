@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (322 topics) — all 2905 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (328 topics) — all 2963 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -149,7 +149,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## E. English & Language (New Horizon-friendly)
 
-- **alphabet-story** ABCの ひみつ `timeline` — NOT letters on a wall: the story and oddities of the alphabet. A began as an ox head (Phoenician 𐤀), letters that vanished from English (thorn þ → "ye olde", eth, wynn), & was once the 27th letter ("and per se and"), J and U are the newest letters, W is "double U" but looks like double V, why Q needs U, zed vs zee, E is the most used letter, "the quick brown fox" pangrams, the tittle (dot on i), rhythm has no a/e/i/o/u, 26 letters but ~44 sounds, silent K in knight was once spoken, "ghoti" = fish joke, romaji (Hepburn 1867) vs kunrei
+- ✅ ~~**alphabet-story**~~ ABCの ひみつ `timeline` — NOT letters on a wall: the story and oddities of the alphabet. A began as an ox head (Phoenician 𐤀), letters that vanished from English (thorn þ → "ye olde", eth, wynn), & was once the 27th letter ("and per se and"), J and U are the newest letters, W is "double U" but looks like double V, why Q needs U, zed vs zee, E is the most used letter, "the quick brown fox" pangrams, the tittle (dot on i), rhythm has no a/e/i/o/u, 26 letters but ~44 sounds, silent K in knight was once spoken, "ghoti" = fish joke, romaji (Hepburn 1867) vs kunrei
 - **phonics** 英語の 音の ふしぎ — not a drill list: why English spelling is weird (Great Vowel Shift), one spelling many sounds (ough: though/through/tough/cough), magic e, sounds Japanese doesn't have (th, l/r, v), minimal pairs (rice/lice), silent letters and where they came from, why "colonel" sounds like kernel, stress changes meaning (REcord/reCORD), English sounds in katakana
 - ✅ ~~**onomatopoeia**~~ 動物の 鳴き声 くらべ — dog (wan-wan / woof), cat (nyaa / meow), rooster (kokekokko / cock-a-doodle-doo), pig, cow, frog (kero-kero / ribbit), duck, bird, mouse, sheep, in several languages
 - ✅ ~~**uk-us-english**~~ イギリス英語と アメリカ英語 — lift/elevator, biscuit/cookie, chips/fries, crisps/chips, flat/apartment, football/soccer, rubbish/trash, holiday/vacation, colour/color, petrol/gas
@@ -286,16 +286,16 @@ Mysteries are framed as "evidence → what do you think?"; no disappearances or 
 - ✅ ~~**emoji-pictograms**~~ 絵文字と ピクトグラム — emoji born in Japan (1999), kaomoji vs :-), 1964 Tokyo pictograms, the running-man exit sign, Tokyo 2020 moving pictograms, emoji meanings that differ by country
 - ✅ ~~**toys-tricks**~~ あそびの わざ — kendama tricks & world cup, yo-yo, speedcubing (records), spinning tops (koma), tangram, cat's cradle (ayatori), paper planes record, juggling
 - ✅ ~~**origami-science**~~ 折り紙の 科学 — Miura fold (space solar panels), origami in medicine (stents), airbags, folding paper 103 times, the crane & 1000 cranes, origami robots, Yoshizawa Akira's diagram notation
-- **vending-gachapon** 自動販売機と ガチャガチャ — why Japan has ~4 million machines, hot & cold in one machine, odd ones (dashi, umbrellas, corn soup), the first vending machine (Hero of Alexandria's holy water), capsule toys
-- **fake-food** 食品サンプルの ひみつ — how plastic food is made, Kappabashi street, why visitors love it, history (1920s), wax → plastic, make-your-own experiences
-- **roller-coasters** ジェットコースターの 科学 — why you don't fall out of a loop, g-force, record coasters (Japan's Fuji-Q), wooden vs steel, Ferris wheel history, free-fall towers
+- ✅ ~~**vending-gachapon**~~ 自動販売機と ガチャガチャ — why Japan has ~4 million machines, hot & cold in one machine, odd ones (dashi, umbrellas, corn soup), the first vending machine (Hero of Alexandria's holy water), capsule toys
+- ✅ ~~**fake-food**~~ 食品サンプルの ひみつ — how plastic food is made, Kappabashi street, why visitors love it, history (1920s), wax → plastic, make-your-own experiences
+- ✅ ~~**roller-coasters**~~ ジェットコースターの 科学 — why you don't fall out of a loop, g-force, record coasters (Japan's Fuji-Q), wooden vs steel, Ferris wheel history, free-fall towers
 - ✅ ~~**famous-animals**~~ 歴史に のこる 動物 — Hachikō, Tama the station-master cat, Balto, Owen & Mzee, Paul the octopus, Ham the space chimp (returned safe), Hachiko-like loyal animals worldwide
 - ✅ ~~**animal-islands-japan**~~ 動物の 島 — cat islands (Tashirojima, Aoshima), Nara's bowing deer, snow monkeys in hot springs, Okunoshima rabbits (bunnies only), Miyajima deer, Kōjima monkeys washing sweet potatoes
 - ✅ ~~**cambrian-weirdos**~~ 恐竜より 前の ふしぎ生物 `timeline` — Ediacaran life, Anomalocaris, Hallucigenia (drawn upside down), Opabinia (5 eyes), Wiwaxia, trilobites, Dunkleosteus, Meganeura, Arthropleura, Dimetrodon (not a dinosaur!)
 - ✅ ~~**tiny-world**~~ 小さな 世界 — tardigrades, diatoms, butterfly-wing scales, pollen, snowflakes (Nakaya Ukichirō), dust mites, red blood cells, salt crystals, how microscopes work
 - ✅ ~~**hidden-places**~~ 地下の ひみつの 場所 — G-Cans (Tokyo), Derinkuyu, Coober Pedy, Wieliczka salt mine, Hang Sơn Đoòng, Svalbard seed vault, Seikan Tunnel, Ōya stone quarry (Tochigi)
-- **weird-buildings** 世界の ふしぎな たてもの — cube houses, Dancing House, Sagrada Família, Atomium, library with giant books, upside-down houses, Hundertwasser houses, Nakagin capsule tower
-- **strange-nature** 地球の ふしぎな 景色 — firefly squid (Toyama), rainbow eucalyptus, Kawah Ijen blue fire, frozen bubbles (Lake Abraham), Pamukkale, Giant's Causeway, rainbow mountains, Lake Hillier (pink lake)
+- ✅ ~~**weird-buildings**~~ 世界の ふしぎな たてもの — cube houses, Dancing House, Sagrada Família, Atomium, library with giant books, upside-down houses, Hundertwasser houses, Nakagin capsule tower
+- ✅ ~~**strange-nature**~~ 地球の ふしぎな 景色 — firefly squid (Toyama), rainbow eucalyptus, Kawah Ijen blue fire, frozen bubbles (Lake Abraham), Pamukkale, Giant's Causeway, rainbow mountains, Lake Hillier (pink lake)
 - **optical-illusions** → see section L (it lives in this wing)
 - ✅ ~~**be-a-detective**~~ 名たんていに なろう — fingerprints, footprint casts, invisible ink, code wheels, Sherlock Holmes' method, Edogawa Ranpo (pen name from Poe), deduction puzzles — no crimes
 - ✅ ~~**ninja**~~ 忍者の ほんとう — ninja didn't usually wear black, Iga & Kōka, shinobi tools (makibishi, mizugumo myth), walking quietly, codes & disguises, ninja museums today
