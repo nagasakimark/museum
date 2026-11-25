@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (262 topics) — all 2345 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (268 topics) — all 2396 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -45,7 +45,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - **antarctic-life** 南極の 生きもの — emperor penguin, Adélie penguin, chinstrap penguin, king penguin, leopard seal, Weddell seal, krill, Antarctic toothfish, snow petrel, wandering albatross, orca, humpback whale
 - ✅ ~~**whales-dolphins**~~ クジラと イルカ — blue whale, humpback whale, sperm whale, orca, beluga, narwhal, minke whale, bottlenose dolphin, Pacific white-sided dolphin, finless porpoise (Japan), Amazon river dolphin, Hector's dolphin
 - ✅ ~~**sharks-rays**~~ サメと エイ — whale shark, great white shark, hammerhead, tiger shark, megamouth shark (found in Japan), goblin shark (Japan), basking shark, nurse shark, manta ray, stingray, sawfish, Greenland shark
-- **coral-reef** サンゴしょう — coral polyps, clownfish, sea anemone, parrotfish, butterflyfish, moray eel, sea turtle, giant clam, sea slug, cleaner wrasse, Okinawa reefs, Great Barrier Reef
+- ✅ ~~**coral-reef**~~ サンゴしょう — coral polyps, clownfish, sea anemone, parrotfish, butterflyfish, moray eel, sea turtle, giant clam, sea slug, cleaner wrasse, Okinawa reefs, Great Barrier Reef
 - **rivers-ponds** 川と 池の 生きもの — killifish (medaka), carp (koi), catfish, freshwater crab, crayfish, frog tadpole, newt, water strider, dragonfly larva, kingfisher, otter, platypus, salmon run, ayu (sweetfish)
 - **satoyama** 里山の 生きもの — Japanese tanuki, fox, hare, badger, weasel, firefly, rhinoceros beetle, stag beetle, rice-field frog, heron, swallow, Japanese white-eye, bush warbler (uguisu), cicada
 - **birds-japan** 日本の 鳥 — green pheasant (national bird), Japanese white-eye, bush warbler, sparrow, swallow, crow, Japanese tit, kingfisher, grey heron, red-crowned crane, Japanese crested ibis, Steller's sea eagle, Blakiston's fish owl, Okinawa rail, ptarmigan
@@ -53,11 +53,11 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - **butterflies-moths** チョウと ガ — monarch, swallowtail, Japanese emperor (oomurasaki, national butterfly), cabbage white, morpho, birdwing, glasswing, atlas moth, luna moth, silkworm (silk), life cycle (egg → caterpillar → pupa → butterfly)
 - **beetles-japan** 日本の 甲虫 — rhinoceros beetle, Miyama stag beetle, giant stag beetle, ladybird, jewel beetle (tamamushi), firefly, longhorn beetle, dung beetle, diving beetle, weevil, Hercules beetle (world)
 - **insect-sounds** 秋の 鳴く虫 — bell cricket (suzumushi), pine cricket (matsumushi), field cricket, katydid, Japanese cicadas (minmin, higurashi, tsukutsuku-boshi), grasshopper; how insects make sound
-- **night-animals** 夜の 動物 — owl, bat, aye-aye, slow loris, kiwi, firefly, moth, hedgehog, tarsier, kinkajou, raccoon, flying squirrel (momonga), why eyes shine at night
-- **animal-babies** 動物の 赤ちゃん — joey (kangaroo), calf, cub, kitten, puppy, foal, chick, tadpole, caterpillar, eaglet, piglet, lamb, kid (goat), panda cub (tiny at birth)
-- **animal-homes** 動物の すみか — beaver dam, bird's nest, beehive, ant nest, termite mound, rabbit burrow, spider web, bear den, weaver bird nest, hermit crab shell, prairie dog town, swallow nest under eaves
-- **camouflage** かくれる 名人 — chameleon, stick insect, leaf insect, octopus, flounder, snowshoe hare, arctic fox, owl, orchid mantis, leafy sea dragon, ptarmigan, zebra stripes
-- **migration** 旅を する 動物 — Arctic tern, monarch butterfly, wildebeest, salmon, eel, humpback whale, swallow, white-fronted goose, caribou, sea turtle, Japanese swallow to Southeast Asia
+- ✅ ~~**night-animals**~~ 夜の 動物 — owl, bat, aye-aye, slow loris, kiwi, firefly, moth, hedgehog, tarsier, kinkajou, raccoon, flying squirrel (momonga), why eyes shine at night
+- ✅ ~~**animal-babies**~~ 動物の 赤ちゃん — joey (kangaroo), calf, cub, kitten, puppy, foal, chick, tadpole, caterpillar, eaglet, piglet, lamb, kid (goat), panda cub (tiny at birth)
+- ✅ ~~**animal-homes**~~ 動物の すみか — beaver dam, bird's nest, beehive, ant nest, termite mound, rabbit burrow, spider web, bear den, weaver bird nest, hermit crab shell, prairie dog town, swallow nest under eaves
+- ✅ ~~**camouflage**~~ かくれる 名人 — chameleon, stick insect, leaf insect, octopus, flounder, snowshoe hare, arctic fox, owl, orchid mantis, leafy sea dragon, ptarmigan, zebra stripes
+- ✅ ~~**migration**~~ 旅を する 動物 — Arctic tern, monarch butterfly, wildebeest, salmon, eel, humpback whale, swallow, white-fronted goose, caribou, sea turtle, Japanese swallow to Southeast Asia
 - **winter-animals** 冬の すごし方 — bear (hibernation), dormouse (yamane), chipmunk, frog, snake, ladybirds clustering, snow monkeys, ptarmigan colour change, stoat, swans arriving in Japan
 - **food-chain** 食べる・食べられる — sun → plants → herbivores → carnivores, plankton chain, decomposers (mushrooms, earthworms), ocean food web, balance of nature (gentle, no hunting images)
 - **prehistoric-mammals** 大むかしの ほにゅうるい — woolly mammoth, Naumann's elephant (Japan), sabre-toothed cat (no hunting scene), giant sloth, woolly rhino, Irish elk, Megalodon (shark), Desmostylus (Japan), glyptodont
