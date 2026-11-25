@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (208 topics) — all 1864 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (214 topics) — all 1920 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -75,20 +75,20 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## B. Earth, Weather & Space
 
-- **volcanoes-world** 世界の 火山 — Mt Fuji, Sakurajima, Unzen (Nagasaki, factual), Aso, Kilauea, Mauna Kea, Vesuvius (no casualty details), Etna, Krakatoa, Kilimanjaro (dormant), Olympus Mons (Mars), volcanic islands (Nishinoshima growing)
+- ✅ ~~**volcanoes-world**~~ 世界の 火山 — Mt Fuji, Sakurajima, Unzen (Nagasaki, factual), Aso, Kilauea, Mauna Kea, Vesuvius (no casualty details), Etna, Krakatoa, Kilimanjaro (dormant), Olympus Mons (Mars), volcanic islands (Nishinoshima growing)
 - **mountains-world** 世界の 山 — Everest, K2, Kilimanjaro, Mont Blanc, Matterhorn, Denali, Aconcagua, Table Mountain, Mt Fuji, Uluru, Mt Kosciuszko, Andes, Himalayas, highest in each continent
 - **rivers-lakes** 川と みずうみ — Nile, Amazon, Yangtze, Mississippi, Danube (10 countries), Ganges, Shinano (Japan's longest), Lake Biwa, Lake Baikal, Lake Titicaca, Great Lakes, Dead Sea (float), Caspian Sea
 - **waterfalls-caves** たきと どうくつ — Angel Falls, Niagara, Victoria Falls, Iguazu, Kegon Falls, Nachi Falls, Akiyoshido Cave, Son Doong (largest cave), Waitomo glowworm caves, Mammoth Cave, stalactites vs stalagmites
 - **deserts-world** 世界の さばく — Sahara, Gobi, Atacama (driest; flowers bloom), Arabian, Kalahari, Namib (red dunes), Antarctica (cold desert), Tottori sand dunes, oasis, sandstorms, desert plants
-- **clouds** 雲の しゅるい — cumulus, cumulonimbus, stratus, cirrus, altocumulus (sheep clouds), lenticular, mammatus, fog, contrails, rainbow clouds; Japanese cloud names (うろこ雲, いわし雲, 入道雲)
+- ✅ ~~**clouds**~~ 雲の しゅるい — cumulus, cumulonimbus, stratus, cirrus, altocumulus (sheep clouds), lenticular, mammatus, fog, contrails, rainbow clouds; Japanese cloud names (うろこ雲, いわし雲, 入道雲)
 - **extreme-weather** 地球の 天気 世界一 — hottest place (Death Valley), coldest (Antarctica), wettest (Mawsynram), snowiest in Japan, biggest hailstone, auroras, typhoon vs hurricane vs cyclone names, tornadoes (no damage pictures)
 - **climate-zones** 世界の 気候 — tropical, dry, temperate, cold, polar; Christmas in summer (Australia); midnight sun; monsoon; Japan's long north–south climate
 - **earth-timeline** 地球 46億年の 旅 `timeline` — Earth forms, first ocean, first life, Snowball Earth, Cambrian explosion, first fish, plants on land, first amphibians, dinosaurs, flowering plants, dinosaurs end, mammals rise, ice ages, humans
-- **moons** 太陽系の 月 — Moon, Phobos, Europa (ice ocean), Io (volcanoes), Ganymede (largest), Titan (thick air), Enceladus (geysers), Triton, Charon; Japanese moon-rabbit story
-- **constellations** 星座の 物語 — Orion, Big Dipper, Cassiopeia, Southern Cross, Pleiades (Subaru), Summer Triangle (Vega, Altair, Deneb — Tanabata), Scorpius, Leo, zodiac signs, how to find the North Star
+- ✅ ~~**moons**~~ 太陽系の 月 — Moon, Phobos, Europa (ice ocean), Io (volcanoes), Ganymede (largest), Titan (thick air), Enceladus (geysers), Triton, Charon; Japanese moon-rabbit story
+- ✅ ~~**constellations**~~ 星座の 物語 — Orion, Big Dipper, Cassiopeia, Southern Cross, Pleiades (Subaru), Summer Triangle (Vega, Altair, Deneb — Tanabata), Scorpius, Leo, zodiac signs, how to find the North Star
 - **telescopes-observatories** 天文台と 望遠鏡 — Galileo's telescope, Subaru Telescope (Hawaii, Japan), Hubble, James Webb, ALMA (Chile), Nobeyama, planetarium, radio telescopes
-- **comets-asteroids** すい星と 小わくせい — Halley's Comet, Hale-Bopp, Itokawa, Ryugu, Ceres, meteor showers (Perseids, Geminids), meteorites, Hayabusa missions
-- **space-japan** 日本の 宇宙開発 `timeline` — Pencil rocket (1955), Osumi satellite (1970), Kibo module, Japanese astronauts (Mohri, Mukai, Wakata, Noguchi, Hoshide, Yui, Furukawa, Onishi, Kanai), H-II/H3 rockets, Hayabusa 1/2, SLIM moon landing (2024)
+- ✅ ~~**comets-asteroids**~~ すい星と 小わくせい — Halley's Comet, Hale-Bopp, Itokawa, Ryugu, Ceres, meteor showers (Perseids, Geminids), meteorites, Hayabusa missions
+- ✅ ~~**space-japan**~~ 日本の 宇宙開発 `timeline` — Pencil rocket (1955), Osumi satellite (1970), Kibo module, Japanese astronauts (Mohri, Mukai, Wakata, Noguchi, Hoshide, Yui, Furukawa, Onishi, Kanai), H-II/H3 rockets, Hayabusa 1/2, SLIM moon landing (2024)
 - **astronaut-life** 宇宙での くらし — sleeping, eating, toilets (lightly), exercise, washing hair, floating water, view of Earth, spacesuits, training, mission patches
 
 ## C. World Cultures & Countries
