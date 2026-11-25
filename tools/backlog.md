@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (274 topics) — all 2447 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (280 topics) — all 2511 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -133,19 +133,19 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**nagasaki-festivals**~~ 長崎の 行事 — Kunchi, Peiron, Lantern Festival, Shoro-nagashi (lantern boats, respectful), Hata-age (kite fighting), Nagasaki Christmas lights, Hydrangea festival (Ajisai is the city flower)
 - ✅ ~~**japanese-castles**~~ 日本の お城 — Himeji, Matsumoto, Inuyama, Hikone, Matsue, Kochi, Matsuyama, Osaka, Nagoya (golden shachihoko), Kumamoto, Shimabara (Nagasaki), Hirado; parts of a castle
 - **shrines-temples** 日本の 神社と お寺 (architecture & culture) — torii, Itsukushima floating torii, Fushimi Inari gates, Kinkakuji, Ginkakuji, Kiyomizu-dera stage, Horyuji (oldest wooden buildings), Todaiji Great Buddha, Ise, komainu; how to visit politely (no religious claims)
-- **japanese-gardens** 日本の 庭園 — Kenrokuen, Korakuen, Kairakuen, Ritsurin, rock garden (Ryoanji), moss gardens, koi ponds, stone lanterns, bonsai, Japanese gardens abroad
+- ✅ ~~**japanese-gardens**~~ 日本の 庭園 — Kenrokuen, Korakuen, Kairakuen, Ritsurin, rock garden (Ryoanji), moss gardens, koi ponds, stone lanterns, bonsai, Japanese gardens abroad
 - ✅ ~~**trains-japan**~~ 日本の 電車 `long` — first railway (1872), steam locomotives (SL), Shinkansen series (0, 100, 300, 500, 700, N700S, E5, E6, E7, 800 Kyushu, Nishi-Kyushu Kamome), Doctor Yellow, sleeper trains, streetcars (Nagasaki), monorail, maglev
 - ✅ ~~**crafts-japan**~~ 日本の 伝統工芸 — Arita ware, Hasami ware, Wajima lacquer, kokeshi, daruma, Edo kiriko glass, Nambu iron kettles, washi paper, Kyoto yuzen dyeing, Hakata dolls, folding fans (sensu), furoshiki, Japanese knives
 - ✅ ~~**wagashi-seasons**~~ 季節の 和がし — sakura-mochi, kashiwa-mochi, mizu-yokan, warabi-mochi, tsukimi dango, chestnut kinton, kagami-mochi, taiyaki, dorayaki, daifuku, monaka, konpeito (Portuguese origin)
 - **regional-dishes** 日本の ご当地グルメ — okonomiyaki (Osaka/Hiroshima), takoyaki, Hakata ramen, Sapporo miso ramen, kiritanpo, Sendai gyutan, Utsunomiya gyoza, Nagoya miso-katsu, Okinawa soba, goya champuru, Kagawa udon, Nagasaki champon
 - ✅ ~~**japanese-words-english**~~ 英語に なった 日本語 — tsunami, karaoke, emoji, sushi, origami, anime, manga, bonsai, tofu, futon, typhoon (via Chinese), kaizen, umami, kawaii, ninja, judo
 - ✅ ~~**wasei-eigo**~~ 和製英語に 気をつけて! — "salaryman", "consent" (=outlet), "mansion" (=apartment), "naive", "baby car" (=stroller), "Y-shirt" (=dress shirt), "cunning" (=cheating), "free dial", "note PC", "pierce" (=earrings), "shaapen" (=mechanical pencil)
-- **japan-unesco** 日本の 世界遺産 `wide` — Mt Fuji, Himeji Castle, Yakushima, Shirakawa-go, Itsukushima, Horyuji, Kyoto, Nara, Nikko, Shiretoko, Ogasawara, Amami/Tokunoshima/Yanbaru, Mozu tombs (Kofun), Jomon sites, Tomioka silk mill, Iwami silver mine, Hiraizumi, Okinawa gusuku sites, Nagasaki churches (as heritage architecture only, neutral wording)
-- **japan-history** 日本の 歴史 `timeline` — Jomon, Yayoi (rice farming), Kofun, Asuka (Horyuji), Nara (Todaiji), Heian (kana, Tale of Genji), Kamakura, Muromachi (Kinkakuji, noh), Azuchi-Momoyama (castles), Edo (Dejima, ukiyo-e), Meiji (railway, schools), Taisho, Showa (Tokyo Olympics 1964, Shinkansen), Heisei, Reiwa — gentle overview only, no war detail
-- **japanese-mountains** 日本の 山 — Fuji, Kita-dake, Hotaka, Yarigatake, Daisetsuzan, Mt Aso, Unzen (Nagasaki), Sakurajima, Mt Takao, Mt Inasa, Japanese Alps; mountain day (Aug 11)
-- **onsen** おんせん — Kusatsu, Beppu (jigoku views), Noboribetsu, Arima, Dogo, Unzen, Ureshino (near Nagasaki), Obama (Nagasaki), snow monkeys, onsen manners, onsen symbol ♨ (new pictogram story)
+- ✅ ~~**japan-unesco**~~ 日本の 世界遺産 `wide` — Mt Fuji, Himeji Castle, Yakushima, Shirakawa-go, Itsukushima, Horyuji, Kyoto, Nara, Nikko, Shiretoko, Ogasawara, Amami/Tokunoshima/Yanbaru, Mozu tombs (Kofun), Jomon sites, Tomioka silk mill, Iwami silver mine, Hiraizumi, Okinawa gusuku sites, Nagasaki churches (as heritage architecture only, neutral wording)
+- ✅ ~~**japan-history**~~ 日本の 歴史 `timeline` — Jomon, Yayoi (rice farming), Kofun, Asuka (Horyuji), Nara (Todaiji), Heian (kana, Tale of Genji), Kamakura, Muromachi (Kinkakuji, noh), Azuchi-Momoyama (castles), Edo (Dejima, ukiyo-e), Meiji (railway, schools), Taisho, Showa (Tokyo Olympics 1964, Shinkansen), Heisei, Reiwa — gentle overview only, no war detail
+- ✅ ~~**japanese-mountains**~~ 日本の 山 — Fuji, Kita-dake, Hotaka, Yarigatake, Daisetsuzan, Mt Aso, Unzen (Nagasaki), Sakurajima, Mt Takao, Mt Inasa, Japanese Alps; mountain day (Aug 11)
+- ✅ ~~**onsen**~~ おんせん — Kusatsu, Beppu (jigoku views), Noboribetsu, Arima, Dogo, Unzen, Ureshino (near Nagasaki), Obama (Nagasaki), snow monkeys, onsen manners, onsen symbol ♨ (new pictogram story)
 - **seasonal-japan** 日本の 四季 — spring (hanami), rainy season, summer (fireworks, watermelon splitting), autumn (momiji-gari, moon viewing), winter (kotatsu, snowmen); seasonal words; 24 seasons (sekki) simplified
-- **japan-records** 日本の 日本一 — tallest mountain, longest river, largest lake, tallest tower (Skytree), longest bridge, deepest bay (Suruga), largest prefecture (Hokkaido), smallest prefecture (Kagawa), most islands (Nagasaki!)
+- ✅ ~~**japan-records**~~ 日本の 日本一 — tallest mountain, longest river, largest lake, tallest tower (Skytree), longest bridge, deepest bay (Suruga), largest prefecture (Hokkaido), smallest prefecture (Kagawa), most islands (Nagasaki!)
 
 ## E. English & Language (New Horizon-friendly)
 
