@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (307 topics) — all 2763 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (312 topics) — all 2812 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -281,11 +281,11 @@ Mysteries are framed as "evidence → what do you think?"; no disappearances or 
 - ✅ ~~**strange-foods**~~ 世界の びっくり 食べもの — durian, surströmming, century egg, Vegemite, edible insects, natto (seen by visitors), fugu, blue cheese, kusaya — with why people love them
 - ✅ ~~**weird-festivals**~~ 世界の ふしぎな お祭り — cheese rolling, La Tomatina, Monkey Buffet, Night of the Radishes, Up Helly Aa, Naki Sumo, bog snorkelling, Battle of the Oranges, Cheung Chau bun scramble, Japan's mud/water festivals (calm ones only)
 - ✅ ~~**christmas-world**~~ 世界の ふしぎな クリスマス — Caga Tió, Yule Lads & Yule Cat, Befana, Japan's Christmas chicken and strawberry shortcake, Ukrainian spider-web ornaments, Australian beach Christmas, Philippine giant lanterns (parol), Sinterklaas' shoes
-- **manga-anime** まんがと アニメの ひみつ — Chōjū-giga, Hokusai Manga, kamishibai, speech bubbles, manga symbols (sweat drop, anger mark, speed lines), how anime moves (frames, keyframes, in-betweens), reading right-to-left, manga cafés & libraries
-- **video-games-history** ビデオゲームの れきし `timeline` — oscilloscope tennis (1958), first arcade games, home consoles, handhelds, pixel art, chiptune, 3D, online & mobile, how games are made (jobs) — no character art
-- **emoji-pictograms** 絵文字と ピクトグラム — emoji born in Japan (1999), kaomoji vs :-), 1964 Tokyo pictograms, the running-man exit sign, Tokyo 2020 moving pictograms, emoji meanings that differ by country
-- **toys-tricks** あそびの わざ — kendama tricks & world cup, yo-yo, speedcubing (records), spinning tops (koma), tangram, cat's cradle (ayatori), paper planes record, juggling
-- **origami-science** 折り紙の 科学 — Miura fold (space solar panels), origami in medicine (stents), airbags, folding paper 103 times, the crane & 1000 cranes, origami robots, Yoshizawa Akira's diagram notation
+- ✅ ~~**manga-anime**~~ まんがと アニメの ひみつ — Chōjū-giga, Hokusai Manga, kamishibai, speech bubbles, manga symbols (sweat drop, anger mark, speed lines), how anime moves (frames, keyframes, in-betweens), reading right-to-left, manga cafés & libraries
+- ✅ ~~**video-games-history**~~ ビデオゲームの れきし `timeline` — oscilloscope tennis (1958), first arcade games, home consoles, handhelds, pixel art, chiptune, 3D, online & mobile, how games are made (jobs) — no character art
+- ✅ ~~**emoji-pictograms**~~ 絵文字と ピクトグラム — emoji born in Japan (1999), kaomoji vs :-), 1964 Tokyo pictograms, the running-man exit sign, Tokyo 2020 moving pictograms, emoji meanings that differ by country
+- ✅ ~~**toys-tricks**~~ あそびの わざ — kendama tricks & world cup, yo-yo, speedcubing (records), spinning tops (koma), tangram, cat's cradle (ayatori), paper planes record, juggling
+- ✅ ~~**origami-science**~~ 折り紙の 科学 — Miura fold (space solar panels), origami in medicine (stents), airbags, folding paper 103 times, the crane & 1000 cranes, origami robots, Yoshizawa Akira's diagram notation
 - **vending-gachapon** 自動販売機と ガチャガチャ — why Japan has ~4 million machines, hot & cold in one machine, odd ones (dashi, umbrellas, corn soup), the first vending machine (Hero of Alexandria's holy water), capsule toys
 - **fake-food** 食品サンプルの ひみつ — how plastic food is made, Kappabashi street, why visitors love it, history (1920s), wax → plastic, make-your-own experiences
 - **roller-coasters** ジェットコースターの 科学 — why you don't fall out of a loop, g-force, record coasters (Japan's Fuji-Q), wooden vs steel, Ferris wheel history, free-fall towers
