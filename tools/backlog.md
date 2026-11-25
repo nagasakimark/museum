@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (333 topics) — all 3007 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (339 topics) — all 3062 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -60,18 +60,18 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**migration**~~ 旅を する 動物 — Arctic tern, monarch butterfly, wildebeest, salmon, eel, humpback whale, swallow, white-fronted goose, caribou, sea turtle, Japanese swallow to Southeast Asia
 - ✅ ~~**winter-animals**~~ 冬の すごし方 — bear (hibernation), dormouse (yamane), chipmunk, frog, snake, ladybirds clustering, snow monkeys, ptarmigan colour change, stoat, swans arriving in Japan
 - ✅ ~~**food-chain**~~ 食べる・食べられる — sun → plants → herbivores → carnivores, plankton chain, decomposers (mushrooms, earthworms), ocean food web, balance of nature (gentle, no hunting images)
-- **prehistoric-mammals** 大むかしの ほにゅうるい — woolly mammoth, Naumann's elephant (Japan), sabre-toothed cat (no hunting scene), giant sloth, woolly rhino, Irish elk, Megalodon (shark), Desmostylus (Japan), glyptodont
+- ✅ ~~**prehistoric-mammals**~~ 大むかしの ほにゅうるい — woolly mammoth, Naumann's elephant (Japan), sabre-toothed cat (no hunting scene), giant sloth, woolly rhino, Irish elk, Megalodon (shark), Desmostylus (Japan), glyptodont
 - ✅ ~~**dinosaurs-2**~~ きょうりゅう 時代別 `timeline` — Triassic (Eoraptor, Plateosaurus), Jurassic (Allosaurus, Diplodocus, Archaeopteryx), Cretaceous (Spinosaurus, Velociraptor, Ankylosaurus, Parasaurolophus, Pachycephalosaurus), Japanese finds (Fukuisaurus, Tambatitanis, Kamuysaurus)
-- **cats-breeds** ネコの しゅるい — Japanese bobtail, Maine Coon, Persian, Siamese, Scottish Fold, Russian Blue, Bengal, Sphynx, Norwegian Forest Cat, American Shorthair, Munchkin, Ragdoll
-- **horses** ウマの せかい — Dosanko (Hokkaido), Taishu horse (Tsushima, Nagasaki!), Misaki horse, Arabian, Thoroughbred, Shetland pony, Clydesdale, Przewalski's horse, zebra relatives, horseshoes
-- **small-pets** 小さな ペット — guinea pig, hamster (types), rabbit breeds, chinchilla, ferret, budgie, Java sparrow, goldfish types, medaka, stag beetle keeping, hermit crab
+- ✅ ~~**cats-breeds**~~ ネコの しゅるい — Japanese bobtail, Maine Coon, Persian, Siamese, Scottish Fold, Russian Blue, Bengal, Sphynx, Norwegian Forest Cat, American Shorthair, Munchkin, Ragdoll
+- ✅ ~~**horses**~~ ウマの せかい — Dosanko (Hokkaido), Taishu horse (Tsushima, Nagasaki!), Misaki horse, Arabian, Thoroughbred, Shetland pony, Clydesdale, Przewalski's horse, zebra relatives, horseshoes
+- ✅ ~~**small-pets**~~ 小さな ペット — guinea pig, hamster (types), rabbit breeds, chinchilla, ferret, budgie, Java sparrow, goldfish types, medaka, stag beetle keeping, hermit crab
 - ✅ ~~**mushrooms**~~ きのこの せかい — shiitake, enoki, maitake, matsutake, shimeji, eringi, button mushroom, glowing mushrooms, giant puffball, mould and penicillin, yeast in bread ("don't pick wild mushrooms" safety note)
 - ✅ ~~**trees**~~ 世界の 木 — cherry, maple (momiji), ginkgo, Japanese cedar, pine, bamboo, baobab, coast redwood, giant sequoia, banyan, olive, coconut palm, rubber tree, cork oak, maple syrup tree
 - ✅ ~~**flowers-world**~~ 世界の 花・国花 — cherry blossom & chrysanthemum (Japan), rose (UK), tulip (Netherlands), lotus (India), plum blossom (China), hibiscus (Korea: mugunghwa), edelweiss, sunflower, protea (South Africa), orchids, lavender, lily of the valley
-- **flowers-japan-seasons** 日本の 四季の 花 — plum, cherry, wisteria, azalea, hydrangea, morning glory, sunflower, lotus, cosmos, chrysanthemum, camellia, narcissus
+- ✅ ~~**flowers-japan-seasons**~~ 日本の 四季の 花 — plum, cherry, wisteria, azalea, hydrangea, morning glory, sunflower, lotus, cosmos, chrysanthemum, camellia, narcissus
 - ✅ ~~**rice**~~ お米が できるまで `long` — seeds, seedlings, rice planting, rice paddy life, growing, harvest, drying, milling, kinds of rice, rice dishes of the world, mochi, rice in Japanese words (ご飯 = meal)
 - ✅ ~~**seeds-growing**~~ たねと 成長 — sunflower seed, dandelion fluff, maple helicopter seeds, coconut floating, burrs (inspired Velcro), germination, roots, photosynthesis basics, giant pumpkins
-- **world-records-nature** 自然の 世界一 II — largest flower (Rafflesia), tallest tree, oldest tree (bristlecone pine), largest seed (coco de mer), fastest-growing plant (bamboo), largest leaf, biggest lily pad (Victoria amazonica)
+- ✅ ~~**world-records-nature**~~ 自然の 世界一 II — largest flower (Rafflesia), tallest tree, oldest tree (bristlecone pine), largest seed (coco de mer), fastest-growing plant (bamboo), largest leaf, biggest lily pad (Victoria amazonica)
 
 ## B. Earth, Weather & Space
 
