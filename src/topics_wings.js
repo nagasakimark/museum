@@ -17,8 +17,9 @@ import { WINGS_N10 } from "./wings/n10_maps.js";
 import { WINGS_N11_14 } from "./wings/n11_14.js";
 import { WINGS_D1 } from "./wings/d1_japan.js";
 import { WINGS_D2 } from "./wings/d2_prefectures.js";
+import { WINGS_A1 } from "./wings/a1_animals.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -109,7 +110,11 @@ const BACK4 = {
   "japan": ["pref-hokkaido-tohoku", "pref-kanto", "pref-chubu", "pref-kinki", "pref-chugoku-shikoku", "pref-kyushu-okinawa", "japanese-castles", "trains-japan"],
   "nagasaki": ["nagasaki-prefecture", "nagasaki-festivals", "pref-kyushu-okinawa"], "nagasaki-city": ["nagasaki-festivals", "nagasaki-prefecture"],
   "landmarks": ["japanese-castles"], "vehicles": ["trains-japan"], "sweets": ["wagashi-seasons"], "art-world-crafts": ["crafts-japan"],
-  "japanese-food": ["wagashi-seasons"], "japan-traditions": ["crafts-japan", "japanese-castles"], "festivals-world": ["nagasaki-festivals"],
+  "japanese-food": ["wagashi-seasons"],
+  // A animals
+  "animals": ["african-mammals", "asian-mammals", "americas-animals", "australia-animals", "whales-dolphins", "sharks-rays"],
+  "africa": ["african-mammals"], "asia": ["asian-mammals"], "americas": ["americas-animals"], "oceania": ["australia-animals"],
+  "ocean": ["whales-dolphins", "sharks-rays"], "aquarium": ["whales-dolphins", "sharks-rays"], "savanna": ["african-mammals"], "japan-traditions": ["crafts-japan", "japanese-castles"], "festivals-world": ["nagasaki-festivals"],
 };
 
 export const BACKLINKS = {};

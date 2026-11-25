@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (190 topics) — all 1694 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (196 topics) — all 1755 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -38,13 +38,13 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## A. Animals & Nature
 
-- **african-mammals** アフリカの 動物 — gorilla (mountain), chimpanzee, bonobo, African wild dog, meerkat, warthog, aardvark, okapi, African buffalo, wildebeest (migration), Thomson's gazelle, impala, spotted hyena (neutral facts), African penguin, ring-tailed lemur, fossa
-- **asian-mammals** アジアの 動物 — Asian elephant, Bengal tiger, snow leopard, red panda, sun bear, orangutan (Sumatran), proboscis monkey, slow loris, Malayan tapir, Indian rhinoceros, yak, Bactrian camel, Przewalski's horse, takin, binturong
-- **americas-animals** アメリカ大陸の 動物 — bald eagle, American bison, grizzly bear, raccoon, skunk, armadillo, capybara, giant anteater, llama, alpaca, Andean condor, poison dart frog, toucan, jaguar, manatee
-- **australia-animals** オーストラリアの 動物 — kangaroo, wallaby, koala, wombat, platypus, echidna, Tasmanian devil, quokka, emu, cassowary, kookaburra, cockatoo, sugar glider, dingo, frilled lizard
+- ✅ ~~**african-mammals**~~ アフリカの 動物 — gorilla (mountain), chimpanzee, bonobo, African wild dog, meerkat, warthog, aardvark, okapi, African buffalo, wildebeest (migration), Thomson's gazelle, impala, spotted hyena (neutral facts), African penguin, ring-tailed lemur, fossa
+- ✅ ~~**asian-mammals**~~ アジアの 動物 — Asian elephant, Bengal tiger, snow leopard, red panda, sun bear, orangutan (Sumatran), proboscis monkey, slow loris, Malayan tapir, Indian rhinoceros, yak, Bactrian camel, Przewalski's horse, takin, binturong
+- ✅ ~~**americas-animals**~~ アメリカ大陸の 動物 — bald eagle, American bison, grizzly bear, raccoon, skunk, armadillo, capybara, giant anteater, llama, alpaca, Andean condor, poison dart frog, toucan, jaguar, manatee
+- ✅ ~~**australia-animals**~~ オーストラリアの 動物 — kangaroo, wallaby, koala, wombat, platypus, echidna, Tasmanian devil, quokka, emu, cassowary, kookaburra, cockatoo, sugar glider, dingo, frilled lizard
 - **antarctic-life** 南極の 生きもの — emperor penguin, Adélie penguin, chinstrap penguin, king penguin, leopard seal, Weddell seal, krill, Antarctic toothfish, snow petrel, wandering albatross, orca, humpback whale
-- **whales-dolphins** クジラと イルカ — blue whale, humpback whale, sperm whale, orca, beluga, narwhal, minke whale, bottlenose dolphin, Pacific white-sided dolphin, finless porpoise (Japan), Amazon river dolphin, Hector's dolphin
-- **sharks-rays** サメと エイ — whale shark, great white shark, hammerhead, tiger shark, megamouth shark (found in Japan), goblin shark (Japan), basking shark, nurse shark, manta ray, stingray, sawfish, Greenland shark
+- ✅ ~~**whales-dolphins**~~ クジラと イルカ — blue whale, humpback whale, sperm whale, orca, beluga, narwhal, minke whale, bottlenose dolphin, Pacific white-sided dolphin, finless porpoise (Japan), Amazon river dolphin, Hector's dolphin
+- ✅ ~~**sharks-rays**~~ サメと エイ — whale shark, great white shark, hammerhead, tiger shark, megamouth shark (found in Japan), goblin shark (Japan), basking shark, nurse shark, manta ray, stingray, sawfish, Greenland shark
 - **coral-reef** サンゴしょう — coral polyps, clownfish, sea anemone, parrotfish, butterflyfish, moray eel, sea turtle, giant clam, sea slug, cleaner wrasse, Okinawa reefs, Great Barrier Reef
 - **rivers-ponds** 川と 池の 生きもの — killifish (medaka), carp (koi), catfish, freshwater crab, crayfish, frog tadpole, newt, water strider, dragonfly larva, kingfisher, otter, platypus, salmon run, ayu (sweetfish)
 - **satoyama** 里山の 生きもの — Japanese tanuki, fox, hare, badger, weasel, firefly, rhinoceros beetle, stag beetle, rice-field frog, heron, swallow, Japanese white-eye, bush warbler (uguisu), cicada
