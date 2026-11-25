@@ -14,7 +14,7 @@ export const HALLS = {
     [["plants", "🌻"], ["trees", "🌳"], ["flowers-world", "🌷"], ["weather", "⛅"], ["volcanoes-world", "🌋"], ["mountains-world", "🏔️"], ["rivers-lakes", "🏞️"], ["rocks-gems", "💎"], ["earth-timeline", "🌍"], ["dinosaurs", "🦖"], ["climate-zones", "🗺️"], ["environment", "♻️"]]),
   "wing-space": H("宇宙", "Space", "#34407a", "🪐",
     "夜空の 向こうには 何が ある？ 太陽、わく星、星ざ、ロケット —— 宇宙への 旅に 出発！ Let's go to space!",
-    [["solar-system", "planet:#ffb52e"], ["moon-stars", "🌕"], ["moons", "🌙"], ["constellations", "✨"], ["comets-asteroids", "☄️"], ["space-explore", "🚀"], ["space-japan", "🛰️"], ["why-seasons", "🌏"]]),
+    [["solar-system", "planet:#ffb52e"], ["moon-stars", "🌕"], ["moons", "🌙"], ["constellations", "✨"], ["comets-asteroids", "☄️"], ["space-explore", "🚀"], ["space-japan", "🛰️"], ["why-seasons", "🌏"], ["telescopes-observatories", "🔭"], ["astronaut-life", "👩‍🚀"], ["space-records", "🏆"]]),
   "wing-science": H("科学", "Science", "#2a76b8", "🔬",
     "なぜ？ どうして？ を 実験で たしかめるのが 科学。体、光、音、電気、じしゃくの ふしぎに せまろう。 Science is fun!",
     [["science-fun", "🧪"], ["human-body", "🫀"], ["senses", "👀"], ["magnets", "🧲"], ["electricity", "⚡"], ["light-color", "🌈"], ["sound-science", "🔊"], ["states-of-matter", "🧊"], ["simple-machines", "⚙️"], ["water-cycle", "💧"], ["earth-science", "🌐"], ["philosophy-of-science", "🔍"]]),

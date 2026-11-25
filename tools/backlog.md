@@ -12,6 +12,7 @@ Each built topic becomes one room. Doors between rooms come from each topic's `l
 
 ## Content rules (apply to everything)
 
+- **World first.** This museum teaches about the world. Japan (and Nagasaki) appears as one example among many — e.g. a few important Japanese temples alongside sacred places worldwide, not an exhaustive Japanese list.
 - **Japanese first, simple English** for key words: names, countries, foods, colours, numbers, etc.
 - **Kanji:** keep to roughly 5th-grade level; otherwise use kana.
 - **Nothing controversial or upsetting.** No war scenes, violence, injury, death imagery, nudity, romance, alcohol, tobacco or gambling. No religious debate, politics or current conflicts. Nothing about Japan's controversial history (e.g. wartime forced labour; avoid Gunkanjima). A plain mention of a historical war is OK, but nothing graphic.
