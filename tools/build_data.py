@@ -67,7 +67,11 @@ for id, name, m in credits:
         name, f, f.replace(" ", "_"), au.replace("|", "/")[:120], li))
 lines += ["", "Conservation statuses: IUCN Red List (Tsushima leopard cat: Japan Ministry of the Environment Red List).",
           "", "3D engine: [three.js](https://threejs.org) (MIT licence)."]
-open("README.md", "w").write("\n".join(lines) + "\n")
+# Keep the exhibit photo credits that tools/photos.py --apply adds below.
+import os
+old = open("README.md", encoding="utf8").read() if os.path.exists("README.md") else ""
+keep = old[old.find("\n## Exhibit photo credits\n"):] if "\n## Exhibit photo credits\n" in old else ""
+open("README.md", "w", encoding="utf8").write("\n".join(lines) + "\n" + keep)
 
 # status check report
 for a in C["animals"]:
