@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (226 topics) — all 2019 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (232 topics) — all 2075 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -151,17 +151,17 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 - **alphabet-room** A to Z の へや `long` — one exhibit per letter: capital/small letter, a word, a fun fact (e.g. "A is for apple"; "Q is almost always followed by U")
 - **phonics** 英語の 音 — short vowels a/e/i/o/u, magic e, sh/ch/th, silent letters (knee, write), same spelling different sounds, rhymes
-- **onomatopoeia** 動物の 鳴き声 くらべ — dog (wan-wan / woof), cat (nyaa / meow), rooster (kokekokko / cock-a-doodle-doo), pig, cow, frog (kero-kero / ribbit), duck, bird, mouse, sheep, in several languages
-- **uk-us-english** イギリス英語と アメリカ英語 — lift/elevator, biscuit/cookie, chips/fries, crisps/chips, flat/apartment, football/soccer, rubbish/trash, holiday/vacation, colour/color, petrol/gas
-- **words-from-languages** 英語の ことばの ふるさと — ketchup (Chinese/Malay), tea (Chinese), chocolate (Nahuatl), banana (West Africa), robot (Czech), kindergarten (German), ballet (French), piano (Italian), safari (Swahili), shampoo (Hindi), tsunami (Japanese)
+- ✅ ~~**onomatopoeia**~~ 動物の 鳴き声 くらべ — dog (wan-wan / woof), cat (nyaa / meow), rooster (kokekokko / cock-a-doodle-doo), pig, cow, frog (kero-kero / ribbit), duck, bird, mouse, sheep, in several languages
+- ✅ ~~**uk-us-english**~~ イギリス英語と アメリカ英語 — lift/elevator, biscuit/cookie, chips/fries, crisps/chips, flat/apartment, football/soccer, rubbish/trash, holiday/vacation, colour/color, petrol/gas
+- ✅ ~~**words-from-languages**~~ 英語の ことばの ふるさと — ketchup (Chinese/Malay), tea (Chinese), chocolate (Nahuatl), banana (West Africa), robot (Czech), kindergarten (German), ballet (French), piano (Italian), safari (Swahili), shampoo (Hindi), tsunami (Japanese)
 - ~~**opposites**~~ → replaced by the encyclopedic **N7 "Biggest & smallest"** wing below (don't build a plain word list)
 - **prepositions** どこに ある? — in, on, under, by, next to, between, behind, in front of (with illustrated scenes)
 - **body-words** 体の 英単語 — head, shoulders, knees, toes, eyes, ears, mouth, nose, hand, finger, foot, elbow
 - ~~**family-words**~~ → replaced by the encyclopedic **N1 Families** wing below (don't build a plain word list)
-- **tongue-twisters** 早口ことば — "She sells seashells", "Peter Piper", "Red lorry, yellow lorry", "Unique New York"; Japanese: 生麦生米生卵, 隣の客は…, 東京特許許可局
+- ✅ ~~**tongue-twisters**~~ 早口ことば — "She sells seashells", "Peter Piper", "Red lorry, yellow lorry", "Unique New York"; Japanese: 生麦生米生卵, 隣の客は…, 東京特許許可局
 - **sign-braille** 手話と 点字 — Braille alphabet (Louis Braille), braille in daily life (lift buttons, ticket machines), tactile paving (invented in Japan, Okayama 1967), sign language hello/thank you (JSL & ASL)
-- **codes** ひみつの 暗号 — Morse code (SOS), semaphore flags, ship signal flags, Caesar cipher, pigpen cipher, QR codes, barcodes
-- **symbols-signs** 世界の マーク — pictograms (Tokyo 1964 origin), emergency exit sign (designed in Japan), recycle mark, road signs around the world, map symbols of Japan (new ones for foreigners), weather symbols
+- ✅ ~~**codes**~~ ひみつの 暗号 — Morse code (SOS), semaphore flags, ship signal flags, Caesar cipher, pigpen cipher, QR codes, barcodes
+- ✅ ~~**symbols-signs**~~ 世界の マーク — pictograms (Tokyo 1964 origin), emergency exit sign (designed in Japan), recycle mark, road signs around the world, map symbols of Japan (new ones for foreigners), weather symbols
 
 ## F. Science & Technology
 

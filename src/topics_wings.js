@@ -23,8 +23,9 @@ import { WINGS_F1 } from "./wings/f1_science.js";
 import { WINGS_B1 } from "./wings/b1_space.js";
 import { WINGS_M1 } from "./wings/m1_philosophy.js";
 import { WINGS_M2 } from "./wings/m2_philosophy.js";
+import { WINGS_E1 } from "./wings/e1_english.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -116,11 +117,14 @@ const BACK4 = {
   "nagasaki": ["nagasaki-prefecture", "nagasaki-festivals", "pref-kyushu-okinawa"], "nagasaki-city": ["nagasaki-festivals", "nagasaki-prefecture"],
   "landmarks": ["japanese-castles"], "vehicles": ["trains-japan"], "sweets": ["wagashi-seasons"], "art-world-crafts": ["crafts-japan"],
   "japanese-food": ["wagashi-seasons"],
+  // E English
+  "words-from-japanese": ["words-from-languages", "onomatopoeia"], "hello-world": ["uk-us-english", "onomatopoeia", "world-wisdom-words"],
+  "town": ["symbols-signs"], "olympics": ["symbols-signs"], "how-computers-work": ["codes"], "games-world": ["tongue-twisters"],
   // M philosophy
   "philosophy-questions": ["thought-experiments-2", "paradoxes", "logic-puzzles", "philosophy-of-happiness"],
   "philosophers": ["eastern-thinkers", "western-thinkers"], "japanese-values": ["philosophy-of-happiness", "eastern-thinkers"],
   "puzzles": ["logic-puzzles"], "living-together": ["philosophy-of-happiness", "ethics-for-kids", "critical-thinking"],
-  "human-body": ["mind-and-feelings"], "hello-world": ["world-wisdom-words"], "proverbs": ["world-wisdom-words"],
+  "human-body": ["mind-and-feelings"], "proverbs": ["world-wisdom-words"],
   "time": ["time-philosophy"], "inventions": ["philosophy-of-science"],
   // B space and earth
   "solar-system": ["moons", "comets-asteroids", "constellations"], "moon-stars": ["moons", "constellations"],
