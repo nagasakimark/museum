@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (370 topics) — all 3352 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (374 topics) — all 3391 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -226,12 +226,12 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**tropical-fruits**~~ 南国の くだもの — dragon fruit, durian (smelly!), lychee, rambutan, mangosteen, papaya, passion fruit, star fruit, guava, jackfruit (biggest fruit), coconut, kiwifruit
 - ✅ ~~**spices**~~ スパイスの せかい — pepper, cinnamon, ginger, turmeric, chilli (from the Americas), wasabi, sansho, cumin, saffron (most expensive), vanilla, curry powder; Spice Routes (trade, gentle)
 - ✅ ~~**food-origins**~~ 食べものの ふるさと `timeline` — potatoes, tomatoes, chillies and corn from the Americas; rice from Asia; wheat from the Middle East; coffee from Ethiopia; tea from China; how foods travelled the world
-- **tea-world** 世界の お茶 — green tea, matcha, oolong, black tea (British afternoon tea), chai, mint tea (Morocco), bubble tea, barley tea, rooibos, yerba mate; tea ceremony etiquette
-- **dairy-cheese** 牛乳と チーズ — milk, butter, yogurt (Bulgaria), cheese types (Gouda, Cheddar, Mozzarella, Swiss, Camembert), how cheese is made, Hokkaido dairy
+- ✅ ~~**tea-world**~~ 世界の お茶 — green tea, matcha, oolong, black tea (British afternoon tea), chai, mint tea (Morocco), bubble tea, barley tea, rooibos, yerba mate; tea ceremony etiquette
+- ✅ ~~**dairy-cheese**~~ 牛乳と チーズ — milk, butter, yogurt (Bulgaria), cheese types (Gouda, Cheddar, Mozzarella, Swiss, Camembert), how cheese is made, Hokkaido dairy
 - ✅ ~~**farm-to-table**~~ 食べものが とどくまで `long` — wheat → flour → bread; cacao → chocolate; milk; fish from sea to market; vegetables to supermarket; delivery trucks
-- **kitchen-tools** 台所の 道具 — knife, cutting board, pot, frying pan, rice cooker (invented in Japan), chopsticks, spoon, fork, whisk, ladle, microwave (accidental invention), toaster
+- ✅ ~~**kitchen-tools**~~ 台所の 道具 — knife, cutting board, pot, frying pan, rice cooker (invented in Japan), chopsticks, spoon, fork, whisk, ladle, microwave (accidental invention), toaster
 - ✅ ~~**table-manners**~~ 世界の テーブルマナー — itadakimasu/gochisousama, chopstick rules, slurping noodles OK in Japan, eating with hands (India, respectful), bread rules in France, tipping (light), Korean spoon & chopsticks
-- **festival-food** お祭りの 食べもの — yakisoba, cotton candy, kakigori, choco banana, ringo-ame, taiyaki, osechi, chitose-ame, toshikoshi soba, mooncakes, Christmas cake (Japan), king cake
+- ✅ ~~**festival-food**~~ お祭りの 食べもの — yakisoba, cotton candy, kakigori, choco banana, ringo-ame, taiyaki, osechi, chitose-ame, toshikoshi soba, mooncakes, Christmas cake (Japan), king cake
 
 ## J. People, Jobs & Society
 
