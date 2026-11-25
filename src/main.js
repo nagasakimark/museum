@@ -382,11 +382,14 @@ function gateSpots(r) {
     const along = DIRS[s][0] === 0, half = along ? r.hx : r.hz, n = Math.floor((half * 2 - 2) / 6);
     for (let i = 0; i < n; i++) out.push({ side: s, o: (i - (n - 1) / 2) * 6, far: s === far });
   }
+  // big halls can also use the entrance wall, well away from the entrance itself
+  { const along = DIRS[entry][0] === 0, half = along ? r.hx : r.hz;
+    if (half >= 15) for (const o of [-(half - 6), half - 6]) out.push({ side: entry, o, far: false, entryWall: true }); }
   const [ex, ez] = DIRS[entry];
   const pos = g => { const [sx, sz] = DIRS[g.side]; return sx === 0 ? [g.o, sz * r.hz] : [sx * r.hx, g.o]; };
   // far wall first (centre out), then side walls from the far end
   const near = g => { const [px, pz] = pos(g); return ex * px + ez * pz; };
-  out.sort((a, b) => (b.far - a.far) || (a.far ? Math.abs(a.o) - Math.abs(b.o) : near(a) - near(b)));
+  out.sort((a, b) => (!!a.entryWall - !!b.entryWall) || (b.far - a.far) || (a.far ? Math.abs(a.o) - Math.abs(b.o) : near(a) - near(b)));
   return { out, pos };
 }
 function planGates(r) {

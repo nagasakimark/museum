@@ -3,6 +3,9 @@
 const H = (ja, en, c, icon, intro, gates) => ({ ja, en, c, icon, intro, hall: true, items: [], gates });
 
 export const HALLS = {
+  "wing-wonder": H("ふしぎ・おもしろ", "Weird & Wonderful", "#8e44ad", "🌀",
+    "妖怪、ミステリー、目の さっかく、体の なぜ？、忍者に まんが。「えっ！？」と おどろく ものを 集めた へやです。 Wow, that's strange!",
+    [["yokai", "👺"], ["mysteries", "🗿"], ["optical-illusions", "🌀"], ["why-body", "🤧"], ["spooky-science", "👻"], ["household-spirits", "🧚"], ["manga-anime", "💬"], ["video-games-history", "🎮"], ["ninja", "🥷"], ["famous-animals", "🐕"], ["cambrian-weirdos", "🦐"], ["hidden-places", "🕳️"]]),
   "wing-animals": H("どうぶつ", "Animals", "#4f8a3c", "🦁",
     "陸、海、空 —— 地球には 800万 しゅるい いじょうの 生きものが いると 言われます。気に なる ドアを えらんで 会いに 行こう！ What animals do you like?",
     [["animals", "🐾"], ["african-mammals", "🦁"], ["asian-mammals", "🐼"], ["ocean", "🐠"], ["whales-dolphins", "🐋"], ["birds-world", "🦜"], ["insects", "🦋"], ["reptiles", "🐊"], ["pets", "🐕"], ["farm", "🐄"], ["animal-records", "🏆"], ["night-animals", "🦉"]]),
