@@ -281,11 +281,11 @@ const overlaps = (a, b) => a.minX < b.maxX && a.maxX > b.minX && a.minZ < b.maxZ
 const roomBox = (x, z, hx, hz, m = 0) => ({ minX: x - hx - m, maxX: x + hx + m, minZ: z - hz - m, maxZ: z + hz + m });
 // room shapes: w = width across the entrance, d = depth away from it
 const LAYOUTS = {
-  square: { w: 22, d: 22, h: 7, roof: "dome" },
-  small: { w: 14, d: 14, h: 6.8, roof: "cove" },
-  long: { w: 13, d: 50, h: 7, roof: "vault" },
-  wide: { w: 32, d: 20, h: 7.2, roof: "vault" },
-  tall: { w: 18, d: 18, h: 8, roof: "dome" },
+  square: { w: 22, d: 22, h: 7.8, roof: "dome" },
+  small: { w: 14, d: 14, h: 7.7, roof: "cove" },
+  long: { w: 13, d: 50, h: 7.8, roof: "vault" },
+  wide: { w: 32, d: 20, h: 8, roof: "vault" },
+  tall: { w: 18, d: 18, h: 8.6, roof: "dome" },
   hall: { w: 38, d: 26, h: 10.2, roof: "vault" },
 };
 function pickLayout(t) {
