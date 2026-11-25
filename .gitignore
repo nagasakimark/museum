@@ -4,3 +4,4 @@ tools/_scratch/
 tools/cand/
 tools/photo_review.html
 tools/photo_state.json.tmp
+.env
