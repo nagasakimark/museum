@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (238 topics) — all 2127 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (244 topics) — all 2181 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -235,13 +235,13 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## J. People, Jobs & Society
 
-- **jobs-hospital** 病院の しごと — doctor, nurse, pharmacist, dentist, radiographer, physical therapist, paramedic, receptionist, dietitian, hospital clown (gentle)
-- **jobs-airport** 空港の しごと — pilot, cabin attendant, air traffic controller, ground staff, mechanic, security, customs, baggage handler, marshaller, airport fire crew
-- **jobs-creative** 作る しごと — illustrator, animator, game designer, architect, fashion designer, photographer, potter, carpenter, pastry chef, YouTuber (light), writer
-- **jobs-nature** 自然の しごと — farmer, fisher, forester, zookeeper, park ranger, marine biologist, weather forecaster, astronomer, gardener, beekeeper
+- ✅ ~~**jobs-hospital**~~ 病院の しごと — doctor, nurse, pharmacist, dentist, radiographer, physical therapist, paramedic, receptionist, dietitian, hospital clown (gentle)
+- ✅ ~~**jobs-airport**~~ 空港の しごと — pilot, cabin attendant, air traffic controller, ground staff, mechanic, security, customs, baggage handler, marshaller, airport fire crew
+- ✅ ~~**jobs-creative**~~ 作る しごと — illustrator, animator, game designer, architect, fashion designer, photographer, potter, carpenter, pastry chef, YouTuber (light), writer
+- ✅ ~~**jobs-nature**~~ 自然の しごと — farmer, fisher, forester, zookeeper, park ranger, marine biologist, weather forecaster, astronomer, gardener, beekeeper
 - **jobs-az** しごと A to Z `long` — actor, baker, carpenter, dentist, engineer, florist, gardener, hairdresser, illustrator, journalist, keeper, lawyer, musician, nurse, office worker, pilot, quiz-show host, reporter, scientist, teacher, umpire, vet, waiter, x-ray technician, yoga teacher, zookeeper
-- **explorers** 世界の 探検家 — Amundsen (South Pole), Hillary & Tenzing (Everest), Uemura Naomi, Shirase Nobu (Antarctica), Jacques Cousteau (ocean), Yuri Gagarin, Neil Armstrong, Mae Jemison, Jane Goodall, Ino Tadataka; no colonial conquest stories
-- **women-science** 科学者に なった 女性たち — Marie Curie, Ada Lovelace, Katherine Johnson, Rachel Carson, Jane Goodall, Dorothy Hodgkin, Mukai Chiaki, Yasui Kono, Ogino Ginko (first licensed female doctor in Japan)
+- ✅ ~~**explorers**~~ 世界の 探検家 — Amundsen (South Pole), Hillary & Tenzing (Everest), Uemura Naomi, Shirase Nobu (Antarctica), Jacques Cousteau (ocean), Yuri Gagarin, Neil Armstrong, Mae Jemison, Jane Goodall, Ino Tadataka; no colonial conquest stories
+- ✅ ~~**women-science**~~ 科学者に なった 女性たち — Marie Curie, Ada Lovelace, Katherine Johnson, Rachel Carson, Jane Goodall, Dorothy Hodgkin, Mukai Chiaki, Yasui Kono, Ogino Ginko (first licensed female doctor in Japan)
 - ✅ ~~**sdgs**~~ SDGs 17の 目標 `wide` — one exhibit per goal (no poverty … partnerships), each with a kid-sized action
 - **children-rights** 子どもの 権利 — UN Convention basics: right to play, learn, be safe, be heard, have a name, health; Children's Day
 - ✅ ~~**bosai**~~ 防災 そなえよう — emergency kit, evacuation drills, typhoon prep, earthquake "drop, cover, hold on", 119/110, hazard maps, Disaster Prevention Day (Sept 1); calm and practical, no damage images
