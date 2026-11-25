@@ -9,6 +9,7 @@ import { PHILOSOPHY } from "./topics_philosophy.js";
 import { BATCH1 } from "./topics_batch1.js";
 import { WINGS, BACKLINKS } from "./topics_wings.js";
 import { HALLS, LOBBY_GATES } from "./halls.js";
+import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
 
 // ================= content =================
@@ -42,7 +43,7 @@ for (const [id, t] of Object.entries(TOPICS)) {
   } else if (t.groups) {
     list = DATA.groups.map(g => ({ ja: g.ja, en: g.en, img: g.img, fact: g.ja_text, rows: [["📷 しゃしん", g.animal[0], g.animal[1]]] }));
   } else {
-    list = (t.items || []).map(([ja, en, pic, fact, rows, year, x]) => ({ ja, en, pic, fact, rows: (rows || []).concat(year ? [["📅 年代", year, ""]] : []), year, status: x?.s, statusSource: x?.src }));
+    list = (t.items || []).map(([ja, en, pic, fact, rows, year, x]) => ({ ja, en, pic, img: PHOTOS[id + "|" + en], fact, rows: (rows || []).concat(year ? [["📅 年代", year, ""]] : []), year, status: x?.s, statusSource: x?.src }));
   }
   list.forEach((it, i) => {
     it.key = id + ":" + i; it.topic = id;
