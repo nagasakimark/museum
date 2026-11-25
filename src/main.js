@@ -740,7 +740,8 @@ function slotsFor(r) {
     const sp = L <= 16 ? 4.6 : L >= 30 ? 5.4 : 6.4;
     for (let k = -10; k <= 10; k++) {
       const o = k * sp;
-      if (Math.abs(o) > L / 2 - 2.2 || ds.some(d => Math.abs(o - d.o) < 3.4)) continue;
+      // keep a whole wall text (2m each side) clear of a doorway and its arch trim
+      if (Math.abs(o) > L / 2 - 2.2 || ds.some(d => Math.abs(o - d.o) < 4.3)) continue;
       out.push({ side, o, wall: true, door: !!hasDoor });
     }
   }
@@ -771,7 +772,7 @@ function addExhibit(r, slot, ex) {
   r.exhibits.push(rec);
   if (ex.text) {
     // museum wall text: big title and a paragraph printed straight on the wall
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 3.15), own(new THREE.MeshBasicMaterial({ map: wallTextTex(ex.ja, ex.en, ex.fact, ex.color || r.topic.c), transparent: true })));
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), own(new THREE.MeshBasicMaterial({ map: wallTextTex(ex.ja, ex.en, ex.fact, ex.color || r.topic.c), transparent: true })));
     m.position.set(0, 2.35, .02); grp.add(m); m.userData.exhibit = ex; r.clickables.push(m);
     return;
   }
