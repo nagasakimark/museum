@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (302 topics) — all 2714 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (307 topics) — all 2763 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -276,11 +276,11 @@ Mysteries are framed as "evidence → what do you think?"; no disappearances or 
 - ✅ ~~**household-spirits**~~ 世界の 小さな 妖精 — tomte/nisse, domovoi, brownie, kobold (→ cobalt), menehune, duende, leprechaun, Roman lares, tooth traditions (Japan throws teeth on the roof; Spain's tooth mouse Ratoncito Pérez)
 - ✅ ~~**mysteries**~~ 世界の ミステリー — Nazca Lines, moai, Stonehenge, Göbekli Tepe, Antikythera mechanism, Voynich manuscript, Yonaguni rocks, sailing stones (solved!), Wow! signal, crop circles (people made them) — each with "what scientists think"
 - ✅ ~~**spooky-science**~~ こわい？の 科学 — will-o'-the-wisp/kitsunebi, faces in things (pareidolia, "Face on Mars"), why houses creak at night (yanari), echoes (yamabiko), Brocken spectre (goraigō), ball lightning, glowing mushrooms, St Elmo's fire, why being scared can feel fun
-- **ghost-festivals** 世界の 先祖の お祭り — Day of the Dead (marigolds, sugar skulls), Halloween's roots (Samhain, turnip lanterns), Obon & tōrō nagashi, Nagasaki's shōrō nagashi, Chinese lantern festival, Qingming kites — cheerful "remembering family" angle
-- **why-body** 体の ふしぎ なぜ？ — hiccups, goosebumps, brain freeze, contagious yawns, wrinkly bath fingers, sun sneezes, ticklish, burps, stomach growls, pins and needles
-- **strange-foods** 世界の びっくり 食べもの — durian, surströmming, century egg, Vegemite, edible insects, natto (seen by visitors), fugu, blue cheese, kusaya — with why people love them
-- **weird-festivals** 世界の ふしぎな お祭り — cheese rolling, La Tomatina, Monkey Buffet, Night of the Radishes, Up Helly Aa, Naki Sumo, bog snorkelling, Battle of the Oranges, Cheung Chau bun scramble, Japan's mud/water festivals (calm ones only)
-- **christmas-world** 世界の ふしぎな クリスマス — Caga Tió, Yule Lads & Yule Cat, Befana, Japan's Christmas chicken and strawberry shortcake, Ukrainian spider-web ornaments, Australian beach Christmas, Philippine giant lanterns (parol), Sinterklaas' shoes
+- ✅ ~~**ghost-festivals**~~ 世界の 先祖の お祭り — Day of the Dead (marigolds, sugar skulls), Halloween's roots (Samhain, turnip lanterns), Obon & tōrō nagashi, Nagasaki's shōrō nagashi, Chinese lantern festival, Qingming kites — cheerful "remembering family" angle
+- ✅ ~~**why-body**~~ 体の ふしぎ なぜ？ — hiccups, goosebumps, brain freeze, contagious yawns, wrinkly bath fingers, sun sneezes, ticklish, burps, stomach growls, pins and needles
+- ✅ ~~**strange-foods**~~ 世界の びっくり 食べもの — durian, surströmming, century egg, Vegemite, edible insects, natto (seen by visitors), fugu, blue cheese, kusaya — with why people love them
+- ✅ ~~**weird-festivals**~~ 世界の ふしぎな お祭り — cheese rolling, La Tomatina, Monkey Buffet, Night of the Radishes, Up Helly Aa, Naki Sumo, bog snorkelling, Battle of the Oranges, Cheung Chau bun scramble, Japan's mud/water festivals (calm ones only)
+- ✅ ~~**christmas-world**~~ 世界の ふしぎな クリスマス — Caga Tió, Yule Lads & Yule Cat, Befana, Japan's Christmas chicken and strawberry shortcake, Ukrainian spider-web ornaments, Australian beach Christmas, Philippine giant lanterns (parol), Sinterklaas' shoes
 - **manga-anime** まんがと アニメの ひみつ — Chōjū-giga, Hokusai Manga, kamishibai, speech bubbles, manga symbols (sweat drop, anger mark, speed lines), how anime moves (frames, keyframes, in-betweens), reading right-to-left, manga cafés & libraries
 - **video-games-history** ビデオゲームの れきし `timeline` — oscilloscope tennis (1958), first arcade games, home consoles, handhelds, pixel art, chiptune, 3D, online & mobile, how games are made (jobs) — no character art
 - **emoji-pictograms** 絵文字と ピクトグラム — emoji born in Japan (1999), kaomoji vs :-), 1964 Tokyo pictograms, the running-man exit sign, Tokyo 2020 moving pictograms, emoji meanings that differ by country
