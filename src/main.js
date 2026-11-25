@@ -7,10 +7,11 @@ import { ART } from "./topics_art.js";
 import { PHILOSOPHY } from "./topics_philosophy.js";
 import { BATCH1 } from "./topics_batch1.js";
 import { WINGS, BACKLINKS } from "./topics_wings.js";
+import { HALLS, LOBBY_GATES } from "./halls.js";
 import { DETAILS } from "./details/index.js";
 
 // ================= content =================
-const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS };
+const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS, ...HALLS };
 for (const [id, extra] of Object.entries(BACKLINKS)) if (TOPICS[id]) TOPICS[id].links = [...new Set([...(TOPICS[id].links || []), ...extra])];
 const GROUPS = Object.fromEntries(DATA.groups.map(g => [g.id, g]));
 const STATUS = {
@@ -66,15 +67,19 @@ function templateSay(id, it) {
     ...(food ? [[`I want to eat ${food[2]}.`, `${food[1]}を 食べたいです。`]] : [])];
   return [];
 }
+const ROAM = Object.keys(TOPICS).filter(id => !TOPICS[id].hall);
 const ALL_ITEMS = Object.values(TOPICS).reduce((n, t) => n + t.list.length, 0);
 const HUBS = ["animals", "regions", "japan", "solar-system", "world-dishes", "ball-sports", "jobs-dream", "inventions", "nagasaki", "dinosaurs", "heroes", "science-fun", "aquarium", "town", "art", "art-timeline", "art-world-crafts", "human-body", "japan-islands", "games-world", "philosophy-questions", "hello-world", "nagasaki-city", "orchestra", "sdgs"];
 const LOBBY = {
-  id: "lobby", ja: "ロビー", en: "Lobby", c: "#6b4d2c", lobby: true,
+  id: "lobby", ja: "ロビー", en: "Grand Hall", c: "#6b4d2c", lobby: true, hall: true,
+  gates: LOBBY_GATES.map(id => [id, TOPICS[id].icon]),
   list: [
     { ja: "ようこそ！", en: "Welcome to the Museum", text: true,
-      fact: "ここは どこまでも つづく ふしぎな はくぶつかん。ドアを くぐる たびに、新しい へやが あらわれます。どこへ 行くかは、あなた しだい！" },
+      fact: "ここは どこまでも つづく ふしぎな はくぶつかん。まずは 気に なる テーマの ドアを えらぼう。その 先には もっと くわしい へやが たくさん！ どこへ 行くかは、あなた しだい！" },
     { ja: "あそびかた", en: "How to explore", text: true,
-      fact: "↑↓←→ か WASD で 歩く。画面を ドラッグして 見回す。ゆかを クリックすると そこまで 歩くよ。え を クリックすると くわしく 見られる！ 「？」の ドアは どこに つながるか わからない ふしぎな ドア。" },
+      fact: "↑↓←→ か WASD で 歩く。画面を ドラッグして 見回す。ゆかを クリックすると そこまで 歩くよ。え を クリックすると くわしく 見られる！ ひかる 入り口に 入ると その テーマの ホールへ ワープ。「？」の ドアは どこに つながるか わからない ふしぎな ドア。" },
+    { ja: "フロアガイド", en: "Floor guide", text: true,
+      fact: LOBBY_GATES.map(id => TOPICS[id].icon + " " + TOPICS[id].ja).join("　") },
   ],
 };
 
@@ -252,10 +257,11 @@ const LAYOUTS = {
   long: { w: 13, d: 50, h: 5.8 },
   wide: { w: 32, d: 20, h: 6.2 },
   tall: { w: 18, d: 18, h: 8 },
+  hall: { w: 38, d: 26, h: 8 },
 };
 function pickLayout(t) {
   if (t.layout) return t.layout;
-  if (t.lobby) return "square";
+  if (t.hall) return "hall";
   if (t.timeline) return "long";
   const n = t.list.length, x = Math.random();
   if (n >= 12) return t.timeline ? "long" : "wide";
@@ -293,11 +299,9 @@ function planExits(r) {
   if (r.exits) return;
   r.exits = {};
   const sides = shuffle(Object.keys(DIRS).filter(s => s !== r.entry));
-  if (r.topic.lobby) {
-    const start = new URLSearchParams(location.search).get("start");
-    const hubs = shuffle(HUBS.filter(h => h !== start)).slice(0, 3); if (TOPICS[start]) hubs[0] = start;
-    ["N", "E", "W"].forEach((s, i) => tryExit(r, s, TOPICS[hubs[i]], false));
-    r.exits.S = { closed: true, label: ["いりぐち", "Entrance"] };
+  if (r.topic.hall) {
+    if (r.topic.lobby) r.exits.S = { closed: true, label: ["いりぐち", "Entrance"] };
+    planGates(r);
     return;
   }
   const n = r.topic.timeline ? 1 : Math.random() < 0.55 ? 3 : 2;
@@ -309,20 +313,20 @@ function planExits(r) {
   for (const s of sides) {
     if (made >= n) break;
     let topic = TOPICS[picks[made]], isMystery = false;
-    if (mystery && made === n - 1) { topic = TOPICS[rand(Object.keys(TOPICS).filter(id => id !== r.topic.id))]; isMystery = true; }
-    if (!topic) topic = TOPICS[rand(Object.keys(TOPICS))];
+    if (mystery && made === n - 1) { topic = TOPICS[rand(ROAM.filter(id => id !== r.topic.id))]; isMystery = true; }
+    if (!topic) topic = TOPICS[rand(ROAM)];
     if (tryExit(r, s, topic, isMystery)) made++;
   }
   if (made === 0) {
     const side = sides.find(s => !r.exits[s]);
-    if (side) makeWarp(r, side, TOPICS[rand(Object.keys(TOPICS).filter(id => id !== r.topic.id))]);
+    if (side) makeWarp(r, side, TOPICS[rand(ROAM.filter(id => id !== r.topic.id))]);
   }
 }
 function tryExit(r, side, topic, mystery) {
   const [dx, dz] = DIRS[side];
   const x0 = r.x + dx * r.hx, z0 = r.z + dz * r.hz;
   // fallbacks must still hold every exhibit (+ intro)
-  const need = topic.list.length + 1, CAP = { small: 8, tall: 12, square: 12, wide: 20, long: 18 };
+  const need = topic.list.length + 1, CAP = { small: 8, tall: 12, square: 12, wide: 20, long: 18, hall: 14 };
   const layouts = [...new Set([pickLayout(topic), ...(topic.timeline ? ["long"] : ["square", "wide", "small"])])].filter(l => CAP[l] >= need || l === topic.layout);
   for (const layout of layouts) for (const len of shuffle([3, 5, 8]).concat([12, 18, 26])) {
     const { hx, hz } = dims(layout, OPP[side]);
@@ -340,6 +344,50 @@ function tryExit(r, side, topic, mystery) {
 }
 
 // A warp: a short corridor ending in a portal that jumps to a new room built in open space far away.
+// wing halls: a glowing doorway for every room in the wing, each a warp
+function gateSpots(r) {
+  const entry = r.entry || "S", far = OPP[entry], out = [];
+  const sides = [far, ...Object.keys(DIRS).filter(s => s !== far && s !== entry)];
+  for (const s of sides) {
+    const along = DIRS[s][0] === 0, half = along ? r.hx : r.hz, n = Math.floor((half * 2 - 2) / 6);
+    for (let i = 0; i < n; i++) out.push({ side: s, o: (i - (n - 1) / 2) * 6, far: s === far });
+  }
+  const [ex, ez] = DIRS[entry];
+  const pos = g => { const [sx, sz] = DIRS[g.side]; return sx === 0 ? [g.o, sz * r.hz] : [sx * r.hx, g.o]; };
+  // far wall first (centre out), then side walls from the far end
+  const near = g => { const [px, pz] = pos(g); return ex * px + ez * pz; };
+  out.sort((a, b) => (b.far - a.far) || (a.far ? Math.abs(a.o) - Math.abs(b.o) : near(a) - near(b)));
+  return { out, pos };
+}
+function planGates(r) {
+  const start = r.topic.lobby ? new URLSearchParams(location.search).get("start") : null;
+  const list = r.topic.gates.filter(([id]) => TOPICS[id]);
+  if (TOPICS[start]) list[0] = [start, "⭐"];
+  const { out, pos } = gateSpots(r), [ex, ez] = DIRS[r.entry || "S"];
+  const spots = out.slice(0, list.length);
+  // hand them out in a sweep round the room, starting on the left of the entrance
+  const ang = g => { const [px, pz] = pos(g); return (Math.atan2(ez * px - ex * pz, -(ex * px + ez * pz)) + Math.PI * 3) % (Math.PI * 2); };
+  spots.sort((a, b) => ang(a) - ang(b));
+  r.gates = [];
+  spots.forEach((g, i) => {
+    const [id, icon] = list[i], child = placeFar(r, TOPICS[id]);
+    if (!child) return;
+    child.warpFrom = g.side; child.warpO = g.o;
+    r.gates.push({ side: g.side, o: g.o, child: child.i, icon, len: 4, warp: true, gate: true });
+  });
+}
+function placeFar(r, topic) {
+  const layout = pickLayout(topic), { hx, hz } = dims(layout, "S");
+  for (let k = 1; k < 4000; k++) {
+    const cx = 600 * Math.ceil(k / 8) * (k % 2 ? 1 : -1), cz = 600 * ((k % 8) - 4);
+    const box = roomBox(cx, cz, hx, hz, 30);
+    if (reserved.some(b => overlaps(b, box))) continue;
+    const child = newRoom(topic, cx, cz, "S", r.i, layout);
+    reserved.push(roomBox(cx, cz + hz + 3, 3, 3));
+    return child;
+  }
+  return null;
+}
 function makeWarp(r, side, topic) {
   const layout = pickLayout(topic), { hx, hz } = dims(layout, "S");
   for (let k = 1; k < 400; k++) {
@@ -362,11 +410,11 @@ const portalMat = new THREE.MeshBasicMaterial({ map: canvasTex(256, 256, (g, w, 
   g.fillStyle = gr; g.fillRect(0, 0, w, h);
   g.fillStyle = "#fff"; g.font = `bold 44px ${FONT}`; g.textAlign = "center"; g.fillText("ワープ", w / 2, h / 2 + 15);
 }) });
-function addPortal(r, x0, z0, side, len, target) {
+function addPortal(r, x0, z0, side, len, target, mat) {
   // portal plane at the far end of a stub corridor; walking into it teleports
   const [dx, dz] = DIRS[side];
   const ex = x0 + dx * (len - .05), ez = z0 + dz * (len - .05);
-  const p = new THREE.Mesh(new THREE.PlaneGeometry(DOOR_W, DOOR_H), portalMat);
+  const p = new THREE.Mesh(new THREE.PlaneGeometry(DOOR_W, DOOR_H), mat || portalMat);
   p.position.set(ex, DOOR_H / 2, ez); p.lookAt(ex - dx, DOOR_H / 2, ez - dz); r.group.add(p);
   r.portals.push({ x: x0 + dx * (len - 1), z: z0 + dz * (len - 1), target });
 }
@@ -381,41 +429,81 @@ function addBox(r, w, h, d, m, x, y, z, solid) {
 function own(mat) { mat.userData.own = true; return mat; }
 const roomH = r => 5.4;
 
+function doorsOn(r, side) {
+  const d = [];
+  if (side === r.entry) d.push({ o: 0, ex: { back: true } });
+  else if (r.exits && r.exits[side]) d.push({ o: 0, ex: r.exits[side] });
+  for (const g of r.gates || []) if (g.side === side) d.push({ o: g.o, ex: g });
+  return d.sort((a, b) => a.o - b.o);
+}
 function buildWall(r, side) {
   const [sx, sz] = DIRS[side], along = sx === 0, H = r.h;
   const half = along ? r.hx : r.hz, dist = along ? r.hz : r.hx;
-  const off = dist - WALL_T / 2, wx = r.x + sx * off, wz = r.z + sz * off;
-  const ex = side === r.entry ? { back: true } : r.exits[side];
-  const segs = ex ? [[-half, -DOOR_W / 2], [DOOR_W / 2, half]] : [[-half, half]];
+  const off = dist - WALL_T / 2, wx0 = r.x + sx * off, wz0 = r.z + sz * off;
+  const doors = doorsOn(r, side), segs = [];
+  let cur = -half;
+  for (const d of doors) { segs.push([cur, d.o - DOOR_W / 2]); cur = d.o + DOOR_W / 2; }
+  segs.push([cur, half]);
   for (const [a, b] of segs) {
-    const len = b - a, mid = (a + b) / 2;
-    const px = along ? r.x + mid : wx, pz = along ? wz : r.z + mid;
+    const len = b - a, mid = (a + b) / 2; if (len <= 0.01) continue;
+    const px = along ? r.x + mid : wx0, pz = along ? wz0 : r.z + mid;
     addBox(r, along ? len : WALL_T, H, along ? WALL_T : len, mats.wall, px, H / 2, pz, true);
-    const ix = along ? px : wx - sx * (WALL_T / 2 + .015), iz = along ? wz - sz * (WALL_T / 2 + .015) : pz;
+    const ix = along ? px : wx0 - sx * (WALL_T / 2 + .015), iz = along ? wz0 - sz * (WALL_T / 2 + .015) : pz;
     addBox(r, along ? len : .03, .1, along ? .03 : len, mats.base, ix, .05, iz); // skirting
   }
-  if (!ex) return;
-  addBox(r, along ? DOOR_W : WALL_T, H - DOOR_H, along ? WALL_T : DOOR_W, mats.wall, wx, DOOR_H + (H - DOOR_H) / 2, wz);
-  // vinyl lettering above the opening, facing into the room
-  let ja, en, col = "#3a3a3a";
-  if (ex.back) { const p = r.parent != null ? rooms[r.parent].topic : null; ja = p ? "← " + p.ja : "もどる"; en = p ? p.en : "Back"; }
-  else if (ex.closed) { [ja, en] = ex.label; }
-  else { const ct = rooms[ex.child].topic; if (ex.warp && !visitCount[ct.id + "@" + ex.child]) { ja = "✦ ワープ ✦"; en = "Warp door"; col = "#5a3d8a"; } else if (ex.mystery && !visitCount[ct.id + "@" + ex.child]) { ja = "？ ふしぎな へや"; en = "Mystery room"; col = "#5a3d8a"; } else { ja = ct.ja; en = ct.en; col = shade(ct.c, -0.12); } }
-  const sign = new THREE.Mesh(new THREE.PlaneGeometry(5, 1), own(new THREE.MeshBasicMaterial({ map: letterTex(ja, en, col), transparent: true })));
-  sign.position.set(wx - sx * (WALL_T / 2 + .02), DOOR_H + .75, wz - sz * (WALL_T / 2 + .02));
-  sign.lookAt(sign.position.x - sx, sign.position.y, sign.position.z - sz); r.group.add(sign);
-  if (ex.closed) {
-    const bx = wx - sx * .7, bz = wz - sz * .7;
-    for (const s of [-1, 1]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(.05, .07, 1, 10), mats.brass); p.position.set(along ? bx + s * 1.4 : bx, .5, along ? bz : bz + s * 1.4); r.group.add(p); }
-    const rope = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, 2.8, 6), mats.rope); rope.rotation.z = along ? Math.PI / 2 : 0; rope.rotation.x = along ? 0 : Math.PI / 2; rope.position.set(bx, .85, bz); r.group.add(rope);
-    r.colliders.push({ minX: wx - (along ? DOOR_W / 2 : .8), maxX: wx + (along ? DOOR_W / 2 : .8), minZ: wz - (along ? .8 : DOOR_W / 2), maxZ: wz + (along ? .8 : DOOR_W / 2) });
-    const back = new THREE.Mesh(new THREE.PlaneGeometry(DOOR_W, DOOR_H), mats.glass);
-    back.position.set(wx + sx * .05, DOOR_H / 2, wz + sz * .05); back.lookAt(back.position.x - sx, back.position.y, back.position.z - sz); r.group.add(back);
+  for (const { o, ex } of doors) {
+    const wx = along ? wx0 + o : wx0, wz = along ? wz0 : wz0 + o;
+    addBox(r, along ? DOOR_W : WALL_T, H - DOOR_H, along ? WALL_T : DOOR_W, mats.wall, wx, DOOR_H + (H - DOOR_H) / 2, wz);
+    // vinyl lettering above the opening, facing into the room
+    let ja, en, col = "#3a3a3a";
+    if (ex.back) { const p = r.parent != null ? rooms[r.parent].topic : null; ja = p ? "← " + p.ja : "もどる"; en = p ? p.en : "Back"; }
+    else if (ex.closed) { [ja, en] = ex.label; }
+    else { const ct = rooms[ex.child].topic; if (ex.gate) { ja = (visitCount[ct.id] ? "✓ " : "") + ct.ja; en = ct.en; col = shade(ct.c, -0.12); } else if (ex.warp && !visitCount[ct.id + "@" + ex.child]) { ja = "✦ ワープ ✦"; en = "Warp door"; col = "#5a3d8a"; } else if (ex.mystery && !visitCount[ct.id + "@" + ex.child]) { ja = "？ ふしぎな へや"; en = "Mystery room"; col = "#5a3d8a"; } else { ja = ct.ja; en = ct.en; col = shade(ct.c, -0.12); } }
+    const sign = new THREE.Mesh(new THREE.PlaneGeometry(5, 1), own(new THREE.MeshBasicMaterial({ map: letterTex(ja, en, col), transparent: true })));
+    sign.position.set(wx - sx * (WALL_T / 2 + .02), DOOR_H + .75, wz - sz * (WALL_T / 2 + .02));
+    sign.lookAt(sign.position.x - sx, sign.position.y, sign.position.z - sz); r.group.add(sign);
+    if (ex.gate) gateDressing(r, ex, wx, wz, sx, sz, along);
+    if (ex.closed) {
+      const bx = wx - sx * .7, bz = wz - sz * .7;
+      for (const s of [-1, 1]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(.05, .07, 1, 10), mats.brass); p.position.set(along ? bx + s * 1.4 : bx, .5, along ? bz : bz + s * 1.4); r.group.add(p); }
+      const rope = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, 2.8, 6), mats.rope); rope.rotation.z = along ? Math.PI / 2 : 0; rope.rotation.x = along ? 0 : Math.PI / 2; rope.position.set(bx, .85, bz); r.group.add(rope);
+      r.colliders.push({ minX: wx - (along ? DOOR_W / 2 : .8), maxX: wx + (along ? DOOR_W / 2 : .8), minZ: wz - (along ? .8 : DOOR_W / 2), maxZ: wz + (along ? .8 : DOOR_W / 2) });
+      const back = new THREE.Mesh(new THREE.PlaneGeometry(DOOR_W, DOOR_H), mats.glass);
+      back.position.set(wx + sx * .05, DOOR_H / 2, wz + sz * .05); back.lookAt(back.position.x - sx, back.position.y, back.position.z - sz); r.group.add(back);
+    }
   }
+}
+// coloured door frame + a hanging banner with the wing's picture
+function gateDressing(r, g, wx, wz, sx, sz, along) {
+  const ct = rooms[g.child].topic, fm = own(new THREE.MeshPhongMaterial({ color: ct.c, shininess: 40 }));
+  const fx = wx - sx * (WALL_T / 2 + .06), fz = wz - sz * (WALL_T / 2 + .06), t = .22;
+  for (const s of [-1, 1]) addBox(r, along ? t : .12, DOOR_H + t, along ? .12 : t, fm, along ? fx + s * (DOOR_W / 2 + t / 2) : fx, (DOOR_H + t) / 2, along ? fz : fz + s * (DOOR_W / 2 + t / 2));
+  addBox(r, along ? DOOR_W + t * 2 : .12, t, along ? .12 : DOOR_W + t * 2, fm, fx, DOOR_H + t / 2, fz);
+  if (r.h < 7) return;
+  const bh = r.h - DOOR_H - 1.6, bw = Math.min(3.4, bh * 1.15);
+  const ban = new THREE.Mesh(new THREE.PlaneGeometry(bw, bh), own(new THREE.MeshBasicMaterial({ map: bannerTex(g.icon || ct.icon || ct.list.find(x => x.pic)?.pic, ct.c), transparent: true })));
+  ban.position.set(wx - sx * (WALL_T / 2 + .03), DOOR_H + 1.3 + bh / 2, wz - sz * (WALL_T / 2 + .03));
+  ban.lookAt(ban.position.x - sx, ban.position.y, ban.position.z - sz); r.group.add(ban);
+}
+function bannerTex(pic, c) {
+  return canvasTex(256, 300, (g, w, h) => {
+    g.fillStyle = c; g.beginPath(); g.moveTo(8, 0); g.lineTo(w - 8, 0); g.lineTo(w - 8, h - 40); g.lineTo(w / 2, h - 4); g.lineTo(8, h - 40); g.closePath(); g.fill();
+    g.strokeStyle = "rgba(255,255,255,.55)"; g.lineWidth = 6; g.beginPath(); g.moveTo(22, 14); g.lineTo(w - 22, 14); g.lineTo(w - 22, h - 48); g.lineTo(w / 2, h - 22); g.lineTo(22, h - 48); g.closePath(); g.stroke();
+    g.fillStyle = "rgba(255,255,255,.92)"; g.beginPath(); g.arc(w / 2, 128, 88, 0, Math.PI * 2); g.fill();
+    drawPic(g, pic || "✨", w / 2, 128, 190);
+  });
+}
+function gatePortalTex(ct, pic) {
+  return canvasTex(256, 256, (g, w, h) => {
+    const gr = g.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w * .62);
+    gr.addColorStop(0, "#ffffff"); gr.addColorStop(.45, mix(ct.c, "#ffffff", .55)); gr.addColorStop(1, shade(ct.c, -0.1));
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    g.globalAlpha = .9; drawPic(g, pic || "✨", w / 2, h / 2 - 10, 150); g.globalAlpha = 1;
+  });
 }
 function buildCorridor(r, side, ex) {
   const [dx, dz] = DIRS[side], along = dx !== 0;
-  const x0 = r.x + dx * r.hx, z0 = r.z + dz * r.hz, len = ex.len;
+  const o = ex.o || 0, x0 = r.x + dx * r.hx + (along ? 0 : o), z0 = r.z + dz * r.hz + (along ? o : 0), len = ex.len;
   const cx = x0 + dx * len / 2, cz = z0 + dz * len / 2, H = DOOR_H + .6;
   const fl = new THREE.Mesh(new THREE.PlaneGeometry(along ? len : DOOR_W, along ? DOOR_W : len), mats.floorC);
   fl.rotation.x = -Math.PI / 2; fl.position.set(cx, .003, cz); fl.userData.floor = true; r.group.add(fl); r.floors.push(fl);
@@ -429,19 +517,20 @@ function buildCorridor(r, side, ex) {
   if (ex.warp) {
     addBox(r, along ? .3 : DOOR_W + .6, H, along ? DOOR_W + .6 : .3, mats.wall, x0 + dx * (len + .15), H / 2, z0 + dz * (len + .15), true);
     const c = rooms[ex.child], [ix, iz] = DIRS[c.entry];
-    addPortal(r, x0, z0, side, len, { room: c.i, x: c.x + ix * (c.hx - 2.5), z: c.z + iz * (c.hz - 2.5), dx: -ix, dz: -iz });
+    addPortal(r, x0, z0, side, len, { room: c.i, x: c.x + ix * (c.hx - 2.5), z: c.z + iz * (c.hz - 2.5), dx: -ix, dz: -iz },
+      ex.gate ? own(new THREE.MeshBasicMaterial({ map: gatePortalTex(c.topic, ex.icon) })) : null);
   }
 }
 // slots: wall positions + both faces of a free-standing partition
 function slotsFor(r) {
   const out = [];
   for (const side of ["N", "E", "S", "W"]) {
-    const hasDoor = side === r.entry || (r.exits && r.exits[side]);
+    const ds = doorsOn(r, side), hasDoor = ds.length > 0;
     const along = DIRS[side][0] === 0, L = 2 * (along ? r.hx : r.hz);
     const sp = L <= 16 ? 4.6 : L >= 30 ? 5.4 : 6.4;
     for (let k = -10; k <= 10; k++) {
       const o = k * sp;
-      if (Math.abs(o) > L / 2 - 2.2 || (hasDoor && Math.abs(o) < 3.4)) continue;
+      if (Math.abs(o) > L / 2 - 2.2 || ds.some(d => Math.abs(o - d.o) < 3.4)) continue;
       out.push({ side, o, wall: true, door: !!hasDoor });
     }
   }
@@ -513,21 +602,25 @@ function build(r) {
   for (const s of Object.keys(DIRS)) buildWall(r, s);
   r.portals = [];
   for (const [s, ex] of Object.entries(r.exits)) if (ex.child != null) buildCorridor(r, s, ex);
+  for (const g of r.gates || []) buildCorridor(r, g.side, g);
   if (r.warpFrom) {
     const p = rooms[r.parent], [px, pz] = DIRS[r.warpFrom], [dx, dz] = DIRS[r.entry];
     buildCorridor(r, r.entry, { len: 4, child: r.parent, warp: false, back: true });
     const along = dx !== 0, x0 = r.x + dx * r.hx, z0 = r.z + dz * r.hz;
     addBox(r, along ? .3 : DOOR_W + .6, DOOR_H + .6, along ? DOOR_W + .6 : .3, mats.wall, x0 + dx * 4.15, (DOOR_H + .6) / 2, z0 + dz * 4.15, true);
-    addPortal(r, x0, z0, r.entry, 4, { room: p.i, x: p.x + px * (p.hx - 2.5), z: p.z + pz * (p.hz - 2.5), dx: -px, dz: -pz });
+    const wo = r.warpO || 0;
+    addPortal(r, x0, z0, r.entry, 4, { room: p.i, x: p.x + px * (p.hx - 2.5) + (px === 0 ? wo : 0), z: p.z + pz * (p.hz - 2.5) + (px === 0 ? 0 : wo), dx: -px, dz: -pz },
+      r.warpO != null ? own(new THREE.MeshBasicMaterial({ map: gatePortalTex(p.topic.lobby ? { c: "#c9a24a" } : p.topic, p.topic.lobby ? "🏛️" : p.topic.icon) })) : null);
   }
-  const items = t.lobby
-    ? [...t.list.map(x => ({ ...x, color: "#6b4d2c" })), ...shuffle(Object.values(TOPICS).flatMap(x => x.list)).slice(0, 6)]
-    : [{ text: true, ja: t.ja, en: t.en, fact: t.intro, color: t.c }, ...t.list];
+  // a wing hall shows one highlight from each of its rooms, to tempt you through
+  if (t.hall && !t.lobby && !r.featured) r.featured = shuffle(r.gates.map(g => rand(rooms[g.child].topic.list.filter(x => !x.text)))).filter(Boolean).slice(0, 13);
+  const items = t.lobby ? t.list.map(x => ({ ...x, color: "#6b4d2c" }))
+    : [{ text: true, ja: t.ja, en: t.en, fact: t.intro, color: t.c }, ...t.list, ...(r.featured || [])];
   // intro text goes on a door-free wall centre; then walls; then partition
   const wallSlots = slotsFor(r);
   const centre = wallSlots.find(s => !s.door && s.o === 0) || wallSlots[0];
   let slots = [centre, ...wallSlots.filter(s => s !== centre)];
-  if (t.lobby) { slots = wallSlots.filter(s => !s.door && s.o === 0).concat(wallSlots.filter(s => s.door || s.o !== 0)); }
+  if (t.lobby) { lobbyCentre(r); slots = wallSlots.slice().sort((a, b) => Math.abs(a.o) - Math.abs(b.o) || a.o - b.o); }
   const minDim = Math.min(r.hx, r.hz) * 2, longX = r.hx > r.hz;
   if (t.timeline) {
     // walk-through order: round the room starting beside the entrance
@@ -545,7 +638,7 @@ function build(r) {
   }
   const needPartition = !t.timeline && minDim >= 18 && (items.length > slots.length - 2 || (!t.lobby && items.length > 7));
   if (needPartition) {
-    if (r.layout === "wide") {
+    if (r.layout === "wide" || r.layout === "hall") {
       const p1 = partition(r, longX ? -7.5 : 0, longX ? 0 : -7.5, !longX), p2 = partition(r, longX ? 7.5 : 0, longX ? 0 : 7.5, !longX);
       slots = [slots[0], ...p1.slots, ...p2.slots, ...slots.slice(1)];
       addBench(r, r.x, r.z, longX);
@@ -567,6 +660,36 @@ function build(r) {
     addBox(r, along ? L : .06, .06, along ? .06 : L, mats.black, r.x + (along ? 0 : sx * d), H - .1, r.z + (along ? sz * d : 0));
   }
 }
+// the lobby's centrepiece: a round dais, a ring of wing colours and a signpost
+function lobbyCentre(r) {
+  const cols = (r.gates || []).map(g => rooms[g.child].topic.c);
+  const ring = new THREE.Mesh(new THREE.CircleGeometry(6.2, 64), own(new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(512, 512, (g, w) => {
+    const n = Math.max(1, cols.length), c = w / 2;
+    cols.forEach((col, i) => { g.fillStyle = col; g.beginPath(); g.moveTo(c, c); g.arc(c, c, c - 4, (i / n) * Math.PI * 2, ((i + 1) / n) * Math.PI * 2); g.closePath(); g.fill(); });
+    g.globalCompositeOperation = "destination-out"; g.beginPath(); g.arc(c, c, c * .72, 0, Math.PI * 2); g.fill();
+    g.globalCompositeOperation = "source-over"; g.strokeStyle = "#c9a24a"; g.lineWidth = 6;
+    for (const k of [c - 6, c * .72]) { g.beginPath(); g.arc(c, c, k, 0, Math.PI * 2); g.stroke(); }
+  }) })));
+  ring.rotation.x = -Math.PI / 2; ring.position.set(r.x, .006, r.z); r.group.add(ring);
+  const dais = new THREE.Mesh(new THREE.CylinderGeometry(2.6, 2.75, .3, 48), mats.bench); dais.position.set(r.x, .15, r.z); r.group.add(dais);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(2.68, .05, 8, 64), mats.brass); rim.rotation.x = Math.PI / 2; rim.position.set(r.x, .3, r.z); r.group.add(rim);
+  r.colliders.push({ minX: r.x - 2.5, maxX: r.x + 2.5, minZ: r.z - 2.5, maxZ: r.z + 2.5 });
+  addBox(r, 1.9, 3.4, 1.9, mats.wall, r.x, .3 + 1.7, r.z);
+  const cap = new THREE.Mesh(new THREE.BoxGeometry(2.2, .16, 2.2), mats.brass); cap.position.set(r.x, 3.78, r.z); r.group.add(cap);
+  const face = own(new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(512, 850, (g, w, h) => {
+    g.textAlign = "center"; g.fillStyle = "#6b4d2c";
+    g.font = `bold 84px ${FONT}`; g.fillText("ふしぎ", w / 2, 120); fitFont(g, "はくぶつかん", w - 40, 84); g.fillText("はくぶつかん", w / 2, 220);
+    g.font = `600 44px ${FONT}`; g.fillStyle = "#8a7356"; g.fillText("Museum of All Things", w / 2, 290);
+    g.fillStyle = "#c9a24a"; g.fillRect(70, 335, w - 140, 7);
+    g.fillStyle = "#3a3a3a"; g.font = `bold 70px ${FONT}`; g.fillText("どこから 見る？", w / 2, 450);
+    g.font = `500 48px ${FONT}`; g.fillStyle = "#6a6a6a"; g.fillText("Where shall we start?", w / 2, 525);
+    g.font = `130px ${EMOJI_FONT}`; g.fillText("🚪👀", w / 2, 720);
+  }) }));
+  for (const [nx, nz] of Object.values(DIRS)) {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1.76, 2.92), face);
+    m.position.set(r.x + nx * .96, .3 + 1.7, r.z + nz * .96); m.lookAt(m.position.x + nx, m.position.y, m.position.z + nz); r.group.add(m);
+  }
+}
 function addBench(r, x, z, alongX) {
   addBox(r, alongX ? 2.6 : .75, .42, alongX ? .75 : 2.6, mats.bench, x, .45, z, true);
 }
@@ -581,7 +704,7 @@ function dispose(r) {
 
 // ================= player & streaming =================
 newRoom(LOBBY, 0, 0, null, null);
-const player = { pos: new THREE.Vector3(0, 0, 5.5), yaw: 0, pitch: -0.05, room: 0, target: null };
+const player = { pos: new THREE.Vector3(0, 0, 10), yaw: 0, pitch: -0.05, room: 0, target: null };
 function neighbours(r) {
   const out = [r];
   if (r.parent != null) out.push(rooms[r.parent]);
@@ -664,7 +787,7 @@ document.querySelectorAll("[data-btn]").forEach(b => {
 });
 document.getElementById("fs").addEventListener("click", () => { try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); } catch { } });
 document.getElementById("home").addEventListener("click", () => {
-  closePanel(); player.pos.set(0, 0, 5.5); player.yaw = 0; player.pitch = -0.05; player.target = null; enterRoom(0);
+  closePanel(); player.pos.set(0, 0, 10); player.yaw = 0; player.pitch = -0.05; player.target = null; enterRoom(0);
 });
 
 // ================= seen tracker / HUD =================
@@ -686,7 +809,7 @@ function drawMap() {
     if (!r.seen && !(r.parent != null && rooms[r.parent].seen)) continue;
     const x = cx + (r.x - ox) * S, y = cy + (r.z - oz) * S;
     if (x < -40 || y < -40 || x > W + 40 || y > H + 40) continue;
-    if (r.parent != null) { const p = rooms[r.parent]; mg.strokeStyle = "#c9b48a"; mg.lineWidth = 6; mg.beginPath(); mg.moveTo(cx + (p.x - ox) * S, cy + (p.z - oz) * S); mg.lineTo(x, y); mg.stroke(); }
+    if (r.parent != null && r.warpFrom == null) { const p = rooms[r.parent]; mg.strokeStyle = "#c9b48a"; mg.lineWidth = 6; mg.beginPath(); mg.moveTo(cx + (p.x - ox) * S, cy + (p.z - oz) * S); mg.lineTo(x, y); mg.stroke(); }
   }
   for (const r of rooms) {
     if (!r.seen && !(r.parent != null && rooms[r.parent].seen)) continue;
