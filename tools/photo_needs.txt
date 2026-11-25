@@ -1,2096 +1,620 @@
-PHOTOS STILL NEEDED — museum exhibits
-============================================
-Each line: exhibit (the English name used in the museum) → what to photograph.
-Key used in tools/photo_reject.txt / photo_overrides.json is  room-id|exhibit name.
+MUSEUM PHOTOS STILL NEEDED  (301 photos, 158 rooms)
+Format:  Photo name  -  what the photo should show
+Send photos named like the photo name (any format). Ideas/word exhibits that use a drawn icon are not listed.
 
-Tags:
-  [icon]   an idea, not a thing — a photo won't help; keep the drawn icon
-  [draw]   better drawn in the app (I can make these) than photographed
-  [©]      the artwork/design is still under copyright — a photo of it can't be used
-  [person] the exhibit is about a real person — use the suggested object/place instead
-  Anything showing people: no recognisable faces (crowds far away, hands only, from behind).
+A GUIDE TO YOKAI
+  hyakumonogatari  -  Edo print of a hyakumonogatari candle gathering
 
-Summary: 76 rejected + 1346 without a photo. Of those 1346, about 1186 need a real photo; 129 are better as icons, 9 better drawn, 18 copyrighted, 4 about people.
+A HISTORY OF CLOTHES
+  Western clothes in Japan  -  Rokumeikan-era Western dress (Meiji print)
 
+A HISTORY OF COMMUNICATION
+  smoke signals  -  Smoke rising from a hilltop fire/beacon tower (e.g. a Great Wall beacon tower)
 
-PART 1 — PHOTOS YOU REJECTED (76)
---------------------------------------------
+A HISTORY OF COMPUTERS
+  ENIAC  -  ENIAC (US Army public-domain photo)
 
-[The World of Art]  (art)
-  • sculpture → Same as above: a famous clothed sculpture in a museum setting, or a sculptor carving stone.
+A HISTORY OF MONEY
+  Japan's new banknotes  -  2024 Japanese banknotes
 
-[Art Materials and Techniques]  (art-mediums)
-  • sculpture → A calm, clothed stone or bronze sculpture (e.g. Rodin's The Thinker or a Buddhist statue) — no nude figures.
+A HISTORY OF PICTURE BOOKS
+  the Caldecott Medal  -  Caldecott Medal
+  the hungry caterpillar book  -  a clear photo of the hungry caterpillar book
+  pop-up books  -  A pop-up book open
 
-[Art Movements]  (art-movements)
-  • Baroque → A Baroque building or ceiling interior (e.g. St Peter's Baldachin or the Versailles Hall of Mirrors) — no painted nudes.
+A HISTORY OF SPORT
+  football's first rules  -  Old public-domain photo of 1860s football or a modern football
+  basketball and volleyball  -  Peach basket hoop replica / volleyball
+  Japan's first Olympians  -  Kanakuri Shizō's 1912 photo or Stockholm Olympic Stadium
 
-[Christmas Around the World]  (christmas-world)
-  • Christmas in Japan → A Japanese strawberry shortcake (Christmas cake), or a Tokyo street with Christmas illuminations.
+A HISTORY OF TOYS
+  building bricks  -  Pile of colourful plastic building bricks (no brand logo)
 
-[Climate Zones]  (climate-zones)
-  • dry climate → A wide desert or steppe landscape (e.g. sand dunes in the Sahara or dry grassland in Mongolia).
+A HISTORY OF UNITS
+  shaku and sun  -  An old Japanese kanejaku carpenter's square (shaku/sun)
+  ri  -  A ri-zuka milestone marker along an old highway
 
-[Culture Clubs]  (club-origins-culture)
-  • brass band → Brass instruments laid out together (trumpet, trombone, tuba) — no identifiable students.
-  • choir → Sheet music on a stand or an empty concert stage with risers — avoid close-up faces.
+A HISTORY OF VIDEO GAMES
+  the invader game boom  -  Space Invaders-style arcade cabinet (exterior, no screen art)
 
-[Where Club Sports Came From]  (club-origins-sports)
-  • ekiden → An ekiden relay sash (tasuki) or runners seen from behind/far away on a road course.
-  • judo → A judo gi and belt, or a judo dojo with tatami mats (no close-up faces).
+A HISTORY OF WRITING
+  hiragana and katakana  -  Hiragana and katakana from man'yōgana chart / old manuscript
 
-[A History of Communication]  (communication-history)
-  • smoke signals → Smoke rising from a hilltop fire/beacon tower (e.g. a Great Wall beacon tower).
+A TIMELINE OF ART
+  The Persistence of Memory  -  Dalí's The Persistence of Memory is copyrighted
 
-[Dances of Japan]  (dance-japan)
-  • nihon buyo → A folding fan (sensu) and kimono used in Japanese classical dance, or a dancer far away on stage.
+ACCIDENTAL INVENTIONS
+  sticky notes  -  Yellow sticky notes on a desk (no brand)
+  Play-Doh  -  Modelling clay in bright colours
+  superglue  -  A tube of superglue
 
-[Desert II]  (desert-2)
-  • long-eared jerboa → The long-eared jerboa itself (tiny desert rodent with huge ears) — not a different jerboa species if possible.
+AMAZING HOMES AROUND THE WORLD
+  the floating islands of Lake Titicaca  -  Uros reed islands on Lake Titicaca
+  longhouses of Borneo  -  Borneo longhouse
+  the white houses of Santorini  -  Santorini white houses and blue domes
 
-[Life in Edo]  (edo-life)
-  • public baths → A traditional Japanese sento: tiled bath with Mt Fuji mural, or an ukiyo-e print of an Edo bathhouse (no people bathing).
+ANIMAL BABIES
+  koala joey  -  Koala joey on mother's back
+  dolphin calf  -  Dolphin calf swimming beside mother
+  crocodile hatchlings  -  Crocodile hatchlings in mother's jaws/eggs
 
-[Fast and Slow]  (fast-slow)
-  • sailfish → A sailfish leaping or swimming with its sail raised.
+ANIMAL SUPERPOWERS
+  chameleon tongue  -  A chameleon shooting its tongue at an insect
 
-[Festival Foods of the World]  (festival-food)
-  • Diwali sweets → A tray of Indian sweets (mithai: ladoo, barfi, jalebi) — food only.
+ANIMALS OF JAPAN II
+  Yanbaru long-armed beetle  -  Yanbaru long-armed beetle (museum or field photo)
 
-[Festivals Around the World]  (festivals-world)
-  • Lunar New Year → Red lanterns and decorations in a Chinatown street, or a lion dance from a distance.
+ANIMALS THROUGH THE SEASONS
+  red dragonflies  -  A red dragonfly (akatonbo) on a stalk
+  cranes of Izumi  -  Hooded and white-naped cranes at Izumi, Kagoshima
 
-[Games Around the World]  (games-world)
-  • jump rope → A skipping rope on the ground or children jumping seen from far away (no faces).
+ART MOVEMENTS
+  Surrealism  -  Surrealism works are mostly copyrighted
+  Pop Art  -  Pop Art is copyrighted
 
-[Festivals for Ancestors]  (ghost-festivals)
-  • Obon → A cucumber horse and eggplant cow (shoryo-uma) on an Obon altar, or chochin lanterns.
+ART OF ASIA
+  Along the River During the Qingming Festival  -  Detail of 'Along the River During the Qingming Festival' scroll
 
-[Holidays Around the World]  (holidays-world)
-  • Christmas in Japan → Japanese Christmas cake or Christmas illuminations in a Japanese city.
-  • Lunar New Year → Red envelopes (hongbao) and red lantern decorations.
-  • Thanksgiving → A Thanksgiving table: roast turkey, pumpkin pie, cranberry sauce (food only).
+BE A DETECTIVE
+  Edogawa Ranpo  -  Edogawa Ranpo's house/library (Rikkyo Univ.) — avoid portrait
 
-[Little Helpers and Fairies of the World]  (household-spirits)
-  • menehune → The Alekoko (Menehune) Fishpond on Kauai, Hawaii.
+BIGGEST AND SMALLEST ANIMALS
+  bee hummingbird egg  -  Bee hummingbird egg next to a coin (or the bird on a finger)
 
-[Homes Around the World]  (houses-world)
-  • igloo → A snow igloo in a snowy landscape (a real snow-block igloo, not an igloo-shaped building).
-  • adobe house → An adobe (mud-brick) house, e.g. Taos Pueblo in New Mexico.
+BRAILLE, SIGN LANGUAGE AND ACCESS FOR ALL
+  braille in daily life  -  Braille on an elevator button panel
+  bumps on shampoo bottles  -  Shampoo bottle side ridges (close-up, no brand)
+  audio crossing signals  -  Japanese crossing signal with sound speaker box
+  fingerspelling  -  Fingerspelling hand chart (public diagram) [icon OK]
 
-[Insects]  (insects)
-  • cricket → The insect: a field cricket (not the sport).
+CAMPING AND THE OUTDOORS
+  tents and gers  -  A tent at a campsite and a Mongolian ger
+  cooking rice outdoors  -  Hangō rice cooking over a campfire
+  what to pack  -  A packed backpack with gear laid out
 
-[Inside a Japanese School]  (inside-japanese-school)
-  • the library → A Japanese elementary school library: low shelves, reading tables, no students.
-  • the gym → An empty Japanese school gymnasium with stage at one end and basketball lines.
+CHINDŌGU: UN-USELESS INVENTIONS
+  the selfie stick's ancestor  -  Selfie stick
 
-[Musical Instruments]  (instruments)
-  • shamisen → A shamisen on its own (three-stringed Japanese lute with plectrum).
+CHRISTMAS AROUND THE WORLD
+  a summer Christmas  -  Christmas decorations on an Australian beach
+  Advent calendars  -  Advent calendar with numbered doors
 
-[Japanese Culture]  (japan-traditions)
-  • Bon dance → A yagura tower with red-and-white lanterns at a bon-odori ground, dancers far away.
+CITY ANIMALS
+  tanuki in Tokyo  -  A tanuki in a Tokyo park at night
+  Nagasaki's bent-tail cats  -  A cat with a crooked/bent tail in Nagasaki
 
-[Japan's National Holidays]  (japanese-holidays)
-  • Golden Week → Koinobori carp streamers in the sky (Japan's Golden Week/Children's Day) — not China's holiday.
-  • Sports Day → Japanese undokai scene from far away: field with flags, tug-of-war rope, red/white caps (no faces).
+CLIMATE ZONES
+  subarctic climate  -  Siberian taiga in snow
 
-[Martial Arts of the World]  (martial-arts)
-  • karate → A karate gi and black belt, or Shuri Castle/Okinawa karate dojo sign.
-  • capoeira → A berimbau (the bow-shaped capoeira instrument), or capoeira players far away in a roda.
+CLOTHES
+  cap / hat  -  A cap and a sun hat on a table
 
-[Money Around the World]  (money)
-  • pound → British pound coins and banknotes (the currency, not the weight).
-  • cashless payment → A contactless card or smartphone being tapped on a payment terminal / QR code payment.
+CONTINENTS AND OCEANS
+  Europe  -  Globe/satellite view of Europe
 
-[The Wonder of Mushrooms]  (mushrooms)
-  • the largest living thing → Honey fungus (Armillaria) mushrooms in an Oregon forest — the giant fungus.
+COUNTING AROUND THE WORLD
+  the Maya and zero  -  Maya numerals carved in stone (Dresden Codex page)
 
-[Music Genres of the World]  (music-genres)
-  • salsa → Salsa instruments: congas, timbales and claves (or a dance floor with couples far away).
+COUNTRIES OF NORTHERN EUROPE
+  Norway  -  Norwegian fjord (Geirangerfjord)
 
-[Legendary Creatures]  (mythical-creatures)
-  • mermaid → A family-friendly mermaid: the Little Mermaid statue in Copenhagen or a mermaid shown with long hair covering — no nudity.
-  • baku → An Edo-period carving or drawing of the baku (dream-eating creature), e.g. temple wood carving — not the city of Baku.
+COUNTRIES OF SOUTH ASIA
+  Maldives  -  Maldives atolls from the air
 
-[Exploring Nagasaki City]  (nagasaki-city)
-  • streetcars → A Nagasaki Electric Tramway streetcar (Nagasaki's own trams).
-  • Peace Park → Nagasaki Peace Park: the Peace Statue / fountain (calm view, no other memorial imagery).
+COUNTRIES OF WEST AND CENTRAL ASIA
+  Oman  -  Muscat corniche or Wahiba Sands, Oman
 
-[Festivals of Nagasaki]  (nagasaki-festivals)
-  • Lantern Festival → Nagasaki Lantern Festival: yellow/red lanterns over Minato Park or Chinatown (Shinchi).
+CULTURE CLUBS
+  brass band  -  Brass instruments laid out together (trumpet, trombone, tuba) — no identifiable students
+  choir  -  Sheet music on a stand or an empty concert stage with risers — avoid close-up faces
+  art club  -  Easels, paints and brushes in an art room
+  tea ceremony club  -  Tea ceremony utensils on tatami
 
-[The Olympics]  (olympics)
-  • gold medal → An Olympic gold medal (close-up of a real medal).
-  • judo → Judo at the Olympics: a judo mat/arena or judogi and belt (no close-up faces).
-
-[Masterpieces of France]  (paintings-france)
-  • The Snail → Matisse's paper cut-out 'The Snail' (1953) — ©: Matisse died 1954, still copyrighted outside Japan; consider keeping the icon.
+DANCES AROUND THE WORLD
+  Bon odori  -  A yagura tower and lanterns at a bon-odori ground, dancers far away
+  samba  -  Samba parade costumes in Rio (wide shot)
+  Soran-bushi  -  Soran-bushi dancers in happi coats (far away)
 
-[Masterpieces of the Low Countries]  (paintings-netherlands)
-  • The Milkmaid → Vermeer's painting 'The Milkmaid' (c. 1658), Rijksmuseum — the painting, not a real milkmaid.
-  • View of Delft → Vermeer's 'View of Delft' (1660–61), Mauritshuis — a clean full image of the painting.
-  • Sunflowers → Van Gogh's 'Sunflowers' painting (1888 vase version) — the painting, not real sunflowers.
-  • The Bedroom → Van Gogh's painting 'The Bedroom' (1888) — the painting, not a photo of a bedroom.
+DANCES OF JAPAN
+  nihon buyo  -  A folding fan (sensu) and kimono used in Japanese classical dance, or a dancer far away on stage
+  Soran-bushi  -  Soran-bushi happi coats/dancers far away
+  dance at school  -  School dance: empty gym
 
-[Playground Games Around the World]  (playground-world)
-  • tug of war → A tug-of-war rope on a field, or a team seen from far away (no faces).
-
-[Foods Named After Places]  (regional-dishes)
-  • frankfurter → Frankfurter sausages (Frankfurter Würstchen) — not the Frankfurter Kranz cake.
-
-[School Events]  (school-events)
-  • sports day → Japanese undokai from far away: flags of all nations bunting, field lanes, red/white caps.
-  • music festival → A school stage with music stands and instruments, no performers' faces.
-  • graduation ceremony → Graduation certificate tube and certificate, or a gym set up for sotsugyoshiki with red-white curtains.
-
-[Statues Around the World]  (sculpture-world)
-  • The Little Mermaid → The Little Mermaid bronze statue in Copenhagen harbour (the statue, not the book).
-
-[The World of Spices]  (spices)
-  • black pepper → Black peppercorns and a pepper grinder (spice close-up).
-  • ginger → Fresh ginger root (and sliced ginger).
-  • turmeric → Turmeric root and bright yellow turmeric powder.
-
-[The Science of Spooky Things]  (spooky-science)
-  • St. Elmo's fire → A photo or old engraving of St Elmo's fire glowing on a ship's mast.
-
-[Summer in Japan]  (summer-japan)
-  • Obon → Obon lanterns or a cucumber horse/eggplant cow decoration.
-
-[Tea Around the World]  (tea-world)
-  • yerba mate → A mate gourd with a metal bombilla straw.
-
-[Places in Town]  (town)
-  • police box → A Japanese koban (police box) building — not a British telephone box.
-  • post office → A Japanese post office with the red 〒 sign and red postbox.
-
-[Tropical Fruits]  (tropical-fruits)
-  • mangosteen → Mangosteen fruit cut open showing the white segments.
-  • coconut → Coconuts — whole and cracked open showing white flesh.
-  • papaya → Papaya fruit cut in half showing orange flesh and black seeds.
-
-[Vegetables]  (vegetables)
-  • corn → Ears of corn (sweetcorn) on the cob.
-
-[A History of Video Games]  (video-games-history)
-  • Spacewar! → A PDP-1 computer (the machine Spacewar! ran on) — avoid people.
-  • Pong → An original Pong arcade cabinet.
-  • chiptune music → A sound chip on a circuit board, or an old handheld/computer keyboard (no game characters).
-
-[Dances Around the World]  (world-dance)
-  • Bon odori → A yagura tower and lanterns at a bon-odori ground, dancers far away.
-  • ballet → Ballet pointe shoes, or a ballet stage from far away.
-  • haka → A Māori meeting house (wharenui) or carved pou — haka performers are real people; avoid faces.
-
-[Theatre Around the World]  (world-theatre)
-  • ancient Greek theatre → The Theatre of Epidaurus in Greece (empty stone seats).
-  • musicals → A theatre stage with curtain and lights (e.g. a Broadway or West End theatre interior/exterior).
-
-[A Guide to Yokai]  (yokai)
-  • baku → An Edo-period picture or temple carving of the baku dream-eater — not the city of Baku.
-
-
-PART 2 — EXHIBITS WITH NO PHOTO YET (1346)
---------------------------------------------
-
-[The Deep Sea]  (deepsea)
-  • anglerfish → A deep-sea anglerfish with its glowing lure (museum specimen or deep-sea photo).
-  • Mariana Trench → Map/diagram of the Mariana Trench, or the Trieste bathyscaphe that reached the bottom.
-
-[Animal Records]  (animal-records)
-  • biggest: blue whale → A blue whale surfacing (aerial view shows its size best).
-  • fastest on land: cheetah → A cheetah running at full speed.
-  • fastest in the sky: peregrine falcon → A peregrine falcon in a dive or perched.
-  • tallest: giraffe → A giraffe stretching to eat from a tall tree.
-  • heaviest on land: African elephant → An African elephant on the savanna.
-  • longest-lived: Greenland shark → A Greenland shark under Arctic ice.
-  • smallest mammal: bumblebee bat → A bumblebee bat (Kitti's hog-nosed bat) — tiny bat on a fingertip.
-
-[Amazing Plants]  (plants)
-  • Yakusugi cedar → Jomon Sugi or another giant Yakusugi cedar on Yakushima.
-
-[Weather]  (weather)
-  • sunny → Clear blue sky with sun over a town or field.
-  • snowy → Snow falling on a street or snowy landscape.
-  • thunder → Lightning bolt over a city at night.
-  • typhoon → Satellite image of a typhoon over Japan (spiral of clouds).
-  • windy → Trees bending in strong wind / a windsock straight out.
-
-[The Solar System]  (solar-system)
-  • Mars → NASA image of Mars (red planet, full disk).
-  • Jupiter → NASA image of Jupiter showing the Great Red Spot.
-  • Saturn → NASA image of Saturn with rings.
-  • Uranus → NASA image of Uranus (pale blue-green).
-  • Neptune → NASA Voyager image of Neptune (deep blue).
-
-[The Moon and Stars]  (moon-stars)
-  • the North Star → Star-trail photo around Polaris (the North Star).
-
-[Space Exploration]  (space-explore)
-  • Hayabusa → The Hayabusa/Hayabusa2 spacecraft (JAXA model or illustration).
-  • astronaut → An astronaut in a spacesuit on a spacewalk (NASA photo, face hidden by visor).
-
-[Regions of the World]  (regions)
-  • Asia → Satellite/globe image of Asia.
-  • Europe → Satellite/globe image of Europe.
-  • Africa → Satellite/globe image of Africa.
-  • North America → Satellite/globe image of North America.
-  • South America → Satellite/globe image of South America.
-  • Oceania → Satellite/globe image of Oceania/Australia.
-  • Antarctica → Satellite image or landscape of Antarctica's ice sheet.
-
-[Countries in Asia]  (asia)
-  • China → Great Wall of China.
-  • South Korea → Gyeongbokgung Palace, Seoul.
-  • India → Taj Mahal, India.
-  • Thailand → Wat Arun or a Thai temple in Bangkok.
-  • Vietnam → Ha Long Bay, Vietnam.
-  • the Philippines → Chocolate Hills or Banaue rice terraces, Philippines.
-  • Indonesia → Borobudur or rice terraces of Bali, Indonesia.
-  • Mongolia → Mongolian gers on the steppe.
-
-[Countries in Europe]  (europe)
-  • the UK → Big Ben and the Houses of Parliament, London.
-  • France → Eiffel Tower, Paris.
-  • Italy → Colosseum or Venice canals, Italy.
-  • Germany → Neuschwanstein Castle or Brandenburg Gate, Germany.
-  • Spain → Sagrada Família or Alhambra, Spain.
-  • Finland → Finnish lakes and forest, or the Northern Lights in Lapland.
-  • Greece → Parthenon, Athens or Santorini, Greece.
-  • the Netherlands → Windmills and tulip fields, the Netherlands.
-
-[Countries in Africa]  (africa)
-  • Egypt → Pyramids of Giza, Egypt.
-  • Kenya → Savanna with Mt Kilimanjaro/wildlife in Kenya.
-  • Tanzania → Mt Kilimanjaro or Serengeti, Tanzania.
-  • South Africa → Table Mountain, Cape Town, South Africa.
-  • Morocco → Chefchaouen blue town or Marrakech market, Morocco.
-  • Ghana → Cape Coast Castle or kente cloth, Ghana.
-  • Madagascar → Avenue of the Baobabs, Madagascar.
-
-[Countries in the Americas]  (americas)
-  • the USA → Statue of Liberty or Grand Canyon, USA.
-  • Canada → Niagara Falls or Rocky Mountains, Canada.
-  • Mexico → Chichén Itzá pyramid, Mexico.
-  • Brazil → Iguazu Falls or Rio de Janeiro, Brazil.
-  • Peru → Machu Picchu, Peru.
-  • Argentina → Perito Moreno Glacier or Iguazu, Argentina.
-
-[Countries in Oceania]  (oceania)
-  • Australia → Sydney Opera House or Uluru, Australia.
-  • New Zealand → Milford Sound, New Zealand.
-  • Fiji → Fijian beach with palm trees.
-  • Papua New Guinea → Highlands landscape of Papua New Guinea.
-
-[World Landmarks]  (landmarks)
-  • Colosseum → The Colosseum in Rome (exterior).
-
-[Earth Records]  (geo-records)
-  • Pacific Ocean → Satellite image of the Pacific Ocean (globe centred on the Pacific).
-  • Greenland → Greenland's ice sheet / icebergs.
-
-[Writing Systems]  (writing)
-  • hiragana → Hiragana chart (あいうえお table).
-  • alphabet → The English alphabet A–Z (printed letters, e.g. alphabet blocks).
-  • kanji → Kanji calligraphy on paper.
-  • Hangul → Korean Hangul text (e.g. a Seoul street sign).
-  • Arabic script → Arabic calligraphy (e.g. tilework).
-  • Cyrillic → Cyrillic text (e.g. a Moscow metro sign).
-  • Devanagari → Devanagari script (e.g. a Hindi sign).
-  • Thai script → Thai script (e.g. a Bangkok sign).
-
-[Around Japan]  (japan)
-  • Hokkaido → Hokkaido landscape (Biei flower fields or Sapporo snow).
-  • Tohoku → Tohoku: Matsushima bay or a Tohoku festival float.
-  • Kanto → Kanto: Tokyo skyline with Mt Fuji.
-  • Chubu → Chubu: Japanese Alps / Kamikochi.
-  • Kinki → Kinki: Kyoto temple (Kiyomizu-dera) or Osaka Castle.
-  • Chugoku → Chugoku: Itsukushima floating torii.
-  • Shikoku → Shikoku: Naruto whirlpools or Iya valley.
-  • Okinawa → Okinawa: blue sea beach or Shuri Castle.
-
-[Secrets of Nagasaki]  (nagasaki)
-  • Peiron boat race → Peiron dragon-style boats racing in Nagasaki harbour.
-  • night view from Mt. Inasa → Night view of Nagasaki from Mt Inasa.
-
-[Japanese Food]  (japanese-food)
-  • curry and rice → Japanese curry rice on a plate.
-
-[Japanese Culture]  (japan-traditions)
-  • tea ceremony → Matcha bowl, chasen whisk and tea utensils (tea ceremony set).
-
-[Made in Japan]  (japan-inventions)
-  • emoji → [icon] Emoji are a picture already — keep the drawn icon, or a photo of an early i-mode phone.
-  • QR code → A QR code sign/sticker (generic, no company logo).
-  • Shinkansen → A Shinkansen (e.g. N700 or E5) at a station.
-
-[Festivals Around the World]  (festivals-world)
-  • Holi → Holi: coloured powder in the air / piles of powder (no close-up faces).
-  • La Tomatina → La Tomatina: tomato-covered street in Buñol from a distance.
-
-[Fruits]  (fruits)
-  • banana → A bunch of bananas.
-
-[Vegetables]  (vegetables)
-  • green pepper → Green bell peppers (piman).
-
-[The Olympics]  (olympics)
-  • the Olympic rings → The Olympic rings (e.g. on a flag or monument).
-  • Paralympics → Paralympic symbol (Agitos) or wheelchair basketball from a distance.
-
-[Winter Sports]  (winter-sports)
-  • skiing → A skier on a slope (far away / helmet and goggles).
-  • skating → Ice skates on an ice rink.
-
-[Vehicles]  (vehicles)
-  • bullet train → A Shinkansen bullet train passing by.
-
-[Musical Instruments]  (instruments)
-  • guitar → An acoustic guitar.
-  • violin → A violin and bow.
-
-[School Events]  (school-events)
-  • entrance ceremony → Japanese school entrance ceremony set-up: gym with red-white curtains and flower stands, or a randoseru under cherry blossoms.
-  • school excursion → A school trip coach bus at Kyoto/Nara (no student faces).
-
-[Inventions That Changed the World]  (inventions)
-  • printing press → A replica Gutenberg printing press.
-
-[Places in Town]  (town)
-  • station → A Japanese train station (exterior with signs).
-
-[Stationery]  (stationery)
-  • eraser → A white eraser (keshigomu) with eraser crumbs.
-
-[Clothes]  (clothes)
-  • cap / hat → A cap and a sun hat on a table.
-
-[The Human Body]  (human-body)
-  • heart → Anatomical model or diagram of the human heart.
-  • nose → Diagram of the nose / a child's nose drawing [icon may be better].
-  • muscles → Anatomy model showing muscles.
-  • teeth → A dental model of teeth.
-
-[How the Earth Works]  (earth-science)
-  • inside the Earth → Cutaway diagram of Earth's layers (crust, mantle, core).
-  • earthquake → A seismograph reading or earthquake-cracked road (no injury).
-  • fossil → An ammonite or trilobite fossil.
-  • tectonic plates → World map of tectonic plates.
-
-[Rocks and Gems]  (rocks-gems)
-  • sapphire → A blue sapphire gemstone (cut or rough).
-
-[Fun Science]  (science-fun)
-  • prism → A glass prism splitting white light into a rainbow.
-  • static electricity → A balloon rubbed on hair making it stand up / balloon sticking to a wall (no face).
-
-[Money Around the World]  (money)
-  • dollar → US dollar bills and coins.
-  • euro → Euro banknotes and coins.
-  • won → South Korean won banknotes.
-  • new banknotes → Japan's 2024 banknotes (10,000 / 5,000 / 1,000 yen).
-
-[Games Around the World]  (games-world)
-  • go → A Go board with black and white stones.
-  • rock-paper-scissors → Hands showing rock, paper and scissors.
-
-[Japanese Folk Tales]  (toys-tales)
-  • Kintaro → Kintaro doll / Gogatsu ningyo of Kintaro with a bear.
-  • Kasa Jizo → Jizo statues wearing straw hats (kasa) in snow.
-  • The Crab and the Monkey → [icon] Picture-book style — a persimmon tree and rice ball (still life) or keep icon.
-
-[Robots]  (robots)
-  • drone → A drone flying over a field.
-  • artificial intelligence → [icon] AI is abstract — keep the icon, or a server room / robot with a screen.
-
-[Protect the Earth]  (environment)
-  • Reduce, Reuse, Recycle → Recycling bins sorted by type in Japan.
-  • plastic in the ocean → Plastic litter on a beach (no wildlife harmed images).
-  • protecting forests → A green forest canopy / tree planting saplings.
-  • eco bag → A reusable eco bag with groceries.
-  • save water → A dripping tap / water-saving tap aerator.
-
-[Islands of Japan]  (japan-islands)
-  • Honshu → Satellite or landscape image of Honshu (e.g. Mt Fuji region from the air).
-  • islands of Nagasaki → Kujukushima islands, Sasebo.
-  • Goto Islands → Goto Islands coastline (e.g. Takahama beach).
-  • Sado Island → Sado Island tarai-bune tub boats or coast.
-  • Ogasawara Islands → Ogasawara Islands (Chichijima) blue sea.
-  • Hokkaido → Hokkaido from the air or Lake Mashu.
-
-[Aquarium Favorites]  (aquarium)
-  • bluefin tuna → A bluefin tuna swimming (aquarium photo).
-  • starfish → A starfish on rocks or sand.
-  • school of sardines → A swirling school of sardines.
-
-[Dog Breeds]  (dog-breeds)
-  • Akita → An Akita dog.
-
-[The World of Art]  (art)
-  • Arita ware → Arita porcelain plate (blue-and-white or Kakiemon style).
-  • stained glass → Stained glass window (e.g. Sainte-Chapelle or Ōura Church).
-
-[Food and Health]  (foods-health)
-  • red foods → Red foods: tomatoes, strawberries, red peppers arranged together.
-  • yellow foods → Yellow foods: bananas, corn, lemons, eggs.
-  • green foods → Green foods: broccoli, spinach, peas, kiwi.
-  • water → A glass of water.
-  • chew well → [icon] Chewing is hard to photograph — keep icon or a bowl of crunchy vegetables.
-
-[A Timeline of Art]  (art-timeline)
-  • The Tale of Genji scrolls → Scroll section of the Genji Monogatari Emaki (12th c., public domain).
-  • Wind God and Thunder God → Tawaraya Sotatsu's Wind God and Thunder God screens.
-  • Three Musicians → [©] Picasso's Three Musicians is copyrighted — keep icon.
-  • The Persistence of Memory → [©] Dalí's The Persistence of Memory is copyrighted — keep icon.
-  • Campbell's Soup Cans → [©] Warhol's Campbell's Soup Cans is copyrighted — keep icon.
-
-[Art Movements]  (art-movements)
-  • Cubism → A Cubist painting by Juan Gris (public domain — he died in 1927); Picasso and Braque are still copyrighted.
-  • Surrealism → [©] Surrealism works are mostly copyrighted — keep icon.
-  • Pop Art → [©] Pop Art is copyrighted — keep icon.
-
-[Japanese Art Through Time]  (art-japan-history)
-  • Wind God and Thunder God → Sotatsu's Wind God and Thunder God screens.
-  • Jakuchu's roosters → One of Ito Jakuchu's rooster paintings (Doshoku Sai-e).
-  • Thirty-six Views of Mt. Fuji → Hokusai's 'Fine Wind, Clear Morning' (Red Fuji) or 'The Great Wave'.
-  • Fifty-three Stations of the Tokaido → A Hiroshige print from the Fifty-three Stations (e.g. Nihonbashi).
-  • Kusama's polka dots → [©] Kusama's art is copyrighted — photo of her pumpkin sculpture outdoors may be OK (Naoshima), otherwise keep icon.
-
-[Crafts Around the World]  (art-world-crafts)
-  • Aboriginal dot painting → Aboriginal dot painting (check licence; or keep icon).
-  • Maori carving → Māori wood carving on a meeting house.
-  • Alhambra tiles → Alhambra geometric tiles (zellige).
-  • Delft blue pottery → Delft blue pottery plate/tiles.
-  • Inuit carving → Inuit soapstone carving.
-
-[Art Materials and Techniques]  (art-mediums)
-  • ceramics → Ceramics: a potter's wheel with clay, or a group of pottery bowls.
-
-[Instruments of the Orchestra]  (orchestra)
-  • violin → A violin.
-  • cello → A cello.
-  • harp → A concert harp.
-  • clarinet → A clarinet.
-  • bassoon → A bassoon.
-  • French horn → A French horn.
-  • tuba → A tuba.
-  • timpani → Timpani drums.
-  • conductor → Conductor's baton and score on a podium (no face).
-
-[Instruments of the World]  (world-instruments)
-  • sanshin → An Okinawan sanshin.
-  • ukulele → A ukulele.
-
-[Dances Around the World]  (world-dance)
-  • flamenco → Flamenco dress and castanets, or dancer far away.
-  • samba → Samba parade costumes in Rio (wide shot).
-  • tango → Tango shoes or couple dancing in Buenos Aires (far away).
-  • Awa odori → Awa Odori dancers in straw hats (far away).
-  • Soran-bushi → Soran-bushi dancers in happi coats (far away).
-
-[Masterpieces of France]  (paintings-france)
-  • Monet's Japanese bridge → Monet's 'Bridge over a Pond of Water Lilies' (1899).
-  • The Dance Class → Degas's 'The Dance Class' (1874).
-  • Still Life with Apples → Cézanne's 'Still Life with Apples'.
-  • A Sunday on La Grande Jatte → Seurat's 'A Sunday on La Grande Jatte' (1884).
-  • The Gleaners → Millet's 'The Gleaners' (1857).
-
-[Masterpieces of the Low Countries]  (paintings-netherlands)
-  • The Night Watch → Rembrandt's 'The Night Watch' (1642).
-  • Rembrandt's self-portraits → A Rembrandt self-portrait (e.g. 1659).
-  • Almond Blossom → Van Gogh's 'Almond Blossom' (1890).
-  • Composition with Red, Yellow and Blue → Mondrian's 'Composition with Red, Yellow and Blue' (public domain since 2015).
-  • Escher's impossible drawings → [©] Escher is copyrighted until 2042 — keep icon (or Penrose-triangle drawing).
-
-[Statues Around the World]  (sculpture-world)
-  • Tower of the Sun → Taro Okamoto's Tower of the Sun, Osaka Expo Park (© sculpture; photo of public artwork may be restricted — check).
-  • Cloud Gate → [©] Cloud Gate (Chicago) photos are restricted — keep icon.
-  • Hachiko statue → The Hachikō statue at Shibuya Station.
-
-[Exploring Nagasaki City]  (nagasaki-city)
-  • Megane-bashi → Megane-bashi stone bridge over the Nakashima River.
-  • Dutch Slope → Oranda-zaka (Dutch Slope) stone street.
-  • Penguin Aquarium → Nagasaki Penguin Aquarium (penguins).
-  • Nagasaki Port → Nagasaki Port with ships and Megami Bridge.
-
-[Tastes of Nagasaki]  (nagasaki-food)
-  • sara-udon → Nagasaki sara-udon (crispy noodles with topping).
-  • kakuni-manju → Kakuni-manju (braised pork bun).
-  • chirin-chirin ice → Chirin-chirin ice (rose-shaped sherbet cone).
-  • Nagasaki milkshake → Nagasaki milkshake (spoonable shaved-ice milkshake).
-  • Sasebo burger → Sasebo burger.
-  • Goto udon → Goto udon noodles.
-
-[Animal Superpowers]  (animal-superpowers)
-  • chameleon tongue → A chameleon shooting its tongue at an insect.
-  • dolphin sleep → Dolphins resting at the surface (sleeping with one eye open).
-  • tardigrade → Microscope image of a tardigrade.
-
-[How Animals Move]  (how-animals-move)
-  • how fish swim → A fish swimming side-on showing tail movement.
-  • how snakes move → A snake moving in S-curves on sand (sidewinding tracks are great).
-  • how birds fly → A bird in flight with wings spread.
-  • how insects walk → Close-up of an insect (ant or beetle) walking.
-  • how frogs jump → A frog mid-jump.
-  • how jellyfish swim → A jellyfish pulsing through water.
-  • how penguins swim → A penguin 'flying' underwater.
-  • how horses gallop → A galloping horse (Muybridge's 1878 photo sequence is public domain).
-  • how cats land → A cat mid-fall twisting to land (or Marey's 1894 falling-cat photos, public domain).
-
-[What Robots Can Do]  (robots-can)
-  • factory robot arm → An industrial robot arm in a car factory.
-  • robot pet → A robot pet (robot dog/seal) — generic, no brand logo.
-  • what robots can't do → [icon] An idea, not a thing — keep the icon.
-
-[Junior High School Life]  (jhs-life-japan)
-  • sailor uniform → A sailor-style school uniform on a hanger (no student).
-  • subject teachers → [icon] Keep icon (a teacher with different subjects is hard to photograph without faces).
-  • club activities → School club equipment: a tennis racket, brass instrument, art easel together.
-  • senpai and kohai → [icon] Keep icon (a relationship, not a thing).
-  • term tests → Test paper and pencils on a desk (no names).
-  • chorus contest → A school stage with choir risers (no faces).
-
-[Where Club Sports Came From]  (club-origins-sports)
-  • soft tennis → A soft tennis racket and the soft rubber ball.
-
-[Culture Clubs]  (club-origins-culture)
-  • art club → Easels, paints and brushes in an art room.
-  • science club → Beakers and a microscope in a science room.
-  • computer club → Computers in a school computer room.
-  • broadcasting club → A school broadcasting room desk with microphone.
-  • tea ceremony club → Tea ceremony utensils on tatami.
-  • calligraphy club → Calligraphy brush, ink stone and paper.
-  • robotics club → A small classroom robot kit.
-  • shogi and go club → A shogi board and a go board side by side.
-
-[Summer in Japan]  (summer-japan)
-  • summer festival → Night summer festival with yatai stalls and lanterns (wide shot).
-  • radio exercises → Radio exercise attendance card (rajio taiso card) or a park at dawn.
-  • summer research project → [icon] Keep icon — or a summer research display board (no names).
-  • watermelon splitting → A watermelon, stick and blindfold on a beach (suikawari).
-
-[Seaside Science]  (seaside-science)
-  • tides → The same beach at high tide and low tide (comparison photo).
-  • why the sea is salty → Sea salt crystals from a salt pan.
-  • sea turtle nesting → Loggerhead turtle hatchlings heading to the sea.
-
-[Camping and the Outdoors]  (camping-outdoors)
-  • tents and gers → A tent at a campsite and a Mongolian ger.
-  • campfire science → A campfire with logs (fire triangle).
-  • the Summer Triangle → The Summer Triangle stars (Vega, Altair, Deneb) photo.
-  • knots → Common camping knots tied in rope (bowline).
-  • cooking rice outdoors → Hangō rice cooking over a campfire.
-  • what to pack → A packed backpack with gear laid out.
-
-[School Trip Destinations]  (school-trips-japan)
-  • the first school trip → [icon] The first school trip (1886) — keep icon, or a Meiji-era public-domain photo.
-  • Kyoto → Kiyomizu-dera, Kyoto.
-  • Nara → Tōdai-ji or Nara deer park.
-  • Nikko → Nikkō Tōshō-gū (Yōmeimon gate).
-  • Tokyo → Tokyo Skytree or Asakusa Kaminarimon.
-  • Okinawa → Okinawa Churaumi Aquarium or Shuri Castle.
-  • Hokkaido → Hakodate night view or Sapporo.
-  • Kumamoto and Aso → Mt Aso caldera or Kumamoto Castle.
-  • Nagasaki → Glover Garden or Nagasaki Peace Park.
-  • Kagoshima → Sakurajima volcano, Kagoshima.
-
-[Animals of Japan II]  (japan-animals-2)
-  • raccoon dog → A Japanese raccoon dog (tanuki).
-  • Ezo brown bear → An Ezo brown bear in Shiretoko.
-  • Japanese flying squirrel → A Japanese dwarf flying squirrel (Ezo momonga) or Japanese giant flying squirrel.
-  • Yanbaru long-armed beetle → Yanbaru long-armed beetle (museum or field photo).
-
-[Rainforest II]  (rainforest-2)
-  • red-eyed tree frog → A red-eyed tree frog on a leaf.
-  • blue morpho → A blue morpho butterfly with wings open.
-  • pitcher plant → A pitcher plant (Nepenthes) in the rainforest.
-
-[Desert II]  (desert-2)
-  • camel's hump → A dromedary camel showing its hump.
-  • kangaroo rat → A kangaroo rat in the desert.
-  • Namib fog-basking beetle → Namib fog-basking beetle with head down on a dune.
-
-[Mountain Animals]  (mountain-animals)
-  • Ezo pika → An Ezo pika (Hokkaido) on rocks.
-  • Japanese rock ptarmigan → A Japanese rock ptarmigan (raichō) in white or summer plumage.
-  • Himalayan jumping spider → A Himalayan jumping spider (or a jumping spider close-up).
-
-[Wetlands and Mangroves]  (wetlands-mangroves)
-  • the Ramsar Convention → [icon] A treaty — use a Ramsar wetland photo (e.g. Kushiro wetland) or keep icon.
-  • Kushiro Marsh → Kushiro Marsh with red-crowned cranes.
-
-[City Animals]  (city-animals)
-  • the deer of Nara → Deer in Nara Park near a temple.
-  • tanuki in Tokyo → A tanuki in a Tokyo park at night.
-  • foxes in London → A red fox on a London street.
-  • raccoons in Toronto → A raccoon in Toronto (by a green bin).
-  • monkeys of Lopburi → Monkeys at Prang Sam Yot temple, Lopburi.
-  • Nagasaki's bent-tail cats → A cat with a crooked/bent tail in Nagasaki.
-  • peregrines on skyscrapers → A peregrine falcon on a skyscraper ledge.
-
-[Cave Life]  (cave-deep-earth)
-  • olm → An olm (cave salamander) in water.
-  • glowworms → Waitomo glowworms on a cave ceiling.
-  • Akiyoshi-do Cave → Akiyoshi-dō cave (Hyakumaizara rimstone pools).
-
-[Why We Have Seasons]  (why-seasons)
-  • Earth's tilt → Diagram of Earth's tilted axis around the Sun.
-  • the winter solstice → Winter solstice sunrise (or Stonehenge solstice).
-  • the equinoxes → Diagram/photo of day and night equal at the equinox.
-  • day length in Japan → [icon] Chart of day length in Japan — keep icon.
-  • midnight sun and polar night → Midnight sun over the Arctic sea (multi-exposure).
-  • no seasons at the equator → Equatorial rainforest (e.g. Singapore) or equator monument in Ecuador.
-  • wet and dry seasons → Monsoon rain over rice fields vs. dry season land.
-  • opposite seasons → Christmas on an Australian beach (no faces).
-  • summer on Uranus → Voyager image of Uranus showing its sideways tilt.
-
-[Japan's 72 Micro-Seasons]  (seasons-72)
-  • Keichitsu → Insects coming out / a frog emerging in early spring (Keichitsu).
-  • Shunbun → Spring equinox: equal day — cherry/plum blossoms.
-  • Seimei → Seimei: fresh green spring landscape, swallows.
-  • Boshu → Boshu: rice planting in a paddy.
-  • Geshi → Geshi: hydrangeas or long summer evening.
-  • Shubun → Shubun: red spider lilies (higanbana).
-  • Ritto → Ritto: autumn leaves turning.
-  • Toji → Toji: yuzu bath (yuzu floating in a bathtub).
-
-[Foods in Season]  (shun-food)
-  • what shun means → Seasonal produce at a Japanese market labelled by season.
-  • mikan oranges → Mikan oranges in a bowl / on a kotatsu.
-
-[Animals Through the Seasons]  (animals-through-seasons)
-  • swallows in spring → A swallow at its nest under eaves.
-  • frogs in the rainy season → A tree frog on a leaf in the rain.
-  • red dragonflies → A red dragonfly (akatonbo) on a stalk.
-  • cranes of Izumi → Hooded and white-naped cranes at Izumi, Kagoshima.
-  • swans in winter → Whooper swans on a winter lake.
-  • bears hibernating → A sleeping bear den (illustration) or bear in snow.
-  • stoats turning white → A stoat (ermine) in white winter coat.
-
-[A History of Home Machines]  (home-objects-history)
-  • andon lamp → An Edo-period andon paper lamp.
-  • electric rice cooker → An early electric rice cooker (1955 model in a museum).
-  • warm-water toilet seat → A Japanese warm-water bidet toilet seat control panel.
-
-[Secrets of the Japanese Home]  (japanese-home)
-  • shoji and fusuma → Shoji and fusuma sliding doors in a tatami room.
-  • Japanese bath → A Japanese bathroom: deep tub and washing area.
-  • LDK → Floor plan drawing of a 3LDK apartment.
-  • earthquake-proof homes → Earthquake-proof building base isolators (rubber bearings).
-
-[How Your Home Works]  (how-home-works)
-  • where waste water goes → A sewage treatment plant from above.
-  • how a fridge works → Inside of a refrigerator / diagram of the cooling cycle.
-  • how electricity arrives → Power lines and a pole transformer.
-  • gas smell → [icon] Gas smell can't be photographed — keep icon (or a gas meter).
-  • double-glazed windows → Cross-section of a double-glazed window.
-  • how locks work → Cutaway of a pin-tumbler lock.
-  • how a toilet flushes → Cutaway diagram of a toilet cistern.
-
-[Inside a Japanese School]  (inside-japanese-school)
-  • shoe lockers and indoor shoes → Rows of shoe lockers (getabako) with indoor shoes.
-  • the nurse's office → A school nurse's office: bed, first-aid shelf (empty).
-  • the science room → A school science room with lab tables.
-  • the music room → A school music room with piano and xylophones.
-  • the school pool → An outdoor school pool (empty).
-  • school animals and garden → School rabbit hutch or school vegetable garden.
-  • the broadcasting room → School broadcasting room equipment.
-  • the teachers' room → Teachers' room desks (empty, no documents visible).
-
-[Libraries of the World]  (libraries-world)
-  • Stuttgart City Library → Stuttgart City Library interior (white cube atrium).
-  • camel library → Kenya's camel mobile library carrying book boxes.
-  • donkey library → Colombia's 'Biblioburro' donkey library (donkeys with book bags).
-  • boat library → A boat library (e.g. Epos book boat in Norway).
-  • Little Free Library → A Little Free Library box in front of a house.
-
-[Biggest and Smallest Animals]  (big-small-animals)
-  • bee hummingbird egg → Bee hummingbird egg next to a coin (or the bird on a finger).
-  • Paedocypris → Paedocypris, the tiny fish (scientific photo).
-  • Paedophryne amauensis → Paedophryne amauensis frog on a dime.
-
-[Fast and Slow]  (fast-slow)
-  • Shinkansen → A Shinkansen at speed.
-  • light and sound → [icon] Light vs sound — use a lightning photo or keep icon.
-
-[Hot and Cold]  (hot-cold)
-  • absolute zero → [icon] Absolute zero is an idea — keep icon (or a liquid-helium lab).
-  • Vostok Station → Vostok Station, Antarctica.
-  • Japan's hottest day → A thermometer showing 41°C on a hot Japanese street.
-  • Japan's coldest day → Rime ice / frozen landscape of Asahikawa, Hokkaido.
-  • Uranus → Voyager image of Uranus.
-  • body temperature → A digital body thermometer.
-
-[Heavy and Light]  (heavy-light)
-  • one-yen coin → A 1-yen coin floating on water.
-  • the weight of a cloud → A big cumulus cloud.
-  • the weight of the Earth → Blue Marble photo of the Earth.
-  • steel ships → A large steel cargo ship.
-
-[Old and New]  (old-new)
-  • the Kojiki → A page of an old Kojiki manuscript (public domain).
-  • nihonium → Periodic table showing nihonium (Nh, 113).
-
-[Long, Short and Tall]  (long-short-tall)
-  • a giraffe's neck → A giraffe reaching up with its long neck.
-  • the shortest flight → Loganair plane on the Westray–Papa Westray route (Orkney).
-  • the longest place name → The long Welsh village name sign (Llanfair...gogogoch) at the station.
-  • the shortest place name → The sign for the town of Å in Norway.
-
-[Loud and Quiet]  (loud-quiet)
-  • decibels → A decibel meter / sound level chart [icon OK].
-  • blue whale call → A blue whale (sound comes from it).
-  • bat calls → A bat in flight at night.
-  • the quietest room → Anechoic chamber with foam wedges.
-  • owls and the Shinkansen → Shinkansen pantograph (owl-feather design) or an owl in flight.
-  • quiet snowy days → Quiet snowy village at night.
-
-[Countries of Southeast Asia]  (southeast-asia)
-  • Cambodia → Angkor Wat, Cambodia.
-  • Laos → Luang Prabang temples, Laos.
-  • Myanmar → Bagan temples, Myanmar (landscape only).
-  • Malaysia → Petronas Towers, Kuala Lumpur, Malaysia.
-  • Singapore → Marina Bay / Gardens by the Bay, Singapore.
-  • Brunei → Omar Ali Saifuddien Mosque, Brunei.
-  • Timor-Leste → Timor-Leste coast (Cristo Rei hill view).
-
-[Countries of South Asia]  (south-asia)
-  • Nepal → Himalayas / Kathmandu stupa, Nepal.
-  • Bhutan → Paro Taktsang (Tiger's Nest), Bhutan.
-  • Sri Lanka → Sigiriya rock or tea fields, Sri Lanka.
-  • Bangladesh → Sundarbans mangroves, Bangladesh.
-  • Maldives → Maldives atolls from the air.
-  • Pakistan → Badshahi Mosque or K2, Pakistan.
-
-[Countries of West and Central Asia]  (west-asia)
-  • Türkiye → Cappadocia balloons or Istanbul's Blue Mosque, Türkiye.
-  • the UAE → Burj Khalifa skyline, Dubai (UAE).
-  • Saudi Arabia → Desert dunes or AlUla rock formations, Saudi Arabia.
-  • Oman → Muscat corniche or Wahiba Sands, Oman.
-  • Jordan → Petra Treasury, Jordan.
-  • Qatar → Doha skyline, Qatar.
-  • Uzbekistan → Registan, Samarkand (Uzbekistan).
-  • Kazakhstan → Kazakh steppe or Almaty mountains.
-
-[Countries of Northern Europe]  (nordic)
-  • Norway → Norwegian fjord (Geirangerfjord).
-  • Sweden → Stockholm old town, Sweden.
-  • Denmark → Nyhavn harbour, Copenhagen.
-  • Iceland → Icelandic waterfall (Skógafoss) or geyser.
-  • Estonia → Tallinn old town, Estonia.
-  • Latvia → Riga old town, Latvia.
-  • Lithuania → Vilnius old town or Trakai castle, Lithuania.
-
-[More of Western Europe]  (western-europe-2)
-  • Belgium → Grand Place, Brussels, Belgium.
-  • Switzerland → Matterhorn, Switzerland.
-  • Austria → Hallstatt village or Schönbrunn, Austria.
-  • Portugal → Lisbon trams or Porto riverside, Portugal.
-  • Luxembourg → Luxembourg City old town on the cliffs.
-  • Monaco → Monaco harbour.
-
-[Countries of Central and Eastern Europe]  (eastern-europe)
-  • Poland → Kraków main square, Poland.
-  • Czechia → Prague old town and Charles Bridge, Czechia.
-  • Hungary → Budapest Parliament on the Danube, Hungary.
-  • Croatia → Dubrovnik walls or Plitvice lakes, Croatia.
-  • Romania → Bran Castle or Carpathians, Romania.
-  • Bulgaria → Rila Monastery, Bulgaria.
-  • Slovenia → Lake Bled, Slovenia.
-
-[Central America and the Caribbean]  (central-america-caribbean)
-  • Guatemala → Tikal Maya temples, Guatemala.
-  • Costa Rica → Arenal volcano or cloud forest, Costa Rica.
-  • Panama → Panama Canal locks with a ship.
-  • Cuba → Havana colourful old cars and buildings, Cuba.
-  • Jamaica → Blue Mountains or beach, Jamaica.
-  • the Bahamas → Bahamas turquoise sea / Exuma.
-  • the Dominican Republic → Santo Domingo colonial zone, Dominican Republic.
-
-[More of South America]  (south-america-2)
-  • Chile → Torres del Paine or Atacama, Chile.
-  • Colombia → Cartagena old town or coffee region, Colombia.
-  • Ecuador → Galápagos tortoise or Quito, Ecuador.
-  • Bolivia → Salar de Uyuni salt flat, Bolivia.
-  • Venezuela → Angel Falls, Venezuela.
-  • Uruguay → Montevideo coast, Uruguay.
-  • Paraguay → Itaipú dam or Jesuit missions, Paraguay.
-
-[More of Africa]  (africa-2)
-  • Ethiopia → Lalibela rock churches, Ethiopia.
-  • Nigeria → Lagos skyline or Zuma Rock, Nigeria.
-  • Senegal → Pink Lake (Lac Rose) or Dakar, Senegal.
-  • Rwanda → Volcanoes/hills of Rwanda (land of a thousand hills).
-  • Botswana → Okavango Delta, Botswana.
-  • Namibia → Sossusvlei red dunes, Namibia.
-  • Zambia → Victoria Falls (Zambia side).
-  • Zimbabwe → Great Zimbabwe ruins.
-  • Uganda → Source of the Nile / Murchison Falls, Uganda.
-
-[Pacific Island Countries]  (pacific-islands)
-  • Palau → Rock Islands, Palau.
-  • Samoa → Samoan beach fale huts.
-  • Tonga → Tongan coast / blowholes.
-  • Tuvalu → Funafuti atoll from the air, Tuvalu.
-  • Kiribati → Kiribati atoll lagoon.
-  • Vanuatu → Mt Yasur volcano, Vanuatu.
-  • the Solomon Islands → Solomon Islands lagoon/coast.
-
-[Continents and Oceans]  (continents-oceans)
-  • Asia → Globe/satellite view of Asia.
-  • Africa → Globe/satellite view of Africa.
-  • North America → Globe/satellite view of North America.
-  • South America → Globe/satellite view of South America.
-  • Europe → Globe/satellite view of Europe.
-  • Oceania → Globe/satellite view of Oceania.
-  • Antarctica → Antarctic ice sheet.
-  • the Pacific Ocean → Pacific Ocean globe view.
-  • the Atlantic Ocean → Atlantic Ocean globe view.
-  • the Indian Ocean → Indian Ocean globe view.
-  • Pangaea → Map of Pangaea supercontinent (illustration).
-
-[Islands of the World]  (islands-world)
-  • Greenland → Greenland ice and icebergs.
-  • New Guinea → New Guinea highlands or coast.
-  • Borneo → Borneo rainforest.
-  • Madagascar → Madagascar baobabs.
-  • Iceland → Iceland landscape.
-  • Japan's islands → Satellite image of the Japanese archipelago.
-  • Nagasaki's islands → Kujukushima or Goto islands from above.
-
-[Time Zones]  (time-zones-world)
-  • why time zones exist → World time zone map [icon OK].
-  • Akashi meridian → Akashi Municipal Planetarium (on the 135°E meridian) with meridian marker.
-  • the International Date Line → Map showing the International Date Line.
-  • the first New Year → Kiribati sunrise (first New Year).
-  • time in China → [icon] China uses one time zone — map of China with one clock, or keep icon.
-  • time in Russia → Map of Russia's 11 time zones.
-  • time in the USA → Map of US time zones.
-  • Japan and the UK → Two clocks showing Tokyo and London time.
-  • daylight saving time → A clock being set forward (spring forward).
-
-[The Geography of Japan]  (japan-geography)
-  • the shape of Japan → Satellite image of Japan's shape.
-  • a land of mountains → Japanese Alps from the air.
-  • the Kanto Plain → Kanto Plain from above / Tokyo from Mt Tsukuba.
-  • the Kuroshio and Tsushima currents → Map of the Kuroshio and Tsushima currents.
-  • Kujukushima → Kujukushima islands from Tenkaiho observatory.
-  • Japan's east and west ends → Cape Nosappu (east) / Yonaguni western cape monument.
-  • the Fossa Magna → Map/diagram of the Fossa Magna (or Itoigawa Fossa Magna Museum).
-
-[Holidays Around the World]  (holidays-world)
-  • Holi → Holi coloured powder piles (no faces).
-  • Mother's Day → Carnations and a handmade card (Mother's Day).
-  • April Fools' Day → [icon] April Fools' is a joke — keep icon.
-
-[Japan's National Holidays]  (japanese-holidays)
-  • Coming of Age Day → Furisode kimono and hakama displayed (no faces).
-  • Respect for the Aged Day → Respect for the Aged Day: a gift and card on a table.
-  • Labour Thanksgiving Day → Autumn harvest: rice sheaves (Labour Thanksgiving).
-  • Happy Monday → [icon] A calendar showing a Monday holiday — keep icon.
-  • how many holidays → Japanese calendar with red holiday dates.
-
-[A History of Units]  (units-history)
-  • feet and inches → A ruler showing feet and inches.
-  • Celsius and Fahrenheit → A thermometer marked in both °C and °F.
-  • shaku and sun → An old Japanese kanejaku carpenter's square (shaku/sun).
-  • tsubo and tatami → Tatami mats in a room (1 tsubo = 2 tatami).
-  • go → A traditional wooden masu measuring box (1 gō).
-  • ri → A ri-zuka milestone marker along an old highway.
-
-[Measuring the World]  (measuring-tools)
-  • Ino Tadataka → Ino Tadataka's map of Japan or his statue (Sawara).
-  • from sundials to atomic clocks → A sundial and an atomic clock.
-  • measuring Everest → Mt Everest summit view.
-  • the speed of light → [icon] Speed of light — use a laser beam photo or keep icon.
-  • light-year → Hubble deep-field image (galaxies light-years away).
-  • GPS and Michibiki → A Michibiki (QZSS) satellite illustration or GPS on a phone.
-
-[How Computers Work]  (how-computers-work)
-  • binary → Binary 0s and 1s / punched tape.
-  • bits and bytes → A USB memory stick with GB label.
-  • pixels → Close-up of screen pixels (macro shot).
-  • memory → A RAM memory module.
-  • Fugaku → The Fugaku supercomputer racks (RIKEN).
-
-[How the Internet Works]  (how-internet-works)
-  • undersea cables → An undersea cable being laid from a ship (or cross-section of cable).
-  • Wi-Fi → A home Wi-Fi router.
-  • packets → [icon] Packets are invisible — keep icon.
-  • search engines → [icon] A generic search box — keep icon (avoid brand logos).
-  • QR codes → A QR code sticker.
-  • emoji → [icon] Emoji already are pictures — keep icon.
-  • AI → [icon] AI — keep icon.
-  • online manners → [icon] Online manners — keep icon.
-
-[The Wonder of Magnets]  (magnets)
-  • north and south poles → Bar magnet with iron filings showing field lines.
-  • the Earth is a magnet → Aurora (Earth's magnetic field) or a compass.
-  • lodestone → A lodestone attracting iron nails.
-  • birds that sense magnetism → European robin or pigeon (birds that sense magnetism).
-  • MRI → An MRI scanner (empty room).
-  • KS steel → KS steel magnet or Honda Kotaro's statue (Tohoku Univ.).
-
-[The Senses]  (senses)
-  • an eagle's eyes → An eagle's eye close-up.
-  • elephants' low sounds → An elephant rumbling / herd.
-  • a dog's nose → A dog sniffing the ground.
-  • the tongue map myth → [icon] Tongue map myth — keep icon.
-  • fingertips → Fingertip fingerprints macro.
-  • snakes that sense heat → A pit viper showing heat-sensing pits.
-  • sharks that sense electricity → A shark's nose showing ampullae of Lorenzini.
-  • bees see ultraviolet → Flower under UV light showing bee guide patterns.
-
-[Around Nagasaki Prefecture]  (nagasaki-prefecture)
-  • Shimabara, city of water → Shimabara carp swimming in town canals.
-  • Iki → Iki island coast (Saruiwa monkey rock).
-  • the Goto Islands → Goto Islands churches/sea (exterior).
-  • Kujukushima sunset → Kujukushima at sunset.
-
-[Festivals of Nagasaki]  (nagasaki-festivals)
-  • Peiron boat races → Peiron boats racing.
-  • Shoro-nagashi → Shōrō-nagashi spirit boats in the street at night (no faces).
-  • Hydrangea Festival → Hydrangeas at Nagasaki Hydrangea Festival (Shiroyama Park etc.).
-  • Port Festival → Nagasaki Port Festival fireworks over the harbour.
-
-[Japanese Castles]  (japanese-castles)
-  • parts of a castle → Labelled view of a castle: keep, stone walls, moat (e.g. Himeji).
-  • the 12 original keeps → Himeji Castle (one of the 12 original keeps).
-
-[Trains of Japan]  (trains-japan)
-  • Japan's first railway → The 1872 Shimbashi–Yokohama steam locomotive No.1 (Railway Museum).
-  • the first Shinkansen → 0 Series Shinkansen (1964).
-  • Hayabusa → E5 'Hayabusa' Shinkansen.
-  • Nishi-Kyushu Shinkansen → Nishi-Kyushu Shinkansen 'Kamome' at Nagasaki Station.
-  • Nagasaki streetcars → Nagasaki streetcar.
-  • sleeper trains → Sunrise Izumo/Seto sleeper train.
-  • punctuality → Station departure board / platform markings for exact stopping.
-
-[Traditional Crafts of Japan]  (crafts-japan)
-  • Arita ware → Arita porcelain plate.
-  • Edo kiriko glass → Edo kiriko cut-glass cup.
-  • Nambu ironware → Nambu iron kettle (tetsubin).
-  • Kyo-yuzen dyeing → Kyo-yūzen dyed silk.
-  • folding fans → Kyoto folding fans (sensu).
-  • Seki cutlery → Seki kitchen knives.
-
-[Seasonal Japanese Sweets]  (wagashi-seasons)
-  • sakura-mochi → Sakura-mochi wrapped in a cherry leaf.
-  • mizu-yokan → Mizu-yōkan (summer jelly).
-  • tsukimi dango → Tsukimi dango stacked with susuki grass.
-  • kuri kinton → Kuri kinton (chestnut sweet).
-  • kagami-mochi → Kagami-mochi with a bitter orange on top.
-
-[Hokkaido and Tohoku]  (pref-hokkaido-tohoku)
-  • Hokkaido → Hokkaido: Sapporo Snow Festival or Biei flower fields.
-  • Aomori → Aomori: Nebuta float or apple orchards.
-  • Iwate → Iwate: Chūson-ji Konjikidō or Geibikei gorge.
-  • Miyagi → Miyagi: Matsushima bay.
-  • Akita → Akita: Kantō lantern poles or Akita dogs.
-  • Yamagata → Yamagata: Zaō snow monsters or Yamadera.
-  • Fukushima → Fukushima: Tsuruga Castle or Ōuchi-juku.
-
-[The Kanto Region]  (pref-kanto)
-  • Tokyo → Tokyo: Tokyo Skytree or Asakusa.
-  • Kanagawa → Kanagawa: Great Buddha of Kamakura.
-  • Saitama → Saitama: Kawagoe old streets (bell tower).
-  • Chiba → Chiba: Narita-san temple or Boso coast.
-  • Ibaraki → Ibaraki: Hitachi Seaside Park nemophila.
-  • Tochigi → Tochigi: Nikkō Tōshō-gū.
-  • Gunma → Gunma: Kusatsu Onsen yubatake.
-
-[The Chubu Region]  (pref-chubu)
-  • Niigata → Niigata: rice fields / Sado.
-  • Toyama → Toyama: Tateyama Kurobe snow corridor.
-  • Ishikawa → Ishikawa: Kenroku-en garden.
-  • Fukui → Fukui: Tōjinbō cliffs or dinosaur museum.
-  • Yamanashi → Yamanashi: Mt Fuji with Chureito Pagoda.
-  • Nagano → Nagano: Matsumoto Castle or snow monkeys.
-  • Gifu → Gifu: Shirakawa-go.
-  • Shizuoka → Shizuoka: Mt Fuji and tea fields.
-  • Aichi → Aichi: Nagoya Castle.
-
-[The Kinki Region]  (pref-kinki)
-  • Osaka → Osaka: Osaka Castle or Dōtonbori.
-  • Kyoto → Kyoto: Kinkaku-ji.
-  • Hyogo → Hyogo: Himeji Castle.
-  • Nara → Nara: Tōdai-ji and deer.
-  • Mie → Mie: Ise Jingū bridge or Meoto Iwa rocks.
-  • Shiga → Shiga: Lake Biwa.
-  • Wakayama → Wakayama: Nachi Falls.
-
-[Chugoku and Shikoku]  (pref-chugoku-shikoku)
-  • Tottori → Tottori: sand dunes.
-  • Shimane → Shimane: Izumo Taisha or Matsue Castle.
-  • Okayama → Okayama: Kōraku-en or Okayama Castle.
-  • Hiroshima → Hiroshima: Itsukushima torii.
-  • Yamaguchi → Yamaguchi: Kintai-kyō bridge.
-  • Tokushima → Tokushima: Naruto whirlpools.
-  • Kagawa → Kagawa: Ritsurin Garden or sanuki udon.
-  • Ehime → Ehime: Dōgo Onsen.
-  • Kochi → Kochi: Shimanto River or Katsurahama.
-
-[Kyushu and Okinawa]  (pref-kyushu-okinawa)
-  • Fukuoka → Fukuoka: Dazaifu Tenmangū.
-  • Saga → Saga: Arita porcelain or Yoshinogari ruins.
-  • Nagasaki → Nagasaki: night view from Mt Inasa.
-  • Kumamoto → Kumamoto: Kumamoto Castle or Mt Aso.
-  • Oita → Oita: Beppu hot springs (hells).
-  • Miyazaki → Miyazaki: Takachiho Gorge.
-  • Kagoshima → Kagoshima: Sakurajima.
-  • Okinawa → Okinawa: Shuri Castle or Okinawa beach.
-
-[Whales and Dolphins]  (whales-dolphins)
-  • vaquita → A vaquita porpoise (very rare — NOAA photo).
-
-[Street Food of the World]  (street-food)
-  • bubble tea → Bubble tea cup with tapioca pearls.
-
-[The World of Spices]  (spices)
-  • sansho pepper → Sansho pepper berries/leaves (Japanese pepper).
-
-[Simple Machines]  (simple-machines)
-  • wheel and axle → A wheel and axle (e.g. well winch or wheelbarrow).
-  • inclined plane → A ramp / inclined plane (loading ramp).
-  • wedge → An axe or doorstop wedge.
-  • screw → Wood screws / Archimedes screw.
-  • gears → Interlocking gears.
-  • karakuri dolls → Karakuri tea-serving doll (Edo automaton).
-
-[The Secrets of Electricity]  (electricity)
-  • static electricity → Balloon and hair static (no face) or Van de Graaff generator.
-  • battery → Various batteries (AA, button cell).
-  • circuits → A simple circuit with bulb and battery.
-  • conductors and insulators → Copper wire (conductor) vs rubber/plastic (insulator).
-  • DC and AC → Map of Japan's 50/60 Hz frequency divide or AC plug.
-  • Japan's first electric light → Arc lamp / Ginza's first electric lights (Meiji print).
-  • saving electricity → Switching off lights / LED bulb.
-
-[Light and Color]  (light-color)
-  • prism → Glass prism splitting light.
-  • why the sky is blue → Blue sky with clouds.
-  • why sunsets are red → Red sunset.
-  • mixing colors → Overlapping red, green and blue light circles.
-  • periscope → A periscope (submarine or toy).
-
-[The Science of Sound]  (sound-science)
-  • sound is vibration → Tuning fork vibrating in water (splash).
-  • echo → Mountain valley (echo).
-  • pitch → Xylophone bars short to long (pitch).
-  • how ears work → Diagram of the inner ear.
-  • the Doppler effect → Ambulance passing (Doppler) [icon OK].
-  • silence in space → Astronaut on the Moon (silent space).
-
-[The Water Cycle]  (water-cycle)
-  • clouds form → Clouds forming over mountains.
-  • rivers to the sea → River delta meeting the sea.
-  • groundwater → A spring/well (groundwater).
-  • ice and glaciers → Glacier and ice cap.
-  • the same water as dinosaurs → [icon] Idea — use a raindrop photo or keep icon.
-  • how much water we use → A tap filling a bath (water use).
-
-[Solids, Liquids and Gases]  (states-of-matter)
-  • solid, liquid, gas → Ice, water and steam together (kettle + ice cubes).
-  • melting and freezing → An ice cube melting.
-  • ice floats → Ice cubes floating in a glass.
-  • oobleck → Hands squeezing oobleck (cornstarch) — hands only.
-  • air has weight → A balance with an inflated vs deflated balloon.
-
-[Volcanoes of the World]  (volcanoes-world)
-  • how volcanoes form → Diagram of a volcano cross-section.
-  • the Ring of Fire → Map of the Pacific Ring of Fire.
-  • Olympus Mons → Olympus Mons (Mars orbital image).
-  • Io → Io volcanic moon (NASA).
-  • gifts from volcanoes → Onsen / fertile volcanic soil / Sakurajima daikon.
-
-[A Guide to Clouds]  (clouds)
-  • naming the clouds → Cloud chart/atlas showing cloud types.
-  • contrails → Aircraft contrails in a blue sky.
-
-[Constellations]  (constellations)
-  • 88 constellations → IAU star map of all 88 constellations [icon OK].
-  • Orion → Orion in the night sky.
-  • the Big Dipper and Polaris → The Big Dipper pointing to Polaris.
-  • Cassiopeia → Cassiopeia W shape.
-  • Scorpius → Scorpius with red Antares.
-  • the Southern Cross → Southern Cross over the Milky Way.
-
-[Comets and Asteroids]  (comets-asteroids)
-  • comet tails → Comet Hale-Bopp or NEOWISE showing two tails.
-  • the asteroid belt → Diagram of the asteroid belt.
-  • Hayabusa → Asteroid Ryugu (Hayabusa2 photo).
-  • the dinosaur asteroid → Chicxulub crater map or illustration of the impact.
-  • DART → DART impact image of Dimorphos (NASA).
-
-[Japan in Space]  (space-japan)
-  • Akiyama Toyohiro → [person] Akiyama Toyohiro — use the Soyuz/Mir instead of a portrait.
-  • Mohri Mamoru → [person] Mohri Mamoru — use Space Shuttle Endeavour (STS-47) instead.
-  • Mukai Chiaki → [person] Mukai Chiaki — use the Space Shuttle Columbia/medaka instead.
-  • JAXA → JAXA Tsukuba Space Center (rocket garden).
-  • Kibo → The Kibo module on the ISS.
-  • Wakata Koichi → [person] Wakata Koichi — use the ISS instead.
-  • SLIM → SLIM lander on the Moon (JAXA image).
-  • H3 rocket → H3 rocket launch.
-
-[Our Moon and Other Moons]  (moons)
-  • how far the Moon is → Earth and Moon to scale (photo from space).
-  • phases of the Moon → Phases of the Moon sequence.
-  • the same face → Full Moon near side.
-  • the Moon's patterns → Full Moon showing 'rabbit' maria.
-  • Jupiter's moons → Jupiter's four Galilean moons (NASA).
-  • the planet with the most moons → Saturn and some of its moons (Cassini).
-
-[Symbols and Signs]  (symbols-signs)
-  • the emergency exit sign → Japanese green running-man emergency exit sign.
-  • Olympic pictograms → 1964 Tokyo Olympic pictograms (public set).
-  • the recycling symbol → Recycling arrows symbol on packaging.
-  • the hot spring symbol → Onsen ♨ symbol sign.
-  • the wheelchair symbol → Wheelchair accessibility sign.
-  • the at sign → @ sign (keyboard key) [icon OK].
-  • the ampersand → & ampersand in a typeface [icon OK].
-  • emergency numbers → [icon] Emergency numbers — keep icon (110/119).
-
-[Ancient Civilizations]  (ancient-civilizations)
-  • the Jomon period → Jomon flame-style pottery (kaen doki).
-  • Mesopotamia → Ziggurat of Ur (Mesopotamia).
-  • Ancient Egypt → Pyramids of Giza.
-  • Ancient China → Terracotta Army or oracle bones (Ancient China).
-  • Ancient Rome → Roman Forum or aqueduct.
-  • the Maya → Tikal or Chichén Itzá (Maya).
-  • the Inca → Machu Picchu (Inca).
-
-[A History of Writing]  (writing-history)
-  • the Phoenician alphabet → Phoenician inscription (e.g. Ahiram sarcophagus text).
-  • hiragana and katakana → Hiragana and katakana from man'yōgana chart / old manuscript.
-  • Gutenberg's printing press → Gutenberg Bible page or press replica.
-
-[A History of Communication]  (communication-history)
-  • hikyaku runners → Ukiyo-e print of a hikyaku courier running.
-
-[A History of Transport]  (transport-history)
-  • the first bicycle → Drais 'running machine' (1817) or a penny-farthing.
-  • the Shinkansen → 0 Series Shinkansen.
-
-[A History of Toys]  (toys-history)
-  • building bricks → Pile of colourful plastic building bricks (no brand logo).
-
-[Life in Edo]  (edo-life)
-  • a city of one million → Edo townscape (ukiyo-e) or Edo-Tokyo Museum model.
-  • a recycling city → Ukiyo-e of Edo recyclers / used-goods sellers.
-  • terakoya schools → Terakoya school print (Edo).
-  • Edo fast food → Edo yatai: sushi/soba stall model.
-  • kawaraban news sheets → Kawaraban news sheet (museum).
-  • Edo firefighters → Edo firefighters' matoi standard.
-  • travelling the Tokaido → Hiroshige Tōkaidō print.
-  • time bells → Edo bell tower / time bell (toki no kane).
-
-[Olympic Sports]  (olympic-sports)
-  • breaking → Breaking: a dancer's silhouette mid-freeze (no face).
-
-[Paralympic Sports]  (paralympic-sports)
-  • how the Paralympics began → Stoke Mandeville / wheelchair sport history photo (public).
-  • blind football → Blind football (ball with bells) — show the ball.
-
-[Martial Arts of the World]  (martial-arts)
-  • bowing → Two people bowing in a dojo (from behind) or a dojo shrine.
-  • judo around the world → Judo world map / international judo mats.
-
-[Traditional Japanese Games]  (japanese-games)
-  • fukuwarai → Fukuwarai face-puzzle game pieces.
-  • hanetsuki → Hagoita paddle and shuttlecock (hanetsuki).
-  • cat's cradle → Cat's cradle string figure on hands.
-  • daruma-san ga koronda → [icon] A playground game — keep icon.
-  • shiritori → [icon] Word game — keep icon.
-
-[Playground Games Around the World]  (playground-world)
-  • rock paper scissors → Hands playing rock-paper-scissors.
-  • piggy in the middle → [icon] Keep icon (children's game, faces).
-  • jumping rope games → A jump rope on a playground.
-
-[Stadiums Around the World]  (stadiums)
-  • the Colosseum → The Colosseum interior.
-  • Nagasaki Stadium City → Peace Stadium, Nagasaki Stadium City.
-
-[Traditional Clothes of the World]  (traditional-clothes)
-  • dirndl and lederhosen → Dirndl and lederhosen on display (no faces).
-  • Ainu clothing → Ainu attus robe in a museum.
-
-[Markets of the World]  (markets-world)
-  • floating markets → Damnoen Saduak floating market boats (Thailand).
-  • Chatuchak Market → Chatuchak Weekend Market stalls, Bangkok.
-  • Kochi Sunday Market → Kōchi Sunday Market street stalls.
-
-[Legendary Creatures]  (mythical-creatures)
-  • kappa → Kappa statue or Edo print of a kappa.
-  • zashiki-warashi → [icon] Zashiki-warashi — keep icon (or Tono folk village).
-  • phoenix → Phoenix (hōō) on Byōdō-in roof.
-  • yeti → Yeti footprint cast / Himalayan statue [icon OK].
-
-[Lucky Symbols Around the World]  (lucky-symbols)
-  • lucky numbers → [icon] Numbers — keep icon.
-  • lucky first dreams → Mt Fuji, a hawk and an eggplant (first-dream trio) — use Mt Fuji.
-  • a standing tea stalk → A tea stalk standing in a cup of green tea (chabashira).
-
-[Masterpieces of Italy and Spain]  (paintings-italy-spain)
-  • Leonardo's notebooks → A page of Leonardo's notebooks (Codex) with drawings.
-  • Arcimboldo's portraits → Arcimboldo's 'Vertumnus' or 'Summer' fruit portrait.
-  • Canaletto's Venice → Canaletto's Venice Grand Canal painting.
-  • Sorolla's seaside → Sorolla's 'Walk on the Beach' (public domain).
-  • Joan Miró → [©] Miró is copyrighted — keep icon.
-  • Amedeo Modigliani → Modigliani portrait (public domain, died 1920) — a calm clothed portrait only.
-
-[Masterpieces of Britain and America]  (paintings-uk-usa)
-  • Turner's light → Turner's 'The Fighting Temeraire' or 'Rain, Steam and Speed'.
-  • Nighthawks → [©] Hopper's Nighthawks is copyrighted — keep icon.
-  • O'Keeffe's flowers → [©] O'Keeffe is copyrighted — keep icon.
-  • Pollock's drip paintings → [©] Pollock is copyrighted — keep icon.
-  • Hockney's swimming pools → [©] Hockney is copyrighted — keep icon.
-
-[Art of Asia]  (art-asia)
-  • Along the River During the Qingming Festival → Detail of 'Along the River During the Qingming Festival' scroll.
-  • Wang Xizhi's calligraphy → Wang Xizhi calligraphy (Lantingji Xu copy).
-  • Mughal miniatures → Mughal miniature painting (garden/animals).
-  • Vietnamese lacquer painting → Vietnamese lacquer painting (public domain example or keep icon).
-  • Chinese paper cutting → Chinese red paper-cut decorations.
-
-[A Timeline of Architecture]  (architecture-timeline)
-  • Glover House → Former Glover House, Glover Garden, Nagasaki.
-
-[Music Genres of the World]  (music-genres)
-  • jazz → Saxophone and trumpet on a jazz stage.
-  • rock and roll → Electric guitar and old jukebox (rock and roll).
-  • hip-hop → Turntables/DJ decks (hip-hop).
-  • K-pop → [people] K-pop is about real idols — keep icon or a concert hall light stick.
-  • enka → Enka: a stage with kimono and microphone (no face) or keep icon.
-  • J-pop → [people] J-pop — keep icon or a concert stage without performers.
-
-[Dances of Japan]  (dance-japan)
-  • Awa odori → Awa Odori dancers in straw hats (far away).
-  • Soran-bushi → Soran-bushi happi coats/dancers far away.
-  • dance at school → School dance: empty gym or keep icon.
-
-[Animal Babies]  (animal-babies)
-  • giraffe calf → Giraffe calf with mother.
-  • panda cub → Panda cub.
-  • koala joey → Koala joey on mother's back.
-  • dolphin calf → Dolphin calf swimming beside mother.
-  • crocodile hatchlings → Crocodile hatchlings in mother's jaws/eggs.
-  • polar bear cub → Polar bear cub on ice.
-  • swan cygnets → Swan cygnets with parent.
-
-[Animal Homes]  (animal-homes)
-  • sociable weaver nest → Sociable weaver giant nest on a tree/pole.
-  • bowerbird bower → Bowerbird bower decorated with blue objects.
-  • hermit crab shell → Hermit crab in a shell.
-  • caddisfly cases → Caddisfly larva case.
-  • mole tunnels → Mole hills / tunnel diagram.
-  • swiftlet nests → Swiftlet nests in a cave.
-
-[Masters of Camouflage]  (camouflage)
-  • flounder → A flounder blending into sand.
-  • flatfish trick → Flatfish with both eyes on one side (close-up).
-
-[Great Migrations]  (migration)
-  • Christmas Island red crabs → Christmas Island red crab migration across a road.
-  • loggerhead turtle journey → Loggerhead turtle swimming.
-  • chestnut tiger butterfly → Chestnut tiger butterfly (asagimadara) on a flower.
-
-[Coral Reefs]  (coral-reef)
-  • coral is an animal → Coral polyps close-up (tentacles out).
-  • coral spawning → Coral spawning (bundles released at night).
-  • Sekisei Lagoon → Sekisei Lagoon reef from the air/underwater.
-
-[Butterflies and Moths]  (butterflies-moths)
-  • cabbage white → Cabbage white butterfly on a flower.
-  • Queen Alexandra's birdwing → Queen Alexandra's birdwing (museum specimen).
-  • butterfly scales → Macro of butterfly wing scales.
-  • butterflies vs moths → Butterfly and moth side by side (antennae difference).
-
-[The World of Beetles]  (beetles-japan)
-  • how many beetles → [icon] A number — use a museum beetle collection drawer photo.
-
-[Insect Songs]  (insect-sounds)
-  • pine cricket → Pine cricket (matsumushi).
-  • robust cicada → Robust cicada (kumazemi) on a tree.
-  • tsukutsuku-boshi cicada → Tsukutsuku-bōshi cicada.
-  • cricket thermometer → Snowy tree cricket (cricket thermometer).
-  • how insects make sounds → Cricket rubbing its wings (macro).
-  • hearing insects as voices → [icon] Cultural idea — keep icon or an insect cage (mushikago).
-
-[Trees]  (trees)
-  • Somei Yoshino cherry → Somei Yoshino cherry trees in full bloom.
-  • oak trees and acorns → Oak leaves with acorns.
-
-[Flowers of the World]  (flowers-world)
-  • Oga lotus → Ōga lotus (ancient lotus) bloom.
-
-[The Wonder of Mushrooms]  (mushrooms)
-  • mushrooms are not plants → [icon] Idea — use a photo of mushrooms with mycelium threads.
-  • the underground network → Mycelium network on soil/wood.
-
-[Japanese Gardens]  (japanese-gardens)
-  • Japan's three great gardens → Kenroku-en, Kairaku-en or Kōraku-en (one of the three great gardens).
-  • the Ryoanji rock garden → Ryōan-ji rock garden.
-  • the Adachi Museum garden → Adachi Museum of Art garden.
-  • ponds and koi → Koi in a garden pond.
-  • moss gardens → Moss garden (Saihō-ji / Gio-ji).
-  • Japanese gardens abroad → Japanese garden abroad (e.g. Portland Japanese Garden).
-
-[Japan's World Heritage Sites]  (japan-unesco)
-  • Historic Kyoto → Kiyomizu-dera or Kinkaku-ji (Historic Kyoto).
-  • Shirakawa-go and Gokayama → Shirakawa-gō gasshō houses.
-  • Historic Nara → Tōdai-ji (Historic Nara).
-  • Gusuku Sites of Ryukyu → Shuri Castle or Nakijin gusuku ruins.
-  • the Ogasawara Islands → Ogasawara Islands coast.
-  • the Mozu-Furuichi Kofun → Daisen Kofun from the air (Mozu-Furuichi).
-  • Jomon Prehistoric Sites → Sannai-Maruyama site (Jomon).
-  • Amami-Oshima, Tokunoshima and more → Amami black rabbit or Amami forest.
-
-[Mountains of Japan]  (japanese-mountains)
-  • Mt Okuhotaka → Mt Okuhotaka (Hotaka range).
-  • Heisei Shinzan → Heisei Shinzan lava dome, Unzen (Nagasaki).
-  • Japan's lowest mountain → Mt Tenpō or Hiyoriyama (Japan's lowest mountain sign).
-
-[The Secrets of Hot Springs]  (onsen)
-  • how hot springs form → Diagram of hot spring formation, or a steaming onsen source.
-  • onsen manners → [icon] Onsen manners — keep icon (no bathers).
-  • yumomi in Kusatsu → Yumomi water-stirring boards at Kusatsu yubatake (no faces).
-  • foot baths → A foot bath (ashiyu) with wooden benches.
-
-[Japan's Records]  (japan-records)
-  • the deepest lake → Lake Tazawa (deepest lake).
-  • the biggest lake → Lake Biwa (biggest lake).
-  • the tallest building → Azabudai Hills Mori JP Tower (tallest building).
-  • the deepest snow → Mt Ibuki deep snow / snow corridor.
-  • the busiest station → Shinjuku Station crowds (wide, far away).
-  • the widest river → Arakawa river at its widest (Kōnosu).
-  • the prefecture with the most islands → Nagasaki's many islands from the air.
-  • the longest coastline → Hokkaido coastline map.
-
-[A Gentle History of Japan]  (japan-history)
-  • the Jomon period → Jomon pottery.
-  • the Yayoi period → Yayoi bronze bell (dōtaku).
-  • the Kofun period → Kofun keyhole tomb from the air.
-  • the Asuka period → Hōryū-ji (Asuka).
-  • the Nara period → Tōdai-ji Great Buddha (Nara).
-  • the Heian period → Byōdō-in Phoenix Hall (Heian).
-  • the Kamakura period → Kamakura Great Buddha.
-  • the Muromachi period → Kinkaku-ji (Muromachi).
-  • the Edo period → Edo ukiyo-e or Edo Castle walls.
-  • the Meiji period → Meiji-era railway/brick buildings (Tomioka Silk Mill).
-  • the 1964 Tokyo Olympics → 1964 Olympic stadium/torch (public).
-  • the Heisei era → [icon] An era name — keep icon (Heisei calligraphy).
-  • the Reiwa era → [icon] An era name — keep icon (Reiwa calligraphy).
-
-[Wild Birds of Japan]  (birds-japan)
-  • Japanese white-eye → Japanese white-eye (mejiro) on plum blossoms.
-  • long-tailed tit (Hokkaido) → Shima-enaga (Hokkaido long-tailed tit).
-
-[Dinosaurs II]  (dinosaurs-2)
-  • Argentinosaurus → Argentinosaurus skeleton (museum).
-  • Microraptor → Microraptor fossil with feathers.
-  • dinosaurs of Nagasaki → Dinosaur fossil teeth from Nagasaki (Nagasaki Dinosaur Museum).
-
-[From Farm to Table]  (farm-to-table)
-  • eggs → Fresh eggs in a carton / hens in a barn.
-
-[The Secrets of Rice]  (rice)
-  • one grain becomes many → A single rice plant with many grains (heads of rice).
-  • rice planting → Rice planting in a paddy (machine or rows, no faces).
-  • terraced rice fields → Terraced rice fields (e.g. Shiroyone Senmaida).
-  • the kanji for rice → Kanji 米 calligraphy [icon OK].
-  • uses of rice straw → Straw sandals, rope or shimenawa made from rice straw.
-
-[The Wonder of Seeds]  (seeds-growing)
-  • what seeds need → Bean seed sprouting (diagram of water, air, warmth).
-  • dandelion parachutes → Dandelion clock with parachute seeds.
-  • seeds that stick → Burdock burrs stuck to fabric.
-  • helicopter seeds → Maple 'helicopter' seeds.
-  • seeds that float → Coconut on a beach (floating seed).
-  • the biggest seed → Coco de mer seed.
-  • the seed vault → Svalbard Global Seed Vault entrance.
-  • ancient seeds → Ōga lotus seeds/flower (2000-year-old seeds).
-
-[Rivers and Lakes of the World]  (rivers-lakes)
-  • the Mississippi → The Mississippi River (paddle steamer or aerial).
-
-[Waterfalls and Caves]  (waterfalls-caves)
-  • how stalactites grow → Stalactites and stalagmites in a cave.
-  • Ryusendo Cave → Ryūsendō cave underground lake (Iwate).
-  • how waterfalls form → Diagram of a waterfall forming / Kegon Falls.
-
-[Deserts of the World]  (deserts-world)
-  • what is a desert → Map of world deserts or a desert landscape.
-  • the Atacama Desert → Atacama Desert with telescopes or salt flats.
-  • Antarctica is a desert → Antarctic dry valleys (polar desert).
-  • desertification → Desert edge with sand covering fields (Sahel).
-
-[Extreme Weather and Staying Safe]  (extreme-weather)
-  • typhoons → Satellite image of a typhoon.
-  • preventing heatstroke → Shaded rest area / water bottle & hat (heatstroke).
-  • lightning safety → Lightning over a field (lightning safety).
-  • linear rainbands → Radar image of a linear rainband.
-  • heavy snow → Heavy snow on Japanese houses (snow country).
-  • weather warnings → JMA weather warning map [icon OK].
-
-[Climate Zones]  (climate-zones)
-  • classifying climates → Köppen climate world map.
-  • tropical climate → Tropical rainforest.
-  • temperate climate → Temperate deciduous forest in autumn.
-  • subarctic climate → Siberian taiga in snow.
-  • polar climate → Antarctic ice landscape.
-  • Japan's many climates → Map of Japan's climate regions.
-
-[The History of the Earth]  (earth-timeline)
-  • the Earth is born → Artist's view of early Earth with lava (NASA).
-  • the Moon is born → Illustration of the giant impact forming the Moon.
-  • the first life → Stromatolites (Shark Bay).
-  • oxygen fills the air → Banded iron formation rock.
-  • the Cambrian explosion → Burgess Shale fossil.
-  • plants move onto land → Cooksonia fossil / early land plant illustration.
-  • the age of dinosaurs → Dinosaur skeleton.
-  • the Japanese islands form → Map of the Japanese islands separating from Asia.
-  • humans appear → Early human tools / footprint (Laetoli).
-
-[Where Our Food Comes From]  (food-origins)
-  • kabocha squash → Kabocha squash.
-  • banana → Bananas growing on a banana plant.
-
-[A History of Money]  (money-history)
-  • shell money → Cowrie shell money.
-  • the first coins → Lydian electrum coin.
-  • the stone money of Yap → Rai stone money of Yap.
-  • Wado Kaichin → Wadō Kaichin coin.
-  • the first paper money → Song-dynasty jiaozi / early paper money.
-  • the birth of the yen → Meiji 1-yen coin/banknote.
-  • credit cards → A plain credit card (no brand).
-  • electronic money → Tapping a phone/IC card on a reader.
-  • Japan's new banknotes → 2024 Japanese banknotes.
-
-[A History of Clothes]  (clothes-history)
-  • bone needles → Prehistoric bone sewing needle.
-  • Western clothes in Japan → Rokumeikan-era Western dress (Meiji print).
-  • nylon → Nylon stockings / nylon fabric close-up.
-  • recycling clothes → Clothing recycling bin / reused fabric.
-
-[A Guide to Yokai]  (yokai)
-  • kappa → Kappa statue (e.g. Tōno kappa pool) or Edo print.
-  • tanuki → Tanuki ceramic statue (Shigaraki).
-  • zashiki-warashi → [icon] Zashiki-warashi — keep icon.
-  • Toriyama Sekien's yokai books → A page from Toriyama Sekien's Gazu Hyakki Yagyō (public domain).
-  • hyakumonogatari → Edo print of a hyakumonogatari candle gathering.
-
-[Little Helpers and Fairies of the World]  (household-spirits)
-  • leprechaun → Irish leprechaun figure / shamrocks (St Patrick's Day decoration).
-  • lost tooth traditions → A baby tooth and a tooth-box (no faces).
-
-[Mysteries of the World]  (mysteries)
-  • the Antikythera mechanism → The Antikythera mechanism fragments (Athens museum).
-  • the Yonaguni rocks → Yonaguni underwater rock terraces.
-
-[The Science of Spooky Things]  (spooky-science)
-  • faces in things → A power socket that looks like a face.
-  • creaking houses → Old wooden house at night [icon OK].
-  • echoes → Mountain valley with a person calling (far away) or keep icon.
-  • ball lightning → Painting/photo of ball lightning (rare; 19th-c. engraving is public domain).
-  • why scary can be fun → [icon] An idea — keep icon or an empty haunted-house attraction.
-
-[Optical Illusions]  (optical-illusions)
-  • the Müller-Lyer illusion → [draw] Better as a drawn illusion than a photo — I can draw these in the app.
-  • the Ebbinghaus illusion → [draw] Draw it in the app.
-  • the checker shadow illusion → [draw] Adelson's checker shadow (image is © MIT — draw our own version).
-  • the rotating snakes → [©] Kitaoka's rotating snakes are copyrighted — keep icon.
-  • the impossible triangle → [draw] Penrose triangle — draw it.
-  • the duck-rabbit → The 1892 duck-rabbit drawing (public domain).
-  • the Kanizsa triangle → [draw] Kanizsa triangle — draw it.
-  • the blind spot → [draw] Blind spot test card — draw it.
-  • the Stroop effect → [draw] Stroop colour words — draw it.
-
-[Why Does My Body Do That?]  (why-body)
-  • hiccups → [icon] Keep icon (hiccups).
-  • goosebumps → Close-up of goosebumps on an arm.
-  • contagious yawns → A yawning cat or lion.
-  • wrinkly bath fingers → Wrinkly fingertips after a bath (hands only).
-  • sun sneezes → [icon] Keep icon (sun sneeze).
-  • why you can't tickle yourself → [icon] Keep icon (feather).
-  • burps → [icon] Keep icon / fizzy drink.
-  • stomach growls → [icon] Keep icon.
-  • pins and needles → Legs in seiza on tatami (no face).
-  • blinking → Close-up of an eye mid-blink.
-
-[Festivals for Ancestors]  (ghost-festivals)
-  • the roots of Halloween → Carved turnip jack-o'-lantern (Irish/Scottish tradition).
-  • Nagasaki's shōrō nagashi → Nagasaki shōrō-nagashi spirit boat (no faces).
-  • Kyoto's Gozan no Okuribi → Gozan no Okuribi 'Dai' fire on Mt Daimonji.
-  • floating lanterns → Floating lanterns on a river (tōrō nagashi).
-  • Qingming → Qingming: kites in a spring sky or tomb-sweeping flowers.
-
-[Surprising Foods of the World]  (strange-foods)
-  • Vegemite → Vegemite spread thinly on toast.
-
-[Wonderfully Weird Festivals]  (weird-festivals)
-  • La Tomatina → La Tomatina street covered in tomato (wide shot).
-  • Naki Sumo → Naki Sumo: sumo ring at a temple (no baby faces) — keep icon may be safer.
-  • Akita Kanto Festival → Akita Kantō lantern poles at night.
-
-[Christmas Around the World]  (christmas-world)
-  • spider web ornaments → Ukrainian spider-web Christmas ornament.
-  • a summer Christmas → Christmas decorations on an Australian beach (no faces).
-  • parol lanterns → Philippine parol star lanterns.
-  • Advent calendars → Advent calendar with numbered doors.
-  • hiding the brooms → Brooms by a door / keep icon.
-
-[The Secrets of Manga and Anime]  (manga-anime)
-  • the Chōjū-giga scrolls → Chōjū-giga frog and rabbit scroll (public domain).
-  • manga symbols → [icon] Manga symbols — I can draw generic ones; avoid copyrighted panels.
-  • sound words in manga → [icon] Sound words — draw ドーン/シーン in the app.
-  • reading right to left → [icon] Keep icon (no copyrighted manga pages).
-  • how animation moves → A flip book or zoetrope (public domain device).
-  • key frames and in-betweens → Animator's light table with pencil drawings (no characters) or keep icon.
-  • weekly TV anime → [icon] Keep icon (no TV anime images — copyrighted).
-
-[A History of Video Games]  (video-games-history)
-  • the invader game boom → Space Invaders-style arcade cabinet (exterior, no screen art) — or keep icon.
-  • handheld games → A Game & Watch device closed (no characters) — or keep icon.
-  • the Family Computer → A Famicom console (hardware only).
-  • pixel art → [draw] Pixel art — draw our own pixel art.
-  • 3D games → Wireframe 3D polygon model (generic).
-  • online and mobile games → Smartphone and game controller (no logos).
-  • jobs in game making → Game developers' desk with screens (no faces) or keep icon.
-
-[Emoji and Pictograms]  (emoji-pictograms)
-  • the birth of emoji → Docomo's original 176 emoji set (MoMA) — likely © Docomo; keep icon.
-  • the word 'emoji' → [icon] Keep icon.
-  • the 1964 Tokyo pictograms → 1964 Tokyo pictograms set.
-  • the emergency exit sign → Japanese green emergency exit sign.
-  • moving pictograms → [icon] Tokyo 2020 performance is © — keep icon.
-  • new emoji every year → [icon] Keep icon.
-  • emoji meanings around the world → [icon] Keep icon.
-  • very Japanese emoji → Beginner driver mark sticker (shoshinsha mark) on a car.
-
-[Amazing Toy Tricks]  (toys-tricks)
-  • the Rubik's Cube → A Rubik's Cube (generic coloured cube — avoid logo).
-  • cat's cradle → Cat's cradle string figure on hands.
-
-[The Science of Origami]  (origami-science)
-  • the Miura fold → A Miura-folded sheet (map) partly opened.
-  • folding paper in half → A stack of folded paper (folding in half) / diagram.
-  • origami in medicine → Origami stent prototype (lab photo) or keep icon.
-  • a space telescope's sunshield → JWST sunshield unfolding (NASA).
-  • origami diagrams → Origami diagram with valley/mountain folds.
-  • self-folding robots → MIT self-folding origami robot (public research photo).
-  • origami math → Angle trisection by folding (diagram) [icon OK].
-
-[Famous Animals of History]  (famous-animals)
-  • Hachikō → Hachikō statue at Shibuya (old real photo also public domain).
-  • Tama the station-master cat → Tama the station-master cat at Kishi Station (photo or the cat-face station building).
-  • Balto and Togo → Balto statue in Central Park.
-  • Owen and Mzee → Owen the hippo and Mzee the tortoise (check licence) or keep icon.
-  • Ham the space chimp → Ham the chimp in his flight couch (NASA, public domain).
-  • Dolly the sheep → Dolly the sheep (stuffed, National Museum of Scotland).
-  • Tama-chan the seal → Bearded seal (as Tama-chan was) — species photo.
-  • Koko the gorilla → Koko the gorilla — use a western lowland gorilla photo instead (Koko photos are ©).
-
-[Japan's Animal Islands and Towns]  (animal-islands-japan)
-  • Tashirojima, the cat island → Cats on Tashirojima harbour.
-  • the deer of Nara → Nara deer bowing for shika-senbei.
-  • the deer of Miyajima → Miyajima deer near the shrine.
-  • snow monkeys in hot springs → Snow monkeys in Jigokudani hot spring.
-  • the potato-washing monkeys → Japanese macaque washing a sweet potato (Kōjima).
-  • Okunoshima, the rabbit island → Rabbits on Okunoshima lawn.
-  • Zao Fox Village → Foxes at Zaō Fox Village in snow.
-  • Nagasaki's crooked-tail cats → A Nagasaki cat with a crooked tail.
-
-[Weird Creatures From Before the Dinosaurs]  (cambrian-weirdos)
-  • the Cambrian explosion → Burgess Shale fossils / illustration of Cambrian sea life.
-  • trilobites → Trilobite fossil.
-
-[Ninja: Facts and Myths]  (ninja)
-  • Iga and Kōka → Iga-ryū Ninja Museum (ninja house exterior).
-  • what ninja really did → [icon] Keep icon.
-  • ninja clothes → Dark navy/brown shinobi clothing on display (no faces).
-  • the mizugumo myth → Mizugumo replica at a ninja museum.
-  • walking silently → [icon] Keep icon.
-  • five-colored rice → Coloured rice grains (five colours).
-  • ninja energy food → Hyōrōgan balls / umeboshi (ninja food replica).
-  • ninja handbooks → Bansenshūkai manuscript page (public domain).
-
-[Inventions by Kids]  (kid-inventors)
-  • the popsicle → Popsicles (ice lollies on sticks).
-  • the idea for television → Philo Farnsworth's image dissector tube (museum) or early TV set.
-  • Japan's student invention contest → Student inventions display (no faces) or keep icon.
-
-[Secret Underground Places]  (hidden-places)
-  • G-Cans, Tokyo's flood tunnel → G-Cans pressure-control tank with huge pillars.
-  • the Svalbard Seed Vault → Svalbard Global Seed Vault entrance in snow.
-  • the Ōya stone quarry → Ōya stone quarry underground hall.
-  • the Waitomo glowworm caves → Waitomo glowworms on the cave ceiling.
-
-[The Tiny World]  (tiny-world)
-  • tardigrades → Tardigrade under a microscope (SEM).
-  • butterfly-wing scales → Butterfly wing scales macro.
-  • red blood cells → Red blood cells (SEM image).
-  • the first microscopes → Hooke's Micrographia cork drawing or Leeuwenhoek microscope replica.
-
-[Accidental Inventions]  (accidental-inventions)
-  • penicillin → Petri dish with Penicillium mould.
-  • sticky notes → Yellow sticky notes on a desk (no brand).
-  • Play-Doh → Modelling clay in bright colours (generic).
-  • superglue → A tube of superglue (generic).
-
-[Be a Detective]  (be-a-detective)
-  • fingerprints → Fingerprint close-up / fingerprint card.
-  • footprint casts → Plaster cast of a footprint.
-  • Sherlock Holmes → Sherlock Holmes statue (Baker Street) or deerstalker hat and pipe.
-  • Edogawa Ranpo → Edogawa Ranpo's house/library (Rikkyo Univ.) — avoid portrait.
-  • deduction → [icon] Keep icon (deduction).
-  • spot the difference → [draw] Spot-the-difference — draw our own pair.
-
-[Chindōgu: Un-useless Inventions]  (chindogu)
-  • what chindogu is → [icon] Chindogu photos are © Kawakami — keep icons for all of these.
-  • the rules of chindogu → [icon] Keep icon.
-  • chopsticks with a fan → [icon] Keep icon.
-  • the hay fever hat → [icon] Keep icon.
-  • the butter stick → [icon] Keep icon.
-  • the baby mop → [icon] Keep icon.
-  • the selfie stick's ancestor → Selfie stick (generic photo, no face).
-  • design your own chindogu → [icon] Keep icon (student activity).
-
-[Vending Machines and Capsule Toys]  (vending-gachapon)
-  • a land of vending machines → Row of Japanese vending machines on a street.
-  • hot and cold drinks → Vending machine with red 'hot' and blue 'cold' labels.
-  • the first vending machine → Hero of Alexandria's holy-water machine diagram (public domain).
-  • unusual vending machines → Unusual vending machine (dashi, umbrellas or eggs).
-  • disaster-support vending machines → Disaster-support vending machine with message board.
-  • meal-ticket machines → Ramen-shop meal-ticket machine (shokkenki).
-  • how vending machines work → Inside a vending machine (coin mechanism) or keep icon.
-
-[The Secrets of Fake Food]  (fake-food)
-  • what fake food is → Plastic food samples in a restaurant window.
-  • the first wax samples → Wax food sample from early days (museum).
-  • from wax to plastic → Modern plastic samples close-up (parfait/ramen).
-  • how fake food is made → Craftsperson's hands painting a sample (hands only).
-  • the wax lettuce trick → Wax lettuce being made in warm water.
-  • Kappabashi street → Kappabashi Dōgu Street sign (giant chef head building).
-  • loved around the world → Food-sample souvenir keychains.
-
-[The Science of Roller Coasters]  (roller-coasters)
-  • Russian ice slides → Painting/print of a Russian ice slide (public domain).
-  • 'jet coaster' is Japanese English → [icon] Language fact — keep icon.
-  • why you don't fall out of a loop → Roller coaster vertical loop.
-  • g-force → Coaster at the bottom of a drop (no faces) or keep icon.
-  • wooden and steel coasters → Wooden coaster vs steel coaster.
-  • Japan's oldest roller coaster → Hanayashiki roller coaster, Asakusa.
-  • Fuji-Q's super-fast launch → Fuji-Q Highland coasters with Mt Fuji.
-  • the world's fastest roller coaster → Formula Rossa track at Ferrari World, Abu Dhabi.
-
-[The Weirdest Buildings in the World]  (weird-buildings)
-  • the Cube Houses → Rotterdam Cube Houses.
-  • the bookshelf parking garage → Kansas City Public Library 'Community Bookshelf' garage.
-  • the Hundertwasser House → Hundertwasserhaus, Vienna.
-  • the Basket Building → Longaberger Basket Building, Ohio.
-  • the Crooked House → Krzywy Domek (Crooked House), Sopot.
-
-[Nature's Strangest Sights]  (strange-nature)
-  • the firefly squid of Toyama → Glowing firefly squid on the shore (Toyama Bay).
-  • the Blue Pond of Biei → Shirogane Blue Pond, Biei.
-  • the blue fire of Kawah Ijen → Blue sulfur flames at Kawah Ijen.
-  • frozen bubbles → Frozen methane bubbles in Abraham Lake.
-  • the rainbow mountains → Zhangye Danxia or Vinicunca rainbow mountain.
-  • Lake Hillier, the pink lake → Lake Hillier from the air.
-
-[The Secret Story of the Alphabet]  (alphabet-story)
-  • from pictures to letters → Proto-Sinaitic inscription (sphinx from Serabit el-Khadim).
-  • A was an ox head → Phoenician 'aleph' / ox head shape drawing [icon OK].
-  • alpha + beta → Ancient Greek inscription (stone).
-  • the Roman alphabet → Roman inscription (e.g. Trajan's Column base lettering).
-  • the lost letter thorn → 'Ye Olde' shop sign (or thorn þ in an old manuscript).
-  • W is a double U → [icon] Keep icon (W).
-  • the K in 'knight' → Old English manuscript with 'cniht' or keep icon.
-  • J and U are the newest letters → [icon] Keep icon.
-  • the beginning of romaji → Hepburn's 1867 Japanese-English dictionary (public domain).
-  • the ampersand, the 27th letter → Old typewriter QWERTY keyboard.
-  • Q almost always needs U → [icon] Keep icon (&).
-  • zed or zee → [icon] Keep icon.
-  • the most common letter → [icon] Keep icon.
-  • ghoti = fish → [icon] Keep icon.
-
-[Life in Antarctica]  (antarctic-life)
-  • icefish → Antarctic icefish (clear blood) — scientific photo.
-
-[Living Alongside Nature]  (satoyama)
-  • Japan's satoyama → Satoyama landscape: rice paddies, village and wooded hills.
-  • the rice terraces of the Philippines → Banaue/Ifugao rice terraces, Philippines.
-  • Bali's subak → Jatiluwih rice terraces / subak canals, Bali.
-  • England's hedgerows → English hedgerow along fields.
-  • Spain's dehesa → Dehesa: Iberian pigs under oak trees.
-  • storks on rooftops → Stork nest on a rooftop/chimney.
-  • swallows and houses → Swallow nest under Japanese eaves.
-  • people and honeybees → Beehive frames with honeybees.
-
-[Surviving the Winter]  (winter-animals)
-  • reindeer eyes → Reindeer in snow (eyes close-up if possible).
-  • the chickadee's memory → Black-capped chickadee caching a seed.
-  • ladybird clusters → Cluster of overwintering ladybirds.
-  • fish under the ice → Frozen lake with fish beneath / ice-fishing hole.
-  • garter snakes in winter dens → Red-sided garter snakes at Narcisse dens.
-  • monarch butterflies in winter → Monarch butterflies clustered on firs in Mexico.
-
-[Food Chains and Food Webs]  (food-chain)
-  • it all starts with the Sun → Sunlight on green leaves [icon OK].
-  • plant eaters → Rabbit eating grass.
-  • the energy pyramid → Energy pyramid diagram [icon OK].
-  • the wolves of Yellowstone → Grey wolf in Yellowstone snow.
-  • sea otters and kelp forests → Sea otter floating in a kelp forest.
-
-[Giant Mammals of the Ice Age]  (prehistoric-mammals)
-  • Ambulocetus, the walking whale → Ambulocetus skeleton or reconstruction (museum).
-
-[Cats of the World]  (cats-breeds)
-  • cats of ancient Egypt → Egyptian cat mummy/Bastet statue (museum).
-  • Turkish Van → Turkish Van cat.
-  • Bengal → Bengal cat.
-
-[The World of Horses]  (horses)
-  • the Taishu horse → Taishū horse on Tsushima.
-  • Thoroughbred → Thoroughbred racehorse (no jockey faces).
-  • zebras and donkeys → Zebra and donkey.
-  • sleeping standing up → Horse sleeping standing up in a field.
-
-[Secrets of Small Pets]  (small-pets)
-  • ferret → A ferret.
-  • African pygmy hedgehog → African pygmy hedgehog.
-  • before you get a pet → [icon] Keep icon (a checklist).
-
-[Flower Festivals of the World]  (flowers-japan-seasons)
-  • hanami in Japan → Cherry blossoms with picnic sheets underneath (no faces).
-  • cherry blossoms in Washington, D.C. → Cherry blossoms at the Tidal Basin, Washington D.C.
-  • Keukenhof's tulips → Keukenhof tulip fields.
-  • lavender fields → Lavender fields (Furano or Provence).
-  • Medellín's Flower Festival → Silleteros' flower displays in Medellín (displays only).
-  • jacaranda season → Jacaranda-lined street (Pretoria or Brisbane).
-  • Bulgaria's Valley of Roses → Rose fields in Bulgaria's Valley of Roses.
-
-[Strange Plants of the World]  (world-records-nature)
-  • living stones → Lithops living stones.
-  • pitcher plants → Pitcher plant (Nepenthes).
-  • dragon's blood tree → Dragon's blood trees on Socotra.
-
-[Telescopes and Observatories]  (telescopes-observatories)
-  • the first black hole image → EHT black hole image of M87* (CC licence).
-  • the James Webb Space Telescope → James Webb Space Telescope (NASA).
-
-[Life in Space]  (astronaut-life)
-  • 16 sunrises a day → Sunrise over Earth's curve from the ISS.
-  • eating in space → Astronaut food packets / tortilla floating (NASA).
-  • floating water → Water sphere floating on the ISS (NASA).
-  • washing hair in space → [icon] Keep icon (no-rinse shampoo).
-  • two hours of exercise a day → ISS treadmill/exercise device (NASA).
-  • getting taller in space → [icon] Keep icon.
-  • recycling water → ISS Water Recovery System rack (NASA).
-  • the smell of space → [icon] Keep icon.
-
-[Space Records]  (space-records)
-  • the biggest planet: Jupiter → Jupiter with Great Red Spot.
-  • the hottest planet: Venus → Venus (radar or Akatsuki image).
-  • a day longer than a year → [icon] Keep icon.
-  • the tallest mountain: Olympus Mons → Olympus Mons from orbit.
-  • the planet with the most moons → Saturn with moons (Cassini).
-  • the fastest planet: Mercury → Mercury (MESSENGER image).
-  • the windiest planet: Neptune → Neptune (Voyager 2).
-  • diamond rain → [icon] Keep icon (diamond rain).
-  • the coldest known place → Boomerang Nebula (Hubble).
-  • giant stars → Betelgeuse in Orion / size comparison chart.
-
-[Counting Around the World]  (numbers-languages)
-  • counting on fingers → [icon] Keep icon.
-  • Chinese number gestures → [icon] Keep icon (hand gestures).
-  • eighty in French → [icon] Keep icon.
-  • the Maya and zero → Maya numerals carved in stone (Dresden Codex page).
-  • Arabic numerals came from India → Arabic numerals' history / old Indian manuscript (Bakhshali) or keep icon.
-  • why an hour has 60 minutes → Babylonian clay tablet (base-60, Plimpton 322).
-  • Japanese counters → [icon] Keep icon.
-  • lucky and unlucky numbers → [icon] Keep icon.
-
-[Unusual Transport Around the World]  (world-transport)
-  • Venice's gondolas → Gondolas in Venice.
-  • London's double-decker buses → Red London double-decker bus.
-  • the Wuppertal hanging railway → Wuppertal Schwebebahn hanging train.
-  • La Paz's cable cars → La Paz Mi Teleférico cable cars over the city.
-  • bicycles in the Netherlands → Bicycle parking in Amsterdam/Utrecht.
-
-[Amazing Homes Around the World]  (world-houses-2)
-  • Cappadocia's cave houses → Cappadocia cave houses.
-  • Iceland's turf houses → Icelandic turf houses (e.g. Glaumbær).
-  • Toraja houses → Toraja tongkonan houses.
-  • the Tulou of Fujian → Fujian Tulou from above.
-  • the trulli of Alberobello → Trulli of Alberobello.
-  • the floating islands of Lake Titicaca → Uros reed islands on Lake Titicaca.
-  • Korean hanok and ondol → Korean hanok village.
-  • longhouses of Borneo → Borneo longhouse.
-  • the white houses of Santorini → Santorini white houses and blue domes.
-
-[Theatre Around the World]  (world-theatre)
-  • Wayang kulit shadow puppets → Wayang kulit shadow puppets.
-  • Czech marionettes → Czech marionettes in a Prague shop.
-
-[Sacred Places of the World]  (shrines-temples)
-  • Tōdai-ji's Great Buddha → Great Buddha of Tōdai-ji.
-  • the Sheikh Zayed Grand Mosque → Sheikh Zayed Grand Mosque exterior.
-  • visiting sacred places politely → [icon] Keep icon (shoes at a temple entrance is a good alternative).
-
-[Foods Named After Places]  (regional-dishes)
-  • spaghetti Napolitan → Spaghetti Napolitan (Japanese ketchup spaghetti).
-  • Bolognese → Tagliatelle al ragù (Bolognese).
-  • satsuma mandarins → Satsuma mandarins.
-
-[The Strange Sounds of English]  (phonics)
-  • the Great Vowel Shift → [icon] Keep icon (sound change).
-  • the mystery of 'ough' → [icon] Keep icon (word list).
-  • the magic e → [icon] Keep icon.
-  • the 'th' sound → Mouth/tongue diagram for 'th' [icon OK].
-  • L and R → Bowl of rice (and keep the joke as text).
-  • V and B → [icon] Keep icon.
-  • the strange word 'colonel' → [icon] Keep icon.
-  • word stress → [icon] Keep icon.
-  • the schwa → [icon] Keep icon.
-  • English in katakana → [icon] Keep icon (avoid brand logos).
-
-[Braille, Sign Language and Access for All]  (sign-braille)
-  • braille in daily life → Braille on an elevator button panel.
-  • bumps on shampoo bottles → Shampoo bottle side ridges (close-up, no brand).
-  • audio crossing signals → Japanese crossing signal with sound speaker box.
-  • sign languages differ by country → [icon] Keep icon (sign languages).
-  • fingerspelling → Fingerspelling hand chart (public diagram) [icon OK].
-  • 'thank you' in sign language → [icon] Keep icon.
-  • the Deaflympics → Deaflympics flag/logo or keep icon.
-  • Helen Keller → Helen Keller public-domain photo (historical, 1900s).
-
-[Body Idioms Around the World]  (body-words)
-  • break a leg → [icon] Keep icon — idioms work better as drawings.
-  • butterflies in my stomach → [icon] Keep icon — idioms work better as drawings.
-  • cost an arm and a leg → [icon] Keep icon — idioms work better as drawings.
-  • give someone a hand → [icon] Keep icon — idioms work better as drawings.
-  • keep an eye on → [icon] Keep icon — idioms work better as drawings.
-  • pull someone's leg → [icon] Keep icon — idioms work better as drawings.
-  • a wide face → [icon] Keep icon — idioms work better as drawings.
-  • the scales fell from my eyes → [icon] Keep icon — idioms work better as drawings.
-  • nail and flesh → [icon] Keep icon — idioms work better as drawings.
-  • pressing thumbs → [icon] Keep icon — idioms work better as drawings.
-
-[The Words for Colours]  (colors-languages)
-  • the 'blue' traffic light → Japanese traffic light showing the green-blue 'ao' light.
-  • how many colours in a rainbow? → Rainbow over a landscape.
-  • two blues in Russian → [icon] Two shades of blue swatches — draw them.
-  • orange: fruit first, colour second → Oranges (the fruit).
-  • brown and pink → Green tea leaves next to brown cloth (chairo) or keep icon.
-  • red in China → Red Chinese New Year decorations / red envelopes.
-  • the white wedding dress → White wedding dress on a mannequin.
-  • the precious purple → Murex sea snail shells (Tyrian purple) or purple-dyed cloth.
-  • how many colour words? → [icon] Keep icon.
-
-[The Secrets of Maps and Compasses]  (maps-compass)
-  • the compass rose → Old compass rose on a map (public-domain chart).
-  • the oldest world map → Babylonian Map of the World clay tablet (British Museum).
-  • latitude and longitude → Globe with latitude and longitude lines.
-  • the AuthaGraph map → AuthaGraph world map (check licence) or keep icon.
-  • contour lines → Contour map of a mountain.
-  • the moving magnetic north → Map of the North Magnetic Pole's movement.
-  • why north is up → South-up world map (or medieval east-up map).
-
-[How Things Fly]  (flight)
-  • how wings lift → Wing in a wind tunnel / airplane wing close-up.
-  • gliders → Glider soaring.
-  • Ninomiya Chūhachi's model plane → Ninomiya Chūhachi's crow-type model (replica, museum).
-  • Concorde, the supersonic airliner → Concorde at an air museum.
-  • why planes fly high → Airliner above the clouds.
-  • drones → A drone in flight.
-
-[Why Things Float]  (floating-boats)
-  • Archimedes' discovery → Bathtub with water level / Archimedes illustration [icon OK].
-  • why steel ships float → Steel cargo ship floating.
-  • why ice floats → Ice cubes floating in water / iceberg.
-  • the Kon-Tiki raft → Kon-Tiki raft (Kon-Tiki Museum, Oslo).
-
-[A History of Computers]  (computers-history)
-  • the abacus → A Japanese soroban abacus.
-  • Babbage's Analytical Engine → Babbage's Difference Engine (Science Museum replica).
-  • Ada Lovelace → Ada Lovelace public-domain portrait (1830s painting).
-  • ENIAC → ENIAC (US Army public-domain photo).
-  • the personal computer → 1980s personal computer (generic, no logo).
-  • the World Wide Web → First web server computer at CERN (NeXT cube) or keep icon.
-
-[Staying Safe Online]  (internet-safety)
-  • strong passwords → [icon] Keep icon (padlock).
-  • personal information → [icon] Keep icon (padlock).
-  • tell a grown-up → [icon] Keep icon (padlock).
-  • kind words online → [icon] Keep icon (padlock).
-  • is it true? → [icon] Keep icon (padlock).
-  • strangers online → [icon] Keep icon (padlock).
-  • your digital footprint → [icon] Keep icon (padlock).
-
-[Thinking Like a Programmer]  (coding)
-  • algorithms → [icon] Keep icon (recipe/flowchart).
-  • sequence → [icon] Keep icon (recipe/flowchart).
-  • loops → [icon] Keep icon (recipe/flowchart).
-  • if/then → [icon] Keep icon (recipe/flowchart).
-  • variables → [icon] Keep icon (recipe/flowchart).
-  • the first computer 'bug' → The 1947 logbook with the moth taped in (US Navy, public domain).
-  • debugging → [icon] Keep icon.
-  • Scratch → [icon] Scratch screenshots are © — keep icon.
-  • Ruby, a language from Japan → [icon] Ruby logo is © — keep icon (or a red gemstone).
-
-[Where Energy Comes From]  (energy)
-  • what energy is → [icon] Keep icon.
-  • most energy comes from the Sun → The Sun (NASA SDO image).
-  • biomass → Wood chips / biomass power plant.
-  • energy in food → A rice ball (onigiri) with nutrition label.
-
-[What Things Are Made Of]  (materials)
-  • iron and steel → Molten steel pouring in a steelworks.
-  • carbon fibre → Carbon fibre weave close-up.
-
-[Bridges and Towers of the World]  (bridges-towers)
-  • Megane-bashi → Megane-bashi with its reflection forming 'glasses'.
-  • types of bridges → Diagram of bridge types (beam, arch, suspension, cable-stayed) [icon OK].
-  • the Millau Viaduct → Millau Viaduct above the clouds.
-  • Q'eswachaka, the grass bridge → Q'eswachaka rope bridge, Peru.
-  • the Leaning Tower of Pisa → Leaning Tower of Pisa.
-  • Tokyo Skytree's central column → Five-storey pagoda (shinbashira) / Tokyo Skytree.
-
-[Technology of the Future]  (future-tech)
-  • the space elevator → Space elevator illustration (concept art, check licence) or keep icon.
-  • 3D-printed houses → 3D-printed concrete house.
-  • care robots → Care robot (generic, no brand) or keep icon.
-  • solar power from space → Space solar power concept illustration (JAXA/NASA).
-  • instant translation → [icon] Keep icon.
-  • your future invention → [icon] Keep icon (student activity).
-
-[Great Architects of the World]  (architects)
-  • Imhotep → Step Pyramid of Djoser (building, not the person).
-  • Brunelleschi → Florence Cathedral dome.
-  • Antoni Gaudí → Park Güell or Casa Batlló.
-  • Frank Lloyd Wright → Fallingwater.
-  • Le Corbusier → National Museum of Western Art, Tokyo.
-  • Tange Kenzō → Yoyogi National Gymnasium.
-  • I. M. Pei → Louvre Pyramid.
-  • Zaha Hadid → [©] Zaha Hadid buildings — e.g. Heydar Aliyev Center (check licence).
-  • Ban Shigeru → Paper-tube shelter or Cardboard Cathedral (Christchurch) by Ban.
-  • Kuma Kengo → Japan National Stadium (Tokyo) by Kuma.
-
-[A History of Picture Books]  (picture-books)
-  • Tenniel's Alice illustrations → Tenniel's original Alice illustration (public domain).
-  • the Caldecott Medal → Caldecott Medal (the medal design is ©; keep icon).
-  • Miffy → [©] Miffy is copyrighted — keep icon.
-  • classics from 1963 → [©] Keep icon.
-  • the hungry caterpillar book → [©] Keep icon.
-  • the Hans Christian Andersen Award → [icon] Keep icon.
-  • pop-up books → A pop-up book open (generic, no characters).
-
-[A History of Photography]  (photography)
-  • the first person in a photo → Daguerre's 'Boulevard du Temple' (1838, public domain).
-  • Ueno Hikoma's studio in Nagasaki → Ueno Hikoma's statue or a photo he took of Nagasaki (public domain).
-  • film cameras for everyone → Kodak No.1 box camera (1888) — museum photo.
-
-[Crafts From Around the World]  (crafts-to-make)
-  • Guatemalan worry dolls → Guatemalan worry dolls.
-  • the God's eye (ojo de Dios) → Ojo de Dios yarn craft.
-  • paper lanterns → Chinese paper lanterns.
-  • friendship bracelets → Friendship bracelets.
-  • pysanky eggs → Pysanky decorated eggs.
-  • Polish wycinanki paper cuts → Polish wycinanki paper cut.
-  • painting a daruma's eye → Daruma with one eye painted.
-  • paper weaving → Woven paper mat (school craft).
-
-[The World of Puzzles]  (puzzles)
-  • sudoku → A sudoku grid (printed, generic).
-  • crossword puzzles → A crossword in a newspaper.
-  • nonograms → A solved nonogram (pixel picture) [draw OK].
-  • magic squares → Lo Shu 3×3 magic square [draw OK].
-  • mazes and labyrinths → Hampton Court hedge maze from above.
-  • the 15 puzzle → A 15-puzzle sliding tile toy.
-  • kakuro → A kakuro grid [draw OK].
-
-[The Secrets of Sports Equipment]  (sports-equipment)
-  • the baseball's 108 stitches → Baseball close-up showing red stitches.
-  • golf ball dimples → Golf ball dimples macro.
-  • why tennis balls are yellow → Optic-yellow tennis balls.
-  • the orange basketball → Orange basketball.
-  • a bigger table-tennis ball → Table-tennis ball and bat.
-  • the swimsuit rules → [icon] Keep icon (no swimmers).
-  • the rugby ball's shape → Rugby ball.
-
-[A History of Sport]  (sports-japan-history)
-  • football's first rules → Old public-domain photo of 1860s football or a modern football.
-  • basketball and volleyball → Peach basket hoop replica / volleyball.
-  • the modern Olympics → 1896 Athens Olympic stadium (Panathenaic Stadium).
-  • Japan's first Olympians → Kanakuri Shizō's 1912 photo (public domain) or Stockholm Olympic Stadium.
-  • the beginnings of the Paralympics → Stoke Mandeville / wheelchair sport (public) or keep icon.
-  • the 1964 Tokyo Olympics → 1964 Tokyo Olympic cauldron/Yoyogi gym.
-  • new Olympic sports → Skateboard on a park ramp (no faces).
-
-[Sweets of the World II]  (sweets-world-2)
-  • baklava → Baklava pieces on a tray.
-
-[Tea Around the World]  (tea-world)
-  • where tea began → Tea plantation / camellia sinensis leaves.
-  • matcha and the tea ceremony → Matcha bowl and chasen whisk.
-  • British afternoon tea → Afternoon tea three-tier stand.
-  • bubble tea → Bubble tea with tapioca pearls.
-  • the Russian samovar → Russian samovar with teapot on top.
-  • Tibetan butter tea → Tibetan butter tea churn and cups.
-
-[Milk and Cheese]  (dairy-cheese)
-  • yogurt from Bulgaria → Bowl of yogurt / Bulgarian yogurt pot.
-  • how cheese is made → Cheese curds being cut in a vat.
-  • the holes in Swiss cheese → Emmental cheese with big holes.
-  • so, Japan's ancient dairy food → Replica of Japanese 'so' (ancient dairy) or keep icon.
-  • dairy farms in Hokkaido → Hokkaido dairy farm with cows.
-
-[Kitchen Tools Around the World]  (kitchen-tools)
-  • the tagine pot → Moroccan tagine pot.
-  • the electric rice cooker → Old electric rice cooker (1955, museum).
-  • the tandoor oven → Tandoor oven with naan on the wall.
-
-[Festival Foods of the World]  (festival-food)
-  • mochi pounding → Mochitsuki: mortar (usu) and mallet (kine) with mochi (no faces).
-  • sweets for Eid → Ma'amoul cookies and dates.
-  • king cake → Galette des rois with paper crown and fève.
-  • turkey for Thanksgiving → Roast turkey on a Thanksgiving table.
-  • Japanese festival stalls → Japanese festival yatai: ringo-ame, yakisoba, takoyaki stalls.
-
-[Unusual Jobs Around the World]  (jobs-az)
-  • train pushers → Tokyo platform at rush hour (wide, no faces) or keep icon.
-  • ice cream taster → Ice cream tubs and tasting spoon.
-  • golf ball diver → Golf balls in a pond / diver gear.
-  • panda keeper → Panda at Chengdu Panda Base.
-  • water slide tester → Water slide tube at a water park (empty).
-  • ethical hacker → [icon] Keep icon (laptop & padlock).
-  • snake venom collector → Snake venom extraction (antivenom lab photo) or keep icon.
-
-[Children's Rights]  (children-rights)
-  • the Convention on the Rights of the Child → [icon] Keep icon (UN document).
-  • the right to play → Playground equipment (empty).
-  • the right to learn → Classroom desks (empty).
-  • the right to be heard → [icon] Keep icon (raised hand).
-  • the right to a name → [icon] Keep icon (name tag).
-  • the right to be safe → [icon] Keep icon.
-
-[People Who Help the Community]  (community)
-  • crossing guards → School crossing flag / lollipop stop sign.
-  • the kōban police box → A Japanese koban.
-  • kodomo shokudō, children's cafeterias → [icon] Keep icon (kodomo shokudō — no faces).
-  • Little Free Libraries → Little Free Library box.
-  • repair cafés → Repair café table with tools (no faces).
-  • community gardens → Community garden plots in a city.
-  • volunteer fire brigades → Fire brigade (shōbōdan) pump truck / hanten.
-  • cleaning up after the game → Clean stadium seats after a match / rubbish bags (no faces).
-
-[Human-Made World Records]  (world-records-human)
-  • the maglev speed record → L0 Series maglev train (Yamanashi).
-  • the world's highest railway → Qinghai–Tibet Railway train on the plateau.
-  • giant container ships → Giant container ship at sea.
-
-
-Not listed: rooms about ideas, words or people (heroes, philosophers, feelings, numbers...) were skipped on purpose and keep their icons.
+DESERT II
+  long-eared jerboa  -  The long-eared jerboa itself (tiny desert rodent with huge ears) — not a different jerboa species if possible
+
+EMOJI AND PICTOGRAMS
+  very Japanese emoji  -  Beginner driver mark sticker (shoshinsha mark) on a car
+
+EXTREME WEATHER AND STAYING SAFE
+  linear rainbands  -  Radar image of a linear rainband
+  heavy snow  -  Heavy snow on Japanese houses (snow country)
+  weather warnings  -  JMA weather warning map [icon OK]
+
+FAMOUS ANIMALS OF HISTORY
+  Owen and Mzee  -  Owen the hippo and Mzee the tortoise
+  Koko the gorilla  -  Koko the gorilla — use a western lowland gorilla photo instead (Koko photos are ©)
+
+FAST AND SLOW
+  sailfish  -  A sailfish leaping or swimming with its sail raised
+
+FESTIVAL FOODS OF THE WORLD
+  mochi pounding  -  Mochitsuki: mortar (usu) and mallet (kine) with mochi
+
+FESTIVALS AROUND THE WORLD
+  Lunar New Year  -  Red lanterns and decorations in a Chinatown street, or a lion dance from a distance
+
+FESTIVALS FOR ANCESTORS
+  Obon  -  A cucumber horse and eggplant cow (shoryo-uma) on an Obon altar, or chochin lanterns
+  Qingming  -  Qingming: kites in a spring sky or tomb-sweeping flowers
+
+FLOWER FESTIVALS OF THE WORLD
+  Keukenhof's tulips  -  Keukenhof tulip fields
+  lavender fields  -  Lavender fields (Furano or Provence)
+
+FOOD AND HEALTH
+  red foods  -  Red foods: tomatoes, strawberries, red peppers arranged together
+  yellow foods  -  Yellow foods: bananas, corn, lemons, eggs
+  green foods  -  Green foods: broccoli, spinach, peas, kiwi
+  water  -  A glass of water
+
+FOOD CHAINS AND FOOD WEBS
+  it all starts with the Sun  -  Sunlight on green leaves [icon OK]
+
+FOODS IN SEASON
+  what shun means  -  Seasonal produce at a Japanese market labelled by season
+
+FOODS NAMED AFTER PLACES
+  frankfurter  -  Frankfurter sausages (Frankfurter Würstchen) — not the Frankfurter Kranz cake
+  spaghetti Napolitan  -  Spaghetti Napolitan (Japanese ketchup spaghetti)
+  Bolognese  -  Tagliatelle al ragù (Bolognese)
+
+GAMES AROUND THE WORLD
+  jump rope  -  A skipping rope on the ground or children jumping seen from far away
+
+GREAT ARCHITECTS OF THE WORLD
+  Antoni Gaudí  -  Park Güell or Casa Batlló
+  Ban Shigeru  -  Paper-tube shelter or Cardboard Cathedral (Christchurch) by Ban
+
+HOLIDAYS AROUND THE WORLD
+  Lunar New Year  -  Red envelopes (hongbao) and red lantern decorations
+
+HOMES AROUND THE WORLD
+  igloo  -  A snow igloo in a snowy landscape (a real snow-block igloo, not an igloo-shaped building)
+
+HOT AND COLD
+  Japan's hottest day  -  A thermometer showing 41°C on a hot Japanese street
+
+HOW THINGS FLY
+  Ninomiya Chūhachi's model plane  -  Ninomiya Chūhachi's crow-type model (replica, museum)
+
+HUMAN-MADE WORLD RECORDS
+  giant container ships  -  Giant container ship at sea
+
+INSECT SONGS
+  robust cicada  -  Robust cicada (kumazemi) on a tree
+  tsukutsuku-boshi cicada  -  Tsukutsuku-bōshi cicada
+
+INSIDE A JAPANESE SCHOOL
+  the gym  -  An empty Japanese school gymnasium with stage at one end and basketball lines
+  the nurse's office  -  A school nurse's office: bed, first-aid shelf (empty)
+  the science room  -  A school science room with lab tables
+  the broadcasting room  -  School broadcasting room equipment
+
+INSTRUMENTS OF THE ORCHESTRA
+  conductor  -  Conductor's baton and score on a podium (no face)
+
+JAPAN IN SPACE
+  Akiyama Toyohiro  -  Akiyama Toyohiro — use the Soyuz/Mir instead of a portrait
+  Mohri Mamoru  -  Mohri Mamoru — use Space Shuttle Endeavour (STS-47) instead
+  Mukai Chiaki  -  Mukai Chiaki — use the Space Shuttle Columbia/medaka instead
+  Wakata Koichi  -  Wakata Koichi — use the ISS instead
+
+JAPAN'S 72 MICRO-SEASONS
+  Seimei  -  Seimei: fresh green spring landscape, swallows
+  Boshu  -  Boshu: rice planting in a paddy
+  Geshi  -  Geshi: hydrangeas or long summer evening
+
+JAPAN'S ANIMAL ISLANDS AND TOWNS
+  Tashirojima, the cat island  -  Cats on Tashirojima harbour
+  the potato-washing monkeys  -  Japanese macaque washing a sweet potato (Kōjima)
+
+JAPAN'S NATIONAL HOLIDAYS
+  how many holidays  -  Japanese calendar with red holiday dates
+
+JAPAN'S RECORDS
+  the deepest snow  -  Mt Ibuki deep snow / snow corridor
+  the busiest station  -  Shinjuku Station crowds (wide, far away)
+  the prefecture with the most islands  -  Nagasaki's many islands from the air
+
+JAPANESE ART THROUGH TIME
+  Jakuchu's roosters  -  One of Ito Jakuchu's rooster paintings (Doshoku Sai-e)
+  Kusama's polka dots  -  Kusama's art is copyrighted — photo of her pumpkin sculpture outdoors may be OK (Naoshima), otherwise
+
+JAPANESE CULTURE
+  Bon dance  -  A yagura tower with red-and-white lanterns at a bon-odori ground, dancers far away
+
+JAPANESE FOLK TALES
+  Kintaro  -  Kintaro doll / Gogatsu ningyo of Kintaro with a bear
+
+JUNIOR HIGH SCHOOL LIFE
+  sailor uniform  -  A sailor-style school uniform on a hanger (no student)
+  club activities  -  School club equipment: a tennis racket, brass instrument, art easel together
+  term tests  -  Test paper and pencils on a desk (no names)
+  chorus contest  -  A school stage with choir risers
+
+LEGENDARY CREATURES
+  mermaid  -  A family-friendly mermaid: the Little Mermaid statue in Copenhagen or a mermaid shown with long hair covering — no nudity
+  baku  -  An Edo-period carving or drawing of the baku (dream-eating creature), e.g. temple wood carving — not the city of Baku
+
+LIBRARIES OF THE WORLD
+  Stuttgart City Library  -  Stuttgart City Library interior (white cube atrium)
+  camel library  -  Kenya's camel mobile library carrying book boxes
+
+LIFE IN EDO
+  public baths  -  A traditional Japanese sento: tiled bath with Mt Fuji mural, or an ukiyo-e print of an Edo bathhouse (no people bathing)
+  a city of one million  -  Edo townscape (ukiyo-e) or Edo-Tokyo Museum model
+  a recycling city  -  Ukiyo-e of Edo recyclers / used-goods sellers
+  terakoya schools  -  Terakoya school print (Edo)
+
+LIFE IN SPACE
+  16 sunrises a day  -  Sunrise over Earth's curve from the ISS
+  floating water  -  Water sphere floating on the ISS (NASA)
+  recycling water  -  ISS Water Recovery System rack (NASA)
+
+LIGHT AND COLOR
+  mixing colors  -  Overlapping red, green and blue light circles
+  periscope  -  A periscope (submarine or toy)
+
+LITTLE HELPERS AND FAIRIES OF THE WORLD
+  lost tooth traditions  -  A baby tooth and a tooth-box
+
+LIVING ALONGSIDE NATURE
+  England's hedgerows  -  English hedgerow along fields
+
+LONG, SHORT AND TALL
+  the shortest flight  -  Loganair plane on the Westray–Papa Westray route (Orkney)
+  the longest place name  -  The long Welsh village name sign (Llanfair...gogogoch) at the station
+  the shortest place name  -  The sign for the town of Å in Norway
+
+LOUD AND QUIET
+  owls and the Shinkansen  -  Shinkansen pantograph (owl-feather design) or an owl in flight
+  quiet snowy days  -  Quiet snowy village at night
+
+LUCKY SYMBOLS AROUND THE WORLD
+  lucky first dreams  -  Mt Fuji, a hawk and an eggplant (first-dream trio) — use Mt Fuji
+
+MADE IN JAPAN
+  QR code  -  A QR code sign/sticker
+
+MARTIAL ARTS OF THE WORLD
+  capoeira  -  A berimbau (the bow-shaped capoeira instrument), or capoeira players far away in a roda
+  judo around the world  -  Judo world map / international judo mats
+
+MASTERPIECES OF BRITAIN AND AMERICA
+  Pollock's drip paintings  -  Pollock is copyrighted
+  Hockney's swimming pools  -  Hockney is copyrighted
+
+MASTERPIECES OF FRANCE
+  The Snail  -  Matisse's paper cut-out 'The Snail' (1953) — ©: Matisse died 1954, still copyrighted outside Japan; consider keeping the icon
+
+MASTERPIECES OF ITALY AND SPAIN
+  Leonardo's notebooks  -  A page of Leonardo's notebooks (Codex) with drawings
+  Joan Miró  -  Miró is copyrighted
+
+MASTERPIECES OF THE LOW COUNTRIES
+  Escher's impossible drawings  -  Escher is copyrighted until 2042 (or Penrose-triangle drawing)
+
+MILK AND CHEESE
+  how cheese is made  -  Cheese curds being cut in a vat
+  so, Japan's ancient dairy food  -  Replica of Japanese 'so' (ancient dairy)
+  dairy farms in Hokkaido  -  Hokkaido dairy farm with cows
+
+MONEY AROUND THE WORLD
+  pound  -  British pound coins and banknotes (the currency, not the weight)
+  cashless payment  -  A contactless card or smartphone being tapped on a payment terminal / QR code payment
+  new banknotes  -  Japan's 2024 banknotes (10,000 / 5,000 / 1,000 yen)
+
+MOUNTAIN ANIMALS
+  Ezo pika  -  An Ezo pika (Hokkaido) on rocks
+  Himalayan jumping spider  -  A Himalayan jumping spider (or a jumping spider close-up)
+
+MUSIC GENRES OF THE WORLD
+  salsa  -  Salsa instruments: congas, timbales and claves (or a dance floor with couples far away)
+  jazz  -  Saxophone and trumpet on a jazz stage
+  rock and roll  -  Electric guitar and old jukebox (rock and roll)
+  K-pop  -  [people] K-pop is about real idols or a concert hall light stick
+  enka  -  Enka: a stage with kimono and microphone (no face)
+  J-pop  -  [people] J-pop or a concert stage without performers
+
+MUSICAL INSTRUMENTS
+  shamisen  -  A shamisen on its own (three-stringed Japanese lute with plectrum)
+
+NATURE'S STRANGEST SIGHTS
+  the firefly squid of Toyama  -  Glowing firefly squid on the shore (Toyama Bay)
+  the blue fire of Kawah Ijen  -  Blue sulfur flames at Kawah Ijen
+
+NINJA: FACTS AND MYTHS
+  ninja clothes  -  Dark navy/brown shinobi clothing on display
+  the mizugumo myth  -  Mizugumo replica at a ninja museum
+  five-colored rice  -  Coloured rice grains (five colours)
+  ninja handbooks  -  Bansenshūkai manuscript page
+
+OLYMPIC SPORTS
+  breaking  -  Breaking: a dancer's silhouette mid-freeze (no face)
+
+OPTICAL ILLUSIONS
+  the Müller-Lyer illusion  -  Better as a drawn illusion than a photo — I can draw these in the app
+  the Kanizsa triangle  -  Kanizsa triangle — draw it
+
+OUR MOON AND OTHER MOONS
+  the Moon's patterns  -  Full Moon showing 'rabbit' maria
+  the planet with the most moons  -  Saturn and some of its moons (Cassini)
+
+PEOPLE WHO HELP THE COMMUNITY
+  volunteer fire brigades  -  Fire brigade (shōbōdan) pump truck / hanten
+  cleaning up after the game  -  Clean stadium seats after a match / rubbish bags
+
+PLAYGROUND GAMES AROUND THE WORLD
+  tug of war  -  A tug-of-war rope on a field, or a team seen from far away
+  rock paper scissors  -  Hands playing rock-paper-scissors
+
+REGIONS OF THE WORLD
+  South America  -  Satellite/globe image of South America
+
+SCHOOL EVENTS
+  sports day  -  Japanese undokai from far away: flags of all nations bunting, field lanes, red/white caps
+  music festival  -  A school stage with music stands and instruments, no performers' faces
+  graduation ceremony  -  Graduation certificate tube and certificate, or a gym set up for sotsugyoshiki with red-white curtains
+  entrance ceremony  -  Japanese school entrance ceremony set-up: gym with red-white curtains and flower stands, or a randoseru under cherry blossoms
+
+SEASIDE SCIENCE
+  tides  -  The same beach at high tide and low tide (comparison photo)
+
+SECRETS OF NAGASAKI
+  Peiron boat race  -  Peiron dragon-style boats racing in Nagasaki harbour
+
+SECRETS OF THE JAPANESE HOME
+  LDK  -  Floor plan drawing of a 3LDK apartment
+
+SOLIDS, LIQUIDS AND GASES
+  solid, liquid, gas  -  Ice, water and steam together (kettle + ice cubes)
+  melting and freezing  -  An ice cube melting
+  oobleck  -  Hands squeezing oobleck (cornstarch) — hands only
+  air has weight  -  A balance with an inflated vs deflated balloon
+
+SPACE RECORDS
+  giant stars  -  Betelgeuse in Orion / size comparison chart
+
+STADIUMS AROUND THE WORLD
+  Nagasaki Stadium City  -  Peace Stadium, Nagasaki Stadium City
+
+STATUES AROUND THE WORLD
+  The Little Mermaid  -  The Little Mermaid bronze statue in Copenhagen harbour (the statue, not the book)
+  Cloud Gate  -  Cloud Gate (Chicago) photos are restricted
+
+STRANGE PLANTS OF THE WORLD
+  living stones  -  Lithops living stones
+
+SUMMER IN JAPAN
+  summer festival  -  Night summer festival with yatai stalls and lanterns (wide shot)
+  radio exercises  -  Radio exercise attendance card (rajio taiso card) or a park at dawn
+
+SURVIVING THE WINTER
+  reindeer eyes  -  Reindeer in snow (eyes close-up if possible)
+  ladybird clusters  -  Cluster of overwintering ladybirds
+
+SYMBOLS AND SIGNS
+  Olympic pictograms  -  1964 Tokyo Olympic pictograms (public set)
+  the recycling symbol  -  Recycling arrows symbol on packaging
+  the hot spring symbol  -  Onsen ♨ symbol sign
+  the wheelchair symbol  -  Wheelchair accessibility sign
+  the at sign  -  @ sign (keyboard key) [icon OK]
+  the ampersand  -  & ampersand in a typeface [icon OK]
+
+TASTES OF NAGASAKI
+  chirin-chirin ice  -  Chirin-chirin ice (rose-shaped sherbet cone)
+  Nagasaki milkshake  -  Nagasaki milkshake (spoonable shaved-ice milkshake)
+  Sasebo burger  -  Sasebo burger
+
+TEA AROUND THE WORLD
+  British afternoon tea  -  Afternoon tea three-tier stand
+
+TECHNOLOGY OF THE FUTURE
+  the space elevator  -  Space elevator illustration (concept art, check licence)
+  3D-printed houses  -  3D-printed concrete house
+
+THE GEOGRAPHY OF JAPAN
+  the shape of Japan  -  Satellite image of Japan's shape
+  Japan's east and west ends  -  Cape Nosappu (east) / Yonaguni western cape monument
+  the Fossa Magna  -  Map/diagram of the Fossa Magna (or Itoigawa Fossa Magna Museum)
+
+THE HISTORY OF THE EARTH
+  the Earth is born  -  Artist's view of early Earth with lava (NASA)
+  the Japanese islands form  -  Map of the Japanese islands separating from Asia
+
+THE HUMAN BODY
+  nose  -  Diagram of the nose / a child's nose drawing [icon may be better]
+
+THE SCIENCE OF ORIGAMI
+  folding paper in half  -  A stack of folded paper (folding in half) / diagram
+  origami in medicine  -  Origami stent prototype (lab photo)
+  a space telescope's sunshield  -  JWST sunshield unfolding (NASA)
+  self-folding robots  -  MIT self-folding origami robot (public research photo)
+
+THE SCIENCE OF ROLLER COASTERS
+  Russian ice slides  -  Painting/print of a Russian ice slide
+  g-force  -  Coaster at the bottom of a drop
+  Japan's oldest roller coaster  -  Hanayashiki roller coaster, Asakusa
+  Fuji-Q's super-fast launch  -  Fuji-Q Highland coasters with Mt Fuji
+  the world's fastest roller coaster  -  Formula Rossa track at Ferrari World, Abu Dhabi
+
+THE SCIENCE OF SOUND
+  sound is vibration  -  Tuning fork vibrating in water (splash)
+  pitch  -  Xylophone bars short to long (pitch)
+  how ears work  -  Diagram of the inner ear
+
+THE SCIENCE OF SPOOKY THINGS
+  faces in things  -  A power socket that looks like a face
+  ball lightning  -  Painting/photo of ball lightning (rare; 19th-c. engraving is public domain)
+
+THE SECRET STORY OF THE ALPHABET
+  the Roman alphabet  -  Roman inscription (e.g. Trajan's Column base lettering)
+
+THE SECRETS OF ELECTRICITY
+  static electricity  -  Balloon and hair static (no face) or Van de Graaff generator
+
+THE SECRETS OF FAKE FOOD
+  the first wax samples  -  Wax food sample from early days
+  from wax to plastic  -  Modern plastic samples close-up (parfait/ramen)
+  how fake food is made  -  Craftsperson's hands painting a sample (hands only)
+  the wax lettuce trick  -  Wax lettuce being made in warm water
+  loved around the world  -  Food-sample souvenir keychains
+
+THE SECRETS OF HOT SPRINGS
+  how hot springs form  -  Diagram of hot spring formation, or a steaming onsen source
+  foot baths  -  A foot bath (ashiyu) with wooden benches
+
+THE SECRETS OF MANGA AND ANIME
+  key frames and in-betweens  -  Animator's light table with pencil drawings (no characters)
+
+THE SECRETS OF MAPS AND COMPASSES
+  the compass rose  -  Old compass rose on a map (public-domain chart)
+  contour lines  -  Contour map of a mountain
+  why north is up  -  South-up world map (or medieval east-up map)
+
+THE SECRETS OF RICE
+  the kanji for rice  -  Kanji 米 calligraphy [icon OK]
+
+THE SECRETS OF SPORTS EQUIPMENT
+  golf ball dimples  -  Golf ball dimples macro
+  the orange basketball  -  Orange basketball
+
+THE SENSES
+  sharks that sense electricity  -  A shark's nose showing ampullae of Lorenzini
+
+THE SOLAR SYSTEM
+  Mars  -  NASA image of Mars (red planet, full disk)
+
+THE STRANGE SOUNDS OF ENGLISH
+  the 'th' sound  -  Mouth/tongue diagram for 'th' [icon OK]
+
+THE WATER CYCLE
+  clouds form  -  Clouds forming over mountains
+  groundwater  -  A spring/well (groundwater)
+  how much water we use  -  A tap filling a bath (water use)
+
+THE WEIRDEST BUILDINGS IN THE WORLD
+  the bookshelf parking garage  -  Kansas City Public Library 'Community Bookshelf' garage
+
+THE WONDER OF MAGNETS
+  KS steel  -  KS steel magnet or Honda Kotaro's statue (Tohoku Univ.)
+
+THE WONDER OF SEEDS
+  seeds that float  -  Coconut on a beach (floating seed)
+
+THE WORDS FOR COLOURS
+  the 'blue' traffic light  -  Japanese traffic light showing the green-blue 'ao' light
+  the precious purple  -  Murex sea snail shells (Tyrian purple) or purple-dyed cloth
+
+THE WORLD OF ART
+  sculpture  -  Same as above: a famous clothed sculpture in a museum setting, or a sculptor carving stone
+
+THE WORLD OF HORSES
+  the Taishu horse  -  Taishū horse on Tsushima
+
+THE WORLD OF PUZZLES
+  nonograms  -  A solved nonogram (pixel picture) [draw OK]
+  magic squares  -  Lo Shu 3×3 magic square [draw OK]
+  kakuro  -  A kakuro grid [draw OK]
+
+THE WORLD OF SPICES
+  black pepper  -  Black peppercorns and a pepper grinder (spice close-up)
+
+THEATRE AROUND THE WORLD
+  musicals  -  A theatre stage with curtain and lights (e.g. a Broadway or West End theatre interior/exterior)
+
+THINKING LIKE A PROGRAMMER
+  the first computer 'bug'  -  The 1947 logbook with the moth taped in (US Navy, public domain)
+
+TIME ZONES
+  the International Date Line  -  Map showing the International Date Line
+  the first New Year  -  Kiribati sunrise (first New Year)
+  Japan and the UK  -  Two clocks showing Tokyo and London time
+
+TRADITIONAL CRAFTS OF JAPAN
+  Nambu ironware  -  Nambu iron kettle (tetsubin)
+  Kyo-yuzen dyeing  -  Kyo-yūzen dyed silk
+
+TRADITIONAL JAPANESE GAMES
+  fukuwarai  -  Fukuwarai face-puzzle game pieces
+  hanetsuki  -  Hagoita paddle and shuttlecock (hanetsuki)
+
+TRAINS OF JAPAN
+  punctuality  -  Station departure board / platform markings for exact stopping
+
+TROPICAL FRUITS
+  mangosteen  -  Mangosteen fruit cut open showing the white segments
+
+UNUSUAL JOBS AROUND THE WORLD
+  ice cream taster  -  Ice cream tubs and tasting spoon
+  golf ball diver  -  Golf balls in a pond / diver gear
+  snake venom collector  -  Snake venom extraction (antivenom lab photo)
+
+VEHICLES
+  bullet train  -  A Shinkansen bullet train passing by
+
+VENDING MACHINES AND CAPSULE TOYS
+  the first vending machine  -  Hero of Alexandria's holy-water machine diagram
+  unusual vending machines  -  Unusual vending machine (dashi, umbrellas or eggs)
+  disaster-support vending machines  -  Disaster-support vending machine with message board
+
+VOLCANOES OF THE WORLD
+  how volcanoes form  -  Diagram of a volcano cross-section
+
+WHERE CLUB SPORTS CAME FROM
+  ekiden  -  An ekiden relay sash (tasuki) or runners seen from behind/far away on a road course
+  soft tennis  -  A soft tennis racket and the soft rubber ball
+
+WHY DOES MY BODY DO THAT?
+  wrinkly bath fingers  -  Wrinkly fingertips after a bath (hands only)
+  pins and needles  -  Legs in seiza on tatami (no face)
+  blinking  -  Close-up of an eye mid-blink
+
+WHY THINGS FLOAT
+  Archimedes' discovery  -  Bathtub with water level / Archimedes illustration [icon OK]
+
+WHY WE HAVE SEASONS
+  the equinoxes  -  Diagram/photo of day and night equal at the equinox
+  wet and dry seasons  -  Monsoon rain over rice fields vs. dry season land
+  opposite seasons  -  Christmas on an Australian beach
+
+WINTER SPORTS
+  skating  -  Ice skates on an ice rink
+
+WONDERFULLY WEIRD FESTIVALS
+  Akita Kanto Festival  -  Akita Kantō lantern poles at night
+
+WRITING SYSTEMS
+  alphabet  -  The English alphabet A–Z (printed letters, e.g. alphabet blocks)
+  Thai script  -  Thai script (e.g. a Bangkok sign)
