@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (232 topics) — all 2075 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (238 topics) — all 2127 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -250,14 +250,14 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## K. History (gentle overviews)
 
-- **ancient-civilizations** 古代文明 — Mesopotamia (writing, wheel), Egypt (pyramids, papyrus), Indus (planned cities), China (silk, paper), Maya (calendar, cacao), Inca (roads, Machu Picchu), Greece (Olympics), Rome (roads, aqueducts)
-- **writing-history** 文字の 歴史 `timeline` — cave signs, cuneiform, hieroglyphs, Chinese characters, alphabet journey, kana, printing, typewriter, keyboard, emoji
-- **communication-history** 伝える 方法の 歴史 `timeline` — drums & smoke signals, letters & post, telegraph, telephone, radio, TV, fax, mobile phones, email, video calls
-- **transport-history** のりものの 歴史 `timeline` — walking, horses, sailing ships, palanquins (kago), steam trains, bicycles, cars, airplanes, Shinkansen, rockets, maglev
-- **toys-history** おもちゃの 歴史 `timeline` — ancient dolls, spinning tops, kites, yo-yos, teddy bears (1902), jigsaws, building blocks, model trains, video games (text), robots
+- ✅ ~~**ancient-civilizations**~~ 古代文明 — Mesopotamia (writing, wheel), Egypt (pyramids, papyrus), Indus (planned cities), China (silk, paper), Maya (calendar, cacao), Inca (roads, Machu Picchu), Greece (Olympics), Rome (roads, aqueducts)
+- ✅ ~~**writing-history**~~ 文字の 歴史 `timeline` — cave signs, cuneiform, hieroglyphs, Chinese characters, alphabet journey, kana, printing, typewriter, keyboard, emoji
+- ✅ ~~**communication-history**~~ 伝える 方法の 歴史 `timeline` — drums & smoke signals, letters & post, telegraph, telephone, radio, TV, fax, mobile phones, email, video calls
+- ✅ ~~**transport-history**~~ のりものの 歴史 `timeline` — walking, horses, sailing ships, palanquins (kago), steam trains, bicycles, cars, airplanes, Shinkansen, rockets, maglev
+- ✅ ~~**toys-history**~~ おもちゃの 歴史 `timeline` — ancient dolls, spinning tops, kites, yo-yos, teddy bears (1902), jigsaws, building blocks, model trains, video games (text), robots
 - **money-history** お金の 歴史 `timeline` — shells, barter, coins (Lydia), paper money (China), Japanese oban/koban, yen begins (1871), banknote faces, credit cards, e-money
 - **clothes-history** 服の 歴史 — animal skins, weaving, silk road, kimono layers (Heian), Edo fashion, Meiji Western clothes, school uniforms, jeans, sneakers
-- **edo-life** 江戸時代の くらし — nagaya houses, temple schools (terakoya), sushi stalls, ukiyo-e, kabuki, firefighters (hikeshi), recycling culture, travel on the Tokaido, Dejima trade
+- ✅ ~~**edo-life**~~ 江戸時代の くらし — nagaya houses, temple schools (terakoya), sushi stalls, ukiyo-e, kabuki, firefighters (hikeshi), recycling culture, travel on the Tokaido, Dejima trade
 
 ## L. Fun & Wonder
 

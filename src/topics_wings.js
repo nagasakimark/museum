@@ -24,8 +24,9 @@ import { WINGS_B1 } from "./wings/b1_space.js";
 import { WINGS_M1 } from "./wings/m1_philosophy.js";
 import { WINGS_M2 } from "./wings/m2_philosophy.js";
 import { WINGS_E1 } from "./wings/e1_english.js";
+import { WINGS_K1 } from "./wings/k1_history.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1, ...WINGS_K1 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -142,5 +143,14 @@ const BACK4 = {
   "ocean": ["whales-dolphins", "sharks-rays"], "aquarium": ["whales-dolphins", "sharks-rays"], "savanna": ["african-mammals"], "japan-traditions": ["crafts-japan", "japanese-castles"], "festivals-world": ["nagasaki-festivals"],
 };
 
+// Each later batch gets its own object so keys never collide.
+const EXTRA = [
+  {
+  // K history
+  "landmarks": ["ancient-civilizations"], "art-timeline": ["ancient-civilizations"], "writing": ["writing-history"],
+  "vehicles": ["transport-history"], "japanese-games": ["toys-history"], "art-japan-history": ["edo-life"],
+  },
+];
+
 export const BACKLINKS = {};
-for (const m of [BACK1, BACK2, BACK3, BACK4]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
+for (const m of [BACK1, BACK2, BACK3, BACK4, ...EXTRA]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
