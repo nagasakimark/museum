@@ -19,8 +19,9 @@ import { WINGS_D1 } from "./wings/d1_japan.js";
 import { WINGS_D2 } from "./wings/d2_prefectures.js";
 import { WINGS_A1 } from "./wings/a1_animals.js";
 import { WINGS_I1 } from "./wings/i1_food.js";
+import { WINGS_F1 } from "./wings/f1_science.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -112,6 +113,9 @@ const BACK4 = {
   "nagasaki": ["nagasaki-prefecture", "nagasaki-festivals", "pref-kyushu-okinawa"], "nagasaki-city": ["nagasaki-festivals", "nagasaki-prefecture"],
   "landmarks": ["japanese-castles"], "vehicles": ["trains-japan"], "sweets": ["wagashi-seasons"], "art-world-crafts": ["crafts-japan"],
   "japanese-food": ["wagashi-seasons"],
+  // F science
+  "science-fun": ["simple-machines", "electricity", "light-color", "sound-science", "states-of-matter"], "weather": ["water-cycle", "light-color"],
+  "loud-quiet": ["sound-science"], "how-home-works": ["electricity", "water-cycle"], "magnets": ["electricity"],
   // I food
   "world-dishes": ["noodles-world", "bread-world", "street-food", "soups-world", "spices"], "fruits": ["tropical-fruits"],
   "breakfast-world": ["bread-world", "soups-world"], "nagasaki-food": ["noodles-world"],
