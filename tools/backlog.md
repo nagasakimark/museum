@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (178 topics) — all 1586 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (190 topics) — all 1694 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -121,22 +121,22 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## D. Japan & Nagasaki
 
-- **pref-hokkaido-tohoku** 北海道・東北の 県 `long` — Hokkaido, Aomori, Iwate, Miyagi, Akita, Yamagata, Fukushima: each with famous food, place and festival
-- **pref-kanto** 関東の 県 — Tokyo, Kanagawa, Saitama, Chiba, Ibaraki, Tochigi, Gunma
-- **pref-chubu** 中部の 県 `long` — Niigata, Toyama, Ishikawa, Fukui, Yamanashi, Nagano, Gifu, Shizuoka, Aichi
-- **pref-kinki** 近畿の 県 — Osaka, Kyoto, Hyogo, Nara, Mie, Shiga, Wakayama
-- **pref-chugoku-shikoku** 中国・四国の 県 `long` — Tottori, Shimane, Okayama, Hiroshima (food, Miyajima — no war content), Yamaguchi, Tokushima, Kagawa, Ehime, Kochi
-- **pref-kyushu-okinawa** 九州・沖縄の 県 `long` — Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima, Okinawa
+- ✅ ~~**pref-hokkaido-tohoku**~~ 北海道・東北の 県 `long` — Hokkaido, Aomori, Iwate, Miyagi, Akita, Yamagata, Fukushima: each with famous food, place and festival
+- ✅ ~~**pref-kanto**~~ 関東の 県 — Tokyo, Kanagawa, Saitama, Chiba, Ibaraki, Tochigi, Gunma
+- ✅ ~~**pref-chubu**~~ 中部の 県 `long` — Niigata, Toyama, Ishikawa, Fukui, Yamanashi, Nagano, Gifu, Shizuoka, Aichi
+- ✅ ~~**pref-kinki**~~ 近畿の 県 — Osaka, Kyoto, Hyogo, Nara, Mie, Shiga, Wakayama
+- ✅ ~~**pref-chugoku-shikoku**~~ 中国・四国の 県 `long` — Tottori, Shimane, Okayama, Hiroshima (food, Miyajima — no war content), Yamaguchi, Tokushima, Kagawa, Ehime, Kochi
+- ✅ ~~**pref-kyushu-okinawa**~~ 九州・沖縄の 県 `long` — Fukuoka, Saga, Nagasaki, Kumamoto, Oita, Miyazaki, Kagoshima, Okinawa
 - ✅ ~~**nagasaki-city**~~ 長崎市 たんけん — Glover Garden, Oura area (architecture), Dejima, Chinatown (Shinchi), Megane-bashi (spectacles bridge), Mt Inasa, Nagasaki Penguin Aquarium, Dutch Slope, Peace Park (gentle: "a place to wish for peace"), streetcars (チンチン電車), Nagasaki Port, Tomachi area
 - ✅ ~~**nagasaki-food**~~ 長崎の 食べもの — champon, sara-udon, castella, Turkish rice, kakuni-manju, chirin-chirin ice, Sasebo burger, Goto udon, Shimabara somen, Shippoku cuisine, milk shake (eaten with a spoon), biwa (loquat)
-- **nagasaki-prefecture** 長崎県 めぐり — Sasebo (Kujukushima), Huis Ten Bosch, Hasami ware, Unzen hot springs, Shimabara (castle, water town carp), Iki, Tsushima, Goto, Hirado (first Dutch trading post), Omura (flowers), Isahaya bay
-- **nagasaki-festivals** 長崎の 行事 — Kunchi, Peiron, Lantern Festival, Shoro-nagashi (lantern boats, respectful), Hata-age (kite fighting), Nagasaki Christmas lights, Hydrangea festival (Ajisai is the city flower)
-- **japanese-castles** 日本の お城 — Himeji, Matsumoto, Inuyama, Hikone, Matsue, Kochi, Matsuyama, Osaka, Nagoya (golden shachihoko), Kumamoto, Shimabara (Nagasaki), Hirado; parts of a castle
+- ✅ ~~**nagasaki-prefecture**~~ 長崎県 めぐり — Sasebo (Kujukushima), Huis Ten Bosch, Hasami ware, Unzen hot springs, Shimabara (castle, water town carp), Iki, Tsushima, Goto, Hirado (first Dutch trading post), Omura (flowers), Isahaya bay
+- ✅ ~~**nagasaki-festivals**~~ 長崎の 行事 — Kunchi, Peiron, Lantern Festival, Shoro-nagashi (lantern boats, respectful), Hata-age (kite fighting), Nagasaki Christmas lights, Hydrangea festival (Ajisai is the city flower)
+- ✅ ~~**japanese-castles**~~ 日本の お城 — Himeji, Matsumoto, Inuyama, Hikone, Matsue, Kochi, Matsuyama, Osaka, Nagoya (golden shachihoko), Kumamoto, Shimabara (Nagasaki), Hirado; parts of a castle
 - **shrines-temples** 日本の 神社と お寺 (architecture & culture) — torii, Itsukushima floating torii, Fushimi Inari gates, Kinkakuji, Ginkakuji, Kiyomizu-dera stage, Horyuji (oldest wooden buildings), Todaiji Great Buddha, Ise, komainu; how to visit politely (no religious claims)
 - **japanese-gardens** 日本の 庭園 — Kenrokuen, Korakuen, Kairakuen, Ritsurin, rock garden (Ryoanji), moss gardens, koi ponds, stone lanterns, bonsai, Japanese gardens abroad
-- **trains-japan** 日本の 電車 `long` — first railway (1872), steam locomotives (SL), Shinkansen series (0, 100, 300, 500, 700, N700S, E5, E6, E7, 800 Kyushu, Nishi-Kyushu Kamome), Doctor Yellow, sleeper trains, streetcars (Nagasaki), monorail, maglev
-- **crafts-japan** 日本の 伝統工芸 — Arita ware, Hasami ware, Wajima lacquer, kokeshi, daruma, Edo kiriko glass, Nambu iron kettles, washi paper, Kyoto yuzen dyeing, Hakata dolls, folding fans (sensu), furoshiki, Japanese knives
-- **wagashi-seasons** 季節の 和がし — sakura-mochi, kashiwa-mochi, mizu-yokan, warabi-mochi, tsukimi dango, chestnut kinton, kagami-mochi, taiyaki, dorayaki, daifuku, monaka, konpeito (Portuguese origin)
+- ✅ ~~**trains-japan**~~ 日本の 電車 `long` — first railway (1872), steam locomotives (SL), Shinkansen series (0, 100, 300, 500, 700, N700S, E5, E6, E7, 800 Kyushu, Nishi-Kyushu Kamome), Doctor Yellow, sleeper trains, streetcars (Nagasaki), monorail, maglev
+- ✅ ~~**crafts-japan**~~ 日本の 伝統工芸 — Arita ware, Hasami ware, Wajima lacquer, kokeshi, daruma, Edo kiriko glass, Nambu iron kettles, washi paper, Kyoto yuzen dyeing, Hakata dolls, folding fans (sensu), furoshiki, Japanese knives
+- ✅ ~~**wagashi-seasons**~~ 季節の 和がし — sakura-mochi, kashiwa-mochi, mizu-yokan, warabi-mochi, tsukimi dango, chestnut kinton, kagami-mochi, taiyaki, dorayaki, daifuku, monaka, konpeito (Portuguese origin)
 - **regional-dishes** 日本の ご当地グルメ — okonomiyaki (Osaka/Hiroshima), takoyaki, Hakata ramen, Sapporo miso ramen, kiritanpo, Sendai gyutan, Utsunomiya gyoza, Nagoya miso-katsu, Okinawa soba, goya champuru, Kagawa udon, Nagasaki champon
 - ✅ ~~**japanese-words-english**~~ 英語に なった 日本語 — tsunami, karaoke, emoji, sushi, origami, anime, manga, bonsai, tofu, futon, typhoon (via Chinese), kaizen, umami, kawaii, ninja, judo
 - ✅ ~~**wasei-eigo**~~ 和製英語に 気をつけて! — "salaryman", "consent" (=outlet), "mansion" (=apartment), "naive", "baby car" (=stroller), "Y-shirt" (=dress shirt), "cunning" (=cheating), "free dial", "note PC", "pierce" (=earrings), "shaapen" (=mechanical pencil)

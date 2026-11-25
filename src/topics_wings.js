@@ -15,8 +15,10 @@ import { WINGS_C2 } from "./wings/c2_europe.js";
 import { WINGS_C3 } from "./wings/c3_world.js";
 import { WINGS_N10 } from "./wings/n10_maps.js";
 import { WINGS_N11_14 } from "./wings/n11_14.js";
+import { WINGS_D1 } from "./wings/d1_japan.js";
+import { WINGS_D2 } from "./wings/d2_prefectures.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -102,5 +104,13 @@ const BACK3 = {
   "human-body": ["senses"], "animal-superpowers": ["senses"], "living-together": ["how-internet-works"],
 };
 
+const BACK4 = {
+  // D Japan
+  "japan": ["pref-hokkaido-tohoku", "pref-kanto", "pref-chubu", "pref-kinki", "pref-chugoku-shikoku", "pref-kyushu-okinawa", "japanese-castles", "trains-japan"],
+  "nagasaki": ["nagasaki-prefecture", "nagasaki-festivals", "pref-kyushu-okinawa"], "nagasaki-city": ["nagasaki-festivals", "nagasaki-prefecture"],
+  "landmarks": ["japanese-castles"], "vehicles": ["trains-japan"], "sweets": ["wagashi-seasons"], "art-world-crafts": ["crafts-japan"],
+  "japanese-food": ["wagashi-seasons"], "japan-traditions": ["crafts-japan", "japanese-castles"], "festivals-world": ["nagasaki-festivals"],
+};
+
 export const BACKLINKS = {};
-for (const m of [BACK1, BACK2, BACK3]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
+for (const m of [BACK1, BACK2, BACK3, BACK4]) for (const [k, v] of Object.entries(m)) BACKLINKS[k] = [...new Set([...(BACKLINKS[k] || []), ...v])];
