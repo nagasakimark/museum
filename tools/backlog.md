@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (374 topics) — all 3391 exhibits have full explanations + English lines (src/details/)
+## ✅ Built ( topics) — all  exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -47,7 +47,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**sharks-rays**~~ サメと エイ — whale shark, great white shark, hammerhead, tiger shark, megamouth shark (found in Japan), goblin shark (Japan), basking shark, nurse shark, manta ray, stingray, sawfish, Greenland shark
 - ✅ ~~**coral-reef**~~ サンゴしょう — coral polyps, clownfish, sea anemone, parrotfish, butterflyfish, moray eel, sea turtle, giant clam, sea slug, cleaner wrasse, Okinawa reefs, Great Barrier Reef
 - ✅ ~~**rivers-ponds**~~ 川と 池の 生きもの — killifish (medaka), carp (koi), catfish, freshwater crab, crayfish, frog tadpole, newt, water strider, dragonfly larva, kingfisher, otter, platypus, salmon run, ayu (sweetfish)
-- ✅ ~~**satoyama**~~ 里山の 生きもの — Japanese tanuki, fox, hare, badger, weasel, firefly, rhinoceros beetle, stag beetle, rice-field frog, heron, swallow, Japanese white-eye, bush warbler (uguisu), cicada
+- ✅ ~~**satoyama**~~ 里山の 生きもの — Japanese tanuki, fox, hare, badger, weasel, firefly, rhinoceros beetle, stag beetle, rice-field frog, heron, swallow, Japanese white-eye, bush warbler (uguisu), cicada  **→ built as: Living Alongside Nature (world)**
 - ✅ ~~**birds-japan**~~ 日本の 鳥 — green pheasant (national bird), Japanese white-eye, bush warbler, sparrow, swallow, crow, Japanese tit, kingfisher, grey heron, red-crowned crane, Japanese crested ibis, Steller's sea eagle, Blakiston's fish owl, Okinawa rail, ptarmigan
 - ✅ ~~**birds-world**~~ 世界の めずらしい 鳥 — kiwi, puffin, toucan, quetzal, bird-of-paradise, secretary bird, albatross, hornbill, shoebill, hoatzin, kakapo, Arctic tern (longest migration), roadrunner, hummingbird, lyrebird (mimic)
 - ✅ ~~**butterflies-moths**~~ チョウと ガ — monarch, swallowtail, Japanese emperor (oomurasaki, national butterfly), cabbage white, morpho, birdwing, glasswing, atlas moth, luna moth, silkworm (silk), life cycle (egg → caterpillar → pupa → butterfly)
@@ -68,10 +68,10 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**mushrooms**~~ きのこの せかい — shiitake, enoki, maitake, matsutake, shimeji, eringi, button mushroom, glowing mushrooms, giant puffball, mould and penicillin, yeast in bread ("don't pick wild mushrooms" safety note)
 - ✅ ~~**trees**~~ 世界の 木 — cherry, maple (momiji), ginkgo, Japanese cedar, pine, bamboo, baobab, coast redwood, giant sequoia, banyan, olive, coconut palm, rubber tree, cork oak, maple syrup tree
 - ✅ ~~**flowers-world**~~ 世界の 花・国花 — cherry blossom & chrysanthemum (Japan), rose (UK), tulip (Netherlands), lotus (India), plum blossom (China), hibiscus (Korea: mugunghwa), edelweiss, sunflower, protea (South Africa), orchids, lavender, lily of the valley
-- ✅ ~~**flowers-japan-seasons**~~ 日本の 四季の 花 — plum, cherry, wisteria, azalea, hydrangea, morning glory, sunflower, lotus, cosmos, chrysanthemum, camellia, narcissus
+- ✅ ~~**flowers-japan-seasons**~~ 日本の 四季の 花 — plum, cherry, wisteria, azalea, hydrangea, morning glory, sunflower, lotus, cosmos, chrysanthemum, camellia, narcissus  **→ built as: Flower Festivals of the World**
 - ✅ ~~**rice**~~ お米が できるまで `long` — seeds, seedlings, rice planting, rice paddy life, growing, harvest, drying, milling, kinds of rice, rice dishes of the world, mochi, rice in Japanese words (ご飯 = meal)
 - ✅ ~~**seeds-growing**~~ たねと 成長 — sunflower seed, dandelion fluff, maple helicopter seeds, coconut floating, burrs (inspired Velcro), germination, roots, photosynthesis basics, giant pumpkins
-- ✅ ~~**world-records-nature**~~ 自然の 世界一 II — largest flower (Rafflesia), tallest tree, oldest tree (bristlecone pine), largest seed (coco de mer), fastest-growing plant (bamboo), largest leaf, biggest lily pad (Victoria amazonica)
+- ✅ ~~**world-records-nature**~~ 自然の 世界一 II — largest flower (Rafflesia), tallest tree, oldest tree (bristlecone pine), largest seed (coco de mer), fastest-growing plant (bamboo), largest leaf, biggest lily pad (Victoria amazonica)  **→ built as: Strange Plants of the World**
 
 ## B. Earth, Weather & Space
 
@@ -109,7 +109,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**traditional-clothes**~~ 世界の 民族衣装 — kimono, yukata, hanbok, qipao, sari, kilt, dirndl, poncho, kente, áo dài, hula skirt (respectful), Sámi gákti, sombrero, fez
 - ✅ ~~**world-new-year**~~ 世界の お正月 — Japan (osechi, hatsumode), China (Spring Festival), Korea (Seollal, tteokguk), Spain (12 grapes), Scotland (Hogmanay), Thailand (Songkran), Iran (Nowruz), Ethiopia (Enkutatash), fireworks in Sydney
 - ✅ ~~**school-lunch-world**~~ 世界の 給食 — Japan, Korea, France, Finland (free lunch), USA, Brazil, India (midday meal), Italy, UK, China; Japanese kyushoku manners (serving duty)
-- **schools-world** 世界の 学校 — school year start months, uniforms or not, school buses, Finnish schools, outdoor classes, school sizes, Japanese cleaning time (soji) admired abroad, randoseru
+- ~~**schools-world**~~ → covered by **school-buildings-world** + **secondary-schools-world**
 - ✅ ~~**markets-world**~~ 世界の 市場 — Tsukiji/Toyosu (tuna), floating markets (Thailand), Grand Bazaar (Istanbul), Christmas markets (Germany), night markets (Taiwan), souks (Morocco), farmers' markets
 - ✅ ~~**world-transport**~~ 世界の のりもの — tuk-tuk, gondola, double-decker bus, cable car (San Francisco), jeepney, rickshaw, dog sled, camel caravan, reed boats (Titicaca), Venice vaporetto, Swiss mountain trains
 - ✅ ~~**world-houses-2**~~ 世界の 家 II — Cappadocia cave houses, Hobbit-like turf houses (Iceland), Toraja houses (Indonesia), Tulou (China), trulli (Italy), stilt houses (Malaysia), houseboats (Kerala)
@@ -132,34 +132,34 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**nagasaki-prefecture**~~ 長崎県 めぐり — Sasebo (Kujukushima), Huis Ten Bosch, Hasami ware, Unzen hot springs, Shimabara (castle, water town carp), Iki, Tsushima, Goto, Hirado (first Dutch trading post), Omura (flowers), Isahaya bay
 - ✅ ~~**nagasaki-festivals**~~ 長崎の 行事 — Kunchi, Peiron, Lantern Festival, Shoro-nagashi (lantern boats, respectful), Hata-age (kite fighting), Nagasaki Christmas lights, Hydrangea festival (Ajisai is the city flower)
 - ✅ ~~**japanese-castles**~~ 日本の お城 — Himeji, Matsumoto, Inuyama, Hikone, Matsue, Kochi, Matsuyama, Osaka, Nagoya (golden shachihoko), Kumamoto, Shimabara (Nagasaki), Hirado; parts of a castle
-- ✅ ~~**shrines-temples**~~ 日本の 神社と お寺 (architecture & culture) — torii, Itsukushima floating torii, Fushimi Inari gates, Kinkakuji, Ginkakuji, Kiyomizu-dera stage, Horyuji (oldest wooden buildings), Todaiji Great Buddha, Ise, komainu; how to visit politely (no religious claims)
+- ✅ ~~**shrines-temples**~~ 日本の 神社と お寺 (architecture & culture) — torii, Itsukushima floating torii, Fushimi Inari gates, Kinkakuji, Ginkakuji, Kiyomizu-dera stage, Horyuji (oldest wooden buildings), Todaiji Great Buddha, Ise, komainu; how to visit politely (no religious claims)  **→ built as: Sacred Places of the World (world-wide; 3 Japanese sites)**
 - ✅ ~~**japanese-gardens**~~ 日本の 庭園 — Kenrokuen, Korakuen, Kairakuen, Ritsurin, rock garden (Ryoanji), moss gardens, koi ponds, stone lanterns, bonsai, Japanese gardens abroad
 - ✅ ~~**trains-japan**~~ 日本の 電車 `long` — first railway (1872), steam locomotives (SL), Shinkansen series (0, 100, 300, 500, 700, N700S, E5, E6, E7, 800 Kyushu, Nishi-Kyushu Kamome), Doctor Yellow, sleeper trains, streetcars (Nagasaki), monorail, maglev
 - ✅ ~~**crafts-japan**~~ 日本の 伝統工芸 — Arita ware, Hasami ware, Wajima lacquer, kokeshi, daruma, Edo kiriko glass, Nambu iron kettles, washi paper, Kyoto yuzen dyeing, Hakata dolls, folding fans (sensu), furoshiki, Japanese knives
 - ✅ ~~**wagashi-seasons**~~ 季節の 和がし — sakura-mochi, kashiwa-mochi, mizu-yokan, warabi-mochi, tsukimi dango, chestnut kinton, kagami-mochi, taiyaki, dorayaki, daifuku, monaka, konpeito (Portuguese origin)
-- ✅ ~~**regional-dishes**~~ 日本の ご当地グルメ — okonomiyaki (Osaka/Hiroshima), takoyaki, Hakata ramen, Sapporo miso ramen, kiritanpo, Sendai gyutan, Utsunomiya gyoza, Nagoya miso-katsu, Okinawa soba, goya champuru, Kagawa udon, Nagasaki champon
+- ✅ ~~**regional-dishes**~~ 日本の ご当地グルメ — okonomiyaki (Osaka/Hiroshima), takoyaki, Hakata ramen, Sapporo miso ramen, kiritanpo, Sendai gyutan, Utsunomiya gyoza, Nagoya miso-katsu, Okinawa soba, goya champuru, Kagawa udon, Nagasaki champon  **→ built as: Foods Named After Places**
 - ✅ ~~**japanese-words-english**~~ 英語に なった 日本語 — tsunami, karaoke, emoji, sushi, origami, anime, manga, bonsai, tofu, futon, typhoon (via Chinese), kaizen, umami, kawaii, ninja, judo
 - ✅ ~~**wasei-eigo**~~ 和製英語に 気をつけて! — "salaryman", "consent" (=outlet), "mansion" (=apartment), "naive", "baby car" (=stroller), "Y-shirt" (=dress shirt), "cunning" (=cheating), "free dial", "note PC", "pierce" (=earrings), "shaapen" (=mechanical pencil)
 - ✅ ~~**japan-unesco**~~ 日本の 世界遺産 `wide` — Mt Fuji, Himeji Castle, Yakushima, Shirakawa-go, Itsukushima, Horyuji, Kyoto, Nara, Nikko, Shiretoko, Ogasawara, Amami/Tokunoshima/Yanbaru, Mozu tombs (Kofun), Jomon sites, Tomioka silk mill, Iwami silver mine, Hiraizumi, Okinawa gusuku sites, Nagasaki churches (as heritage architecture only, neutral wording)
 - ✅ ~~**japan-history**~~ 日本の 歴史 `timeline` — Jomon, Yayoi (rice farming), Kofun, Asuka (Horyuji), Nara (Todaiji), Heian (kana, Tale of Genji), Kamakura, Muromachi (Kinkakuji, noh), Azuchi-Momoyama (castles), Edo (Dejima, ukiyo-e), Meiji (railway, schools), Taisho, Showa (Tokyo Olympics 1964, Shinkansen), Heisei, Reiwa — gentle overview only, no war detail
 - ✅ ~~**japanese-mountains**~~ 日本の 山 — Fuji, Kita-dake, Hotaka, Yarigatake, Daisetsuzan, Mt Aso, Unzen (Nagasaki), Sakurajima, Mt Takao, Mt Inasa, Japanese Alps; mountain day (Aug 11)
 - ✅ ~~**onsen**~~ おんせん — Kusatsu, Beppu (jigoku views), Noboribetsu, Arima, Dogo, Unzen, Ureshino (near Nagasaki), Obama (Nagasaki), snow monkeys, onsen manners, onsen symbol ♨ (new pictogram story)
-- **seasonal-japan** 日本の 四季 — spring (hanami), rainy season, summer (fireworks, watermelon splitting), autumn (momiji-gari, moon viewing), winter (kotatsu, snowmen); seasonal words; 24 seasons (sekki) simplified
+- ~~**seasonal-japan**~~ → covered by **why-seasons**, **seasons-72**, **summer-japan**, **animals-through-seasons**
 - ✅ ~~**japan-records**~~ 日本の 日本一 — tallest mountain, longest river, largest lake, tallest tower (Skytree), longest bridge, deepest bay (Suruga), largest prefecture (Hokkaido), smallest prefecture (Kagawa), most islands (Nagasaki!)
 
 ## E. English & Language (New Horizon-friendly)
 
 - ✅ ~~**alphabet-story**~~ ABCの ひみつ `timeline` — NOT letters on a wall: the story and oddities of the alphabet. A began as an ox head (Phoenician 𐤀), letters that vanished from English (thorn þ → "ye olde", eth, wynn), & was once the 27th letter ("and per se and"), J and U are the newest letters, W is "double U" but looks like double V, why Q needs U, zed vs zee, E is the most used letter, "the quick brown fox" pangrams, the tittle (dot on i), rhythm has no a/e/i/o/u, 26 letters but ~44 sounds, silent K in knight was once spoken, "ghoti" = fish joke, romaji (Hepburn 1867) vs kunrei
-- ✅ ~~**phonics**~~ 英語の 音の ふしぎ — not a drill list: why English spelling is weird (Great Vowel Shift), one spelling many sounds (ough: though/through/tough/cough), magic e, sounds Japanese doesn't have (th, l/r, v), minimal pairs (rice/lice), silent letters and where they came from, why "colonel" sounds like kernel, stress changes meaning (REcord/reCORD), English sounds in katakana
+- ✅ ~~**phonics**~~ 英語の 音の ふしぎ — not a drill list: why English spelling is weird (Great Vowel Shift), one spelling many sounds (ough: though/through/tough/cough), magic e, sounds Japanese doesn't have (th, l/r, v), minimal pairs (rice/lice), silent letters and where they came from, why "colonel" sounds like kernel, stress changes meaning (REcord/reCORD), English sounds in katakana  **→ built as: The Strange Sounds of English**
 - ✅ ~~**onomatopoeia**~~ 動物の 鳴き声 くらべ — dog (wan-wan / woof), cat (nyaa / meow), rooster (kokekokko / cock-a-doodle-doo), pig, cow, frog (kero-kero / ribbit), duck, bird, mouse, sheep, in several languages
 - ✅ ~~**uk-us-english**~~ イギリス英語と アメリカ英語 — lift/elevator, biscuit/cookie, chips/fries, crisps/chips, flat/apartment, football/soccer, rubbish/trash, holiday/vacation, colour/color, petrol/gas
 - ✅ ~~**words-from-languages**~~ 英語の ことばの ふるさと — ketchup (Chinese/Malay), tea (Chinese), chocolate (Nahuatl), banana (West Africa), robot (Czech), kindergarten (German), ballet (French), piano (Italian), safari (Swahili), shampoo (Hindi), tsunami (Japanese)
 - ~~**opposites**~~ → replaced by the encyclopedic **N7 "Biggest & smallest"** wing below (don't build a plain word list)
-- **prepositions** どこに ある? — in, on, under, by, next to, between, behind, in front of (with illustrated scenes)
-- ✅ ~~**body-words**~~ 体の 英単語 — head, shoulders, knees, toes, eyes, ears, mouth, nose, hand, finger, foot, elbow
+- ~~**prepositions**~~ → skipped — a word list, not an encyclopedic room
+- ✅ ~~**body-words**~~ 体の 英単語 — head, shoulders, knees, toes, eyes, ears, mouth, nose, hand, finger, foot, elbow  **→ built as: Body Idioms Around the World**
 - ~~**family-words**~~ → replaced by the encyclopedic **N1 Families** wing below (don't build a plain word list)
 - ✅ ~~**tongue-twisters**~~ 早口ことば — "She sells seashells", "Peter Piper", "Red lorry, yellow lorry", "Unique New York"; Japanese: 生麦生米生卵, 隣の客は…, 東京特許許可局
-- ✅ ~~**sign-braille**~~ 手話と 点字 — Braille alphabet (Louis Braille), braille in daily life (lift buttons, ticket machines), tactile paving (invented in Japan, Okayama 1967), sign language hello/thank you (JSL & ASL)
+- ✅ ~~**sign-braille**~~ 手話と 点字 — Braille alphabet (Louis Braille), braille in daily life (lift buttons, ticket machines), tactile paving (invented in Japan, Okayama 1967), sign language hello/thank you (JSL & ASL)  **→ built as: Braille, Sign Language and Access for All**
 - ✅ ~~**codes**~~ ひみつの 暗号 — Morse code (SOS), semaphore flags, ship signal flags, Caesar cipher, pigpen cipher, QR codes, barcodes
 - ✅ ~~**symbols-signs**~~ 世界の マーク — pictograms (Tokyo 1964 origin), emergency exit sign (designed in Japan), recycle mark, road signs around the world, map symbols of Japan (new ones for foreigners), weather symbols
 
@@ -173,13 +173,13 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**states-of-matter**~~ 固体・液体・気体 — ice/water/steam, melting, freezing, dry ice, slime (non-Newtonian), air has weight, balloons
 - ✅ ~~**flight**~~ 空を とぶ しくみ — wings and lift, gliders, paper planes (records), hot-air balloons (Montgolfier), helicopters, birds vs planes, Wright Flyer
 - ✅ ~~**floating-boats**~~ うく しくみ — buoyancy, Archimedes, ships made of steel float, submarines, life jackets, ice floats
-- **inventions-timeline** 発明の タイムライン `timeline` — wheel, writing, paper, compass, printing, telescope, steam engine, telephone, light bulb, car, airplane, TV, computer, internet, smartphone
+- ~~**inventions-timeline**~~ → covered by **inventions**, **accidental-inventions**, **kid-inventors**
 - ✅ ~~**computers-history**~~ コンピューターの 歴史 `timeline` — abacus, Babbage, ENIAC, transistors, home computers, Famicom/NES era (text), laptops, smartphones, AI
 - ✅ ~~**internet-safety**~~ インターネットを 安全に — passwords, personal information, asking an adult, kind comments, screen time, recognising fake news, privacy settings (age-appropriate)
 - ✅ ~~**coding**~~ プログラミングの 考え方 — sequence, loops, if/then, bugs (first "bug" was a moth), Scratch-style blocks, robots following instructions, binary numbers
 - ✅ ~~**energy**~~ エネルギーの いろいろ — solar, wind, hydro, geothermal (Japan), biomass, batteries, saving energy at home (neutral; no nuclear debate)
 - ✅ ~~**materials**~~ もの の ざいりょう — wood, metal, glass, plastic, paper, cotton, wool, silk, rubber, bamboo, recycling each
-- **microscope-world** けんびきょうの せかい — snowflakes, pollen, hair, salt crystals, onion cells, plankton, butterfly wing scales, tardigrade (water bear)
+- ~~**microscope-world**~~ → covered by **tiny-world** (The Tiny World)
 - ✅ ~~**bridges-towers**~~ 橋と タワー — Akashi Kaikyo Bridge, Golden Gate, Tower Bridge, Megane-bashi (Nagasaki), Kintaikyo, Tokyo Skytree, Tokyo Tower, Eiffel Tower, Burj Khalifa, CN Tower, how bridges stay up
 - ✅ ~~**future-tech**~~ 未来の 技術 — flying cars, space elevator idea, robots helpers, self-driving cars, vertical farms, 3D printing, maglev
 
@@ -195,14 +195,14 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**architecture-timeline**~~ 建物の 歴史 `timeline` — pyramids, Parthenon, Colosseum, Horyuji, Angkor Wat, Gothic cathedrals (architecture), Taj Mahal, Himeji Castle, Eiffel Tower, Sydney Opera House, Tokyo Skytree, Burj Khalifa
 - ✅ ~~**architects**~~ 有名な 建築家 — Gaudí (Sagrada Família, Park Güell), Frank Lloyd Wright (Fallingwater, old Imperial Hotel), Tange Kenzo, Ando Tadao (Church of Light — as architecture), Kuma Kengo (National Stadium), Zaha Hadid, Le Corbusier
 - ✅ ~~**picture-books**~~ 世界の 絵本の れきし — Peter Rabbit (Beatrix Potter, PD), Alice illustrations (Tenniel, PD), Japanese picture-book culture, kamishibai (paper theatre), pop-up books; describe modern books in text only (no character images)
-- **manga-anime-history** まんがと アニメの れきし `timeline` — Choju-giga, Hokusai Manga, kamishibai, early animation, Tezuka Osamu (text only), anime around the world, how animation works (flip books, frames) — no copyrighted characters
+- ~~**manga-anime-history**~~ → covered by **manga-anime** (The Secrets of Manga and Anime)
 - ✅ ~~**photography**~~ 写真の れきし — camera obscura, first photo (Niépce), Daguerre, film cameras, instant cameras, digital cameras, smartphones, famous nature photos (described)
 - ✅ ~~**composers**~~ 有名な 作曲家 `timeline` — Vivaldi (Four Seasons), Bach, Mozart, Beethoven (Ode to Joy, sung in Japan every December), Chopin, Tchaikovsky (Nutcracker), Debussy, Taki Rentaro (Kojo no Tsuki), Yamada Kosaku (Akatombo)
 - ✅ ~~**orchestra**~~ オーケストラの 楽器 `wide` — strings (violin, viola, cello, double bass, harp), woodwind (flute, oboe, clarinet, bassoon), brass (trumpet, horn, trombone, tuba), percussion (timpani, xylophone, cymbals, triangle), conductor
 - ✅ ~~**world-instruments**~~ 世界の 楽器 — koto, shakuhachi, taiko, sanshin (Okinawa), erhu, gayageum, sitar, tabla, didgeridoo, bagpipes, steel drum, ukulele, kalimba, djembe, accordion, alphorn, panpipes, balalaika
 - ✅ ~~**music-genres**~~ 音楽の ジャンル — classical, jazz, rock, pop, hip-hop (as dance/music, clean), reggae, samba, bossa nova, flamenco, K-pop, J-pop, enka, min'yo, film music, video-game music
 - ✅ ~~**dance-japan**~~ 日本の おどり — Bon odori, Awa odori, Yosakoi, Eisa, Kagura (as performing art), Nihon-buyo, Soran-bushi (school dance!)
-- ✅ ~~**crafts-to-make**~~ 作って みよう — origami crane, paper fortune teller, paper planes, kirigami snowflakes, string figures (ayatori), clay pots, tie-dye, leaf rubbings, simple weaving
+- ✅ ~~**crafts-to-make**~~ 作って みよう — origami crane, paper fortune teller, paper planes, kirigami snowflakes, string figures (ayatori), clay pots, tie-dye, leaf rubbings, simple weaving  **→ built as: Crafts From Around the World**
 
 ## H. Sports & Games
 
@@ -214,7 +214,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**puzzles**~~ パズルの せかい — sudoku (named in Japan), crossword, tangram, jigsaw, Rubik's cube, nonogram (picross, Japan), maze, word search, Tower of Hanoi, 15-puzzle
 - ✅ ~~**stadiums**~~ 世界の スタジアム — Koshien, Tokyo Dome, National Stadium (Tokyo), Wembley, Maracanã, Camp Nou, Yankee Stadium, Wimbledon, Melbourne Cricket Ground, Ryogoku Kokugikan
 - ✅ ~~**sports-equipment**~~ スポーツの 道具の ひみつ — baseball stitches (108), golf ball dimples, soccer ball panels, shuttlecock feathers, tennis ball fuzz, skis, ice skate blades, running spikes
-- ✅ ~~**sports-japan-history**~~ 日本の スポーツ史 `timeline` — kemari, sumo, judo's birth, first Japanese Olympian (1912), Tokyo 1964, Sapporo 1972, Nagano 1998, Rugby World Cup 2019, Tokyo 2020
+- ✅ ~~**sports-japan-history**~~ 日本の スポーツ史 `timeline` — kemari, sumo, judo's birth, first Japanese Olympian (1912), Tokyo 1964, Sapporo 1972, Nagano 1998, Rugby World Cup 2019, Tokyo 2020  **→ built as: A History of Sport (world timeline)**
 
 ## I. Food & Cooking
 
@@ -239,14 +239,14 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**jobs-airport**~~ 空港の しごと — pilot, cabin attendant, air traffic controller, ground staff, mechanic, security, customs, baggage handler, marshaller, airport fire crew
 - ✅ ~~**jobs-creative**~~ 作る しごと — illustrator, animator, game designer, architect, fashion designer, photographer, potter, carpenter, pastry chef, YouTuber (light), writer
 - ✅ ~~**jobs-nature**~~ 自然の しごと — farmer, fisher, forester, zookeeper, park ranger, marine biologist, weather forecaster, astronomer, gardener, beekeeper
-- **jobs-az** しごと A to Z `long` — actor, baker, carpenter, dentist, engineer, florist, gardener, hairdresser, illustrator, journalist, keeper, lawyer, musician, nurse, office worker, pilot, quiz-show host, reporter, scientist, teacher, umpire, vet, waiter, x-ray technician, yoga teacher, zookeeper
+- ✅ ~~**jobs-az**~~ しごと A to Z `long` — actor, baker, carpenter, dentist, engineer, florist, gardener, hairdresser, illustrator, journalist, keeper, lawyer, musician, nurse, office worker, pilot, quiz-show host, reporter, scientist, teacher, umpire, vet, waiter, x-ray technician, yoga teacher, zookeeper  **→ built as: Unusual Jobs Around the World**
 - ✅ ~~**explorers**~~ 世界の 探検家 — Amundsen (South Pole), Hillary & Tenzing (Everest), Uemura Naomi, Shirase Nobu (Antarctica), Jacques Cousteau (ocean), Yuri Gagarin, Neil Armstrong, Mae Jemison, Jane Goodall, Ino Tadataka; no colonial conquest stories
 - ✅ ~~**women-science**~~ 科学者に なった 女性たち — Marie Curie, Ada Lovelace, Katherine Johnson, Rachel Carson, Jane Goodall, Dorothy Hodgkin, Mukai Chiaki, Yasui Kono, Ogino Ginko (first licensed female doctor in Japan)
 - ✅ ~~**sdgs**~~ SDGs 17の 目標 `wide` — one exhibit per goal (no poverty … partnerships), each with a kid-sized action
-- **children-rights** 子どもの 権利 — UN Convention basics: right to play, learn, be safe, be heard, have a name, health; Children's Day
+- ✅ ~~**children-rights**~~ 子どもの 権利 — UN Convention basics: right to play, learn, be safe, be heard, have a name, health; Children's Day
 - ✅ ~~**bosai**~~ 防災 そなえよう — emergency kit, evacuation drills, typhoon prep, earthquake "drop, cover, hold on", 119/110, hazard maps, Disaster Prevention Day (Sept 1); calm and practical, no damage images
-- **community** 町を 支える 人 — volunteers, neighbourhood clean-ups, crossing guards, librarians, post carriers, recycling centre staff, local festivals' organisers
-- **world-records-human** 人の 世界一 — tallest building, longest bridge, biggest pizza, largest origami crane, longest train, deepest dive, fastest train, most people dancing Bon odori (keep safe & fun)
+- ✅ ~~**community**~~ 町を 支える 人 — volunteers, neighbourhood clean-ups, crossing guards, librarians, post carriers, recycling centre staff, local festivals' organisers
+- ✅ ~~**world-records-human**~~ 人の 世界一 — tallest building, longest bridge, biggest pizza, largest origami crane, longest train, deepest dive, fastest train, most people dancing Bon odori (keep safe & fun)
 
 ## K. History (gentle overviews)
 
@@ -264,7 +264,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**optical-illusions**~~ (moved to wing P) ふしぎな 目の さっかく — Müller-Lyer lines, rotating snakes (Kitaoka, Japan), impossible triangle, duck/rabbit, colour illusions, afterimages, Ames room (drawn procedurally on canvas — no photos needed)
 - ✅ ~~**maps-compass**~~ 地図と 方位 — compass rose, north/south/east/west, map symbols, Ino's map, world map projections (true size!), globes, GPS, treasure-map game (Hamanomachi-style directions)
 - ✅ ~~**colors-languages**~~ 色の ことば — red/aka, blue vs green (ao), rainbow colours in different countries, colour meanings around the world, traffic lights
-- **world-firsts-japan** 日本で 生まれた はじめて — instant noodles, karaoke, emoji, QR code, blue LED, tactile paving, pictograms, bullet train, electric rice cooker, conveyor-belt sushi, portable music player, (verify each claim before building)
+- ~~**world-firsts-japan**~~ → covered by **japan-inventions** (Made in Japan) — kept the museum world-focused
 - ✅ ~~**space-records**~~ 宇宙の 世界一 — biggest planet, hottest planet, tallest volcano (Olympus Mons), longest day (Venus), most moons (Saturn), fastest planet (Mercury), coldest place
 - **mystery-room-ideas** ? ふしぎな へや (random rooms) — "What's this object?" guessing room, "Which country?" room, "Odd one out" room, "Old vs new" room (phones, cameras, TVs)
 
