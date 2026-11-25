@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (244 topics) — all 2181 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (250 topics) — all 2234 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -206,13 +206,13 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 
 ## H. Sports & Games
 
-- **olympic-sports** オリンピック競技 A to Z `long` — archery, athletics, badminton, basketball, BMX, canoe, climbing, cycling, diving, equestrian, fencing, football, golf, gymnastics, handball, hockey, judo, rowing, rugby sevens, sailing, skateboarding, softball, surfing, swimming, table tennis, taekwondo, tennis, triathlon, volleyball, weightlifting, wrestling
-- **paralympic-sports** パラスポーツ — wheelchair basketball, boccia, goalball, blind football, para swimming, wheelchair tennis (Kunieda Shingo), sitting volleyball, para athletics; respect and teamwork
-- **martial-arts** 武道 — judo, kendo, karate (Okinawa), aikido, kyudo (archery), sumo, naginata, taekwondo, fencing; dojo manners (no fighting imagery — focus on bowing, uniforms, belts)
-- **japanese-games** 日本の 昔あそび — karuta, fukuwarai, hanetsuki, kite flying, menko, otedama, ohajiki, kendama, koma, daruma-san-ga-koronda, ayatori, kagome-kagome
-- **playground-world** 世界の 外あそび — tag (oni-gokko and versions), hide-and-seek, hopscotch (around the world), marbles, jump rope rhymes, Red Rover, duck duck goose, Chinese jump rope, sepak takraw
+- ✅ ~~**olympic-sports**~~ オリンピック競技 A to Z `long` — archery, athletics, badminton, basketball, BMX, canoe, climbing, cycling, diving, equestrian, fencing, football, golf, gymnastics, handball, hockey, judo, rowing, rugby sevens, sailing, skateboarding, softball, surfing, swimming, table tennis, taekwondo, tennis, triathlon, volleyball, weightlifting, wrestling
+- ✅ ~~**paralympic-sports**~~ パラスポーツ — wheelchair basketball, boccia, goalball, blind football, para swimming, wheelchair tennis (Kunieda Shingo), sitting volleyball, para athletics; respect and teamwork
+- ✅ ~~**martial-arts**~~ 武道 — judo, kendo, karate (Okinawa), aikido, kyudo (archery), sumo, naginata, taekwondo, fencing; dojo manners (no fighting imagery — focus on bowing, uniforms, belts)
+- ✅ ~~**japanese-games**~~ 日本の 昔あそび — karuta, fukuwarai, hanetsuki, kite flying, menko, otedama, ohajiki, kendama, koma, daruma-san-ga-koronda, ayatori, kagome-kagome
+- ✅ ~~**playground-world**~~ 世界の 外あそび — tag (oni-gokko and versions), hide-and-seek, hopscotch (around the world), marbles, jump rope rhymes, Red Rover, duck duck goose, Chinese jump rope, sepak takraw
 - **puzzles** パズルの せかい — sudoku (named in Japan), crossword, tangram, jigsaw, Rubik's cube, nonogram (picross, Japan), maze, word search, Tower of Hanoi, 15-puzzle
-- **stadiums** 世界の スタジアム — Koshien, Tokyo Dome, National Stadium (Tokyo), Wembley, Maracanã, Camp Nou, Yankee Stadium, Wimbledon, Melbourne Cricket Ground, Ryogoku Kokugikan
+- ✅ ~~**stadiums**~~ 世界の スタジアム — Koshien, Tokyo Dome, National Stadium (Tokyo), Wembley, Maracanã, Camp Nou, Yankee Stadium, Wimbledon, Melbourne Cricket Ground, Ryogoku Kokugikan
 - **sports-equipment** スポーツの 道具の ひみつ — baseball stitches (108), golf ball dimples, soccer ball panels, shuttlecock feathers, tennis ball fuzz, skis, ice skate blades, running spikes
 - **sports-japan-history** 日本の スポーツ史 `timeline` — kemari, sumo, judo's birth, first Japanese Olympian (1912), Tokyo 1964, Sapporo 1972, Nagano 1998, Rugby World Cup 2019, Tokyo 2020
 
