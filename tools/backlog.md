@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (220 topics) — all 1970 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (226 topics) — all 2019 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -278,12 +278,12 @@ Built: philosophy-questions, philosophers `timeline`, japanese-values, proverbs,
 - ✅ ~~**eastern-thinkers**~~ アジアの 思想家 — Confucius (Analects sayings for kids), Mencius (people are born good — sprout analogy), Laozi (water), Zhuangzi (useless tree story), Han Feizi (rules), Tiruvalluvar (Tamil wisdom couplets), Kaibara Ekiken (health & learning), Ninomiya Sontoku, Nitobe Inazo (Bushido written in English; 5000-yen note)
 - ✅ ~~**western-thinkers**~~ ヨーロッパの 思想家 — Thales (everything is water), Pythagoras (numbers & music), Heraclitus (you can't step in the same river twice), Diogenes (simple living — gentle), Epicurus (happiness = friends & simple pleasures), Seneca (time is precious), Montaigne (essays — "What do I know?"), Locke (blank slate), Rousseau (education & nature), Mill (freedom), Hannah Arendt (thinking for yourself)
 - ✅ ~~**philosophy-of-happiness**~~ 幸せの 考え方 — gratitude, flow (doing what you love), friendship, kindness research, ikigai, hygge (Denmark), lagom (Sweden), sisu (Finland), pura vida (Costa Rica), ubuntu (Southern Africa: "I am because we are")
-- **world-wisdom-words** 世界の 心の ことば — ubuntu, hygge, lagom, sisu, aloha spirit, pura vida, mottainai, ikigai, wabi-sabi, ichi-go ichi-e, "carpe diem", "hakuna matata" (Swahili phrase, not the film)
-- **ethics-for-kids** みんなで 考えよう — sharing, honesty (the boy who cried wolf), keeping promises, helping others, fairness vs equality (bike/stool picture), animal welfare, caring for the planet, online kindness
-- **critical-thinking** 考える 力の 道具 — ask "why?" five times, facts vs opinions, checking sources, cause and effect, comparing viewpoints, mind maps, debate rules, changing your mind is OK
-- **philosophy-of-science** 科学の 考え方 — observation, hypothesis, experiment, Galileo's falling balls, Occam's razor, peer review (simple), "science changes when we learn more"
-- **time-philosophy** 時間って 何？ — Heraclitus' river, Augustine's "I know until you ask me" (quote only, neutral), time zones, relativity for kids (twins), 一生の 長さ in heartbeats, why time flies when you're having fun
-- **mind-and-feelings** 心の ふしぎ — memory, dreams, emotions (Inside-Out style without characters), habits (Aristotle), growth mindset, mindfulness breathing, empathy
+- ✅ ~~**world-wisdom-words**~~ 世界の 心の ことば — ubuntu, hygge, lagom, sisu, aloha spirit, pura vida, mottainai, ikigai, wabi-sabi, ichi-go ichi-e, "carpe diem", "hakuna matata" (Swahili phrase, not the film)
+- ✅ ~~**ethics-for-kids**~~ みんなで 考えよう — sharing, honesty (the boy who cried wolf), keeping promises, helping others, fairness vs equality (bike/stool picture), animal welfare, caring for the planet, online kindness
+- ✅ ~~**critical-thinking**~~ 考える 力の 道具 — ask "why?" five times, facts vs opinions, checking sources, cause and effect, comparing viewpoints, mind maps, debate rules, changing your mind is OK
+- ✅ ~~**philosophy-of-science**~~ 科学の 考え方 — observation, hypothesis, experiment, Galileo's falling balls, Occam's razor, peer review (simple), "science changes when we learn more"
+- ✅ ~~**time-philosophy**~~ 時間って 何？ — Heraclitus' river, Augustine's "I know until you ask me" (quote only, neutral), time zones, relativity for kids (twins), 一生の 長さ in heartbeats, why time flies when you're having fun
+- ✅ ~~**mind-and-feelings**~~ 心の ふしぎ — memory, dreams, emotions (Inside-Out style without characters), habits (Aristotle), growth mindset, mindfulness breathing, empathy
 
 ---
 
