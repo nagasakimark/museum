@@ -77,8 +77,6 @@ const LOBBY = {
   list: [
     { ja: "ようこそ！", en: "Welcome to the Museum", text: true,
       fact: "ここは どこまでも つづく ふしぎな はくぶつかん。まずは 気に なる テーマの ドアを えらぼう。その 先には もっと くわしい へやが たくさん！ どこへ 行くかは、あなた しだい！" },
-    { ja: "あそびかた", en: "How to explore", text: true,
-      fact: "↑↓←→ か WASD で 歩く。画面を ドラッグして 見回す。ゆかを クリックすると そこまで 歩くよ。え を クリックすると くわしく 見られる！ ひかる 入り口に 入ると その テーマの ホールへ ワープ。「？」の ドアは どこに つながるか わからない ふしぎな ドア。" },
     { ja: "フロアガイド", en: "Floor guide", text: true,
       fact: LOBBY_GATES.map(id => TOPICS[id].icon + " " + TOPICS[id].ja).join("　") },
   ],
@@ -288,7 +286,7 @@ const LAYOUTS = {
   long: { w: 13, d: 50, h: 7, roof: "vault" },
   wide: { w: 32, d: 20, h: 7.2, roof: "vault" },
   tall: { w: 18, d: 18, h: 8, roof: "dome" },
-  hall: { w: 38, d: 26, h: 9.2, roof: "vault" },
+  hall: { w: 38, d: 26, h: 10.2, roof: "vault" },
 };
 function pickLayout(t) {
   if (t.layout) return t.layout;
@@ -688,10 +686,14 @@ function gateDressing(r, g, wx, wz, sx, sz, along) {
     new THREE.BoxGeometry(.26, DOOR_H, .16).translate(-(ARCH_R + .2), DOOR_H / 2, 0), new THREE.BoxGeometry(.26, DOOR_H, .16).translate(ARCH_R + .2, DOOR_H / 2, 0)].map(x => x.index ? x.toNonIndexed() : x);
   const fr = new THREE.Mesh(onWall(mergeGeometries(geo), side, wx - sx * f, wz - sz * f), fm); r.group.add(fr);
   if (r.h < 8.5) return;
-  const bh = r.h - ARCH_TOP - 1.55, bw = Math.min(3.2, bh * 1.1);
+  const bh = r.h - 1.25 - (ARCH_TOP + 1.3), bw = bh * .85;
   const ban = new THREE.Mesh(new THREE.PlaneGeometry(bw, bh), own(new THREE.MeshBasicMaterial({ map: bannerTex(g.icon || ct.icon || ct.list.find(x => x.pic)?.pic, ct.c), transparent: true })));
   ban.position.set(wx - sx * (WALL_T / 2 + .1), ARCH_TOP + 1.3 + bh / 2, wz - sz * (WALL_T / 2 + .1));
   ban.lookAt(ban.position.x - sx, ban.position.y, ban.position.z - sz); r.group.add(ban);
+  // brass hanging rod with two cords up to the cornice
+  const rod = new THREE.Mesh(new THREE.CylinderGeometry(.045, .045, bw + .35, 8), mats.brass);
+  rod.rotation.z = Math.PI / 2; if (!along) rod.rotation.y = Math.PI / 2;
+  rod.position.set(wx - sx * (WALL_T / 2 + .14), ARCH_TOP + 1.32 + bh, wz - sz * (WALL_T / 2 + .14)); r.group.add(rod);
 }
 function bannerTex(pic, c) {
   return canvasTex(256, 300, (g, w, h) => {
@@ -992,7 +994,7 @@ cv.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, m
 cv.addEventListener("pointermove", e => {
   if (!drag) { cv.style.cursor = pick(e, built().flatMap(r => r.clickables)) ? "pointer" : "default"; return; }
   const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx) + Math.abs(dy);
-  if (drag.moved > 6) { player.yaw += dx * .005; player.pitch = Math.max(-.9, Math.min(.7, player.pitch - dy * .004)); player.target = null; }
+  if (drag.moved > 6) { player.yaw += dx * .005; player.pitch = Math.max(-.9, Math.min(.7, player.pitch + dy * .004)); player.target = null; }
 });
 cv.addEventListener("pointerup", e => { if (drag && drag.moved <= 6) click(e); drag = null; });
 const ray = new THREE.Raycaster();
@@ -1147,6 +1149,5 @@ const hideHelp = () => { help.hidden = true; try { localStorage.setItem("museum-
 document.getElementById("help-ok").addEventListener("click", hideHelp);
 document.getElementById("helpbtn").addEventListener("click", showHelp);
 help.addEventListener("click", e => { if (e.target === help) hideHelp(); });
-let helpSeen = false; try { helpSeen = !!localStorage.getItem("museum-help-seen"); } catch { }
-if (!helpSeen) showHelp();
+showHelp(); // how to play, every time the museum opens
 requestAnimationFrame(frame);
