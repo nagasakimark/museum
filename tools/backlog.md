@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (250 topics) — all 2234 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (256 topics) — all 2293 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -106,18 +106,18 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**pacific-islands**~~ 太平洋の 島々 — Palau, Samoa, Tonga, Tuvalu, Kiribati (first new year), Vanuatu, Solomon Islands, Hawaii (USA), Tahiti, Easter Island (Chile), Guam, Saipan
 - ✅ ~~**hello-world**~~ 世界の 「こんにちは」 `long` — 30+ languages with kana reading: English, Chinese, Korean, Spanish, French, German, Italian, Portuguese, Russian, Arabic, Hindi, Thai, Vietnamese, Indonesian, Tagalog, Swahili, Hawaiian, Māori, Ainu (イランカラプテ), Okinawan (はいさい), Nagasaki dialect, sign language
 - **numbers-languages** 1から10を 世界の ことばで — English, Chinese, Korean, Spanish, French, Swahili, Hindi, Thai, Japanese (hitotsu/ichi), Roman numerals, Arabic numerals' journey
-- **traditional-clothes** 世界の 民族衣装 — kimono, yukata, hanbok, qipao, sari, kilt, dirndl, poncho, kente, áo dài, hula skirt (respectful), Sámi gákti, sombrero, fez
-- **world-new-year** 世界の お正月 — Japan (osechi, hatsumode), China (Spring Festival), Korea (Seollal, tteokguk), Spain (12 grapes), Scotland (Hogmanay), Thailand (Songkran), Iran (Nowruz), Ethiopia (Enkutatash), fireworks in Sydney
+- ✅ ~~**traditional-clothes**~~ 世界の 民族衣装 — kimono, yukata, hanbok, qipao, sari, kilt, dirndl, poncho, kente, áo dài, hula skirt (respectful), Sámi gákti, sombrero, fez
+- ✅ ~~**world-new-year**~~ 世界の お正月 — Japan (osechi, hatsumode), China (Spring Festival), Korea (Seollal, tteokguk), Spain (12 grapes), Scotland (Hogmanay), Thailand (Songkran), Iran (Nowruz), Ethiopia (Enkutatash), fireworks in Sydney
 - ✅ ~~**school-lunch-world**~~ 世界の 給食 — Japan, Korea, France, Finland (free lunch), USA, Brazil, India (midday meal), Italy, UK, China; Japanese kyushoku manners (serving duty)
 - **schools-world** 世界の 学校 — school year start months, uniforms or not, school buses, Finnish schools, outdoor classes, school sizes, Japanese cleaning time (soji) admired abroad, randoseru
-- **markets-world** 世界の 市場 — Tsukiji/Toyosu (tuna), floating markets (Thailand), Grand Bazaar (Istanbul), Christmas markets (Germany), night markets (Taiwan), souks (Morocco), farmers' markets
+- ✅ ~~**markets-world**~~ 世界の 市場 — Tsukiji/Toyosu (tuna), floating markets (Thailand), Grand Bazaar (Istanbul), Christmas markets (Germany), night markets (Taiwan), souks (Morocco), farmers' markets
 - **world-transport** 世界の のりもの — tuk-tuk, gondola, double-decker bus, cable car (San Francisco), jeepney, rickshaw, dog sled, camel caravan, reed boats (Titicaca), Venice vaporetto, Swiss mountain trains
 - **world-houses-2** 世界の 家 II — Cappadocia cave houses, Hobbit-like turf houses (Iceland), Toraja houses (Indonesia), Tulou (China), trulli (Italy), stilt houses (Malaysia), houseboats (Kerala)
 - ✅ ~~**world-dance**~~ 世界の おどり — ballet (France/Russia), flamenco, hula, haka (Māori), samba, tango, Irish step dance, Bharatanatyam, K-pop dance, Bon odori, Awa odori, Yosakoi, Eisa (Okinawa)
 - **world-theatre** 世界の げき — kabuki, noh, bunraku, kyogen, Peking opera, Shakespeare (Globe Theatre), puppetry (Czech), shadow puppets (Indonesia wayang), musicals, rakugo
-- **lucky-symbols** 世界の 「えんぎもの」 — maneki-neko, daruma, four-leaf clover, horseshoe, ladybird, red envelope, number 8 (China), number 7 (West), evil-eye charm (Türkiye, as craft), dreamcatcher (respectfully), koinobori, kadomatsu
-- **mythical-creatures** 世界の 空想の 生きもの — dragon (East vs West), phoenix, unicorn, kappa, tengu (friendly framing), kitsune, mermaid, Pegasus, griffin, Nessie, yeti, Kirin (legendary), baku (eats bad dreams) — keep friendly, no scary images
-- **birthdays-world** 世界の たんじょう日 — Happy Birthday song history, cake & candles, birthday noodles (China, long life), seaweed soup (Korea), piñata (Mexico), ear-pulling (Hungary), 7-5-3 (Japan), coming-of-age day
+- ✅ ~~**lucky-symbols**~~ 世界の 「えんぎもの」 — maneki-neko, daruma, four-leaf clover, horseshoe, ladybird, red envelope, number 8 (China), number 7 (West), evil-eye charm (Türkiye, as craft), dreamcatcher (respectfully), koinobori, kadomatsu
+- ✅ ~~**mythical-creatures**~~ 世界の 空想の 生きもの — dragon (East vs West), phoenix, unicorn, kappa, tengu (friendly framing), kitsune, mermaid, Pegasus, griffin, Nessie, yeti, Kirin (legendary), baku (eats bad dreams) — keep friendly, no scary images
+- ✅ ~~**birthdays-world**~~ 世界の たんじょう日 — Happy Birthday song history, cake & candles, birthday noodles (China, long life), seaweed soup (Korea), piñata (Mexico), ear-pulling (Hungary), 7-5-3 (Japan), coming-of-age day
 
 ## D. Japan & Nagasaki
 
