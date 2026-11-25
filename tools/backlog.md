@@ -26,7 +26,7 @@ Layout tags: `square` (default), `small`, `wide` (two partition walls), `tall`, 
 
 ---
 
-## ✅ Built (366 topics) — all 3315 exhibits have full explanations + English lines (src/details/)
+## ✅ Built (370 topics) — all 3352 exhibits have full explanations + English lines (src/details/)
 
 animals, ocean, polar, rainforest, savanna, desert, forest, japan-animals, insects, birds, dinosaurs, pets, farm, deepsea, animal-records, plants, weather, solar-system, moon-stars, space-explore, regions, asia, europe, africa, americas, oceania, landmarks, geo-records, writing, japan, nagasaki, japanese-food, japan-traditions, japan-inventions, months1, months2, festivals-world, world-dishes, sweets, fruits, vegetables, ball-sports, olympics, winter-sports, jobs-town, jobs-dream, vehicles, instruments, school-subjects, school-events, inventions, town, stationery, clothes, feelings, colors-shapes, human-body, earth-science, rocks-gems, science-fun, heroes, money, games-world, toys-tales (Japanese folk tales), world-tales, robots, environment, endangered-japan, japan-islands, reptiles, aquarium, dog-breeds, art, numbers, time, daily-life, breakfast-world, houses-world, foods-health, sports-world, art-timeline `timeline`, art-movements `wide`, art-japan-history `timeline`, art-world-crafts `wide`, art-mediums,
 philosophy-questions, philosophers `timeline`, japanese-values, proverbs, living-together,
@@ -211,10 +211,10 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**martial-arts**~~ 武道 — judo, kendo, karate (Okinawa), aikido, kyudo (archery), sumo, naginata, taekwondo, fencing; dojo manners (no fighting imagery — focus on bowing, uniforms, belts)
 - ✅ ~~**japanese-games**~~ 日本の 昔あそび — karuta, fukuwarai, hanetsuki, kite flying, menko, otedama, ohajiki, kendama, koma, daruma-san-ga-koronda, ayatori, kagome-kagome
 - ✅ ~~**playground-world**~~ 世界の 外あそび — tag (oni-gokko and versions), hide-and-seek, hopscotch (around the world), marbles, jump rope rhymes, Red Rover, duck duck goose, Chinese jump rope, sepak takraw
-- **puzzles** パズルの せかい — sudoku (named in Japan), crossword, tangram, jigsaw, Rubik's cube, nonogram (picross, Japan), maze, word search, Tower of Hanoi, 15-puzzle
+- ✅ ~~**puzzles**~~ パズルの せかい — sudoku (named in Japan), crossword, tangram, jigsaw, Rubik's cube, nonogram (picross, Japan), maze, word search, Tower of Hanoi, 15-puzzle
 - ✅ ~~**stadiums**~~ 世界の スタジアム — Koshien, Tokyo Dome, National Stadium (Tokyo), Wembley, Maracanã, Camp Nou, Yankee Stadium, Wimbledon, Melbourne Cricket Ground, Ryogoku Kokugikan
-- **sports-equipment** スポーツの 道具の ひみつ — baseball stitches (108), golf ball dimples, soccer ball panels, shuttlecock feathers, tennis ball fuzz, skis, ice skate blades, running spikes
-- **sports-japan-history** 日本の スポーツ史 `timeline` — kemari, sumo, judo's birth, first Japanese Olympian (1912), Tokyo 1964, Sapporo 1972, Nagano 1998, Rugby World Cup 2019, Tokyo 2020
+- ✅ ~~**sports-equipment**~~ スポーツの 道具の ひみつ — baseball stitches (108), golf ball dimples, soccer ball panels, shuttlecock feathers, tennis ball fuzz, skis, ice skate blades, running spikes
+- ✅ ~~**sports-japan-history**~~ 日本の スポーツ史 `timeline` — kemari, sumo, judo's birth, first Japanese Olympian (1912), Tokyo 1964, Sapporo 1972, Nagano 1998, Rugby World Cup 2019, Tokyo 2020
 
 ## I. Food & Cooking
 
@@ -222,7 +222,7 @@ Wings (src/wings/, registered in src/topics_wings.js with BACKLINKS from older r
 - ✅ ~~**bread-world**~~ 世界の パン — baguette, croissant, naan, pita, tortilla, pretzel, bagel, melon pan, anpan (Japan), injera (Ethiopia), cornbread, rye bread, focaccia, steamed buns
 - ✅ ~~**street-food**~~ 世界の 屋台グルメ — takoyaki, yakitori, crepes, kebab, tacos, hot dogs, satay, churros, bubble tea, dumplings, arepas, hotteok, elote
 - ✅ ~~**soups-world**~~ 世界の スープ — miso soup, tom yum, minestrone, borscht, gazpacho, clam chowder, pho, corn soup, onion soup, seaweed soup
-- **sweets-world-2** 世界の おかし II — baklava, macarons, churros, mochi, gelato, brigadeiro, pastel de nata, Tim Tams, Turkish delight, alfajores, mango sticky rice, pavlova, apple pie
+- ✅ ~~**sweets-world-2**~~ 世界の おかし II — baklava, macarons, churros, mochi, gelato, brigadeiro, pastel de nata, Tim Tams, Turkish delight, alfajores, mango sticky rice, pavlova, apple pie
 - ✅ ~~**tropical-fruits**~~ 南国の くだもの — dragon fruit, durian (smelly!), lychee, rambutan, mangosteen, papaya, passion fruit, star fruit, guava, jackfruit (biggest fruit), coconut, kiwifruit
 - ✅ ~~**spices**~~ スパイスの せかい — pepper, cinnamon, ginger, turmeric, chilli (from the Americas), wasabi, sansho, cumin, saffron (most expensive), vanilla, curry powder; Spice Routes (trade, gentle)
 - ✅ ~~**food-origins**~~ 食べものの ふるさと `timeline` — potatoes, tomatoes, chillies and corn from the Americas; rice from Asia; wheat from the Middle East; coffee from Ethiopia; tea from China; how foods travelled the world
