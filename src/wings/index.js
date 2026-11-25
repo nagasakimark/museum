@@ -9,4 +9,7 @@ import { DETAILS_N5 } from "./n5_seasons.js";
 import { DETAILS_N6 } from "./n6_home.js";
 import { DETAILS_N8 } from "./n8_school.js";
 import { DETAILS_N7 } from "./n7_extremes.js";
-export const WING_DETAILS = [DETAILS_N1, DETAILS_N2, DETAILS_N3, DETAILS_N4, DETAILS_O1, DETAILS_O2, DETAILS_N5, DETAILS_N6, DETAILS_N8, DETAILS_N7];
+import { DETAILS_C1 } from "./c1_asia.js";
+import { DETAILS_C2 } from "./c2_europe.js";
+import { DETAILS_C3 } from "./c3_world.js";
+export const WING_DETAILS = [DETAILS_N1, DETAILS_N2, DETAILS_N3, DETAILS_N4, DETAILS_O1, DETAILS_O2, DETAILS_N5, DETAILS_N6, DETAILS_N8, DETAILS_N7, DETAILS_C1, DETAILS_C2, DETAILS_C3];

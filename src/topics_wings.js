@@ -10,8 +10,11 @@ import { WINGS_N5 } from "./wings/n5_seasons.js";
 import { WINGS_N6 } from "./wings/n6_home.js";
 import { WINGS_N8 } from "./wings/n8_school.js";
 import { WINGS_N7 } from "./wings/n7_extremes.js";
+import { WINGS_C1 } from "./wings/c1_asia.js";
+import { WINGS_C2 } from "./wings/c2_europe.js";
+import { WINGS_C3 } from "./wings/c3_world.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -76,6 +79,10 @@ const BACK2 = {
   "daily-life": ["chores-world"], "environment": ["chores-world"], "science-fun": ["how-home-works"], "generations": ["home-objects-history"],
   // N8 school places
   "school-subjects": ["inside-japanese-school"], "school-events": ["inside-japanese-school"], "jhs-life-japan": ["inside-japanese-school"],
+  // C countries
+  "asia": ["southeast-asia", "south-asia", "west-asia"], "europe": ["nordic", "western-europe-2", "eastern-europe"],
+  "americas": ["central-america-caribbean", "south-america-2"], "africa": ["africa-2"], "oceania": ["pacific-islands"],
+  "regions": ["southeast-asia", "africa-2", "south-america-2", "nordic"],
   // N7 extremes
   "animal-records": ["big-small-animals", "fast-slow"], "geo-records": ["long-short-tall", "hot-cold"], "vehicles": ["fast-slow"],
   "landmarks": ["long-short-tall"], "rocks-gems": ["old-new", "heavy-light"], "dinosaurs": ["old-new"], "instruments": ["loud-quiet"],
