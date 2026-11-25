@@ -32,8 +32,9 @@ import { WINGS_G1 } from "./wings/g1_art.js";
 import { WINGS_A2 } from "./wings/a2_animals.js";
 import { WINGS_A3 } from "./wings/a3_nature.js";
 import { WINGS_D3 } from "./wings/d3_japan.js";
+import { WINGS_A4 } from "./wings/a4_birds_farm.js";
 
-export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1, ...WINGS_K1, ...WINGS_J1, ...WINGS_H1, ...WINGS_C4, ...WINGS_G1, ...WINGS_A2, ...WINGS_A3, ...WINGS_D3 };
+export const WINGS = { ...WINGS_N1, ...WINGS_N2, ...WINGS_N3, ...WINGS_N4, ...WINGS_O1, ...WINGS_O2, ...WINGS_N5, ...WINGS_N6, ...WINGS_N8, ...WINGS_N7, ...WINGS_C1, ...WINGS_C2, ...WINGS_C3, ...WINGS_N10, ...WINGS_N11_14, ...WINGS_D1, ...WINGS_D2, ...WINGS_A1, ...WINGS_I1, ...WINGS_F1, ...WINGS_B1, ...WINGS_M1, ...WINGS_M2, ...WINGS_E1, ...WINGS_K1, ...WINGS_J1, ...WINGS_H1, ...WINGS_C4, ...WINGS_G1, ...WINGS_A2, ...WINGS_A3, ...WINGS_D3, ...WINGS_A4 };
 
 // Extra doors from rooms that were built earlier, so the new rooms can be found.
 const BACK1 = {
@@ -152,6 +153,14 @@ const BACK4 = {
 
 // Each later batch gets its own object so keys never collide.
 const EXTRA = [
+  {
+    "birds": ["birds-japan", "birds-world"],
+    "dinosaurs": ["dinosaurs-2"],
+    "farm-animals": ["farm-to-table"],
+    "japanese-food": ["rice", "farm-to-table"],
+    "plants": ["seeds-growing"],
+    "foods-health": ["farm-to-table"],
+  },
   {
     "japan": ["japan-unesco", "japanese-mountains", "onsen", "japan-records", "japan-history", "japanese-gardens"],
     "japan-traditions": ["japanese-gardens"],
