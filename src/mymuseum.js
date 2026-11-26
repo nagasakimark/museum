@@ -40,7 +40,7 @@ const pay = n => { if (TEACHER) return true; if (S.points < n) return false; S.p
 const canPay = n => TEACHER || S.points >= n;
 
 const fresh = () => ({ name: null, points: 30, wings: [], bought: [], seen: [], visited: [], done: [], asked: {}, colors: {}, paints: {}, mascots: [],
-  floorInv: {}, frameInv: {}, floors: {}, frames: {} });
+  floorInv: {}, frameInv: {}, floors: {}, frames: {}, mascotAt: {} });
 function load() {
   let raw = null; try { raw = JSON.parse(localStorage.getItem(KEY) || "null"); } catch { }
   S = Object.assign(fresh(), raw || {});
@@ -199,7 +199,24 @@ export function openShop(focusId) {
 function roomIcon(h, id) { const g = h.gates.find(x => x[0] === id)?.[1] || "✨"; return g.startsWith("planet:") ? "🪐" : g; }
 
 // ---------- decorating a room: walls, floor, frames ----------
-const DECOR_TABS = [["walls", "🎨 かべ", "Walls"], ["floor", "🪵 ゆか", "Floor"], ["frames", "🖼️ がくぶち", "Frames"]];
+const DECOR_TABS = [["walls", "🎨 かべ", "Walls"], ["floor", "🪵 ゆか", "Floor"], ["frames", "🖼️ がくぶち", "Frames"], ["mascot", "🐾 マスコット", "Mascots"]];
+const tabsHtml = (list, tab) => `<div class="gs-tabs">${list.map(([t, ja, en]) => `<button data-t="${t}" class="${t === tab ? "on" : ""}">${ja} <i>${en}</i></button>`).join("")}</div>`;
+function decorMascots(topic) {
+  const here = mascotsFor(topic.id).length, full = here >= MASCOTS_PER_ROOM, owned = ownedMascots();
+  const card = overlay(`<h2>🎨 「${esc(topic.ja)}」を かざろう</h2><div class="mm-en">Decorate ${esc(topic.en)}</div>
+    ${tabsHtml(DECOR_TABS, "mascot")}
+    <p class="mm-p">マスコットを この へやに よぼう！ 1つの へやに ${MASCOTS_PER_ROOM}ひきまで。 <i>Bring your mascots to this room! Up to ${MASCOTS_PER_ROOM} in one room.</i></p>
+    ${owned.length ? `<div class="gs-grid mascots">${owned.map(([id, ja, en]) => { const at = S.mascotAt[id], isHere = at === topic.id;
+      return `<div class="gs-item${isHere ? " own" : ""}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
+        <small>${isHere ? "✓ この へやに いる <i>Here</i>" : at && T[at] ? `いま <i>now</i>: ${esc(T[at].ja)}` : "まだ おいてない <i>Not placed</i>"}</small>
+        ${isHere ? `<button class="gs-off" data-off="${id}">かえす <i>Remove</i></button>` : `<button data-put="${id}" ${full ? "disabled" : ""}>ここに よぶ <i>Bring here</i></button>`}</div>`; }).join("")}</div>`
+      : `<div class="gs-note">🐾 まだ マスコットが いないよ。ロビーの 🛍️ ギフトショップで 買ってね！ <i>You have no mascots yet. Buy one at the gift shop in the lobby!</i></div>`}`, true);
+  card.querySelectorAll(".gs-tabs button").forEach(b => b.onclick = () => openDecor(topic, b.dataset.t));
+  card.querySelectorAll("[data-put]").forEach(b => b.onclick = () => {
+    const id = b.dataset.put, old = S.mascotAt[id]; S.mascotAt[id] = topic.id; save(); onChange("decor", [topic.id, old]); close(); confetti(90); chime();
+  });
+  card.querySelectorAll("[data-off]").forEach(b => b.onclick = () => { delete S.mascotAt[b.dataset.off]; save(); onChange("decor", [topic.id]); decorMascots(topic); });
+}
 const inv = { walls: () => S.paints, floor: () => S.floorInv, frames: () => S.frameInv };
 const used = { walls: () => S.colors, floor: () => S.floors, frames: () => S.frames };
 function decorItems(tab) {
@@ -222,10 +239,11 @@ export function openDecor(topic, tab = "walls") {
     overlay(`<h2>🎨 へやを かざる</h2><div class="mm-en">Decorate a room</div><p class="mm-p">かざりたい へやの 中で 🎨 を おしてね。 <i>Go into one of your rooms, then press 🎨.</i></p>`);
     return;
   }
+  if (tab === "mascot") return decorMascots(topic);
   const items = decorItems(tab), have = id => TEACHER ? "∞" : (inv[tab]()[id] || 0), cur = used[tab]()[topic.id];
   const card = overlay(`<h2>🎨 「${esc(topic.ja)}」を かざろう</h2><div class="mm-en">Decorate ${esc(topic.en)}</div>
-    <div class="gs-tabs">${DECOR_TABS.map(([t, ja, en]) => `<button data-t="${t}" class="${t === tab ? "on" : ""}">${ja} <i>${en}</i></button>`).join("")}</div>
-    <p class="mm-p">1つの へやに 1つ つかうよ。ロビーの 🛍️ ギフトショップで 買えるよ。 <i>Each one decorates one room. Buy more at the gift shop in the lobby.</i></p>
+    ${tabsHtml(DECOR_TABS, tab)}
+    <p class="mm-p">1つ つかうと、この へやだけ かわるよ。ロビーの 🛍️ ギフトショップで 買えるよ。 <i>Using one changes only this room. Buy more at the gift shop in the lobby.</i></p>
     <div class="gs-grid">${items.map(it => itemCard(it, { cls: it.id === cur ? " own" : "", html: it.id === cur ? `<em>✓ いま <i>Now</i></em>`
       : `<small>もっている <i>have</i>: ${have(it.id)}</small><button data-use="${it.id}" ${have(it.id) === 0 ? "disabled" : ""}>つかう <i>Use</i></button>` })).join("")}</div>
     <button class="mm-reset">もとに もどす <i>Back to normal</i></button>`, true);
@@ -234,24 +252,24 @@ export function openDecor(topic, tab = "walls") {
   card.querySelectorAll("[data-use]").forEach(b => b.onclick = () => {
     const id = b.dataset.use, bag = inv[tab]();
     if (!TEACHER) { if (!(bag[id] > 0)) return; bag[id]--; }
-    used[tab]()[topic.id] = id; save(); onChange("decor", topic.id); close(); confetti(90); chime();
+    used[tab]()[topic.id] = id; save(); onChange("decor", [topic.id]); close(); confetti(90); chime();
   });
-  card.querySelector(".mm-reset").onclick = () => { delete used[tab]()[topic.id]; save(); onChange("decor", topic.id); close(); };
+  card.querySelector(".mm-reset").onclick = () => { delete used[tab]()[topic.id]; save(); onChange("decor", [topic.id]); close(); };
 }
 export const openColour = topic => openDecor(topic, "walls");
 
 // ---------- gift shop ----------
 const SHOP_TABS = [["paint", "🎨 ペンキ", "Paint"], ["floor", "🪵 ゆか", "Floors"], ["frames", "🖼️ がくぶち", "Frames"], ["mascot", "🐾 マスコット", "Mascots"]];
 export function openGiftShop(tab = "paint") {
-  const tabs = `<div class="gs-tabs">${SHOP_TABS.map(([t, ja, en]) => `<button data-t="${t}" class="${t === tab ? "on" : ""}">${ja} <i>${en}</i></button>`).join("")}</div>`;
+  const tabs = tabsHtml(SHOP_TABS, tab) + `<div class="gs-note"><span class="gs-steps"><b>① 買う</b><i>Buy</i></span>➜<span class="gs-steps"><b>② かざりたい へやに 行く</b><i>Go to the room</i></span>➜<span class="gs-steps"><b>③ 🎨 かざる を おす</b><i>Press 🎨 Decorate</i></span>
+    <div>${tab === "mascot" ? "マスコットは 1つの へやに すむよ。" : "1つで 1つの へやだけ かざれるよ。"} <i>${tab === "mascot" ? "Each mascot lives in one room you choose." : "One item decorates one room only."}</i></div></div>`;
   let body = "", items = [];
   const buy = (key, p, n) => `<small>もっている <i>have</i>: ${TEACHER ? "∞" : n}</small><button data-buy="${key}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`;
   if (tab === "paint") body = `<div class="gs-grid">${COLOURS.map(([c, ja, en]) => itemCard({ id: c, ja, en, swatch: c }, { html: buy("paint:" + c, PAINT_PRICE, S.paints[c] || 0) })).join("")}</div>`;
   else if (tab === "floor" || tab === "frames") {
     items = decorItems(tab); const p = tab === "floor" ? FLOOR_PRICE : FRAME_PRICE, bag = tab === "floor" ? S.floorInv : S.frameInv;
-    body = `<p class="mm-p">1つで 1つの へやを かざれるよ。 <i>One decorates one room.</i></p><div class="gs-grid">${items.map(it => itemCard(it, { html: buy(tab + ":" + it.id, p, bag[it.id] || 0) })).join("")}</div>`;
-  } else body = `<p class="mm-p">マスコットは はくぶつかんの 中を さんぽするよ！ <i>Mascots walk around your museum!</i></p>
-    <div class="gs-grid mascots">${MASCOTS.map(([id, ja, en, p]) => { const own = S.mascots.includes(id);
+    body = `<div class="gs-grid">${items.map(it => itemCard(it, { html: buy(tab + ":" + it.id, p, bag[it.id] || 0) })).join("")}</div>`;
+  } else body = `<div class="gs-grid mascots">${MASCOTS.map(([id, ja, en, p]) => { const own = S.mascots.includes(id);
       return `<div class="gs-item${own ? " own" : ""}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
       ${own ? `<em>✓ なかま <i>Yours!</i></em>` : `<button data-buy="mascot:${id}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`}</div>`; }).join("")}</div>`;
   const card = overlay(`<h2>🛍️ ギフトショップ</h2><div class="mm-en">Gift Shop</div>
@@ -260,15 +278,17 @@ export function openGiftShop(tab = "paint") {
   card.querySelectorAll(".gs-tabs button").forEach(b => b.onclick = () => openGiftShop(b.dataset.t));
   card.querySelectorAll("[data-buy]").forEach(b => b.onclick = () => {
     const [kind, id] = b.dataset.buy.split(":");
-    if (kind === "paint") { if (!pay(PAINT_PRICE)) return; S.paints[id] = (S.paints[id] || 0) + 1; toast("🥫", "ペンキを 買った！", "You got paint!"); }
-    else if (kind === "floor") { if (!pay(FLOOR_PRICE)) return; S.floorInv[id] = (S.floorInv[id] || 0) + 1; toast("🪵", "ゆかを 買った！", "You got a floor!"); }
-    else if (kind === "frames") { if (!pay(FRAME_PRICE)) return; S.frameInv[id] = (S.frameInv[id] || 0) + 1; toast("🖼️", "がくぶちを 買った！", "You got frames!"); }
+    if (kind === "paint") { if (!pay(PAINT_PRICE)) return; S.paints[id] = (S.paints[id] || 0) + 1; toast("🥫", "ペンキを 買った！ へやに 行って 🎨で ぬろう", "Got paint! Go to a room and press 🎨"); }
+    else if (kind === "floor") { if (!pay(FLOOR_PRICE)) return; S.floorInv[id] = (S.floorInv[id] || 0) + 1; toast("🪵", "ゆかを 買った！ へやに 行って 🎨で つかおう", "Got a floor! Go to a room and press 🎨"); }
+    else if (kind === "frames") { if (!pay(FRAME_PRICE)) return; S.frameInv[id] = (S.frameInv[id] || 0) + 1; toast("🖼️", "がくぶちを 買った！ へやに 行って 🎨で つかおう", "Got frames! Go to a room and press 🎨"); }
     else { const m = MASCOTS.find(x => x[0] === id); if (S.mascots.includes(id) || !pay(m[3])) return; S.mascots.push(id);
-      toast("🐾", `${m[1]}が なかまに なった！`, `${m[2]} joined your museum!`); confetti(); chime(); onChange("mascot", id); }
+      toast("🐾", `${m[1]}が なかまに なった！ へやに 行って 🎨で よぼう`, `${m[2]} joined! Go to a room and press 🎨 to bring it there`); confetti(); chime(); }
     save(); refreshHud(); openGiftShop(tab);
   });
 }
 export const ownedMascots = () => active ? MASCOTS.filter(m => S.mascots.includes(m[0])) : [];
+export const MASCOTS_PER_ROOM = 3;
+export const mascotsFor = id => active ? MASCOTS.filter(m => S.mascots.includes(m[0]) && S.mascotAt[m[0]] === id) : [];
 
 // ---------- teacher tools ----------
 export function openTeacher() {
@@ -439,6 +459,11 @@ function css() {
   .gs-can::before { content: ""; position: absolute; left: -2px; right: -2px; top: -6px; height: 10px; border-radius: 50%; background: #c7ccd2; border: 2px solid #8a9098; }
   .gs-can span { position: absolute; left: 0; right: 0; top: 22px; height: 34px; background: var(--c); }
   .gs-can span::after { content: ""; position: absolute; left: 22px; top: -12px; width: 26px; height: 16px; border-radius: 0 0 50% 50%; background: var(--c); }
+  .gs-note { background: #fff4d6; border: 2px dashed #e0a840; border-radius: 12px; padding: 8px 12px; margin: 8px 0; text-align: center; font-size: 15px; line-height: 1.5; }
+  .gs-note i { color: #2f6f9f; } .gs-note > div { margin-top: 4px; font-weight: 700; }
+  .gs-steps { display: inline-flex; flex-direction: column; align-items: center; background: #fff; border-radius: 10px; padding: 3px 10px; margin: 0 6px; line-height: 1.25; }
+  .gs-steps b { font-size: 15px; color: #6b4d2c; } .gs-steps i { font-size: 12px; }
+  .gs-off { background: #9a8a70 !important; }
   .gs-prev { width: 140px; height: 105px; border-radius: 8px; margin: 4px 0; }
   .gs-item button i { color: #fff; }
   .mm-wings { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 6px 0 4px; }

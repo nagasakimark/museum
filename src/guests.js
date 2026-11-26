@@ -235,7 +235,7 @@ export function spawnMascots(r, list, force) {
     if (mascotWhere[id] && mascotWhere[id].group) continue;
     const chance = force ? 1 : r.topic.lobby ? .9 : r.topic.hall ? .4 : .2;
     if (Math.random() > chance) continue;
-    if ((r.guests || []).filter(g => g.mascot).length >= (r.topic.lobby ? 4 : 2)) break;
+    if ((r.guests || []).filter(g => g.mascot).length >= (r.topic.lobby ? 4 : 3)) break;
     mascotWhere[id] = r;
     loadMascot(id).then(m => {
       if (!m || !r.group || mascotWhere[id] !== r) return;

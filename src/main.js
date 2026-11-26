@@ -260,13 +260,18 @@ function picTex(item, color) {
     drawPic(g, item.pic, w / 2, h / 2, 300);
   });
 }
+// a short year ("1969") sits beside the English; a long one ("66 million years ago") gets its own line
+const longYear = year => { if (!year) return false; const g = longYear.g ||= document.createElement("canvas").getContext("2d"); g.font = `bold 30px ${FONT}`; return g.measureText(year).width > 150; };
 function labelTex(ja, en, status, year) {
-  return canvasTex(480, 150, (g, w, h) => {
+  const tall = longYear(year);
+  return canvasTex(480, tall ? 196 : 150, (g, w, h) => {
     g.fillStyle = "#f7f5f0"; g.fillRect(0, 0, w, h);
-    if (year) { g.fillStyle = "#b0542a"; g.textAlign = "right"; g.textBaseline = "middle"; g.font = `bold 30px ${FONT}`; g.fillText(year, w - 18, 108); }
+    if (year) { g.fillStyle = "#b0542a"; g.textBaseline = "middle";
+      if (tall) { g.textAlign = "left"; fitFont(g, year, w - 44, 30); g.fillText(year, 22, 156); }
+      else { g.textAlign = "right"; g.font = `bold 30px ${FONT}`; g.fillText(year, w - 18, 108); } }
     g.fillStyle = "#222"; g.textAlign = "left"; g.textBaseline = "middle";
     fitFont(g, ja, w - 70, 46); g.fillText(ja, 22, 52);
-    g.fillStyle = "#555"; fitFont(g, en, year ? w - 190 : w - 50, 30, "500"); g.fillText(en, 22, 108);
+    g.fillStyle = "#555"; fitFont(g, en, year && !tall ? w - 190 : w - 50, 30, "500"); g.fillText(en, 22, 108);
     if (status) { g.fillStyle = STATUS[status].c; g.beginPath(); g.arc(w - 26, 30, 11, 0, Math.PI * 2); g.fill(); }
   });
 }
@@ -820,13 +825,14 @@ function addExhibit(r, slot, ex) {
   let frame = null;
   const pm = own(new THREE.MeshBasicMaterial({ color: "#fff" }));
   const pic = new THREE.Mesh(new THREE.PlaneGeometry(W, H), pm); pic.position.set(0, cy, .066); grp.add(pic);
-  const lb = new THREE.Mesh(new THREE.PlaneGeometry(1.5, .47), own(new THREE.MeshBasicMaterial({ map: labelTex(ex.ja, ex.en, ex.status, ex.year) })));
+  const lbH = longYear(ex.year) ? .47 * 196 / 150 : .47;
+  const lb = new THREE.Mesh(new THREE.PlaneGeometry(1.5, lbH), own(new THREE.MeshBasicMaterial({ map: labelTex(ex.ja, ex.en, ex.status, ex.year) })));
   grp.add(lb);
   const setFrame = (w, h) => {
     if (frame) { grp.remove(frame); frame.traverse(o => { if (o.geometry) o.geometry.dispose(); }); r.clickables = r.clickables.filter(m => m.parent !== frame); }
     frame = buildFrame(style, w, h); frame.position.y = cy; grp.add(frame);
     frame.children.forEach(m => { m.userData.exhibit = ex; r.clickables.push(m); });
-    lb.position.set(0, cy - h / 2 - frame.userData.outer - .3, .01);
+    lb.position.set(0, cy - h / 2 - frame.userData.outer - .065 - lbH / 2, .01);
   };
   setFrame(W, H);
   if (ex.img) {
@@ -923,7 +929,7 @@ function build(r) {
     return { pos: new THREE.Vector3(along ? r.x + g.o : r.x + sx * inner, 0, along ? r.z + sz * inner : r.z + g.o), normal: new THREE.Vector3(-sx, 0, -sz) }; });
   const guides = !following() && !guideReq && (t.lobby || t.hall || Math.random() < .3) && guideTargets(t.id).length ? 1 : 0;
   spawnGuests(r, { askers: MM.askersFor(t), guides, makeBubble: bubble });
-  spawnMascots(r, MM.ownedMascots());
+  spawnMascots(r, MM.mascotsFor(t.id), true);
   if (t.lobby && MM.active) giftShop(r);
 }
 // the lobby's centrepiece: a round dais, a ring of wing colours and a signpost
@@ -1370,7 +1376,9 @@ function talkTo(g) {
 function rebuildAll() { built().forEach(dispose); stream(); updateHud(); }
 MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {
   if (what === "name") { if (rooms[0].group) { dispose(rooms[0]); stream(); } }
-  else if (what === "colour" || what === "decor") { const r = rooms[player.room]; dispose(r); stream(); }
+  else if (what === "colour" || what === "decor") {
+    const ids = Array.isArray(id) ? id : [id];
+    built().filter(r => r === rooms[player.room] || ids.includes(r.topic.id)).forEach(dispose); stream(); }
   else if (what === "unlock") { built().filter(r => r.topic.hall || r.topic.lobby).forEach(dispose); stream(); }
   else if (what === "mascot") { const m = MM.MASCOTS.find(x => x[0] === id); spawnMascots(rooms[player.room], [m], true); }
   updateHud();
