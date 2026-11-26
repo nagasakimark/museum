@@ -1,6 +1,8 @@
 // "My Museum" mode: earn stars by exploring and answering guests' questions,
 // spend them to open new rooms, name your museum and paint rooms your colour.
 import * as THREE from "three";
+import { makeQuestion } from "./questions.js";
+import { ruby } from "./text.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
@@ -34,7 +36,7 @@ export const inMode = id => GATE_IDS.includes(id);               // rooms that e
 export const price = id => Math.round((25 + 2 * (T[id]?.list?.length || 8)) / 5) * 5;
 export const roomColour = id => active ? S.colors[id] : null;
 export const museumName = () => S?.name ? [S.name.map((k, i) => NAME_PARTS[i][k][0]).join(" "), S.name.map((k, i) => NAME_PARTS[i][k][1]).join(" ")] : null;
-export const askersFor = topic => active && !topic.hall && (S.asked[topic.id] || 0) < 3 && picItems(topic).length >= 3 ? 1 : 0;
+export const askersFor = topic => active && !topic.hall && (S.asked[topic.id] || 0) < 3 && (topic.list || []).filter(x => !x.text).length >= 3 ? 1 : 0;
 const picItems = t => (t.list || []).filter(x => !x.text && (x.img || x.pic));
 
 function award(n, ja, en) {
@@ -66,7 +68,7 @@ let toastT;
 function toast(big, ja, en) {
   let t = document.getElementById("mm-toast");
   if (!t) { t = document.createElement("div"); t.id = "mm-toast"; document.body.appendChild(t); }
-  t.innerHTML = `<b>${big}</b><span>${ja}</span><i>${en}</i>`;
+  t.innerHTML = `<b>${big}</b><span>${esc(ja)}</span><i>${esc(en)}</i>`;
   t.classList.remove("show"); void t.offsetWidth; t.classList.add("show");
   clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 2200);
 }
@@ -87,7 +89,7 @@ function overlay(html, wide) {
 }
 export function close() { if (ov && !ov.dataset.lock) { ov.hidden = true; ov.innerHTML = ""; } }
 addEventListener("keydown", e => { if (isOpen() && e.key === "Escape") { close(); e.stopImmediatePropagation(); } }, true);
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const esc = s => ruby(String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])));
 
 // ---------- naming ----------
 export function openSetup(rename) {
@@ -157,27 +159,28 @@ export function openColour(topic) {
 
 // ---------- guest questions ----------
 export function ask(topic, done) {
-  const pool = picItems(topic); if (pool.length < 3) return done(false);
-  const pickN = (a, n) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, n); };
-  const opts = pickN(pool, 3), right = opts[Math.floor(Math.random() * 3)];
-  const kind = Math.random() < .55 ? "pics" : "words";
+  const q = makeQuestion(topic, Object.values(T).filter(t => t.list));
+  if (!q) return done(false);
   const pic = (it, cls) => it.img ? `<img class="${cls}" src="${it.img}" alt="">` : `<canvas class="${cls}" width="300" height="300" data-pic="${esc(it.pic || "")}"></canvas>`;
+  const picOpts = q.opts.every(o => o.item);
+  const word = o => `<b>${esc(o.en)}</b>${o.ja ? `<small>${esc(o.ja)}</small>` : ""}`;
   const card = overlay(`<div class="mm-q"><div class="mm-guest">🙋</div><div>
-      <h2>${kind === "pics" ? `Which one is <u>${esc(right.en)}</u>?` : "What is this in English?"}</h2>
-      <div class="mm-en">${kind === "pics" ? "えいごを よんで、えを えらぼう！" : "えいごで なんと いう？ えらぼう！"}</div></div></div>
-    ${kind === "pics" ? `<div class="mm-opts pics">${opts.map((o, i) => `<button data-i="${i}">${pic(o, "p")}</button>`).join("")}</div>`
-      : `<div class="mm-big">${pic(right, "p")}</div><div class="mm-opts words">${opts.map((o, i) => `<button data-i="${i}">${esc(o.en)}</button>`).join("")}</div>`}
+      <h2>${q.en.split(/(<u>.*?<\/u>)/).map(x => x.startsWith("<u>") ? `<u>${esc(x.slice(3, -4))}</u>` : esc(x)).join("")}</h2>
+      <div class="mm-en">${esc(q.ja)}</div></div></div>
+    ${q.show ? `<div class="mm-big">${pic(q.show, "p")}</div>` : ""}
+    ${picOpts ? `<div class="mm-opts pics">${q.opts.map((o, i) => `<button data-i="${i}">${pic(o.item, "p")}</button>`).join("")}</div>`
+      : `<div class="mm-opts words">${q.opts.map((o, i) => `<button data-i="${i}">${word(o)}</button>`).join("")}</div>`}
     <div class="mm-result"></div>`, true);
   card.querySelectorAll("canvas[data-pic]").forEach(c => { const g = c.getContext("2d"); g.fillStyle = "#f6f1e7"; g.fillRect(0, 0, 300, 300); drawPic(g, c.dataset.pic, 150, 150, 260); });
   ov.dataset.lock = "1";
   card.querySelector(".mm-x").hidden = true;
   card.querySelectorAll(".mm-opts button").forEach(b => b.onclick = () => {
     if (card.dataset.done) return; card.dataset.done = "1";
-    const ok = opts[+b.dataset.i] === right;
-    card.querySelectorAll(".mm-opts button").forEach(x => x.classList.add(opts[+x.dataset.i] === right ? "right" : x === b ? "wrong" : "dim"));
+    const ok = +b.dataset.i === q.right;
+    card.querySelectorAll(".mm-opts button").forEach(x => x.classList.add(+x.dataset.i === q.right ? "right" : x === b ? "wrong" : "dim"));
     S.asked[topic.id] = (S.asked[topic.id] || 0) + 1; save();
     card.querySelector(".mm-result").innerHTML = `${ok ? `<b class="ok">⭕ せいかい！ Great job!</b>` : `<b class="ng">❌ ざんねん… Nice try!</b>`}
-      <div class="ans"><b>${esc(right.en)}</b> = ${esc(right.ja)}</div><button class="mm-go">OK</button>`;
+      <div class="ans"><b>${esc(q.ans[0])}</b>${q.ans[1] ? ` = ${esc(q.ans[1])}` : ""}</div><button class="mm-go">OK</button>`;
     card.querySelector(".mm-result .mm-go").onclick = () => { ov.dataset.lock = ""; close(); if (ok) award(10, "せいかい！", "Correct!"); done(ok); };
   });
 }
@@ -259,10 +262,12 @@ function css() {
   .mm-opts { display: flex; gap: 12px; justify-content: center; margin: 12px 0; }
   .mm-opts.pics button { border: 4px solid #e4d8c3; border-radius: 16px; padding: 0; background: #f6f1e7; cursor: pointer; overflow: hidden; width: 260px; height: 220px; }
   .mm-opts .p { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .mm-big { margin: 10px auto; width: 340px; height: 250px; border-radius: 16px; overflow: hidden; background: #f6f1e7; }
+  .mm-big { margin: 8px auto; width: 300px; height: 200px; border-radius: 16px; overflow: hidden; background: #f6f1e7; }
   .mm-big .p { width: 100%; height: 100%; object-fit: cover; display: block; }
   .mm-big canvas.p { object-fit: contain; }
-  .mm-opts.words button { border: 3px solid #bcdcf0; border-radius: 14px; padding: 12px 20px; background: #eaf4fb; font: 800 22px 'Nunito', system-ui, sans-serif; color: #1d4f75; cursor: pointer; min-width: 180px; }
+  .mm-opts.words { flex-wrap: wrap; }
+  .mm-opts.words button { border: 3px solid #bcdcf0; border-radius: 14px; padding: 10px 18px; background: #eaf4fb; font: 800 22px 'Nunito', system-ui, sans-serif; color: #1d4f75; cursor: pointer; min-width: 180px; max-width: 300px; display: flex; flex-direction: column; align-items: center; }
+  .mm-opts.words button small { font: 600 13px 'Noto Sans JP', sans-serif; color: #555; margin-top: 2px; }
   .mm-opts button.right { border-color: #4f8a3c !important; box-shadow: 0 0 0 4px #4f8a3c; }
   .mm-opts button.wrong { border-color: #c0392b !important; opacity: .7; }
   .mm-opts button.dim { opacity: .45; }

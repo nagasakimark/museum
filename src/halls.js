@@ -4,7 +4,7 @@ const H = (ja, en, c, icon, intro, gates) => ({ ja, en, c, icon, intro, hall: tr
 
 export const HALLS = {
   "wing-wonder": H("ふしぎ・おもしろ", "Weird & Wonderful", "#8e44ad", "🌀",
-    "妖怪、ミステリー、目の さっかく、体の なぜ？、忍者に まんが。「えっ！？」と おどろく ものを 集めた へやです。 Wow, that's strange!",
+    "{妖怪|ようかい}、ミステリー、目の さっかく、体の なぜ？、{忍者|にんじゃ}に まんが。「えっ！？」と おどろく ものを 集めた へやです。 Wow, that's strange!",
     [["yokai", "👺"], ["mysteries", "🗿"], ["optical-illusions", "🌀"], ["why-body", "🤧"], ["spooky-science", "👻"], ["household-spirits", "🧚"], ["manga-anime", "💬"], ["video-games-history", "🎮"], ["ninja", "🥷"], ["famous-animals", "🐕"], ["cambrian-weirdos", "🦐"], ["hidden-places", "🕳️"]]),
   "wing-animals": H("どうぶつ", "Animals", "#4f8a3c", "🦁",
     "陸、海、空 —— 地球には 800万 しゅるい いじょうの 生きものが いると 言われます。気に なる ドアを えらんで 会いに 行こう！ What animals do you like?",
@@ -12,8 +12,8 @@ export const HALLS = {
   "wing-nature": H("自然と 地球", "Nature & Earth", "#2f7f6f", "🌋",
     "山、川、火山、天気、そして 46億年の 地球の 歴史。わたしたちが すむ 星の ひみつを さがそう。 How does the Earth work?",
     [["plants", "🌻"], ["trees", "🌳"], ["flowers-world", "🌷"], ["weather", "⛅"], ["volcanoes-world", "🌋"], ["mountains-world", "🏔️"], ["rivers-lakes", "🏞️"], ["rocks-gems", "💎"], ["earth-timeline", "🌍"], ["dinosaurs", "🦖"], ["climate-zones", "🗺️"], ["environment", "♻️"]]),
-  "wing-space": H("宇宙", "Space", "#34407a", "🪐",
-    "夜空の 向こうには 何が ある？ 太陽、わく星、星ざ、ロケット —— 宇宙への 旅に 出発！ Let's go to space!",
+  "wing-space": H("{宇宙|うちゅう}", "Space", "#34407a", "🪐",
+    "夜空の 向こうには 何が ある？ 太陽、わく星、星ざ、ロケット —— {宇宙|うちゅう}への 旅に 出発！ Let's go to space!",
     [["solar-system", "planet:#ffb52e"], ["moon-stars", "🌕"], ["moons", "🌙"], ["constellations", "✨"], ["comets-asteroids", "☄️"], ["space-explore", "🚀"], ["space-japan", "🛰️"], ["why-seasons", "🌏"], ["telescopes-observatories", "🔭"], ["astronaut-life", "👩‍🚀"], ["space-records", "🏆"]]),
   "wing-science": H("科学", "Science", "#2a76b8", "🔬",
     "なぜ？ どうして？ を 実験で たしかめるのが 科学。体、光、音、電気、じしゃくの ふしぎに せまろう。 Science is fun!",
@@ -22,7 +22,7 @@ export const HALLS = {
     "車輪から インターネットまで。人間の アイデアが 世界を 変えて きました。次の 発明家は きみかも！ What's your favorite invention?",
     [["inventions", "💡"], ["robots", "🤖"], ["how-computers-work", "💻"], ["how-internet-works", "🌐"], ["vehicles", "🚗"], ["trains-japan", "🚄"], ["transport-history", "✈️"], ["communication-history", "📞"], ["home-objects-history", "📺"], ["japan-inventions", "🍜"], ["measuring-tools", "📏"], ["codes", "📡"]]),
   "wing-history": H("歴史", "History", "#8a5a2b", "🏛️",
-    "ピラミッドの 時代、たんけん家の 船、江戸の 町。むかしの 人たちは どんな くらしを して いたのかな？ Let's travel in time!",
+    "ピラミッドの 時代、たんけん家の 船、{江戸|えど}の 町。むかしの 人たちは どんな くらしを して いたのかな？ Let's travel in time!",
     [["ancient-civilizations", "🏛️"], ["japan-history", "🏯"], ["edo-life", "🏮"], ["japanese-castles", "🏯"], ["heroes", "🌟"], ["explorers", "🧭"], ["women-science", "👩‍🔬"], ["writing-history", "📜"], ["money-history", "🪙"], ["clothes-history", "👘"], ["toys-history", "🪀"], ["units-history", "⚖️"]]),
   "wing-art": H("美術と 音楽", "Art & Music", "#b8457a", "🎨",
     "名画、ちょうこく、たてもの、オーケストラ、世界の おどり。人の 心を うごかす 作品に 出会おう。 What do you like, art or music?",
@@ -46,7 +46,7 @@ export const HALLS = {
     "毎日の くらし、家、学校、きせつ、行事。いつもの 毎日を 世界と くらべると ふしぎが いっぱい！ What time do you get up?",
     [["daily-life", "⏰"], ["school-subjects", "📚"], ["inside-japanese-school", "🏫"], ["school-buildings-world", "🌍"], ["jhs-life-japan", "🎒"], ["japanese-home", "🏡"], ["how-home-works", "🚿"], ["seasons-72", "🍂"], ["months1", "📅"], ["holidays-world", "🎊"], ["birthdays-world", "🎂"], ["time", "🕰️"]]),
   "wing-words": H("ことばと 考える", "Words & Ideas", "#5a7f9a", "💬",
-    "英語、文字、ことわざ、そして「なぜ？」と 考える 哲学。ことばと 考えの 世界へ ようこそ。 Let's think together!",
+    "英語、文字、ことわざ、そして「なぜ？」と 考える {哲学|てつがく}。ことばと 考えの 世界へ ようこそ。 Let's think together!",
     [["writing", "🔤"], ["wasei-eigo", "🗣️"], ["words-from-japanese", "🍣"], ["onomatopoeia", "💥"], ["uk-us-english", "🔠"], ["tongue-twisters", "👅"], ["proverbs", "📖"], ["symbols-signs", "🚸"], ["philosophy-questions", "❓"], ["philosophers", "🤔"], ["paradoxes", "🌀"], ["ethics-for-kids", "⚖️"]]),
 };
 export const LOBBY_GATES = Object.keys(HALLS);

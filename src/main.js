@@ -11,6 +11,7 @@ import { WINGS, BACKLINKS } from "./topics_wings.js";
 import { HALLS, LOBBY_GATES } from "./halls.js";
 import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
+import { plain, ruby } from "./text.js";
 import { loadGuests, spawnGuests, updateGuests, clearGuests } from "./guests.js";
 import { startMusic, toggleMusic, musicOn } from "./music.js";
 import * as MM from "./mymuseum.js";
@@ -58,7 +59,7 @@ for (const [id, t] of Object.entries(TOPICS)) {
   t.list = list;
 }
 function templateSay(id, it) {
-  const row = k => (it.rows || []).find(r => r[0].includes(k));
+  const row = k => (it.rows || []).find(r => plain(r[0]).includes(k));
   const an = w => /^[aeiou]/i.test(w) ? "an" : "a";
   if (it.animal) {
     const a = it.animal, c = a.countries[0], e = a.eats[0];
@@ -129,6 +130,7 @@ function fitFont(g, text, max, size, weight = "bold", font = FONT) {
   return size;
 }
 function wrapText(g, text, x, y, maxW, lh, maxLines = 9) {
+  text = plain(text);
   const parts = text.split(/(?<= )/); let line = ""; const lines = [];
   for (const p of parts) {
     if (g.measureText(line + p).width > maxW && line) { lines.push(line); line = ""; }
@@ -1079,7 +1081,7 @@ function markSeen(key) { if (!key || seen.has(key)) return; seen.add(key); try {
 const hudRoom = document.getElementById("room"), hudSeen = document.getElementById("seen"), hint = document.getElementById("hint");
 function updateHud() {
   const r = rooms[player.room];
-  hudRoom.innerHTML = `<b>${r.topic.ja}</b><span>${r.topic.en}</span>`;
+  hudRoom.innerHTML = `<b>${esc(r.topic.ja)}</b><span>${esc(r.topic.en)}</span>`;
   if (MM.active) MM.hud(hudSeen);
   else hudSeen.innerHTML = `🚪 ${roomsVisited} へや　👀 ${seen.size} / ${ALL_ITEMS}`;
 }
@@ -1108,7 +1110,7 @@ function drawMap() {
 
 // ================= panel =================
 let panelEx = null;
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const esc = s => ruby(String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])));
 function openPanel(ex) {
   panelEx = ex; keys.clear(); btnHeld.clear(); player.target = null;
   const body = document.getElementById("pbody");
