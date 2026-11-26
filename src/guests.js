@@ -94,14 +94,7 @@ export function spawnGuests(r, opts = {}) {
     const g = { obj, model: m, mixer: new THREE.AnimationMixer(body), anim: null, action: null, sitting,
       state: "look", t: 2 + Math.random() * 6, target: null, look: spot.look, lookEx: spot.ex, room: r };
     const role = i < (opts.askers || 0) ? "asker" : i < (opts.askers || 0) + (opts.guides || 0) && !sitting ? "guide" : null;
-    if (role && opts.makeBubble) {
-      g.asker = true; g.role = role;
-      g.bubble = opts.makeBubble(role); g.bubble.position.y = HEIGHT + .45; obj.add(g.bubble);
-      // a generous invisible box so the guest is easy to click
-      const hit = new THREE.Mesh(new THREE.BoxGeometry(.9, HEIGHT + .7, .9), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
-      hit.position.y = (HEIGHT + .7) / 2; hit.userData.guest = g; obj.add(hit); r.clickables.push(hit);
-      g.state = "wait"; g.t = 1e9;
-    }
+    if (role && opts.makeBubble) makeAsker(g, role, opts.makeBubble);
     play(g, sitting ? "wheelchair-sit" : "idle", 0);
     g.mixer.update(Math.random() * 2);
     r.guests.push(g);
@@ -181,6 +174,34 @@ function followTick(dt, player, yaw, lookAt) {
     play(g, "idle");
   }
   g.mixer.update(dt);
+}
+
+// turn a guest into one who wants to talk (question "?" or guide "🗺️")
+function makeAsker(g, role, makeBubble) {
+  const r = g.room;
+  g.asker = true; g.role = role;
+  g.bubble = makeBubble(role); g.bubble.position.y = HEIGHT + .45; g.obj.add(g.bubble);
+  // a generous invisible box so the guest is easy to click
+  const hit = new THREE.Mesh(new THREE.BoxGeometry(.9, HEIGHT + .7, .9), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+  hit.position.y = (HEIGHT + .7) / 2; hit.userData.guest = g; g.obj.add(hit); r.clickables.push(hit);
+  if (g.state === "walk") play(g, g.sitting ? "wheelchair-sit" : "idle");
+  g.state = "wait"; g.t = 1e9;
+}
+// a wandering guest in this room thinks of a new question
+export function newAsker(r, makeBubble, not) {
+  const pool = (r.guests || []).filter(g => !g.asker && g !== not);
+  const g = pool.length ? pool[Math.floor(Math.random() * pool.length)] : (not && !not.asker ? not : null);
+  if (!g) return false;
+  makeAsker(g, "asker", makeBubble);
+  return true;
+}
+// stop being an asker (answered)
+export function doneAsking(g) {
+  g.asker = false; g.question = null;
+  if (g.bubble) { g.obj.remove(g.bubble); g.bubble = null; }
+  g.room.clickables = g.room.clickables.filter(m => m.userData.guest !== g);
+  g.obj.children.filter(o => o.userData.guest).forEach(o => g.obj.remove(o));
+  g.state = "look"; g.t = 2;
 }
 
 export function updateGuests(rooms, dt, player, yaw = 0, lookAt = null) {

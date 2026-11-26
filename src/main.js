@@ -12,7 +12,7 @@ import { HALLS, LOBBY_GATES } from "./halls.js";
 import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
 import { plain, ruby } from "./text.js";
-import { loadGuests, spawnGuests, updateGuests, clearGuests, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
+import { loadGuests, spawnGuests, updateGuests, clearGuests, newAsker, doneAsking, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
 import { startSfx, setSfx, setRoomSize, footstep, door, chime } from "./sfx.js";
 import { confetti } from "./confetti.js";
 import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
@@ -1301,11 +1301,14 @@ function talkTo(g) {
   if (!g.asker || !g.room.group) return;
   closePanel(); keys.clear(); btnHeld.clear(); player.target = null;
   if (g.role === "guide") { if (!guideReq) offerGuide(g); return; }
-  MM.ask(g.room.topic, () => {
-    g.asker = false; if (g.bubble) { g.obj.remove(g.bubble); g.bubble = null; }
-    g.room.clickables = g.room.clickables.filter(m => m.userData.guest !== g);
-    g.state = "look"; g.t = 2; focusGuest = null;
-  });
+  MM.ask(g.room.topic, (result, q) => {
+    // "later": keep the same question so they can go and look for the answer
+    if (result == null) { g.question = q; return; }
+    const r = g.room;
+    doneAsking(g); focusGuest = null;
+    // a wrong answer: after a while someone else in this room has a new question
+    if (result === false) setTimeout(() => { if (r.group && MM.askersFor(r.topic) > 0 && (r.guests || []).filter(x => x.asker && x.role !== "guide").length < 2) newAsker(r, bubble, g); }, window.__askDelay || 25000);
+  }, g.question);
 }
 function rebuildAll() { built().forEach(dispose); stream(); updateHud(); }
 MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {

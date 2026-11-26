@@ -162,9 +162,9 @@ export function openColour(topic) {
 }
 
 // ---------- guest questions ----------
-export function ask(topic, done) {
-  const q = makeQuestion(topic, Object.values(T).filter(t => t.list));
-  if (!q) return done(false);
+export function ask(topic, done, again) {
+  const q = again || makeQuestion(topic, Object.values(T).filter(t => t.list));
+  if (!q) return done(true);
   const pic = (it, cls) => it.img ? `<img class="${cls}" src="${it.img}" alt="">` : `<canvas class="${cls}" width="300" height="300" data-pic="${esc(it.pic || "")}"></canvas>`;
   const picOpts = q.opts.every(o => o.item);
   const word = o => `<b>${esc(o.en)}</b>${o.ja ? `<small>${esc(o.ja)}</small>` : ""}`;
@@ -174,12 +174,14 @@ export function ask(topic, done) {
     ${q.show ? `<div class="mm-big">${pic(q.show, "p")}</div>` : ""}
     ${picOpts ? `<div class="mm-opts pics">${q.opts.map((o, i) => `<button data-i="${i}">${pic(o.item, "p")}</button>`).join("")}</div>`
       : `<div class="mm-opts words">${q.opts.map((o, i) => `<button data-i="${i}">${word(o)}</button>`).join("")}</div>`}
-    <div class="mm-result"></div>`, true);
+    <div class="mm-result"></div>
+    <button class="mm-later">🔎 あとで こたえる — さがしてくる！ <i>Let me look around first.</i></button>`, true);
+  card.querySelector(".mm-later").onclick = () => { ov.dataset.lock = ""; close(); toast("🔎", "へやの 中を さがしてみよう！", "Look around the room!"); done(null, q); };
   card.querySelectorAll("canvas[data-pic]").forEach(c => { const g = c.getContext("2d"); g.fillStyle = "#f6f1e7"; g.fillRect(0, 0, 300, 300); drawPic(g, c.dataset.pic, 150, 150, 260); });
   ov.dataset.lock = "1";
   card.querySelector(".mm-x").hidden = true;
   card.querySelectorAll(".mm-opts button").forEach(b => b.onclick = () => {
-    if (card.dataset.done) return; card.dataset.done = "1";
+    if (card.dataset.done) return; card.dataset.done = "1"; card.querySelector(".mm-later").remove();
     const ok = +b.dataset.i === q.right;
     card.querySelectorAll(".mm-opts button").forEach(x => x.classList.add(+x.dataset.i === q.right ? "right" : x === b ? "wrong" : "dim"));
     S.asked[topic.id] = (S.asked[topic.id] || 0) + 1; save();
@@ -278,6 +280,8 @@ function css() {
   .mm-reset { border: 0; border-radius: 10px; padding: 7px 14px; background: #eee5d6; font: inherit; font-weight: 700; cursor: pointer; }
   .mm-q { display: flex; gap: 14px; align-items: center; justify-content: center; text-align: left; }
   .mm-guest { font-size: 54px; }
+  .mm-later { margin-top: 8px; border: 2px solid #d8c9ae; background: #f6f1e7; border-radius: 999px; padding: 6px 18px; color: #6b4d2c; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .mm-later i { font-size: 13px; }
   .mm-where { display: inline-block; background: #eaf4fb; border-radius: 999px; padding: 5px 16px; font-weight: 700; margin-bottom: 4px; }
   .mm-opts { display: flex; gap: 12px; justify-content: center; margin: 12px 0; }
   .mm-opts.pics button { border: 4px solid #e4d8c3; border-radius: 16px; padding: 0; background: #f6f1e7; cursor: pointer; overflow: hidden; width: 260px; height: 220px; }
