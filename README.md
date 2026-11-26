@@ -65,6 +65,13 @@ Conservation statuses: IUCN Red List (Tsushima leopard cat: Japan Ministry of th
 
 3D engine: [three.js](https://threejs.org) (MIT licence).
 
+Museum guests: Mini Characters by Kenney (www.kenney.nl), CC0.
+
+Background music by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 3.0/4.0
+(http://creativecommons.org/licenses/by/4.0/). Tracks: Gymnopedie No 1, Gymnopedie No 2, Gymnopedie No 3 (Erik Satie, arranged and performed by Kevin MacLeod),
+Meditation Impromptu 01, Meditation Impromptu 02, Meditation Impromptu 03, Dreamer, Bathed in the Light, At Rest, Lasting Hope.
+The tracks were converted to quiet mono MP3s for this app.
+
 ## Exhibit photo credits
 
 Photos from Wikimedia Commons, used under their free licences.

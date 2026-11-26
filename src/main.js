@@ -11,6 +11,9 @@ import { WINGS, BACKLINKS } from "./topics_wings.js";
 import { HALLS, LOBBY_GATES } from "./halls.js";
 import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
+import { loadGuests, spawnGuests, updateGuests, clearGuests } from "./guests.js";
+import { startMusic, toggleMusic, musicOn } from "./music.js";
+import * as MM from "./mymuseum.js";
 
 // ================= content =================
 const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS, ...HALLS };
@@ -70,6 +73,9 @@ function templateSay(id, it) {
   return [];
 }
 const ROAM = Object.keys(TOPICS).filter(id => !TOPICS[id].hall);
+// rooms a door may lead to (in My Museum: only rooms you have opened)
+const canVisit = id => !MM.active || (MM.inMode(id) && MM.isUnlocked(id));
+const roamPick = not => { const pool = ROAM.filter(id => id !== not && canVisit(id)); return TOPICS[rand(pool.length ? pool : ROAM)]; };
 const ALL_ITEMS = Object.values(TOPICS).reduce((n, t) => n + t.list.length, 0);
 const HUBS = ["animals", "regions", "japan", "solar-system", "world-dishes", "ball-sports", "jobs-dream", "inventions", "nagasaki", "dinosaurs", "heroes", "science-fun", "aquarium", "town", "art", "art-timeline", "art-world-crafts", "human-body", "japan-islands", "games-world", "philosophy-questions", "hello-world", "nagasaki-city", "orchestra", "sdgs"];
 const LOBBY = {
@@ -216,6 +222,9 @@ const mats = {
 
 // palette for a topic: wall colour (light) + floor (mid)
 const wallColor = t => mix(t.c, "#f6f0e4", 0.78);
+// My Museum: a room painted in the colour its owner chose
+const wallM = r => { const c = MM.roomColour(r.topic.id); if (!c) return mats.wall;
+  return shared["wall" + c] ||= new THREE.MeshLambertMaterial({ map: wallMap, color: mix(c, "#ffffff", .62) }); };
 const floorColor = t => mix(t.c, "#6b5136", 0.55);
 
 function drawPic(g, pic, x, y, size) {
@@ -320,7 +329,7 @@ function corridorBox(x0, z0, dir, len) {
 function pickTopics(r, n) {
   const t = TOPICS[r.topic.id] || r.topic;
   const parentTopic = r.parent != null ? rooms[r.parent].topic.id : null;
-  let pool = (t.links || HUBS).filter(id => TOPICS[id] && id !== parentTopic && id !== t.id);
+  let pool = (t.links || HUBS).filter(id => TOPICS[id] && id !== parentTopic && id !== t.id && canVisit(id));
   pool = shuffle(pool).sort((a, b) => (visitCount[a] || 0) - (visitCount[b] || 0));
   return pool.slice(0, n);
 }
@@ -343,13 +352,13 @@ function planExits(r) {
   for (const s of sides) {
     if (made >= n) break;
     let topic = TOPICS[picks[made]], isMystery = false;
-    if (mystery && made === n - 1) { topic = TOPICS[rand(ROAM.filter(id => id !== r.topic.id))]; isMystery = true; }
-    if (!topic) topic = TOPICS[rand(ROAM)];
+    if (mystery && made === n - 1) { topic = roamPick(r.topic.id); isMystery = true; }
+    if (!topic) { if (MM.active) break; topic = TOPICS[rand(ROAM)]; }
     if (tryExit(r, s, topic, isMystery)) made++;
   }
   if (made === 0) {
     const side = sides.find(s => !r.exits[s]);
-    if (side) makeWarp(r, side, TOPICS[rand(ROAM.filter(id => id !== r.topic.id))]);
+    if (side) makeWarp(r, side, roamPick(r.topic.id));
   }
 }
 function tryExit(r, side, topic, mystery) {
@@ -494,7 +503,7 @@ function archPlane(w, h) {
 function onWall(g, side, x, z) { const [sx] = DIRS[side]; if (sx !== 0) g.rotateY(Math.PI / 2); g.translate(x, 0, z); return g; }
 function doorwayTrim(r, side, wx, wz, H) {
   const [sx, sz] = DIRS[side], along = sx === 0;
-  kitAdd(r, onWall(lintelGeom(H), side, wx, wz), mats.wall);
+  kitAdd(r, onWall(lintelGeom(H), side, wx, wz), wallM(r));
   const f = WALL_T / 2 + .05, fx = wx - sx * f, fz = wz - sz * f;
   const arc = new THREE.TorusGeometry(ARCH_R + .09, .1, 6, 20, Math.PI); arc.translate(0, DOOR_H, 0); kitAdd(r, onWall(arc, side, fx, fz), mats.trim);
   for (const k of [-1, 1]) { const j = new THREE.BoxGeometry(.2, DOOR_H, .1); j.translate(k * (ARCH_R + .09), DOOR_H / 2, 0); kitAdd(r, onWall(j, side, fx, fz), mats.trim); }
@@ -653,7 +662,7 @@ function buildWall(r, side) {
   for (const [a, b] of segs) {
     const len = b - a, mid = (a + b) / 2; if (len <= 0.01) continue;
     const px = along ? r.x + mid : wx0, pz = along ? wz0 : r.z + mid;
-    addBox(r, along ? len : WALL_T, H, along ? WALL_T : len, mats.wall, px, H / 2, pz, true);
+    addBox(r, along ? len : WALL_T, H, along ? WALL_T : len, wallM(r), px, H / 2, pz, true);
     const ix = along ? px : wx0 - sx * (WALL_T / 2 + .03), iz = along ? wz0 - sz * (WALL_T / 2 + .03) : pz;
     kitBox(r, along ? len : .06, .2, along ? .06 : len, mats.base, ix, .1, iz); // skirting
     contactShade(r, side, a, b);
@@ -715,6 +724,15 @@ function gatePortalTex(ct, pic) {
     g.globalAlpha = .9; drawPic(g, pic || "✨", w / 2, h / 2 - 10, 150); g.globalAlpha = 1;
   });
 }
+function lockTex(ct, pic) {
+  return canvasTex(256, 384, (g, w, h) => {
+    g.fillStyle = mix(ct.c, "#f4ede2", .7); g.fillRect(0, 0, w, h);
+    g.strokeStyle = shade(ct.c, -.1); g.lineWidth = 10; g.strokeRect(14, 14, w - 28, h - 28);
+    g.globalAlpha = .35; drawPic(g, pic && !pic.startsWith("planet:") ? pic : "✨", w / 2, 150, 150); g.globalAlpha = 1;
+    drawPic(g, "🔒", w / 2, 250, 110);
+    g.fillStyle = "#3a2c1c"; g.font = `bold 30px ${FONT}`; g.textAlign = "center"; g.fillText(`${MM.price(ct.id)} ⭐`, w / 2, 340);
+  });
+}
 function buildCorridor(r, side, ex) {
   const [dx, dz] = DIRS[side], along = dx !== 0;
   const o = ex.o || 0, x0 = r.x + dx * r.hx + (along ? 0 : o), z0 = r.z + dz * r.hz + (along ? o : 0), len = ex.len;
@@ -727,6 +745,16 @@ function buildCorridor(r, side, ex) {
   for (const s of [-1, 1]) {
     const off = DOOR_W / 2 + WALL_T / 2;
     addBox(r, along ? len : WALL_T, H, along ? WALL_T : len, mats.wall, along ? cx : cx + s * off, H / 2, along ? cz + s * off : cz, true);
+  }
+  if (ex.gate && !MM.isUnlocked(rooms[ex.child].topic.id)) {
+    // My Museum: a locked room — a closed door with a padlock; click it to open the room
+    addBox(r, along ? .3 : DOOR_W + .6, ARCH_TOP + .2, along ? DOOR_W + .6 : .3, mats.wall, x0 + dx * (len + .15), (ARCH_TOP + .2) / 2, z0 + dz * (len + .15), true);
+    const ct = rooms[ex.child].topic;
+    const lock = new THREE.Mesh(archPlane(DOOR_W, ARCH_TOP), own(new THREE.MeshBasicMaterial({ map: lockTex(ct, ex.icon) })));
+    lock.position.set(x0 + dx * .25, 0, z0 + dz * .25); lock.lookAt(lock.position.x - dx, 0, lock.position.z - dz); r.group.add(lock);
+    lock.userData.locked = ct.id; r.clickables.push(lock);
+    r.colliders.push({ minX: Math.min(x0, x0 + dx * .5) - (along ? 0 : DOOR_W / 2), maxX: Math.max(x0, x0 + dx * .5) + (along ? 0 : DOOR_W / 2), minZ: Math.min(z0, z0 + dz * .5) - (along ? DOOR_W / 2 : 0), maxZ: Math.max(z0, z0 + dz * .5) + (along ? DOOR_W / 2 : 0) });
+    return;
   }
   if (ex.warp) {
     addBox(r, along ? .3 : DOOR_W + .6, ARCH_TOP + .2, along ? DOOR_W + .6 : .3, mats.wall, x0 + dx * (len + .15), (ARCH_TOP + .2) / 2, z0 + dz * (len + .15), true);
@@ -754,7 +782,7 @@ function slotsFor(r) {
 function partition(r, ox = 0, oz = 0, alongX = r.hx >= r.hz ? r.i % 3 !== 0 : r.i % 3 === 0) {
   // a free-standing wall; orientation chosen per room
   const L = 9, T = .45, H = Math.min(r.h - .9, 4.6);
-  addBox(r, alongX ? L : T, H, alongX ? T : L, mats.wall, r.x + ox, H / 2, r.z + oz, true);
+  addBox(r, alongX ? L : T, H, alongX ? T : L, wallM(r), r.x + ox, H / 2, r.z + oz, true);
   kitBox(r, alongX ? L + .06 : T + .06, .2, alongX ? T + .06 : L + .06, mats.base, r.x + ox, .1, r.z + oz);
   kitBox(r, alongX ? L + .16 : T + .16, .18, alongX ? T + .16 : L + .16, mats.trim, r.x + ox, H + .09, r.z + oz);
   const s = [];
@@ -878,6 +906,10 @@ function build(r) {
   r.shortfall = Math.max(0, items.length - slots.length);
   slots.slice(0, items.length).forEach((s, i) => addExhibit(r, s, items[i]));
   kitFlush(r);
+  // in halls, guests stop and look at the doorways and their banners
+  r.sights = (r.gates || []).map(g => { const [sx, sz] = DIRS[g.side], along = sx === 0, inner = (along ? r.hz : r.hx) - WALL_T;
+    return { pos: new THREE.Vector3(along ? r.x + g.o : r.x + sx * inner, 0, along ? r.z + sz * inner : r.z + g.o), normal: new THREE.Vector3(-sx, 0, -sz) }; });
+  spawnGuests(r, { askers: MM.askersFor(t), makeBubble: bubble });
 }
 // the lobby's centrepiece: a round dais, a ring of wing colours and a signpost
 function lobbyCentre(r) {
@@ -909,8 +941,15 @@ function lobbyCentre(r) {
   const cap = new THREE.Mesh(new THREE.BoxGeometry(2.2, .16, 2.2), mats.brass); cap.position.set(r.x, 3.78, r.z); r.group.add(cap);
   const face = own(new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(512, 850, (g, w, h) => {
     g.textAlign = "center"; g.fillStyle = "#6b4d2c";
+    const nm = MM.active && MM.museumName();
+    if (nm) {
+      const parts = nm[0].split(" "), l1 = parts.slice(0, -1).join(" "), l2 = parts[parts.length - 1];
+      fitFont(g, l1, w - 40, 72); g.fillText(l1, w / 2, 120); fitFont(g, l2, w - 40, 84); g.fillText(l2, w / 2, 220);
+      g.fillStyle = "#8a7356"; fitFont(g, nm[1], w - 40, 44, "600"); g.fillText(nm[1], w / 2, 290);
+    } else {
     g.font = `bold 84px ${FONT}`; g.fillText("ふしぎ", w / 2, 120); fitFont(g, "はくぶつかん", w - 40, 84); g.fillText("はくぶつかん", w / 2, 220);
     g.font = `600 44px ${FONT}`; g.fillStyle = "#8a7356"; g.fillText("Museum of All Things", w / 2, 290);
+    }
     g.fillStyle = "#c9a24a"; g.fillRect(70, 335, w - 140, 7);
     g.fillStyle = "#3a3a3a"; g.font = `bold 70px ${FONT}`; g.fillText("どこから 見る？", w / 2, 450);
     g.font = `500 48px ${FONT}`; g.fillStyle = "#6a6a6a"; g.fillText("Where shall we start?", w / 2, 525);
@@ -932,6 +971,7 @@ function dispose(r) {
     if (o.geometry && !o.geometry.userData.shared) o.geometry.dispose();
     if (o.material && o.material.userData.own) { o.material.map?.dispose(); o.material.dispose(); }
   });
+  clearGuests(r);
   scene.remove(r.group); r.group = null; r.colliders = []; r.clickables = []; r.floors = []; r.exhibits = [];
 }
 
@@ -974,6 +1014,7 @@ function enterRoom(i) {
   // a mystery door gets its real name once you've been through it
   if (first && r.parent != null) { const p = rooms[r.parent]; if (p.group) { dispose(p); } }
   stream(); updateHud(); showBanner(r);
+  MM.enteredRoom(r.topic);
 }
 
 // ================= input =================
@@ -982,13 +1023,15 @@ const panel = document.getElementById("panel");
 const panelOpen = () => !panel.hidden;
 addEventListener("keydown", e => {
   const hp = document.getElementById("help");
-  if (hp && !hp.hidden) { if (["Enter", " ", "Escape"].includes(e.key)) { hp.hidden = true; try { localStorage.setItem("museum-help-seen", "1"); } catch { } e.preventDefault(); } return; }
+  if (hp && !hp.hidden) { if (["Enter", " ", "Escape"].includes(e.key)) { hideHelp(); chooseMode(MODE || "free"); e.preventDefault(); } return; }
+  if (MM.isOpen()) return;
   if (panelOpen()) {
     if (["Escape", "Enter", " "].includes(e.key)) { closePanel(); e.preventDefault(); }
     else if (e.key === "ArrowRight") { stepPanel(1); e.preventDefault(); }
     else if (e.key === "ArrowLeft") { stepPanel(-1); e.preventDefault(); }
     return;
   }
+  if ((e.key === "Enter" || e.key === " ") && focusGuest) { talkTo(focusGuest); e.preventDefault(); return; }
   if ((e.key === "Enter" || e.key === " ") && focused) { openPanel(focused); e.preventDefault(); return; }
   keys.add(e.key.toLowerCase()); if (e.key.startsWith("Arrow")) e.preventDefault();
 });
@@ -1007,7 +1050,13 @@ function pick(e, list) { ray.setFromCamera(new THREE.Vector2(e.clientX / innerWi
 function click(e) {
   const b = built(); const hit = pick(e, [...b.flatMap(r => r.clickables), ...b.flatMap(r => r.floors)]);
   if (!hit) return;
-  const ex = hit.object.userData.exhibit;
+  const ex = hit.object.userData.exhibit, gu = hit.object.userData.guest, lk = hit.object.userData.locked;
+  if (lk) { MM.openShop(lk); return; }
+  if (gu) {
+    if (hit.distance < 7) talkTo(gu);
+    else { const p = gu.obj.getWorldPosition(new THREE.Vector3()), d = new THREE.Vector3().subVectors(player.pos, p).setY(0).normalize(); player.target = p.addScaledVector(d, 1.8).setY(0); }
+    return;
+  }
   if (ex) {
     if (hit.distance < 9) openPanel(ex);
     else { const rec = b.flatMap(r => r.exhibits).find(x => x.ex === ex); if (rec) player.target = rec.pos.clone().addScaledVector(rec.normal, 2.6); }
@@ -1031,7 +1080,8 @@ const hudRoom = document.getElementById("room"), hudSeen = document.getElementBy
 function updateHud() {
   const r = rooms[player.room];
   hudRoom.innerHTML = `<b>${r.topic.ja}</b><span>${r.topic.en}</span>`;
-  hudSeen.innerHTML = `🚪 ${roomsVisited} へや　👀 ${seen.size} / ${ALL_ITEMS}`;
+  if (MM.active) MM.hud(hudSeen);
+  else hudSeen.innerHTML = `🚪 ${roomsVisited} へや　👀 ${seen.size} / ${ALL_ITEMS}`;
 }
 const mapCv = document.getElementById("map"), mg = mapCv.getContext("2d");
 function drawMap() {
@@ -1075,7 +1125,7 @@ function openPanel(ex) {
       ${ex.status ? statusScale(ex.status, ex.statusSource) : ""}</div>`;
     const c = body.querySelector("canvas");
     if (c) { const g = c.getContext("2d"); drawPic(g, ex.pic, 280, 280, 520); }
-    markSeen(ex.key);
+    markSeen(ex.key); MM.openedExhibit(ex);
   }
   panel.hidden = false;
 }
@@ -1100,11 +1150,11 @@ document.getElementById("next").addEventListener("click", () => stepPanel(1));
 panel.addEventListener("click", e => { if (e.target === panel) closePanel(); });
 
 // ================= loop =================
-let focused = null, mapT = 0;
+let focused = null, focusGuest = null, mapT = 0;
 const fwd = new THREE.Vector3(), timer = new THREE.Timer();
 function frame() {
   timer.update(); const dt = Math.min(timer.getDelta(), .05);
-  if (!panelEx) {
+  if (!panelEx && !MM.isOpen()) {
     const k = n => keys.has(n) || btnHeld.has(n);
     player.yaw += ((k("arrowleft") || k("q") ? 1 : 0) - (k("arrowright") || k("e") ? 1 : 0)) * dt * 1.9;
     const f = (k("arrowup") || k("w") ? 1 : 0) - (k("arrowdown") || k("s") ? 1 : 0), s = (k("d") ? 1 : 0) - (k("a") ? 1 : 0);
@@ -1134,8 +1184,20 @@ function frame() {
     const to = new THREE.Vector3(x.pos.x - player.pos.x, 0, x.pos.z - player.pos.z); const d = to.length(); if (d > 5.5) continue;
     const dot = to.normalize().dot(f2); if (dot > .8 && dot / d > bs) { bs = dot / d; best = x.ex; }
   }
-  if (best !== focused) { focused = best; if (focused) hint.innerHTML = `<b>Enter</b> か クリックで 見る — ${esc(focused.ja)}`; }
-  hint.hidden = !focused || panelOpen();
+  // a question guest close by and in view takes priority
+  let fg = null;
+  for (const g of rooms[player.room].guests || []) {
+    if (!g.asker) continue;
+    const to = new THREE.Vector3(g.obj.position.x - player.pos.x, 0, g.obj.position.z - player.pos.z), d = to.length();
+    if (d < 3.6 && to.normalize().dot(f2) > .7) fg = g;
+  }
+  if (fg !== focusGuest || (!fg && best !== focused)) {
+    focusGuest = fg; focused = fg ? null : best;
+    if (fg) hint.innerHTML = `<b>Enter</b> か クリックで 話す — しつもんに こたえよう！ <i>Talk</i>`;
+    else if (focused) hint.innerHTML = `<b>Enter</b> か クリックで 見る — ${esc(focused.ja)}`;
+  }
+  hint.hidden = !(focused || focusGuest) || panelOpen() || MM.isOpen();
+  updateGuests(built(), dt, player.pos);
   if ((mapT += dt) > .12) { mapT = 0; drawMap(); }
   renderer.render(scene, camera); requestAnimationFrame(frame);
 }
@@ -1145,14 +1207,57 @@ function showBanner(r) {
   b.innerHTML = `<b>${esc(r.topic.ja)}</b><span>${esc(r.topic.en)}</span>`; b.classList.add("show");
   clearTimeout(bannerT); bannerT = setTimeout(() => b.classList.remove("show"), 2200);
 }
+// ================= guests, music, modes =================
+const bubbleMat = new THREE.SpriteMaterial({ map: canvasTex(128, 128, (g, w, h) => {
+  g.fillStyle = "#fff"; g.strokeStyle = "#e8731c"; g.lineWidth = 8;
+  g.beginPath(); g.arc(w / 2, 56, 46, 0, Math.PI * 2); g.fill(); g.stroke();
+  g.beginPath(); g.moveTo(w / 2 - 14, 96); g.lineTo(w / 2, 122); g.lineTo(w / 2 + 14, 96); g.closePath(); g.fill();
+  g.fillStyle = "#e8731c"; g.font = `bold 66px ${FONT}`; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("?", w / 2, 60);
+}), depthTest: true });
+function bubble() { const sp = new THREE.Sprite(bubbleMat); sp.scale.set(.55, .55, 1); return sp; }
+function talkTo(g) {
+  if (!g.asker || !g.room.group) return;
+  closePanel(); keys.clear(); btnHeld.clear(); player.target = null;
+  MM.ask(g.room.topic, () => {
+    g.asker = false; if (g.bubble) { g.obj.remove(g.bubble); g.bubble = null; }
+    g.room.clickables = g.room.clickables.filter(m => m.userData.guest !== g);
+    g.state = "look"; g.t = 2; focusGuest = null;
+  });
+}
+function rebuildAll() { built().forEach(dispose); stream(); updateHud(); }
+MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {
+  if (what === "name") { if (rooms[0].group) { dispose(rooms[0]); stream(); } }
+  else if (what === "colour") { const r = rooms[player.room]; dispose(r); stream(); }
+  else if (what === "unlock") { built().filter(r => r.topic.hall).forEach(dispose); stream(); }
+  updateHud();
+} });
+loadGuests();
+let MODE = null;
+function chooseMode(m) {
+  startMusic(); syncMusicBtn();
+  if (MODE && MODE !== m) { const u = new URL(location.href); u.searchParams.set("mode", m); location.href = u.toString(); return; }
+  if (MODE) return;
+  MODE = m;
+  if (m === "my") { MM.start(); document.body.classList.add("my"); rebuildAll(); }
+}
+const musicBtn = document.getElementById("music");
+const syncMusicBtn = () => { musicBtn.textContent = musicOn() ? "🎵" : "🔇"; musicBtn.title = musicOn() ? "Music on" : "Music off"; };
+musicBtn.addEventListener("click", () => { startMusic(); toggleMusic(); syncMusicBtn(); });
+syncMusicBtn();
+document.getElementById("shop").addEventListener("click", () => { closePanel(); MM.openShop(); });
+document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openColour(rooms[player.room].topic); });
+
 enterRoom(0);
-if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose };
+if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose, MM, talkTo, built };
 document.getElementById("loading").remove();
 const help = document.getElementById("help");
 const showHelp = () => { help.hidden = false; keys.clear(); };
-const hideHelp = () => { help.hidden = true; try { localStorage.setItem("museum-help-seen", "1"); } catch { } };
-document.getElementById("help-ok").addEventListener("click", hideHelp);
+function hideHelp() { help.hidden = true; try { localStorage.setItem("museum-help-seen", "1"); } catch { } }
+document.getElementById("help-ok").addEventListener("click", () => { hideHelp(); chooseMode("free"); });
+document.getElementById("help-my").addEventListener("click", () => { hideHelp(); chooseMode("my"); });
 document.getElementById("helpbtn").addEventListener("click", showHelp);
-help.addEventListener("click", e => { if (e.target === help) hideHelp(); });
-showHelp(); // how to play, every time the museum opens
+help.addEventListener("click", e => { if (e.target === help && MODE) hideHelp(); });
+const urlMode = new URLSearchParams(location.search).get("mode");
+if (urlMode === "my" || urlMode === "free") { help.hidden = true; chooseMode(urlMode); }
+else showHelp(); // how to play + choose a mode, every time the museum opens
 requestAnimationFrame(frame);
