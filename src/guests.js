@@ -8,6 +8,9 @@ const HEIGHT = 1.55;          // metres, roughly a visitor's height in our world
 const SPEED = 1.05;           // walking speed m/s
 const models = [];            // { scene, clips, scale }
 let wheelchair = null;
+// wheelchair users: about 1 guest in 30, and at least 20 other guests between two of them,
+// so you meet one now and then rather than in every room
+let sinceChair = 12;
 let ready = false;
 const waiting = [];           // rooms built before the models arrived
 
@@ -85,7 +88,8 @@ export function spawnGuests(r, opts = {}) {
     used.add(mi);
     const m = models[mi], obj = new THREE.Group(), body = skClone(m.scene);
     body.scale.setScalar(m.scale); obj.add(body);
-    const sitting = !opts.noWheelchair && wheelchair && i === 1 && Math.random() < .35;
+    const sitting = !opts.noWheelchair && wheelchair && sinceChair >= 20 && Math.random() < .08;
+    sinceChair = sitting ? 0 : sinceChair + 1;
     // the wheelchair-sit animation sits at floor level, so lift the person onto the seat
     if (sitting) { const w = skClone(wheelchair); w.scale.setScalar(m.scale); obj.add(w); body.position.y = .24 * m.scale; }
     obj.position.set(spot.x, 0, spot.z);
