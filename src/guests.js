@@ -45,14 +45,14 @@ const blocked = (r, ax, az, bx, bz) => {
 // a place to stand: in front of a picture, or a free spot to wander to
 const crowded = (r, x, z, me) => (r.guests || []).some(o => o !== me && (Math.hypot(o.obj.position.x - x, o.obj.position.z - z) < 1.3 || (o.target && Math.hypot(o.target.x - x, o.target.z - z) < 1.3)));
 function pickSpot(r, g) {
-  const pics = [...r.exhibits.filter(e => !e.ex.text && !r.topic.lobby).map(e => ({ pos: e.pos, normal: e.normal })), ...(r.sights || [])];
+  const pics = [...r.exhibits.filter(e => !e.ex.text && !r.topic.lobby).map(e => ({ pos: e.pos, normal: e.normal, ex: e.ex })), ...(r.sights || [])];
   for (let k = 0; k < 8; k++) {
     if (pics.length && Math.random() < .8) {
       const e = pics[Math.floor(Math.random() * pics.length)];
       const side = (Math.random() - .5) * 1.4, back = 1.9 + Math.random() * .8;
       const tx = e.pos.x + e.normal.x * back + e.normal.z * side, tz = e.pos.z + e.normal.z * back - e.normal.x * side;
       if (crowded(r, tx, tz, g)) continue;
-      if (!g || !blocked(r, g.obj.position.x, g.obj.position.z, tx, tz)) return { x: tx, z: tz, look: e.pos };
+      if (!g || !blocked(r, g.obj.position.x, g.obj.position.z, tx, tz)) return { x: tx, z: tz, look: e.pos, ex: e.ex };
     } else {
       const tx = r.x + (Math.random() * 2 - 1) * (r.hx - 2.5), tz = r.z + (Math.random() * 2 - 1) * (r.hz - 2.5);
       if (crowded(r, tx, tz, g)) continue;
@@ -78,7 +78,7 @@ export function spawnGuests(r, opts = {}) {
   let n = r.topic.lobby ? 5 : r.topic.hall ? 3 : area > 500 ? 3 : area > 250 ? 2 : 1;
   if (Math.random() < .25) n = Math.max(0, n - 1);
   const used = new Set();
-  for (let i = 0; i < Math.max(n, opts.askers || 0); i++) {
+  for (let i = 0; i < Math.max(n, (opts.askers || 0) + (opts.guides || 0)); i++) {
     const spot = pickSpot(r); if (!spot) continue;
     let mi; do { mi = Math.floor(Math.random() * models.length); } while (used.has(mi) && used.size < models.length);
     used.add(mi);
@@ -92,10 +92,11 @@ export function spawnGuests(r, opts = {}) {
     else obj.rotation.y = Math.random() * Math.PI * 2;
     r.group.add(obj);
     const g = { obj, model: m, mixer: new THREE.AnimationMixer(body), anim: null, action: null, sitting,
-      state: "look", t: 2 + Math.random() * 6, target: null, look: spot.look, room: r };
-    if (i < (opts.askers || 0) && opts.makeBubble) {
-      g.asker = true;
-      g.bubble = opts.makeBubble(); g.bubble.position.y = HEIGHT + .45; obj.add(g.bubble);
+      state: "look", t: 2 + Math.random() * 6, target: null, look: spot.look, lookEx: spot.ex, room: r };
+    const role = i < (opts.askers || 0) ? "asker" : i < (opts.askers || 0) + (opts.guides || 0) && !sitting ? "guide" : null;
+    if (role && opts.makeBubble) {
+      g.asker = true; g.role = role;
+      g.bubble = opts.makeBubble(role); g.bubble.position.y = HEIGHT + .45; obj.add(g.bubble);
       // a generous invisible box so the guest is easy to click
       const hit = new THREE.Mesh(new THREE.BoxGeometry(.9, HEIGHT + .7, .9), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
       hit.position.y = (HEIGHT + .7) / 2; hit.userData.guest = g; obj.add(hit); r.clickables.push(hit);
@@ -107,7 +108,84 @@ export function spawnGuests(r, opts = {}) {
   }
 }
 
-export function updateGuests(rooms, dt, player) {
+// ---------- comments: now and then a nearby guest says something simple ----------
+let commentT = 4, speaking = null, lineFor = () => null;
+export function setLines(fn) { lineFor = fn; }
+function speech(en, ja) {
+  const c = document.createElement("canvas"), g = c.getContext("2d");
+  g.font = "800 44px Nunito, system-ui, sans-serif"; const w1 = g.measureText(en).width;
+  g.font = "600 26px 'Noto Sans JP', sans-serif"; const w2 = ja ? g.measureText(ja).width : 0;
+  const W = Math.ceil(Math.max(w1, w2) + 60), H = ja ? 132 : 96;
+  c.width = W; c.height = H + 22;
+  g.fillStyle = "#fff"; g.strokeStyle = "rgba(60,40,20,.35)"; g.lineWidth = 4;
+  g.beginPath(); g.roundRect(2, 2, W - 4, H - 4, 26); g.fill(); g.stroke();
+  g.beginPath(); g.moveTo(W / 2 - 14, H - 4); g.lineTo(W / 2, H + 18); g.lineTo(W / 2 + 14, H - 4); g.fill();
+  g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = "#1d4f75"; g.font = "800 44px Nunito, system-ui, sans-serif"; g.fillText(en, W / 2, ja ? 46 : H / 2);
+  if (ja) { g.fillStyle = "#6b5a44"; g.font = "600 26px 'Noto Sans JP', sans-serif"; g.fillText(ja, W / 2, 96); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, depthTest: true }));
+  const k = .0042; sp.scale.set(c.width * k, c.height * k, 1); sp.renderOrder = 5;
+  return sp;
+}
+export function say(g, en, ja, secs = 3.5) {
+  hush();
+  const sp = speech(en, ja); sp.position.y = HEIGHT + .55 + sp.scale.y / 2; g.obj.add(sp);
+  speaking = { g, sp, t: secs };
+}
+function hush() { if (!speaking) return; speaking.g.obj.remove(speaking.sp); speaking.sp.material.map.dispose(); speaking.sp.material.dispose(); speaking = null; }
+function commentTick(rooms, dt, player) {
+  if (speaking && (speaking.t -= dt) <= 0) hush();
+  if ((commentT -= dt) > 0 || speaking) return;
+  commentT = 7 + Math.random() * 9;
+  const near = rooms.flatMap(r => (r.guests || []).map(g => ({ g, r }))).filter(({ g }) => !g.asker && g.state === "look" &&
+    Math.hypot(g.obj.position.x - player.x, g.obj.position.z - player.z) < 9);
+  if (!near.length) return;
+  const { g, r } = near[Math.floor(Math.random() * near.length)];
+  const line = lineFor(r, g.lookEx); if (line) say(g, line[0], line[1]);
+}
+
+// ---------- a guest who follows you to an exhibit they want to see ----------
+let follower = null, sceneRef = null;
+export function setScene(s) { sceneRef = s; }
+export function startFollow(g) {
+  const r = g.room;
+  r.guests = r.guests.filter(x => x !== g);
+  r.clickables = r.clickables.filter(m => m.userData.guest !== g);
+  if (g.bubble) { g.obj.remove(g.bubble); g.bubble = null; }
+  g.obj.traverse(o => { if (o.userData.guest) o.visible = false; });
+  const p = g.obj.getWorldPosition(new THREE.Vector3());
+  g.obj.parent.remove(g.obj); sceneRef.add(g.obj); g.obj.position.copy(p);
+  g.asker = false; g.state = "follow"; follower = g;
+}
+export const following = () => follower;
+export function endFollow(r) {
+  const g = follower; if (!g) return; follower = null;
+  sceneRef.remove(g.obj);
+  if (r && r.group) { r.group.add(g.obj); g.room = r; g.state = "look"; g.t = 6; r.guests = r.guests || []; r.guests.push(g); play(g, "idle"); }
+  else g.mixer.stopAllAction();
+}
+function followTick(dt, player, yaw, lookAt) {
+  const g = follower; if (!g) return;
+  const p = g.obj.position;
+  const want = { x: player.x + Math.sin(yaw) * 1.7, z: player.z + Math.cos(yaw) * 1.7 };  // a little behind you
+  const dx = want.x - p.x, dz = want.z - p.z, d = Math.hypot(dx, dz);
+  if (d > 7) { p.set(want.x, 0, want.z); }                              // went through a door: catch up
+  else if (d > .6) {
+    const step = Math.min(d, (d > 2.5 ? 5 : 3) * dt);
+    p.x += dx / d * step; p.z += dz / d * step;
+    g.obj.rotation.y += angDiff(Math.atan2(dx, dz), g.obj.rotation.y) * Math.min(1, dt * 8);
+    play(g, "walk");
+  } else {
+    const t = lookAt || player;
+    g.obj.rotation.y += angDiff(Math.atan2(t.x - p.x, t.z - p.z), g.obj.rotation.y) * Math.min(1, dt * 4);
+    play(g, "idle");
+  }
+  g.mixer.update(dt);
+}
+
+export function updateGuests(rooms, dt, player, yaw = 0, lookAt = null) {
+  commentTick(rooms, dt, player);
+  followTick(dt, player, yaw, lookAt);
   for (const r of rooms) for (const g of r.guests || []) {
     const p = g.obj.position;
     if (g.asker) {
@@ -129,7 +207,7 @@ export function updateGuests(rooms, dt, player) {
     } else if (g.state === "walk") {
       const dx = g.target.x - p.x, dz = g.target.z - p.z, d = Math.hypot(dx, dz);
       if (d < .1) {
-        g.state = "look"; g.look = g.target.look; g.t = 4 + Math.random() * 8;
+        g.state = "look"; g.look = g.target.look; g.lookEx = g.target.ex; g.t = 4 + Math.random() * 8;
         play(g, g.sitting ? "wheelchair-sit" : "idle");
       } else {
         const want = Math.atan2(dx, dz);
@@ -145,6 +223,7 @@ const angDiff = (a, b) => ((a - b + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
 
 // stop tracking a room's guests (their meshes go with the room's group)
 export function clearGuests(r) {
+  if (speaking && speaking.g.room === r && speaking.g !== follower) hush();
   for (const g of r.guests || []) g.mixer.stopAllAction();
   r.guests = [];
   const i = waiting.findIndex(([x]) => x === r); if (i >= 0) waiting.splice(i, 1);

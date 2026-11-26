@@ -12,7 +12,10 @@ import { HALLS, LOBBY_GATES } from "./halls.js";
 import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
 import { plain, ruby } from "./text.js";
-import { loadGuests, spawnGuests, updateGuests, clearGuests } from "./guests.js";
+import { loadGuests, spawnGuests, updateGuests, clearGuests, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
+import { startSfx, setSfx, setRoomSize, footstep, door, chime } from "./sfx.js";
+import { confetti } from "./confetti.js";
+import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
 import { startMusic, toggleMusic, musicOn } from "./music.js";
 import * as MM from "./mymuseum.js";
 
@@ -911,7 +914,8 @@ function build(r) {
   // in halls, guests stop and look at the doorways and their banners
   r.sights = (r.gates || []).map(g => { const [sx, sz] = DIRS[g.side], along = sx === 0, inner = (along ? r.hz : r.hx) - WALL_T;
     return { pos: new THREE.Vector3(along ? r.x + g.o : r.x + sx * inner, 0, along ? r.z + sz * inner : r.z + g.o), normal: new THREE.Vector3(-sx, 0, -sz) }; });
-  spawnGuests(r, { askers: MM.askersFor(t), makeBubble: bubble });
+  const guides = !following() && !guideReq && (t.lobby || t.hall || Math.random() < .3) && guideTargets(t.id).length ? 1 : 0;
+  spawnGuests(r, { askers: MM.askersFor(t), guides, makeBubble: bubble });
 }
 // the lobby's centrepiece: a round dais, a ring of wing colours and a signpost
 function lobbyCentre(r) {
@@ -1009,9 +1013,12 @@ function move(dx, dz) {
   if (!collide(player.pos.x, player.pos.z + dz)) { player.pos.z += dz; m = true; }
   return m;
 }
+let lastDoor = 0, stepAcc = 0;
 function enterRoom(i) {
   const r = rooms[i]; const first = !r.seen;
+  if (player.room !== i && performance.now() - lastDoor > 1500) { lastDoor = performance.now(); door(); }
   player.room = i;
+  setRoomSize(r.topic.lobby || r.topic.hall ? 1 : Math.min(1, r.hx * r.hz / 300));
   if (first) { r.seen = true; roomsVisited++; visitCount[r.topic.id] = (visitCount[r.topic.id] || 0) + 1; visitCount[r.topic.id + "@" + i] = 1; }
   // a mystery door gets its real name once you've been through it
   if (first && r.parent != null) { const p = rooms[r.parent]; if (p.group) { dispose(p); } }
@@ -1026,7 +1033,8 @@ const panelOpen = () => !panel.hidden;
 addEventListener("keydown", e => {
   const hp = document.getElementById("help");
   if (hp && !hp.hidden) { if (["Enter", " ", "Escape"].includes(e.key)) { hideHelp(); chooseMode(MODE || "free"); e.preventDefault(); } return; }
-  if (MM.isOpen()) return;
+  if (MM.isOpen() || notebookOpen()) return;
+  if (e.key === "n" && !panelOpen()) { openNotebook(); e.preventDefault(); return; }
   if (panelOpen()) {
     if (["Escape", "Enter", " "].includes(e.key)) { closePanel(); e.preventDefault(); }
     else if (e.key === "ArrowRight") { stepPanel(1); e.preventDefault(); }
@@ -1153,10 +1161,11 @@ panel.addEventListener("click", e => { if (e.target === panel) closePanel(); });
 
 // ================= loop =================
 let focused = null, focusGuest = null, mapT = 0;
+const lastPos = new THREE.Vector3();
 const fwd = new THREE.Vector3(), timer = new THREE.Timer();
 function frame() {
   timer.update(); const dt = Math.min(timer.getDelta(), .05);
-  if (!panelEx && !MM.isOpen()) {
+  if (!panelEx && !MM.isOpen() && !notebookOpen()) {
     const k = n => keys.has(n) || btnHeld.has(n);
     player.yaw += ((k("arrowleft") || k("q") ? 1 : 0) - (k("arrowright") || k("e") ? 1 : 0)) * dt * 1.9;
     const f = (k("arrowup") || k("w") ? 1 : 0) - (k("arrowdown") || k("s") ? 1 : 0), s = (k("d") ? 1 : 0) - (k("a") ? 1 : 0);
@@ -1178,6 +1187,9 @@ function frame() {
       enterRoom(pt.target.room); break;
     }
   }
+  const moved = Math.hypot(player.pos.x - lastPos.x, player.pos.z - lastPos.z);
+  if (moved < 1) { stepAcc += moved; if (stepAcc > .9) { stepAcc = 0; footstep(); } } else stepAcc = 0;
+  lastPos.copy(player.pos);
   const ri = roomAt(player.pos); if (ri !== player.room) enterRoom(ri);
   camera.position.set(player.pos.x, EYE, player.pos.z); camera.rotation.set(player.pitch, player.yaw, 0, "YXZ");
   camera.getWorldDirection(fwd); const f2 = new THREE.Vector3(fwd.x, 0, fwd.z).normalize();
@@ -1199,7 +1211,8 @@ function frame() {
     else if (focused) hint.innerHTML = `<b>Enter</b> か クリックで 見る — ${esc(focused.ja)}`;
   }
   hint.hidden = !(focused || focusGuest) || panelOpen() || MM.isOpen();
-  updateGuests(built(), dt, player.pos);
+  const gl = guideCheck();
+  updateGuests(built(), dt, player.pos, player.yaw, gl);
   if ((mapT += dt) > .12) { mapT = 0; drawMap(); }
   renderer.render(scene, camera); requestAnimationFrame(frame);
 }
@@ -1216,10 +1229,78 @@ const bubbleMat = new THREE.SpriteMaterial({ map: canvasTex(128, 128, (g, w, h) 
   g.beginPath(); g.moveTo(w / 2 - 14, 96); g.lineTo(w / 2, 122); g.lineTo(w / 2 + 14, 96); g.closePath(); g.fill();
   g.fillStyle = "#e8731c"; g.font = `bold 66px ${FONT}`; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("?", w / 2, 60);
 }), depthTest: true });
-function bubble() { const sp = new THREE.Sprite(bubbleMat); sp.scale.set(.55, .55, 1); return sp; }
+const guideMat = new THREE.SpriteMaterial({ map: canvasTex(128, 128, (g, w, h) => {
+  g.fillStyle = "#fff"; g.strokeStyle = "#2f8fb0"; g.lineWidth = 8;
+  g.beginPath(); g.arc(w / 2, 56, 46, 0, Math.PI * 2); g.fill(); g.stroke();
+  g.beginPath(); g.moveTo(w / 2 - 14, 96); g.lineTo(w / 2, 122); g.lineTo(w / 2 + 14, 96); g.closePath(); g.fill();
+  drawPic(g, "🗺️", w / 2, 58, 58);
+}), depthTest: true });
+function bubble(role) { const sp = new THREE.Sprite(role === "guide" ? guideMat : bubbleMat); sp.scale.set(.55, .55, 1); return sp; }
+
+// ---------- guiding a guest to an exhibit ----------
+// which room each topic sits in (wing hall), for the "where is it?" hint
+const WING_OF = {};
+for (const [wid, h] of Object.entries(HALLS)) for (const [id] of h.gates) if (TOPICS[id]) WING_OF[id] = wid;
+function guideTargets(notId) {
+  return Object.keys(WING_OF).filter(id => id !== notId && (!MM.active || MM.isUnlocked(id)))
+    .flatMap(id => TOPICS[id].list.filter(x => !x.text && (x.img || x.pic) && x.en && plain(x.en).length <= 26 && !x.en.includes(":")));
+}
+let guideReq = null;   // { item, g } while a guest is following you
+const guideChip = document.getElementById("guide");
+function offerGuide(g) {
+  const pool = guideTargets(rooms[player.room].topic.id); if (!pool.length) return;
+  const item = pool[Math.floor(Math.random() * pool.length)], t = TOPICS[item.topic], w = HALLS[WING_OF[item.topic]];
+  MM.offerGuide(item, [w.ja, w.en], [t.ja, t.en], ok => {
+    if (!ok) return;
+    startFollow(g); guideReq = { item, g }; focusGuest = null;
+    say(g, "Let's go!", "いこう！", 2.5);
+    guideChip.innerHTML = `${item.img ? `<img src="${item.img}" alt="">` : ""}<div><b>🗺️ ${esc(item.en)}</b><span>${esc(item.ja)}</span>
+      <small>📍 ${esc(w.ja)} › ${esc(t.ja)}</small></div><button title="Stop">✕</button>`;
+    guideChip.hidden = false;
+    guideChip.querySelector("button").onclick = () => { endFollow(null); guideReq = null; guideChip.hidden = true; };
+  });
+}
+function guideCheck() {
+  if (!guideReq) return null;
+  const r = rooms[player.room]; if (r.topic.id !== guideReq.item.topic || !r.group) return null;
+  const e = r.exhibits.find(x => x.ex.key === guideReq.item.key); if (!e) return null;
+  if (Math.hypot(e.pos.x - player.pos.x, e.pos.z - player.pos.z) < 4.7) {
+    const { g, item } = guideReq; guideReq = null; guideChip.hidden = true;
+    endFollow(r); g.look = e.pos; g.t = 12;
+    say(g, "Thank you!", "ありがとう！", 3.5);
+    confetti(); chime(); MM.guideDone(item);
+  }
+  return e.pos;
+}
+
+// ---------- things guests say ----------
+const LINES = {
+  all: [["Wow!", "わあ！"], ["Cool!", "かっこいい！"], ["I like this!", "これ、すき！"], ["Amazing!", "すごい！"], ["Look at this!", "これ 見て！"], ["Interesting!", "おもしろい！"], ["Beautiful!", "きれい！"]],
+  "wing-animals": [["So cute!", "かわいい！"], ["Is it big?", "大きいの かな？"], ["I like animals!", "どうぶつ、だいすき！"]],
+  "wing-nature": [["So pretty!", "きれい！"], ["I like nature!", "しぜん、すき！"]],
+  "wing-space": [["So far away!", "とおい！"], ["I want to go to space!", "うちゅうに 行きたい！"]],
+  "wing-food": [["Yummy!", "おいしそう！"], ["I'm hungry!", "おなか すいた！"], ["I want to eat this!", "これ 食べたい！"]],
+  "wing-world": [["I want to go there!", "ここに 行きたい！"], ["Hello, world!", "こんにちは、せかい！"]],
+  "wing-japan": [["I know this!", "これ 知ってる！"], ["I want to go there!", "ここに 行きたい！"]],
+  "wing-history": [["So old!", "古い！"], ["Long, long ago…", "むかし むかし…"]],
+  "wing-art": [["Beautiful!", "きれい！"], ["I like the colors!", "色が すき！"]],
+  "wing-sports": [["Let's play!", "あそぼう！"], ["I like sports!", "スポーツ、すき！"]],
+  "wing-tech": [["How does it work?", "どう うごくの？"], ["Cool!", "かっこいい！"]],
+  "wing-science": [["How does it work?", "どう うごくの？"], ["I didn't know that!", "知らなかった！"]],
+  "wing-wonder": [["How strange!", "ふしぎ！"], ["Really?!", "ほんとう？！"]],
+  "wing-words": [["I can read this!", "これ よめる！"]],
+};
+setLines((r, ex) => {
+  const pool = [...LINES.all, ...(LINES[WING_OF[r.topic.id]] || LINES[r.topic.id] || []), ...(LINES[WING_OF[r.topic.id]] || [])];
+  if (ex && ex.en && plain(ex.en).length < 18 && Math.random() < .35) return [`I like the ${plain(ex.en).replace(/^(the|a|an) /i, "")}!`, `${plain(ex.ja)}、すき！`];
+  return pool[Math.floor(Math.random() * pool.length)];
+});
+setScene(scene);
+
 function talkTo(g) {
   if (!g.asker || !g.room.group) return;
   closePanel(); keys.clear(); btnHeld.clear(); player.target = null;
+  if (g.role === "guide") { if (!guideReq) offerGuide(g); return; }
   MM.ask(g.room.topic, () => {
     g.asker = false; if (g.bubble) { g.obj.remove(g.bubble); g.bubble = null; }
     g.room.clickables = g.room.clickables.filter(m => m.userData.guest !== g);
@@ -1236,7 +1317,7 @@ MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {
 loadGuests();
 let MODE = null;
 function chooseMode(m) {
-  startMusic(); syncMusicBtn();
+  startMusic(); syncMusicBtn(); startSfx(); setSfx(sfxOn);
   if (MODE && MODE !== m) { const u = new URL(location.href); u.searchParams.set("mode", m); location.href = u.toString(); return; }
   if (MODE) return;
   MODE = m;
@@ -1245,12 +1326,27 @@ function chooseMode(m) {
 const musicBtn = document.getElementById("music");
 const syncMusicBtn = () => { musicBtn.textContent = musicOn() ? "🎵" : "🔇"; musicBtn.title = musicOn() ? "Music on" : "Music off"; };
 musicBtn.addEventListener("click", () => { startMusic(); toggleMusic(); syncMusicBtn(); });
+let sfxOn = true; try { sfxOn = localStorage.getItem("museum-sfx") !== "off"; } catch { }
+const sfxBtn = document.getElementById("sfx");
+const syncSfxBtn = () => { sfxBtn.textContent = sfxOn ? "🔊" : "🔈"; sfxBtn.style.opacity = sfxOn ? 1 : .6; sfxBtn.title = sfxOn ? "Sounds on" : "Sounds off"; };
+sfxBtn.addEventListener("click", () => { sfxOn = !sfxOn; try { localStorage.setItem("museum-sfx", sfxOn ? "on" : "off"); } catch { } startSfx(); setSfx(sfxOn); syncSfxBtn(); });
+syncSfxBtn();
+// ---------- word notebook ----------
+const ITEM_BY_KEY = {};
+for (const t of Object.values(TOPICS)) for (const x of t.list) if (x.key) ITEM_BY_KEY[x.key] = x;
+initNotebook({
+  getWords: () => [...seen].map(k => ITEM_BY_KEY[k]).filter(x => x && !x.text && x.en && TOPICS[x.topic])
+    .map(x => ({ ...x, room: TOPICS[x.topic].ja + " · " + TOPICS[x.topic].en })),
+  drawPic, onPick: w => openPanel(ITEM_BY_KEY[w.key]), title: () => MM.active ? MM.museumName() : null,
+});
+document.getElementById("notebook").addEventListener("click", () => { closePanel(); openNotebook(); });
 syncMusicBtn();
 document.getElementById("shop").addEventListener("click", () => { closePanel(); MM.openShop(); });
 document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openColour(rooms[player.room].topic); });
 
 enterRoom(0);
-if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose, MM, talkTo, built };
+if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose, MM, talkTo, built, guide: () => guideReq, openNotebook };
+window.__say = say;
 document.getElementById("loading").remove();
 const help = document.getElementById("help");
 const showHelp = () => { help.hidden = false; keys.clear(); };

@@ -3,6 +3,8 @@
 import * as THREE from "three";
 import { makeQuestion } from "./questions.js";
 import { ruby } from "./text.js";
+import { confetti } from "./confetti.js";
+import { chime } from "./sfx.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
@@ -18,7 +20,7 @@ export const NAME_PARTS = [
 ];
 const COLOURS = ["#d9534f", "#e8731c", "#e0b100", "#4f8a3c", "#2f8fb0", "#34407a", "#8e44ad", "#d16ba5", "#8a5a2b", "#5b6470"];
 
-const fresh = () => ({ name: null, points: 0, bought: [], seen: [], visited: [], done: [], asked: {}, colors: {} });
+const fresh = () => ({ name: null, points: 30, bought: [], seen: [], visited: [], done: [], asked: {}, colors: {} });
 function load() { try { S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || "null") || {}); } catch { S = fresh(); } }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { } }
 
@@ -33,10 +35,12 @@ export function start() { active = true; if (!S.name) openSetup(); refreshHud();
 // ---------- rules ----------
 export const isUnlocked = id => !active || !GATE_IDS.includes(id) || STARTERS.has(id) || S.bought.includes(id);
 export const inMode = id => GATE_IDS.includes(id);               // rooms that exist in My Museum
-export const price = id => Math.round((25 + 2 * (T[id]?.list?.length || 8)) / 5) * 5;
+// cheap enough to open a few rooms in one 45-minute lesson
+export const price = id => Math.min(35, Math.max(20, Math.round((12 + (T[id]?.list?.length || 8)) / 5) * 5));
 export const roomColour = id => active ? S.colors[id] : null;
 export const museumName = () => S?.name ? [S.name.map((k, i) => NAME_PARTS[i][k][0]).join(" "), S.name.map((k, i) => NAME_PARTS[i][k][1]).join(" ")] : null;
-export const askersFor = topic => active && !topic.hall && (S.asked[topic.id] || 0) < 3 && (topic.list || []).filter(x => !x.text).length >= 3 ? 1 : 0;
+export const askersFor = topic => !active || topic.hall || topic.lobby || (topic.list || []).filter(x => !x.text).length < 3 ? 0
+  : Math.max(0, Math.min(2, 8 - (S.asked[topic.id] || 0)));
 const picItems = t => (t.list || []).filter(x => !x.text && (x.img || x.pic));
 
 function award(n, ja, en) {
@@ -46,14 +50,14 @@ function award(n, ja, en) {
 }
 export function enteredRoom(topic) {
   if (!active || topic.hall || S.visited.includes(topic.id)) return;
-  S.visited.push(topic.id); award(5, "はじめての へや！", "New room!");
+  S.visited.push(topic.id); award(10, "はじめての へや！", "New room!");
 }
 export function openedExhibit(ex) {
   if (!active || !ex.key || ex.text || S.seen.includes(ex.key)) return;
-  S.seen.push(ex.key); award(1, "見つけた！", "Discovered!");
+  S.seen.push(ex.key); award(3, "見つけた！", "Discovered!");
   const t = T[ex.topic]; if (!t || S.done.includes(t.id)) return;
   const all = (t.list || []).filter(x => !x.text);
-  if (all.length && all.every(x => S.seen.includes(x.key))) { S.done.push(t.id); setTimeout(() => award(15, `「${t.ja}」コンプリート！`, "Room complete!"), 900); }
+  if (all.length && all.every(x => S.seen.includes(x.key))) { S.done.push(t.id); setTimeout(() => { award(20, `「${t.ja}」コンプリート！`, "Room complete!"); confetti(); chime(); }, 900); }
 }
 
 // ---------- HUD ----------
@@ -135,7 +139,7 @@ export function openShop(focusId) {
     const id = b.closest(".mm-room").dataset.id, p = price(id);
     if (S.points < p || isUnlocked(id)) return;
     S.points -= p; S.bought.push(id); save(); refreshHud();
-    toast("🔓", `「${T[id].ja}」が ひらいた！`, `${T[id].en} is open!`);
+    toast("🔓", `「${T[id].ja}」が ひらいた！`, `${T[id].en} is open!`); confetti(160, .5, .3); chime();
     onChange("unlock", id); openShop(id);
   });
   card.querySelector(".mm-rename").onclick = () => openSetup(true);
@@ -181,9 +185,24 @@ export function ask(topic, done) {
     S.asked[topic.id] = (S.asked[topic.id] || 0) + 1; save();
     card.querySelector(".mm-result").innerHTML = `${ok ? `<b class="ok">⭕ せいかい！ Great job!</b>` : `<b class="ng">❌ ざんねん… Nice try!</b>`}
       <div class="ans"><b>${esc(q.ans[0])}</b>${q.ans[1] ? ` = ${esc(q.ans[1])}` : ""}</div><button class="mm-go">OK</button>`;
-    card.querySelector(".mm-result .mm-go").onclick = () => { ov.dataset.lock = ""; close(); if (ok) award(10, "せいかい！", "Correct!"); done(ok); };
+    card.querySelector(".mm-result .mm-go").onclick = () => { ov.dataset.lock = ""; close(); award(ok ? 15 : 3, ok ? "せいかい！" : "チャレンジ！", ok ? "Correct!" : "Good try!"); done(ok); };
   });
 }
+
+// ---------- guiding a guest ----------
+export function offerGuide(item, wing, room, done) {
+  const pic = item.img ? `<img class="p" src="${item.img}" alt="">` : `<canvas class="p" width="300" height="300" data-pic="${esc(item.pic || "")}"></canvas>`;
+  const card = overlay(`<div class="mm-q"><div class="mm-guest">🧑‍🦱</div><div>
+      <h2>I want to see <u>${esc(item.en)}</u>!</h2>
+      <div class="mm-en">「${esc(item.ja)}」を 見たいな。 つれて いってくれる？</div></div></div>
+    <div class="mm-big">${pic}</div>
+    <div class="mm-where">📍 ${esc(wing[0])} <i>${esc(wing[1])}</i> › ${esc(room[0])} <i>${esc(room[1])}</i></div>
+    <div class="mm-opts words"><button data-ok="1"><b>OK! Let's go!</b><small>いいよ！ いこう！</small></button><button data-ok=""><b>Sorry, not now.</b><small>ごめんね、いまは むり。</small></button></div>
+    ${active ? `<p class="mm-p">つれていくと ⭐25！ <i>Take them there to get 20 stars!</i></p>` : ""}`, true);
+  card.querySelectorAll("canvas[data-pic]").forEach(c => { const g = c.getContext("2d"); g.fillStyle = "#f6f1e7"; g.fillRect(0, 0, 300, 300); drawPic(g, c.dataset.pic, 150, 150, 260); });
+  card.querySelectorAll(".mm-opts button").forEach(b => b.onclick = () => { close(); done(!!b.dataset.ok); });
+}
+export function guideDone(item) { if (active) award(25, "あんない できた！", "You helped a guest!"); else toast("🎉", "あんない できた！", "You helped a guest!"); }
 
 // ---------- save codes ----------
 const B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
@@ -259,6 +278,7 @@ function css() {
   .mm-reset { border: 0; border-radius: 10px; padding: 7px 14px; background: #eee5d6; font: inherit; font-weight: 700; cursor: pointer; }
   .mm-q { display: flex; gap: 14px; align-items: center; justify-content: center; text-align: left; }
   .mm-guest { font-size: 54px; }
+  .mm-where { display: inline-block; background: #eaf4fb; border-radius: 999px; padding: 5px 16px; font-weight: 700; margin-bottom: 4px; }
   .mm-opts { display: flex; gap: 12px; justify-content: center; margin: 12px 0; }
   .mm-opts.pics button { border: 4px solid #e4d8c3; border-radius: 16px; padding: 0; background: #f6f1e7; cursor: pointer; overflow: hidden; width: 260px; height: 220px; }
   .mm-opts .p { width: 100%; height: 100%; object-fit: cover; display: block; }

@@ -17,7 +17,13 @@
   #topright { top: 10px; right: 12px; display: flex; gap: 8px; align-items: flex-start; pointer-events: auto; }
   #seen { background: #fff8e3; border: 2px solid #e8c25a; border-radius: 12px; padding: 6px 12px; font-weight: 700; font-size: 15px; }
   .myonly { display: none; } body.my .myonly { display: inline-block; }
-  #fs, #home, #helpbtn, #music, #shop, #paint { border: 0; border-radius: 12px; padding: 7px 12px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
+  #guide { position: fixed; top: 64px; left: 12px; z-index: 6; display: flex; gap: 10px; align-items: center; background: #fff; border: 3px solid #2f8fb0; border-radius: 14px; padding: 6px 10px 6px 6px; box-shadow: 0 3px 10px rgba(0,0,0,.2); max-width: 380px; }
+  #guide[hidden] { display: none; }
+  #guide img { width: 64px; height: 52px; object-fit: cover; border-radius: 8px; }
+  #guide div { display: flex; flex-direction: column; line-height: 1.25; } #guide b { font-family: 'Nunito', system-ui, sans-serif; color: #1d4f75; font-size: 17px; }
+  #guide span { font-size: 13px; } #guide small { font-size: 12px; color: #6b5a44; }
+  #guide button { border: 0; background: #eee5d6; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; }
+  #fs, #home, #helpbtn, #music, #sfx, #notebook, #shop, #paint { border: 0; border-radius: 12px; padding: 7px 12px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
   #mapwrap { bottom: 12px; left: 12px; padding: 4px; background: rgba(255,253,248,.88); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
   #map { display: block; border-radius: 8px; }
   #hint { bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(44,33,24,.85); color: #fff;
@@ -96,7 +102,8 @@
 <div id="app"></div>
 <div id="loading">よみこみ中… Loading…</div>
 <div class="hud" id="room"></div>
-<div class="hud" id="topright"><div id="seen"></div><button id="shop" class="myonly" title="Open new rooms">🔑 へやを ひらく</button><button id="paint" class="myonly" title="Room colour">🎨</button><button id="music" title="Music">🎵</button><button id="helpbtn" title="How to play">❓</button><button id="home" title="Back to the lobby">🏠 ロビー</button><button id="fs" title="Full screen">⛶ 大きく</button></div>
+<div id="guide" hidden></div>
+<div class="hud" id="topright"><div id="seen"></div><button id="shop" class="myonly" title="Open new rooms">🔑 へやを ひらく</button><button id="paint" class="myonly" title="Room colour">🎨</button><button id="notebook" title="Word notebook (N)">📓 ノート</button><button id="music" title="Music">🎵</button><button id="sfx" title="Sounds">🔊</button><button id="helpbtn" title="How to play">❓</button><button id="home" title="Back to the lobby">🏠 ロビー</button><button id="fs" title="Full screen">⛶ 大きく</button></div>
 <div class="hud" id="mapwrap"><canvas id="map" width="190" height="150"></canvas></div>
 <div class="hud" id="hint" hidden></div>
 <div class="hud" id="banner"></div>
