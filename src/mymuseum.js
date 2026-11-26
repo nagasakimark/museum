@@ -6,13 +6,16 @@ import { ruby } from "./text.js";
 import { confetti } from "./confetti.js";
 import { chime } from "./sfx.js";
 import { FLOORS, FRAMES, floorPreview, framePreview } from "./decor.js";
+import { wingRooms } from "./halls.js";
+import { ROOM_NO } from "./room_ids.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
 let S = null;              // saved state
 let GATE_IDS = [];         // every room that sits behind a wing-hall door, sorted (for save codes)
 let STARTERS = new Set();  // the first room in each wing is open once the wing is open
-const WINGS_OF = {};       // room id -> wings it is in
+const WINGS_OF = {};
+let OLD_IDS = [];
 const KEY = "museum-mymuseum-v1";
 
 export const NAME_PARTS = [
@@ -51,8 +54,9 @@ function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { 
 
 export function init(opts) {
   ({ TOPICS: T, HALLS, drawPic, onChange } = opts);
-  GATE_IDS = [...new Set(Object.values(HALLS).flatMap(h => h.gates.map(g => g[0])).filter(id => T[id]))].sort();
-  for (const [w, h] of Object.entries(HALLS)) for (const [id] of h.gates) (WINGS_OF[id] ||= []).push(w);
+  OLD_IDS = [...new Set(Object.values(HALLS).flatMap(h => h.gates.map(g => g[0])).filter(id => T[id]))].sort(); // save codes v1–3
+  GATE_IDS = [...new Set(Object.keys(HALLS).flatMap(wingRooms).filter(id => T[id]))].sort();
+  for (const w of Object.keys(HALLS)) for (const id of wingRooms(w)) (WINGS_OF[id] ||= []).push(w);
   STARTERS = new Set(Object.values(HALLS).map(h => h.gates.map(g => g[0]).find(id => T[id])).filter(Boolean));
   load(); css();
 }
@@ -186,7 +190,7 @@ function openWingPick() {
 
 // ---------- shop ----------
 export function openShop(focusId) {
-  const wings = Object.entries(HALLS).map(([wid, h]) => ({ wid, h, rooms: h.gates.map(g => g[0]).filter(id => T[id]) }));
+  const wings = Object.entries(HALLS).map(([wid, h]) => ({ wid, h, rooms: wingRooms(wid).filter(id => T[id]) }));
   const card = overlay(`<h2>🔑 へやを ひらく</h2><div class="mm-en">Open new wings and rooms</div>
     <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>へやを 見たり、ゲストの しつもんに こたえたり して ⭐を ためよう！ <i>Explore and answer guests' questions to earn stars.</i></span></div>
     <div class="mm-shop">${wings.map(({ wid, h, rooms }) => { const wopen = isUnlocked(wid);
@@ -215,7 +219,7 @@ export function openShop(focusId) {
   card.querySelector(".mm-rename").onclick = () => openSetup(true);
   card.querySelector(".focus")?.scrollIntoView({ block: "center" });
 }
-function roomIcon(h, id) { const g = h.gates.find(x => x[0] === id)?.[1] || "✨"; return g.startsWith("planet:") ? "🪐" : g; }
+function roomIcon(h, id) { const g = h.gates.find(x => x[0] === id)?.[1] || T[id]?.items?.find(it => it[2] && !/^[a-z]+:/.test(it[2]))?.[2] || "✨"; return g.startsWith("planet:") ? "🪐" : g; }
 
 // a big, happy "you got it!" on the item that was just bought
 function celebrate(card, key) {
@@ -398,10 +402,10 @@ const B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 export function code() {
   const bits = [];
   const put = (v, n) => { for (let i = n - 1; i >= 0; i--) bits.push((v >> i) & 1); };
-  const bought = S.bought.map(id => GATE_IDS.indexOf(id)).filter(i => i >= 0);
-  put(3, 2); put(Math.min(4095, S.points), 12);
+  const bought = S.bought.map(id => ROOM_NO.indexOf(id)).filter(i => i >= 0);
+  put(0, 2); put(4, 4); put(Math.min(4095, S.points), 12);    // version 0 + 4 bits = extended version (4)
   const nm = S.name || [0, 0, 0]; nm.forEach(k => put(k, 4));
-  put(bought.length, 8); bought.forEach(i => put(i, 8));
+  put(bought.length, 10); bought.forEach(i => put(i, 10));
   COLOURS.forEach(([c]) => put(Math.min(15, S.paints[c] || 0), 4));
   MASCOTS.forEach(([id]) => put(S.mascots.includes(id) ? 1 : 0, 1));
   Object.keys(HALLS).forEach(w => put(S.wings.includes(w) ? 1 : 0, 1));
@@ -418,10 +422,11 @@ export function applyCode(txt) {
   const bits = [];
   for (const ch of s) { const v = B32.indexOf(ch); if (v < 0) return false; for (let i = 4; i >= 0; i--) bits.push((v >> i) & 1); }
   let p = 0; const get = n => { let v = 0; for (let i = 0; i < n; i++) v = v * 2 + (bits[p++] || 0); return v; };
-  const ver = get(2); if (ver < 1) return false;
-  const points = get(12), name = [get(4), get(4), get(4)], n = get(8), bought = [], paints = {}, mascots = [], floorInv = {}, frameInv = {};
+  let ver = get(2); if (ver === 0) ver = get(4); if (ver < 1 || ver > 4) return false;
+  const wide = ver >= 4, ids = wide ? ROOM_NO : OLD_IDS;
+  const points = get(12), name = [get(4), get(4), get(4)], n = get(wide ? 10 : 8), bought = [], paints = {}, mascots = [], floorInv = {}, frameInv = {};
   let wings = Object.keys(HALLS);
-  for (let i = 0; i < n; i++) bought.push(get(8));
+  for (let i = 0; i < n; i++) bought.push(get(wide ? 10 : 8));
   if (ver >= 2) { COLOURS.forEach(([c]) => { const k = get(4); if (k) paints[c] = k; }); MASCOTS.forEach(([id]) => { if (get(1)) mascots.push(id); }); }
   if (ver >= 3) {
     wings = Object.keys(HALLS).filter(() => get(1));
@@ -430,8 +435,8 @@ export function applyCode(txt) {
   }
   const end = p; let sum = 0; for (let i = 0; i < end; i++) sum = (sum * 3 + bits[i] + i) % 32;
   if (get(5) !== sum || p > bits.length) return false;
-  if (bought.some(i => i >= GATE_IDS.length)) return false;
-  S = Object.assign(fresh(), { name: name.map((k, i) => Math.min(k, NAME_PARTS[i].length - 1)), points, bought: bought.map(i => GATE_IDS[i]), paints, mascots, wings, floorInv, frameInv }); save();
+  if (bought.some(i => i >= ids.length)) return false;
+  S = Object.assign(fresh(), { name: name.map((k, i) => Math.min(k, NAME_PARTS[i].length - 1)), points, bought: bought.map(i => ids[i]), paints, mascots, wings, floorInv, frameInv }); save();
   return true;
 }
 

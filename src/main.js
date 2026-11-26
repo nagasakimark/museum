@@ -8,7 +8,7 @@ import { ART } from "./topics_art.js";
 import { PHILOSOPHY } from "./topics_philosophy.js";
 import { BATCH1 } from "./topics_batch1.js";
 import { WINGS, BACKLINKS } from "./topics_wings.js";
-import { HALLS, LOBBY_GATES } from "./halls.js";
+import { HALLS, LOBBY_GATES, wingRooms } from "./halls.js";
 import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
 import { plain, ruby } from "./text.js";
@@ -345,7 +345,7 @@ function wingCandidates(r) {
   const hall = HALLS[r.wing]; if (!hall || r.topic.hall) return [];
   const anc = new Set(); for (let q = r; q; q = q.parent != null ? rooms[q.parent] : null) anc.add(q.topic.id);
   const used = doorPlaced[r.wing] ||= new Set(), links = new Set(TOPICS[r.topic.id]?.links || []);
-  return shuffle(hall.gates.map(g => g[0]).filter(id => TOPICS[id] && !anc.has(id) && !used.has(id) && canVisit(id)))
+  return shuffle(wingRooms(r.wing).filter(id => TOPICS[id] && !anc.has(id) && !used.has(id) && canVisit(id)))
     .sort((a, b) => (links.has(b) - links.has(a)) || (visitCount[a] || 0) - (visitCount[b] || 0));
 }
 const doorsWanted = r => r.topic.timeline ? 1 : r.i % 2 ? 3 : 2;
@@ -379,7 +379,7 @@ function addDoors(r, n, only) {
 function doorToNewRoom(id) {
   const fwd = r => Object.values(r.exits || {}).filter(e => e.child != null).length;
   const cands = rooms.filter(r => r.exits && !r.topic.hall && HALLS[r.wing] && r.topic.id !== id && !(doorPlaced[r.wing] || new Set()).has(id)
-    && HALLS[r.wing].gates.some(g => g[0] === id) && fwd(r) < 3)
+    && wingRooms(r.wing).includes(id) && fwd(r) < 3)
     .sort((a, b) => (a !== rooms[player.room]) - (b !== rooms[player.room]) || fwd(a) - fwd(b) || b.i - a.i);
   for (const r of cands) if (addDoors(r, 1, id)) { if (r.group) dispose(r); return r; }
   return null;
@@ -1320,7 +1320,7 @@ function bubble(role) { const sp = new THREE.Sprite(role === "guide" ? guideMat 
 // ---------- guiding a guest to an exhibit ----------
 // which room each topic sits in (wing hall), for the "where is it?" hint
 const WING_OF = {};
-for (const [wid, h] of Object.entries(HALLS)) for (const [id] of h.gates) if (TOPICS[id]) WING_OF[id] = wid;
+for (const wid of Object.keys(HALLS)) for (const id of wingRooms(wid)) if (TOPICS[id]) WING_OF[id] = wid;
 function guideTargets(notId) {
   return Object.keys(WING_OF).filter(id => id !== notId && (!MM.active || MM.isUnlocked(id)))
     .flatMap(id => TOPICS[id].list.filter(x => !x.text && (x.img || x.pic) && x.en && plain(x.en).length <= 26 && !x.en.includes(":")));
