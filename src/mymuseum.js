@@ -18,9 +18,23 @@ export const NAME_PARTS = [
   [["どうぶつ", "Animal"], ["うちゅう", "Space"], ["せかい", "World"], ["たべもの", "Food"], ["アート", "Art"], ["サイエンス", "Science"], ["ゆめ", "Dream"], ["たから", "Treasure"], ["ながさき", "Nagasaki"], ["みらい", "Future"]],
   [["はくぶつかん", "Museum"], ["ギャラリー", "Gallery"], ["やかた", "Mansion"], ["おしろ", "Castle"], ["ラボ", "Lab"], ["パレス", "Palace"]],
 ];
-const COLOURS = ["#d9534f", "#e8731c", "#e0b100", "#4f8a3c", "#2f8fb0", "#34407a", "#8e44ad", "#d16ba5", "#8a5a2b", "#5b6470"];
+export const COLOURS = [["#d9534f", "あか", "red"], ["#e8731c", "オレンジ", "orange"], ["#e0b100", "きいろ", "yellow"], ["#4f8a3c", "みどり", "green"], ["#2f8fb0", "みずいろ", "light blue"],
+  ["#34407a", "あお", "blue"], ["#8e44ad", "むらさき", "purple"], ["#d16ba5", "ピンク", "pink"], ["#8a5a2b", "ちゃいろ", "brown"], ["#5b6470", "グレー", "gray"]];
+export const PAINT_PRICE = 15;
+// mascots (Kenney Cube Pets), in costume size
+export const MASCOTS = [
+  ["cat", "ねこの ミケ", "Mike the Cat", 60], ["dog", "いぬの ポチ", "Pochi the Dog", 60], ["bunny", "うさぎの モモ", "Momo the Bunny", 60],
+  ["chick", "ひよこの ピヨ", "Piyo the Chick", 60], ["pig", "ぶたの ブーちゃん", "Boo the Pig", 70], ["cow", "うしの モーモー", "Moo the Cow", 70],
+  ["monkey", "さるの キキ", "Kiki the Monkey", 80], ["elephant", "ぞうの パオ", "Pao the Elephant", 80], ["giraffe", "きりんの リン", "Rin the Giraffe", 90],
+  ["lion", "ライオンの レオ", "Leo the Lion", 100], ["tiger", "とらの トラッキー", "Tora the Tiger", 100], ["parrot", "オウムの ポリー", "Polly the Parrot", 90],
+  ["fish", "さかなの ギョギョ", "Gyo the Fish", 90], ["hog", "いのししの ボタン", "Botan the Boar", 80], ["caterpillar", "いもむしの ニョロ", "Nyoro the Caterpillar", 70],
+];
+// ?teacher: unlimited stars and reset buttons
+export const TEACHER = new URLSearchParams(location.search).has("teacher");
+const pay = n => { if (TEACHER) return true; if (S.points < n) return false; S.points -= n; return true; };
+const canPay = n => TEACHER || S.points >= n;
 
-const fresh = () => ({ name: null, points: 30, bought: [], seen: [], visited: [], done: [], asked: {}, colors: {} });
+const fresh = () => ({ name: null, points: 30, bought: [], seen: [], visited: [], done: [], asked: {}, colors: {}, paints: {}, mascots: [] });
 function load() { try { S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || "null") || {}); } catch { S = fresh(); } }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { } }
 
@@ -66,7 +80,7 @@ export function hud(el) { hudEl = el; refreshHud(); }
 function refreshHud() {
   if (!hudEl || !active) return;
   const open = GATE_IDS.filter(isUnlocked).length;
-  hudEl.innerHTML = `⭐ <b>${S.points}</b>　🔓 ${open} / ${GATE_IDS.length} へや`;
+  hudEl.innerHTML = `⭐ <b>${TEACHER ? "∞" : S.points}</b>　🔓 ${open} / ${GATE_IDS.length} へや`;
 }
 let toastT;
 function toast(big, ja, en) {
@@ -127,18 +141,18 @@ export function openSetup(rename) {
 export function openShop(focusId) {
   const wings = Object.entries(HALLS).map(([wid, h]) => ({ h, rooms: h.gates.map(g => g[0]).filter(id => T[id]) }));
   const card = overlay(`<h2>🔑 へやを ひらく</h2><div class="mm-en">Open new rooms</div>
-    <div class="mm-bal">⭐ <b>${S.points}</b> <span>へやを 見たり、ゲストの しつもんに こたえたり して ⭐を ためよう！ <i>Explore and answer guests' questions to earn stars.</i></span></div>
+    <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>へやを 見たり、ゲストの しつもんに こたえたり して ⭐を ためよう！ <i>Explore and answer guests' questions to earn stars.</i></span></div>
     <div class="mm-shop">${wings.map(({ h, rooms }) => `<section><h3 style="--c:${h.c}">${h.icon} ${esc(h.ja)} <i>${esc(h.en)}</i></h3><div class="mm-rooms">
       ${rooms.map(id => { const t = T[id], open = isUnlocked(id), p = price(id);
         return `<div class="mm-room${open ? " open" : ""}${id === focusId ? " focus" : ""}" data-id="${id}" style="--c:${t.c}"><span class="ic">${roomIcon(h, id)}</span><b>${esc(t.ja)}</b><i>${esc(t.en)}</i>
-        ${open ? `<em>✓ ひらいてる <i>Open</i></em>` : `<button ${S.points < p ? "disabled" : ""}>🔒 ${p} ⭐</button>`}</div>`; }).join("")}
+        ${open ? `<em>✓ ひらいてる <i>Open</i></em>` : `<button ${canPay(p) ? "" : "disabled"}>🔒 ${p} ⭐</button>`}</div>`; }).join("")}
     </div></section>`).join("")}</div>
     <div class="mm-foot"><button class="mm-rename">✏️ なまえを かえる <i>Rename</i></button>
       <div class="mm-code">セーブコード <i>Save code</i>: <code>${code()}</code></div></div>`, true);
   card.querySelectorAll(".mm-room button").forEach(b => b.onclick = () => {
     const id = b.closest(".mm-room").dataset.id, p = price(id);
-    if (S.points < p || isUnlocked(id)) return;
-    S.points -= p; S.bought.push(id); save(); refreshHud();
+    if (isUnlocked(id) || !pay(p)) return;
+    S.bought.push(id); save(); refreshHud();
     toast("🔓", `「${T[id].ja}」が ひらいた！`, `${T[id].en} is open!`); confetti(160, .5, .3); chime();
     onChange("unlock", id); openShop(id);
   });
@@ -154,11 +168,63 @@ export function openColour(topic) {
     return;
   }
   const cur = S.colors[topic.id];
+  const have = c => TEACHER ? "∞" : (S.paints[c] || 0);
   const card = overlay(`<h2>🎨 「${esc(topic.ja)}」の かべの 色</h2><div class="mm-en">Choose a wall colour for ${esc(topic.en)}</div>
-    <div class="mm-swatches">${COLOURS.map(c => `<button data-c="${c}" style="--c:${c}" class="${c === cur ? "on" : ""}"></button>`).join("")}</div>
+    <p class="mm-p">ペンキを 1つ つかうよ。ペンキは ロビーの ギフトショップで 買えるよ。 <i>Each paint can paints one room. Buy paint at the gift shop in the lobby.</i></p>
+    <div class="mm-swatches">${COLOURS.map(([c, ja, en]) => `<button data-c="${c}" style="--c:${c}" class="${c === cur ? "on" : ""}" ${have(c) === 0 ? "disabled" : ""} title="${en}">
+      <span class="can">🥫×${have(c)}</span><small>${ja}</small></button>`).join("")}</div>
     <button class="mm-reset">もとに もどす <i>Reset</i></button>`);
-  card.querySelectorAll(".mm-swatches button").forEach(b => b.onclick = () => { S.colors[topic.id] = b.dataset.c; save(); onChange("colour", topic.id); close(); });
+  card.querySelectorAll(".mm-swatches button").forEach(b => b.onclick = () => {
+    const c = b.dataset.c; if (c === cur) return close();
+    if (!TEACHER) { if (!(S.paints[c] > 0)) return; S.paints[c]--; }
+    S.colors[topic.id] = c; save(); onChange("colour", topic.id); close(); confetti(90); chime();
+  });
   card.querySelector(".mm-reset").onclick = () => { delete S.colors[topic.id]; save(); onChange("colour", topic.id); close(); };
+}
+
+// ---------- gift shop ----------
+export function openGiftShop(tab = "paint") {
+  const tabs = `<div class="gs-tabs"><button data-t="paint" class="${tab === "paint" ? "on" : ""}">🎨 ペンキ <i>Paint</i></button><button data-t="mascot" class="${tab === "mascot" ? "on" : ""}">🐾 マスコット <i>Mascots</i></button></div>`;
+  let body = "";
+  if (tab === "paint") body = `<div class="gs-grid paints">${COLOURS.map(([c, ja, en]) => `<div class="gs-item">
+      <div class="gs-can" style="--c:${c}"><span></span></div><b>${ja}</b><i>${en}</i><small>もっている <i>have</i>: ${TEACHER ? "∞" : (S.paints[c] || 0)}</small>
+      <button data-buy="paint:${c}" ${canPay(PAINT_PRICE) ? "" : "disabled"}>${PAINT_PRICE} ⭐</button></div>`).join("")}</div>`;
+  else body = `<p class="mm-p">マスコットは はくぶつかんの 中を さんぽするよ！ <i>Mascots walk around your museum!</i></p>
+    <div class="gs-grid mascots">${MASCOTS.map(([id, ja, en, p]) => { const own = S.mascots.includes(id);
+      return `<div class="gs-item${own ? " own" : ""}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
+      ${own ? `<em>✓ なかま <i>Yours!</i></em>` : `<button data-buy="mascot:${id}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`}</div>`; }).join("")}</div>`;
+  const card = overlay(`<h2>🛍️ ギフトショップ</h2><div class="mm-en">Gift Shop</div>
+    <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>⭐で ペンキや マスコットを 買おう！ <i>Spend your stars here!</i></span></div>${tabs}${body}`, true);
+  card.querySelectorAll(".gs-tabs button").forEach(b => b.onclick = () => openGiftShop(b.dataset.t));
+  card.querySelectorAll("[data-buy]").forEach(b => b.onclick = () => {
+    const [kind, id] = b.dataset.buy.split(":");
+    if (kind === "paint") { if (!pay(PAINT_PRICE)) return; S.paints[id] = (S.paints[id] || 0) + 1; toast("🥫", "ペンキを 買った！", "You got paint!"); }
+    else { const m = MASCOTS.find(x => x[0] === id); if (S.mascots.includes(id) || !pay(m[3])) return; S.mascots.push(id);
+      toast("🐾", `${m[1]}が なかまに なった！`, `${m[2]} joined your museum!`); confetti(); chime(); onChange("mascot", id); }
+    save(); refreshHud(); openGiftShop(tab);
+  });
+}
+export const ownedMascots = () => active ? MASCOTS.filter(m => S.mascots.includes(m[0])) : [];
+
+// ---------- teacher tools ----------
+export function openTeacher() {
+  const card = overlay(`<h2>🧑‍🏫 せんせい メニュー</h2><div class="mm-en">Teacher tools</div>
+    <p class="mm-p">In teacher mode you have unlimited stars. These buttons only change <b>this</b> browser.</p>
+    <div class="t-btns">
+      <button data-a="mm">🏛️ Delete My Museum<small>name, stars, rooms, paint, mascots</small></button>
+      <button data-a="words">📓 Delete Free Roam progress<small>words collected, notebook</small></button>
+      <button data-a="all">🧹 Delete everything<small>both of the above + settings</small></button>
+    </div><div class="t-msg"></div>`);
+  card.querySelectorAll(".t-btns button").forEach(b => b.onclick = () => {
+    const a = b.dataset.a;
+    if (!b.dataset.sure) { b.dataset.sure = "1"; b.classList.add("sure"); b.firstChild.textContent = "⚠️ Click again to delete"; return; }
+    try {
+      if (a === "mm" || a === "all") localStorage.removeItem(KEY);
+      if (a === "words" || a === "all") localStorage.removeItem("museum-seen2");
+      if (a === "all") Object.keys(localStorage).filter(k => k.startsWith("museum-")).forEach(k => localStorage.removeItem(k));
+    } catch { }
+    const u = new URL(location.href); u.searchParams.delete("mode"); location.href = u.toString();
+  });
 }
 
 // ---------- guest questions ----------
@@ -187,7 +253,7 @@ export function ask(topic, done, again) {
     S.asked[topic.id] = (S.asked[topic.id] || 0) + 1; save();
     card.querySelector(".mm-result").innerHTML = `${ok ? `<b class="ok">⭕ せいかい！ Great job!</b>` : `<b class="ng">❌ ざんねん… Nice try!</b>`}
       <div class="ans"><b>${esc(q.ans[0])}</b>${q.ans[1] ? ` = ${esc(q.ans[1])}` : ""}</div><button class="mm-go">OK</button>`;
-    card.querySelector(".mm-result .mm-go").onclick = () => { ov.dataset.lock = ""; close(); award(ok ? 15 : 3, ok ? "せいかい！" : "チャレンジ！", ok ? "Correct!" : "Good try!"); done(ok); };
+    card.querySelector(".mm-result .mm-go").onclick = () => { ov.dataset.lock = ""; close(); if (ok) award(15, "せいかい！", "Correct!"); done(ok); };
   });
 }
 
@@ -212,9 +278,11 @@ function code() {
   const bits = [];
   const put = (v, n) => { for (let i = n - 1; i >= 0; i--) bits.push((v >> i) & 1); };
   const bought = S.bought.map(id => GATE_IDS.indexOf(id)).filter(i => i >= 0);
-  put(1, 2); put(Math.min(4095, S.points), 12);
+  put(2, 2); put(Math.min(4095, S.points), 12);
   const nm = S.name || [0, 0, 0]; nm.forEach(k => put(k, 4));
   put(bought.length, 8); bought.forEach(i => put(i, 8));
+  COLOURS.forEach(([c]) => put(Math.min(15, S.paints[c] || 0), 4));
+  MASCOTS.forEach(([id]) => put(S.mascots.includes(id) ? 1 : 0, 1));
   let sum = 0; for (let i = 0; i < bits.length; i++) sum = (sum * 3 + bits[i] + i) % 32; put(sum, 5);
   while (bits.length % 5) bits.push(0);
   let s = ""; for (let i = 0; i < bits.length; i += 5) s += B32[bits.slice(i, i + 5).reduce((a, b) => a * 2 + b, 0)];
@@ -226,13 +294,14 @@ function applyCode(txt) {
   const bits = [];
   for (const ch of s) { const v = B32.indexOf(ch); if (v < 0) return false; for (let i = 4; i >= 0; i--) bits.push((v >> i) & 1); }
   let p = 0; const get = n => { let v = 0; for (let i = 0; i < n; i++) v = v * 2 + (bits[p++] || 0); return v; };
-  if (get(2) !== 1) return false;
-  const points = get(12), name = [get(4), get(4), get(4)], n = get(8), bought = [];
+  const ver = get(2); if (ver !== 1 && ver !== 2) return false;
+  const points = get(12), name = [get(4), get(4), get(4)], n = get(8), bought = [], paints = {}, mascots = [];
   for (let i = 0; i < n; i++) bought.push(get(8));
+  if (ver === 2) { COLOURS.forEach(([c]) => { const k = get(4); if (k) paints[c] = k; }); MASCOTS.forEach(([id]) => { if (get(1)) mascots.push(id); }); }
   const end = p; let sum = 0; for (let i = 0; i < end; i++) sum = (sum * 3 + bits[i] + i) % 32;
   if (get(5) !== sum || p > bits.length) return false;
   if (name.some((k, i) => k >= NAME_PARTS[i].length) || bought.some(i => i >= GATE_IDS.length)) return false;
-  S = Object.assign(fresh(), { name, points, bought: bought.map(i => GATE_IDS[i]) }); save();
+  S = Object.assign(fresh(), { name, points, bought: bought.map(i => GATE_IDS[i]), paints, mascots }); save();
   return true;
 }
 
@@ -277,6 +346,30 @@ function css() {
   .mm-swatches { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 14px 0; }
   .mm-swatches button { width: 54px; height: 54px; border-radius: 50%; border: 4px solid #fff; background: var(--c); box-shadow: 0 0 0 2px #d8c9ae; cursor: pointer; }
   .mm-swatches button.on { box-shadow: 0 0 0 4px #2c2118; }
+  .mm-swatches button { width: 74px; height: 74px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 4px; }
+  .mm-swatches button:disabled { opacity: .3; cursor: default; }
+  .mm-swatches .can { background: rgba(255,255,255,.92); border-radius: 8px; padding: 0 5px; font: 800 13px 'Nunito', sans-serif; }
+  .mm-swatches small { position: absolute; bottom: -20px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .mm-swatches { margin-bottom: 30px; row-gap: 30px; }
+  .gs-tabs { display: flex; gap: 8px; justify-content: center; margin: 4px 0 10px; }
+  .gs-tabs button { border: 2px solid #d8c9ae; background: #fff; border-radius: 999px; padding: 6px 18px; font: inherit; font-weight: 800; cursor: pointer; }
+  .gs-tabs button.on { background: #e8731c; border-color: #e8731c; color: #fff; } .gs-tabs button.on i { color: #fff; }
+  .gs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .gs-item { border: 2px solid #e4d8c3; border-radius: 14px; padding: 8px; display: flex; flex-direction: column; align-items: center; background: #fff; }
+  .gs-item.own { background: #eef7ea; border-color: #9cc98a; }
+  .gs-item img { width: 110px; height: 110px; object-fit: contain; }
+  .gs-item b { font-size: 15px; } .gs-item > i { font-size: 13px; } .gs-item small { font-size: 12px; color: #6b5a44; margin-top: 2px; }
+  .gs-item button { margin-top: 6px; border: 0; border-radius: 999px; padding: 5px 16px; background: #e8731c; color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+  .gs-item button:disabled { background: #c9bfae; cursor: default; }
+  .gs-item em { font-style: normal; color: #4f8a3c; font-weight: 800; margin-top: 6px; }
+  .gs-can { width: 70px; height: 80px; margin: 6px 0; border-radius: 8px 8px 12px 12px; background: linear-gradient(90deg, #9aa0a8, #e8ebef 35%, #b8bdc4 70%, #8a9098); position: relative; box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+  .gs-can::before { content: ""; position: absolute; left: -2px; right: -2px; top: -6px; height: 10px; border-radius: 50%; background: #c7ccd2; border: 2px solid #8a9098; }
+  .gs-can span { position: absolute; left: 0; right: 0; top: 22px; height: 34px; background: var(--c); }
+  .gs-can span::after { content: ""; position: absolute; left: 22px; top: -12px; width: 26px; height: 16px; border-radius: 0 0 50% 50%; background: var(--c); }
+  .t-btns { display: flex; flex-direction: column; gap: 10px; align-items: stretch; max-width: 420px; margin: 10px auto 0; }
+  .t-btns button { border: 0; border-radius: 12px; padding: 10px 14px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 800; font-size: 17px; cursor: pointer; display: flex; flex-direction: column; }
+  .t-btns button small { font-weight: 600; font-size: 12.5px; opacity: .85; }
+  .t-btns button.sure { background: #c0392b; }
   .mm-reset { border: 0; border-radius: 10px; padding: 7px 14px; background: #eee5d6; font: inherit; font-weight: 700; cursor: pointer; }
   .mm-q { display: flex; gap: 14px; align-items: center; justify-content: center; text-align: left; }
   .mm-guest { font-size: 54px; }

@@ -12,7 +12,7 @@ import { HALLS, LOBBY_GATES } from "./halls.js";
 import { PHOTOS } from "./photos.js";
 import { DETAILS } from "./details/index.js";
 import { plain, ruby } from "./text.js";
-import { loadGuests, spawnGuests, updateGuests, clearGuests, newAsker, doneAsking, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
+import { loadGuests, spawnGuests, spawnMascots, updateGuests, clearGuests, newAsker, doneAsking, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
 import { startSfx, setSfx, setRoomSize, footstep, door, chime } from "./sfx.js";
 import { confetti } from "./confetti.js";
 import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
@@ -672,6 +672,7 @@ function buildWall(r, side) {
     kitBox(r, along ? len : .06, .2, along ? .06 : len, mats.base, ix, .1, iz); // skirting
     contactShade(r, side, a, b);
     if (r.layout !== "small" && !r.topic.hall) ropeLine(r, side, a, b);
+    else if (r.topic.lobby && MM.active && side === "S" && a < 13 && b > 13) ropeLine(r, side, a, 10.2);  // leave room for the gift shop
     else if (r.topic.hall && (b - a) > 6) ropeLine(r, side, a, b);
   }
   for (const { o, ex } of doors) {
@@ -916,8 +917,51 @@ function build(r) {
     return { pos: new THREE.Vector3(along ? r.x + g.o : r.x + sx * inner, 0, along ? r.z + sz * inner : r.z + g.o), normal: new THREE.Vector3(-sx, 0, -sz) }; });
   const guides = !following() && !guideReq && (t.lobby || t.hall || Math.random() < .3) && guideTargets(t.id).length ? 1 : 0;
   spawnGuests(r, { askers: MM.askersFor(t), guides, makeBubble: bubble });
+  spawnMascots(r, MM.ownedMascots());
+  if (t.lobby && MM.active) giftShop(r);
 }
 // the lobby's centrepiece: a round dais, a ring of wing colours and a signpost
+// ---------- gift shop: a little shop against the lobby's entrance wall ----------
+const GIFT = { x: 13, z: 0 };
+function openGift() { closePanel(); keys.clear(); btnHeld.clear(); player.target = null; MM.openGiftShop(); }
+function giftShop(r) {
+  const wz = r.z + r.hz - WALL_T / 2, x = r.x + 13; GIFT.x = x; GIFT.z = wz;
+  const wood = mats.bench, brass = mats.brass;
+  // back shelves full of goods
+  addBox(r, 4.6, 2.5, .5, wood, x, 1.25, wz - .3, true);
+  for (const y of [.75, 1.4, 2.05]) {
+    const sh = new THREE.Mesh(new THREE.BoxGeometry(4.4, .06, .5), brass); sh.position.set(x, y, wz - .6); r.group.add(sh);
+  }
+  const cans = new THREE.CylinderGeometry(.13, .13, .26, 12);
+  MM.COLOURS.forEach(([c], i) => {
+    const m = new THREE.Mesh(cans, own(new THREE.MeshLambertMaterial({ color: c })));
+    m.position.set(x - 2 + (i % 10) * .44, .9, wz - .62); r.group.add(m);
+  });
+  const toyCols = ["#f4c542", "#e57a3a", "#9b7ad1", "#5fb3d6", "#e86f9a", "#7cc36a", "#ffffff", "#d9534f"];
+  for (let i = 0; i < 16; i++) {
+    const b = new THREE.Mesh(new THREE.BoxGeometry(.3, .3, .3), own(new THREE.MeshLambertMaterial({ color: toyCols[i % toyCols.length] })));
+    b.position.set(x - 2 + (i % 8) * .57, i < 8 ? 1.58 : 2.23, wz - .6); b.rotation.y = (i * 1.7) % .6 - .3; r.group.add(b);
+  }
+  // counter
+  const cz = wz - 2.3;
+  addBox(r, 3.6, 1.0, .8, wood, x, .5, cz, true);
+  const top = new THREE.Mesh(new THREE.BoxGeometry(3.8, .08, 1.0), brass); top.position.set(x, 1.04, cz); r.group.add(top);
+  // striped awning
+  const aw = new THREE.Mesh(new THREE.BoxGeometry(5, .08, 1.9), own(new THREE.MeshLambertMaterial({ map: canvasTex(256, 64, (g, w, h) => {
+    for (let i = 0; i < 8; i++) { g.fillStyle = i % 2 ? "#fff6e8" : "#e8731c"; g.fillRect(i * w / 8, 0, w / 8, h); } }) })));
+  aw.position.set(x, 3.0, wz - 1.1); aw.rotation.x = -.28; r.group.add(aw);
+  // sign
+  const sign = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 1.05), own(new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(800, 200, (g, w, h) => {
+    g.fillStyle = "#6b4d2c"; g.beginPath(); g.roundRect(6, 6, w - 12, h - 12, 30); g.fill();
+    g.strokeStyle = "#c9a24a"; g.lineWidth = 8; g.stroke();
+    g.fillStyle = "#fff"; g.textAlign = "center"; g.textBaseline = "middle"; g.font = `bold 78px ${FONT}`; g.fillText("🛍️ ギフトショップ", w / 2, 78);
+    g.fillStyle = "#ffe7a8"; g.font = `700 44px ${FONT}`; g.fillText("Gift Shop", w / 2, 150); }) })));
+  sign.position.set(x, 3.75, wz - 2.0); sign.rotation.y = Math.PI; r.group.add(sign);
+  // anything here opens the shop
+  const hit = new THREE.Mesh(new THREE.BoxGeometry(5, 4.4, 3), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+  hit.position.set(x, 2.2, wz - 1.5); hit.userData.giftshop = true; r.group.add(hit); r.clickables.push(hit);
+}
+
 function lobbyCentre(r) {
   const cols = (r.gates || []).map(g => rooms[g.child].topic.c);
   const ring = new THREE.Mesh(new THREE.CircleGeometry(6.2, 64), own(new THREE.MeshBasicMaterial({ transparent: true, map: canvasTex(512, 512, (g, w) => {
@@ -1041,6 +1085,7 @@ addEventListener("keydown", e => {
     else if (e.key === "ArrowLeft") { stepPanel(-1); e.preventDefault(); }
     return;
   }
+  if ((e.key === "Enter" || e.key === " ") && focusShop) { openGift(); e.preventDefault(); return; }
   if ((e.key === "Enter" || e.key === " ") && focusGuest) { talkTo(focusGuest); e.preventDefault(); return; }
   if ((e.key === "Enter" || e.key === " ") && focused) { openPanel(focused); e.preventDefault(); return; }
   keys.add(e.key.toLowerCase()); if (e.key.startsWith("Arrow")) e.preventDefault();
@@ -1060,8 +1105,10 @@ function pick(e, list) { ray.setFromCamera(new THREE.Vector2(e.clientX / innerWi
 function click(e) {
   const b = built(); const hit = pick(e, [...b.flatMap(r => r.clickables), ...b.flatMap(r => r.floors)]);
   if (!hit) return;
-  const ex = hit.object.userData.exhibit, gu = hit.object.userData.guest, lk = hit.object.userData.locked;
+  const ex = hit.object.userData.exhibit, gu = hit.object.userData.guest, lk = hit.object.userData.locked, ms = hit.object.userData.mascot;
   if (lk) { MM.openShop(lk); return; }
+  if (hit.object.userData.giftshop) { if (hit.distance < 9) openGift(); else player.target = new THREE.Vector3(GIFT.x, 0, GIFT.z - 2.2); return; }
+  if (ms) { say(ms, `Hi! I'm ${ms.name[1]}!`, `${ms.name[0]}だよ！`, 3); return; }
   if (gu) {
     if (hit.distance < 7) talkTo(gu);
     else { const p = gu.obj.getWorldPosition(new THREE.Vector3()), d = new THREE.Vector3().subVectors(player.pos, p).setY(0).normalize(); player.target = p.addScaledVector(d, 1.8).setY(0); }
@@ -1160,7 +1207,7 @@ document.getElementById("next").addEventListener("click", () => stepPanel(1));
 panel.addEventListener("click", e => { if (e.target === panel) closePanel(); });
 
 // ================= loop =================
-let focused = null, focusGuest = null, mapT = 0;
+let focused = null, focusGuest = null, focusShop = false, mapT = 0;
 const lastPos = new THREE.Vector3();
 const fwd = new THREE.Vector3(), timer = new THREE.Timer();
 function frame() {
@@ -1205,12 +1252,16 @@ function frame() {
     const to = new THREE.Vector3(g.obj.position.x - player.pos.x, 0, g.obj.position.z - player.pos.z), d = to.length();
     if (d < 3.6 && to.normalize().dot(f2) > .7) fg = g;
   }
-  if (fg !== focusGuest || (!fg && best !== focused)) {
+  const atShop = MM.active && rooms[player.room].topic.lobby && !fg && Math.hypot(player.pos.x - GIFT.x, player.pos.z - (GIFT.z - 2.3)) < 4.2
+    && new THREE.Vector3(GIFT.x - player.pos.x, 0, GIFT.z - player.pos.z).normalize().dot(f2) > .6;
+  if (atShop !== focusShop) { focusShop = atShop; focusGuest = null; focused = null; if (atShop) hint.innerHTML = `<b>Enter</b> か クリックで 🛍️ ギフトショップ <i>Gift Shop</i>`; }
+  if (focusShop) { /* keep the shop hint */ }
+  else if (fg !== focusGuest || (!fg && best !== focused)) {
     focusGuest = fg; focused = fg ? null : best;
-    if (fg) hint.innerHTML = `<b>Enter</b> か クリックで 話す — しつもんに こたえよう！ <i>Talk</i>`;
+    if (fg) hint.innerHTML = fg.role === "guide" ? `<b>Enter</b> か クリックで 話す — こまっている みたい！ <i>Talk</i>` : `<b>Enter</b> か クリックで 話す — しつもんに こたえよう！ <i>Talk</i>`;
     else if (focused) hint.innerHTML = `<b>Enter</b> か クリックで 見る — ${esc(focused.ja)}`;
   }
-  hint.hidden = !(focused || focusGuest) || panelOpen() || MM.isOpen();
+  hint.hidden = !(focused || focusGuest || focusShop) || panelOpen() || MM.isOpen() || notebookOpen();
   const gl = guideCheck();
   updateGuests(built(), dt, player.pos, player.yaw, gl);
   if ((mapT += dt) > .12) { mapT = 0; drawMap(); }
@@ -1315,6 +1366,7 @@ MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {
   if (what === "name") { if (rooms[0].group) { dispose(rooms[0]); stream(); } }
   else if (what === "colour") { const r = rooms[player.room]; dispose(r); stream(); }
   else if (what === "unlock") { built().filter(r => r.topic.hall).forEach(dispose); stream(); }
+  else if (what === "mascot") { const m = MM.MASCOTS.find(x => x[0] === id); spawnMascots(rooms[player.room], [m], true); }
   updateHud();
 } });
 loadGuests();
@@ -1343,6 +1395,8 @@ initNotebook({
   drawPic, onPick: w => openPanel(ITEM_BY_KEY[w.key]), title: () => MM.active ? MM.museumName() : null,
 });
 document.getElementById("notebook").addEventListener("click", () => { closePanel(); openNotebook(); });
+const teachBtn = document.getElementById("teacher");
+if (MM.TEACHER) { teachBtn.hidden = false; teachBtn.addEventListener("click", () => { closePanel(); MM.openTeacher(); }); }
 syncMusicBtn();
 document.getElementById("shop").addEventListener("click", () => { closePanel(); MM.openShop(); });
 document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openColour(rooms[player.room].topic); });

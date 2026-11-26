@@ -69,6 +69,7 @@ lines += ["", "Conservation statuses: IUCN Red List (Tsushima leopard cat: Japan
           "", "3D engine: [three.js](https://threejs.org) (MIT licence).",
           "", "Museum guests: Mini Characters by Kenney (www.kenney.nl), CC0.",
           "", "Sound effects: RPG Audio by Kenney (www.kenney.nl), CC0.",
+          "", "Mascots: Cube Pets by Kenney (www.kenney.nl), CC0 (party hats added in the app).",
           "", "Notebook fonts: Patrick Hand (Patrick Wagesreiter) and Klee One (Fontworks), SIL Open Font License 1.1.",
           "", "Background music by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 3.0/4.0",
           "(http://creativecommons.org/licenses/by/4.0/). Tracks: Gymnopedie No 1, Gymnopedie No 2, Gymnopedie No 3 (Erik Satie, arranged and performed by Kevin MacLeod),",

@@ -63,6 +63,7 @@ function pickSpot(r, g) {
 }
 
 function play(g, name, fade = .3) {
+  if (g.model.alias) { name = g.model.alias[name]; if (!name) return; }
   const c = clip(g.model, name); if (!c || g.anim === name) return;
   const a = g.mixer.clipAction(c); a.reset().fadeIn(fade).play();
   if (g.action) g.action.fadeOut(fade);
@@ -130,7 +131,7 @@ function commentTick(rooms, dt, player) {
   if (speaking && (speaking.t -= dt) <= 0) hush();
   if ((commentT -= dt) > 0 || speaking) return;
   commentT = 7 + Math.random() * 9;
-  const near = rooms.flatMap(r => (r.guests || []).map(g => ({ g, r }))).filter(({ g }) => !g.asker && g.state === "look" &&
+  const near = rooms.flatMap(r => (r.guests || []).map(g => ({ g, r }))).filter(({ g }) => !g.asker && !g.mascot && g.state === "look" &&
     Math.hypot(g.obj.position.x - player.x, g.obj.position.z - player.z) < 9);
   if (!near.length) return;
   const { g, r } = near[Math.floor(Math.random() * near.length)];
@@ -189,7 +190,7 @@ function makeAsker(g, role, makeBubble) {
 }
 // a wandering guest in this room thinks of a new question
 export function newAsker(r, makeBubble, not) {
-  const pool = (r.guests || []).filter(g => !g.asker && g !== not);
+  const pool = (r.guests || []).filter(g => !g.asker && !g.mascot && g !== not);
   const g = pool.length ? pool[Math.floor(Math.random() * pool.length)] : (not && !not.asker ? not : null);
   if (!g) return false;
   makeAsker(g, "asker", makeBubble);
@@ -202,6 +203,54 @@ export function doneAsking(g) {
   g.room.clickables = g.room.clickables.filter(m => m.userData.guest !== g);
   g.obj.children.filter(o => o.userData.guest).forEach(o => g.obj.remove(o));
   g.state = "look"; g.t = 2;
+}
+
+// ---------- mascots (Kenney Cube Pets, made costume-sized) ----------
+const MASCOT_H = 1.5;
+const mascotModels = {}, mascotLoading = {};
+const mascotWhere = {};            // mascot id -> room it is in right now (only one place at a time)
+function partyHat(scale, box) {
+  // a little striped party hat with a pompom, like a theme-park costume
+  const g = new THREE.Group();
+  const tex = (() => { const c = document.createElement("canvas"); c.width = 64; c.height = 64; const x = c.getContext("2d");
+    for (let i = 0; i < 8; i++) { x.fillStyle = i % 2 ? "#ffffff" : "#e8731c"; x.fillRect(i * 8, 0, 8, 64); }
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; })();
+  const cone = new THREE.Mesh(new THREE.ConeGeometry(.17, .42, 16), new THREE.MeshLambertMaterial({ map: tex }));
+  cone.position.y = .21; g.add(cone);
+  const pom = new THREE.Mesh(new THREE.SphereGeometry(.065, 10, 8), new THREE.MeshLambertMaterial({ color: 0xffffff })); pom.position.y = .44; g.add(pom);
+  g.position.set((box.min.x + box.max.x) / 2 * scale + .12, box.max.y * scale - .06, (box.min.z + box.max.z) / 2 * scale);
+  g.rotation.z = -.22;
+  return g;
+}
+function loadMascot(id) {
+  if (mascotModels[id]) return Promise.resolve(mascotModels[id]);
+  return mascotLoading[id] ||= new Promise(res => loader.load(`models/pets/${id}.glb`, g => {
+    markShared(g.scene);
+    const box = new THREE.Box3().setFromObject(g.scene), h = box.max.y - box.min.y || 1;
+    res(mascotModels[id] = { scene: g.scene, clips: g.animations, scale: MASCOT_H / h, box, alias: { idle: "static", walk: "walk", "wheelchair-sit": "static" } });
+  }, undefined, () => res(null)));
+}
+export function spawnMascots(r, list, force) {
+  for (const [id, ja, en] of list) {
+    if (mascotWhere[id] && mascotWhere[id].group) continue;
+    const chance = force ? 1 : r.topic.lobby ? .9 : r.topic.hall ? .4 : .2;
+    if (Math.random() > chance) continue;
+    if ((r.guests || []).filter(g => g.mascot).length >= (r.topic.lobby ? 4 : 2)) break;
+    mascotWhere[id] = r;
+    loadMascot(id).then(m => {
+      if (!m || !r.group || mascotWhere[id] !== r) return;
+      const spot = pickSpot(r); if (!spot) { delete mascotWhere[id]; return; }
+      const obj = new THREE.Group(), body = skClone(m.scene); body.scale.setScalar(m.scale); obj.add(body);
+      obj.add(partyHat(m.scale, m.box));
+      obj.position.set(spot.x, 0, spot.z); obj.rotation.y = Math.random() * Math.PI * 2; r.group.add(obj);
+      const g = { obj, model: m, mixer: new THREE.AnimationMixer(body), anim: null, action: null, mascot: id, name: [ja, en],
+        state: "look", t: 2 + Math.random() * 5, target: null, look: null, room: r };
+      const hit = new THREE.Mesh(new THREE.BoxGeometry(1.2, MASCOT_H + .2, 1.2), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+      hit.position.y = (MASCOT_H + .2) / 2; hit.userData.mascot = g; obj.add(hit); r.clickables.push(hit);
+      play(g, "idle", 0);
+      r.guests = r.guests || []; r.guests.push(g);
+    });
+  }
 }
 
 export function updateGuests(rooms, dt, player, yaw = 0, lookAt = null) {
@@ -219,7 +268,7 @@ export function updateGuests(rooms, dt, player, yaw = 0, lookAt = null) {
     g.t -= dt;
     if (g.state === "look") {
       if (g.look) g.obj.rotation.y += angDiff(Math.atan2(g.look.x - p.x, g.look.z - p.z), g.obj.rotation.y) * Math.min(1, dt * 3);
-      if (!g.sitting && g.anim === "idle" && Math.random() < dt * .04) { play(g, Math.random() < .5 ? "emote-yes" : "interact-right"); setTimeout(() => g.anim !== "walk" && play(g, "idle"), 1600); }
+      if (!g.sitting && !g.mascot && g.anim === "idle" && Math.random() < dt * .04) { play(g, Math.random() < .5 ? "emote-yes" : "interact-right"); setTimeout(() => g.anim !== "walk" && play(g, "idle"), 1600); }
       if (g.t <= 0) {
         const s = pickSpot(r, g);
         if (s) { g.target = s; g.state = "walk"; play(g, g.sitting ? "wheelchair-move-forward" : "walk"); }
@@ -233,7 +282,7 @@ export function updateGuests(rooms, dt, player, yaw = 0, lookAt = null) {
       } else {
         const want = Math.atan2(dx, dz);
         g.obj.rotation.y += angDiff(want, g.obj.rotation.y) * Math.min(1, dt * 6);
-        const step = Math.min(d, SPEED * (g.sitting ? .8 : 1) * dt);
+        const step = Math.min(d, SPEED * (g.sitting || g.mascot ? .8 : 1) * dt);
         p.x += dx / d * step; p.z += dz / d * step;
       }
     }
@@ -244,6 +293,7 @@ const angDiff = (a, b) => ((a - b + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
 
 // stop tracking a room's guests (their meshes go with the room's group)
 export function clearGuests(r) {
+  for (const id in mascotWhere) if (mascotWhere[id] === r) delete mascotWhere[id];
   if (speaking && speaking.g.room === r && speaking.g !== follower) hush();
   for (const g of r.guests || []) g.mixer.stopAllAction();
   r.guests = [];
