@@ -329,6 +329,7 @@ function newRoom(topic, x, z, entry, parent, layout) {
   layout ||= pickLayout(topic);
   const { hx, hz } = dims(layout, entry);
   const r = { i: rooms.length, topic, x, z, entry, parent, layout, hx, hz, h: LAYOUTS[layout].h, exits: null, group: null, colliders: [], exhibits: [] };
+  r.wing = topic.hall ? (topic.lobby ? null : topic.id) : parent != null ? rooms[parent].wing : null;
   r.box = roomBox(x, z, hx, hz);
   rooms.push(r); reserved.push(r.box); return r;
 }
@@ -337,42 +338,53 @@ function corridorBox(x0, z0, dir, len) {
   const x1 = x0 + dx * len, z1 = z0 + dz * len;
   return { minX: Math.min(x0, x1) - (dx ? 0 : hw), maxX: Math.max(x0, x1) + (dx ? 0 : hw), minZ: Math.min(z0, z1) - (dz ? 0 : hw), maxZ: Math.max(z0, z1) + (dz ? 0 : hw) };
 }
-function pickTopics(r, n) {
-  const t = TOPICS[r.topic.id] || r.topic;
-  const parentTopic = r.parent != null ? rooms[r.parent].topic.id : null;
-  let pool = (t.links || HUBS).filter(id => TOPICS[id] && id !== parentTopic && id !== t.id && canVisit(id));
-  pool = shuffle(pool).sort((a, b) => (visitCount[a] || 0) - (visitCount[b] || 0));
-  return pool.slice(0, n);
+// Doors lead on to other open rooms of the same wing that haven't been reached by a door yet,
+// related rooms first. When a wing runs out, the room is a dead end (until a new room is opened).
+const doorPlaced = {};   // wing id -> topic ids already behind a door somewhere
+function wingCandidates(r) {
+  const hall = HALLS[r.wing]; if (!hall || r.topic.hall) return [];
+  const anc = new Set(); for (let q = r; q; q = q.parent != null ? rooms[q.parent] : null) anc.add(q.topic.id);
+  const used = doorPlaced[r.wing] ||= new Set(), links = new Set(TOPICS[r.topic.id]?.links || []);
+  return shuffle(hall.gates.map(g => g[0]).filter(id => TOPICS[id] && !anc.has(id) && !used.has(id) && canVisit(id)))
+    .sort((a, b) => (links.has(b) - links.has(a)) || (visitCount[a] || 0) - (visitCount[b] || 0));
 }
+const doorsWanted = r => r.topic.timeline ? 1 : r.i % 2 ? 3 : 2;
 // decide exits and reserve space for the next rooms
 function planExits(r) {
   if (r.exits) return;
   r.exits = {};
-  const sides = shuffle(Object.keys(DIRS).filter(s => s !== r.entry));
   if (r.topic.hall) {
     if (r.topic.lobby) r.exits.S = { closed: true, label: ["いりぐち", "Entrance"] };
     planGates(r);
     return;
   }
-  const n = r.topic.timeline ? 1 : Math.random() < 0.55 ? 3 : 2;
-  if (r.topic.timeline && r.entry) { const far = OPP[r.entry]; sides.sort((a, b) => (b === far) - (a === far)); }
-  const picks = pickTopics(r, n);
-  const mystery = Math.random() < 0.35;
-  // keep trying walls until we have n doors (or run out of walls)
-  let made = 0;
-  for (const s of sides) {
-    if (made >= n) break;
-    let topic = TOPICS[picks[made]], isMystery = false;
-    if (mystery && made === n - 1) { topic = roamPick(r.topic.id); isMystery = true; }
-    if (!topic) { if (MM.active) break; topic = TOPICS[rand(ROAM)]; }
-    if (tryExit(r, s, topic, isMystery)) made++;
-  }
-  if (made === 0) {
-    const side = sides.find(s => !r.exits[s]);
-    if (side) makeWarp(r, side, roamPick(r.topic.id));
-  }
+  addDoors(r, doorsWanted(r));
 }
-function tryExit(r, side, topic, mystery) {
+function freeSides(r) {
+  const sides = shuffle(Object.keys(DIRS).filter(s => s !== r.entry && !r.exits[s]));
+  if (r.topic.timeline && r.entry) { const far = OPP[r.entry]; sides.sort((a, b) => (b === far) - (a === far)); }
+  return sides;
+}
+function addDoors(r, n, only) {
+  let made = 0;
+  const picks = only ? [only] : wingCandidates(r);
+  for (const id of picks) {
+    if (made >= n) break;
+    const side = freeSides(r).find(s => tryExit(r, s, TOPICS[id]));
+    if (side) { (doorPlaced[r.wing] ||= new Set()).add(id); made++; }
+  }
+  return made;
+}
+// a room was just opened: give it a door from a room of its wing that has space for one
+function doorToNewRoom(id) {
+  const fwd = r => Object.values(r.exits || {}).filter(e => e.child != null).length;
+  const cands = rooms.filter(r => r.exits && !r.topic.hall && HALLS[r.wing] && r.topic.id !== id && !(doorPlaced[r.wing] || new Set()).has(id)
+    && HALLS[r.wing].gates.some(g => g[0] === id) && fwd(r) < 3)
+    .sort((a, b) => (a !== rooms[player.room]) - (b !== rooms[player.room]) || fwd(a) - fwd(b) || b.i - a.i);
+  for (const r of cands) if (addDoors(r, 1, id)) { if (r.group) dispose(r); return r; }
+  return null;
+}
+function tryExit(r, side, topic) {
   const [dx, dz] = DIRS[side];
   const x0 = r.x + dx * r.hx, z0 = r.z + dz * r.hz;
   // fallbacks must still hold every exhibit (+ intro)
@@ -387,7 +399,7 @@ function tryExit(r, side, topic, mystery) {
     if (hit) continue;
     const child = newRoom(topic, cx, cz, OPP[side], r.i, layout);
     reserved.push(cor);
-    r.exits[side] = { child: child.i, len, mystery };
+    r.exits[side] = { child: child.i, len };
     return true;
   }
   return false;
@@ -440,22 +452,6 @@ function placeFar(r, topic) {
     return child;
   }
   return null;
-}
-function makeWarp(r, side, topic) {
-  const layout = pickLayout(topic), { hx, hz } = dims(layout, "S");
-  for (let k = 1; k < 400; k++) {
-    const cx = 600 * Math.ceil(k / 8) * (k % 2 ? 1 : -1), cz = 600 * ((k % 8) - 4);
-    const box = roomBox(cx, cz, hx, hz, 30);
-    if (reserved.some(b => overlaps(b, box))) continue;
-    const child = newRoom(topic, cx, cz, "S", r.i, layout);
-    child.warpFrom = side;
-    reserved.push(roomBox(cx, cz + hz + 3, 3, 3)); // child's back stub
-    const [dx, dz] = DIRS[side];
-    reserved.push(corridorBox(r.x + dx * r.hx, r.z + dz * r.hz, side, 4));
-    r.exits[side] = { child: child.i, len: 4, warp: true, mystery: true };
-    return true;
-  }
-  return false;
 }
 const portalMat = new THREE.MeshBasicMaterial({ map: canvasTex(256, 256, (g, w, h) => {
   const gr = g.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2);
@@ -688,7 +684,7 @@ function buildWall(r, side) {
     let ja, en, col = "#3a3a3a";
     if (ex.back) { const p = r.parent != null ? rooms[r.parent].topic : null; ja = p ? "← " + p.ja : "もどる"; en = p ? p.en : "Back"; }
     else if (ex.closed) { [ja, en] = ex.label; }
-    else { const ct = rooms[ex.child].topic; if (ex.gate) { ja = (visitCount[ct.id] ? "✓ " : "") + ct.ja; en = ct.en; col = shade(ct.c, -0.12); } else if (ex.warp && !visitCount[ct.id + "@" + ex.child]) { ja = "✦ ワープ ✦"; en = "Warp door"; col = "#5a3d8a"; } else if (ex.mystery && !visitCount[ct.id + "@" + ex.child]) { ja = "？ ふしぎな へや"; en = "Mystery room"; col = "#5a3d8a"; } else { ja = ct.ja; en = ct.en; col = shade(ct.c, -0.12); } }
+    else { const ct = rooms[ex.child].topic; if (ex.gate) { ja = (visitCount[ct.id] ? "✓ " : "") + ct.ja; en = ct.en; col = shade(ct.c, -0.12); } else { ja = ct.ja; en = ct.en; col = shade(ct.c, -0.12); } }
     const sign = new THREE.Mesh(new THREE.PlaneGeometry(4.6, .92), own(new THREE.MeshBasicMaterial({ map: letterTex(ja, en, col), transparent: true })));
     sign.position.set(wx - sx * (WALL_T / 2 + .14), ARCH_TOP + .72, wz - sz * (WALL_T / 2 + .14));
     sign.lookAt(sign.position.x - sx, sign.position.y, sign.position.z - sz); r.group.add(sign);
@@ -788,6 +784,23 @@ function slotsFor(r) {
       if (Math.abs(o) > L / 2 - 2.2 || ds.some(d => Math.abs(o - d.o) < 4.3)) continue;
       out.push({ side, o, wall: true, door: !!hasDoor });
     }
+  }
+  return out;
+}
+// share the exhibits out between the walls (by how much room each has), evenly spaced along each wall
+function spreadSlots(list, need) {
+  if (need >= list.length) return list.slice();
+  if (need <= 0) return [];
+  const by = {}; for (const s of list) (by[s.side] ||= []).push(s);
+  const raw = Object.entries(by).map(([sd, a]) => [sd, a.length * need / list.length]), alloc = {};
+  let left = need;
+  for (const [sd, v] of raw) { alloc[sd] = Math.floor(v); left -= alloc[sd]; }
+  raw.sort((a, b) => (b[1] % 1) - (a[1] % 1) || by[b[0]].length - by[a[0]].length);
+  for (let k = 0; left > 0 && k < 8; k++) for (const [sd] of raw) if (left > 0 && alloc[sd] < by[sd].length) { alloc[sd]++; left--; }
+  const out = [];
+  for (const [sd, a] of Object.entries(by)) {
+    const arr = a.slice().sort((p, q) => p.o - q.o), n = alloc[sd];
+    for (let i = 0; i < n; i++) out.push(arr[Math.min(arr.length - 1, Math.round((i + .5) * arr.length / n - .5))]);
   }
   return out;
 }
@@ -920,6 +933,11 @@ function build(r) {
     if (r.layout === "long") { const span = (longX ? r.hx : r.hz) - 8; for (let k = -span; k <= span; k += 11) addBench(r, r.x + (longX ? k : 0), r.z + (longX ? 0 : k), longX); }
     else if (r.layout !== "small") addBench(r, r.x, r.z, longX);
   }
+  if (!t.lobby) {
+    const part = slots.filter(s => !s.wall);
+    if (t.timeline) { const keep = new Set(spreadSlots(wallSlots, items.length)); slots = slots.filter(s => keep.has(s)); }
+    else slots = [centre, ...part, ...spreadSlots(wallSlots.filter(s => s !== centre), items.length - 1 - part.length)];
+  }
   if (slots.length < items.length) console.warn("room too small", t.id, r.layout, slots.length, items.length);
   r.shortfall = Math.max(0, items.length - slots.length);
   slots.slice(0, items.length).forEach((s, i) => addExhibit(r, s, items[i]));
@@ -1009,8 +1027,8 @@ function lobbyCentre(r) {
       fitFont(g, l1, w - 40, 72); g.fillText(l1, w / 2, 120); fitFont(g, l2, w - 40, 84); g.fillText(l2, w / 2, 220);
       g.fillStyle = "#8a7356"; fitFont(g, nm[1], w - 40, 44, "600"); g.fillText(nm[1], w / 2, 290);
     } else {
-    g.font = `bold 84px ${FONT}`; g.fillText("ふしぎ", w / 2, 120); fitFont(g, "はくぶつかん", w - 40, 84); g.fillText("はくぶつかん", w / 2, 220);
-    g.font = `600 44px ${FONT}`; g.fillStyle = "#8a7356"; g.fillText("Museum of All Things", w / 2, 290);
+    g.font = `bold 84px ${FONT}`; g.fillText("わたしの", w / 2, 120); fitFont(g, "はくぶつかん", w - 40, 84); g.fillText("はくぶつかん", w / 2, 220);
+    g.font = `600 44px ${FONT}`; g.fillStyle = "#8a7356"; g.fillText("My Museum", w / 2, 290);
     }
     g.fillStyle = "#c9a24a"; g.fillRect(70, 335, w - 140, 7);
     g.fillStyle = "#3a3a3a"; g.font = `bold 70px ${FONT}`; g.fillText("どこから 見る？", w / 2, 450);
@@ -1076,8 +1094,6 @@ function enterRoom(i) {
   player.room = i;
   setRoomSize(r.topic.lobby || r.topic.hall ? 1 : Math.min(1, r.hx * r.hz / 300));
   if (first) { r.seen = true; roomsVisited++; visitCount[r.topic.id] = (visitCount[r.topic.id] || 0) + 1; visitCount[r.topic.id + "@" + i] = 1; }
-  // a mystery door gets its real name once you've been through it
-  if (first && r.parent != null) { const p = rooms[r.parent]; if (p.group) { dispose(p); } }
   stream(); updateHud(); showBanner(r);
   MM.enteredRoom(r.topic);
 }
@@ -1088,7 +1104,7 @@ const panel = document.getElementById("panel");
 const panelOpen = () => !panel.hidden;
 addEventListener("keydown", e => {
   const hp = document.getElementById("help");
-  if (hp && !hp.hidden) { if (["Enter", " ", "Escape"].includes(e.key)) { hideHelp(); chooseMode(MODE || "free"); e.preventDefault(); } return; }
+  if (hp && !hp.hidden) { if (["Enter", " ", "Escape"].includes(e.key)) { hideHelp(); chooseMode("my"); e.preventDefault(); } return; }
   if (MM.isOpen() || notebookOpen()) return;
   if (e.key === "n" && !panelOpen()) { openNotebook(); e.preventDefault(); return; }
   if (panelOpen()) {
@@ -1148,7 +1164,8 @@ function markSeen(key) { if (!key || seen.has(key)) return; seen.add(key); try {
 const hudRoom = document.getElementById("room"), hudSeen = document.getElementById("seen"), hint = document.getElementById("hint");
 function updateHud() {
   const r = rooms[player.room];
-  hudRoom.innerHTML = `<b>${esc(r.topic.ja)}</b><span>${esc(r.topic.en)}</span>`;
+  const nm = r.topic.lobby && MM.museumName();
+  hudRoom.innerHTML = nm ? `<b>${esc(nm[0])}</b><span>${esc(nm[1])} · ロビー Lobby</span>` : `<b>${esc(r.topic.ja)}</b><span>${esc(r.topic.en)}</span>`;
   if (MM.active) MM.hud(hudSeen);
   else hudSeen.innerHTML = `🚪 ${roomsVisited} へや　👀 ${seen.size} / ${ALL_ITEMS}`;
 }
@@ -1379,18 +1396,20 @@ MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {
   else if (what === "colour" || what === "decor") {
     const ids = Array.isArray(id) ? id : [id];
     built().filter(r => r === rooms[player.room] || ids.includes(r.topic.id)).forEach(dispose); stream(); }
-  else if (what === "unlock") { built().filter(r => r.topic.hall || r.topic.lobby).forEach(dispose); stream(); }
+  else if (what === "unlock") {
+    if (id && TOPICS[id] && !TOPICS[id].hall) doorToNewRoom(id);
+    built().filter(r => r.topic.hall || r.topic.lobby).forEach(dispose); stream(); }
   else if (what === "mascot") { const m = MM.MASCOTS.find(x => x[0] === id); spawnMascots(rooms[player.room], [m], true); }
   updateHud();
 } });
 loadGuests();
+MM.activate(); document.body.classList.add("my");
 let MODE = null;
 function chooseMode(m) {
   startMusic(); syncMusicBtn(); startSfx(); setSfx(sfxOn);
-  if (MODE && MODE !== m) { const u = new URL(location.href); u.searchParams.set("mode", m); location.href = u.toString(); return; }
   if (MODE) return;
   MODE = m;
-  if (m === "my") { MM.start(); document.body.classList.add("my"); rebuildAll(); }
+  MM.start(); rebuildAll();
 }
 const musicBtn = document.getElementById("music");
 const syncMusicBtn = () => { musicBtn.textContent = musicOn() ? "🎵" : "🔇"; musicBtn.title = musicOn() ? "Music on" : "Music off"; };
@@ -1416,17 +1435,16 @@ document.getElementById("shop").addEventListener("click", () => { closePanel(); 
 document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openDecor(rooms[player.room].topic); });
 
 enterRoom(0);
-if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose, MM, talkTo, built, guide: () => guideReq, openNotebook };
+if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, build, dispose, MM, talkTo, built, guide: () => guideReq, openNotebook };
 window.__say = say;
 document.getElementById("loading").remove();
 const help = document.getElementById("help");
 const showHelp = () => { help.hidden = false; keys.clear(); };
 function hideHelp() { help.hidden = true; try { localStorage.setItem("museum-help-seen", "1"); } catch { } }
-document.getElementById("help-ok").addEventListener("click", () => { hideHelp(); chooseMode("free"); });
 document.getElementById("help-my").addEventListener("click", () => { hideHelp(); chooseMode("my"); });
 document.getElementById("helpbtn").addEventListener("click", showHelp);
 help.addEventListener("click", e => { if (e.target === help && MODE) hideHelp(); });
 const urlMode = new URLSearchParams(location.search).get("mode");
-if (urlMode === "my" || urlMode === "free") { help.hidden = true; chooseMode(urlMode); }
-else showHelp(); // how to play + choose a mode, every time the museum opens
+if (urlMode) { help.hidden = true; chooseMode("my"); }
+else showHelp(); // how to play, every time the museum opens
 requestAnimationFrame(frame);

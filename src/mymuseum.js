@@ -56,7 +56,8 @@ export function init(opts) {
   STARTERS = new Set(Object.values(HALLS).map(h => h.gates.map(g => g[0]).find(id => T[id])).filter(Boolean));
   load(); css();
 }
-export function start() { active = true; if (!S.name || !S.wings.length) openSetup(); refreshHud(); }
+export function activate() { active = true; }
+export function start() { active = true; if (!S.name) openSetup(); else if (!S.wings.length) openWingPick(); refreshHud(); }
 
 // ---------- rules ----------
 export const isUnlocked = id => {
@@ -99,6 +100,7 @@ export function hud(el) { hudEl = el; refreshHud(); }
 function refreshHud() {
   if (!hudEl || !active) return;
   const open = GATE_IDS.filter(isUnlocked).length;
+  const nm = museumName(); document.title = nm ? `${nm[0]} – ${nm[1]}` : "わたしの はくぶつかん – My Museum";
   hudEl.innerHTML = `⭐ <b>${TEACHER ? "∞" : S.points}</b>　🏛️ ${S.wings.length}/${Object.keys(HALLS).length}　🔓 ${open} へや`;
 }
 let toastT;
@@ -118,7 +120,7 @@ function overlay(html, wide) {
     ov = document.createElement("div"); ov.id = "mm"; document.body.appendChild(ov);
     ov.addEventListener("click", e => { if (e.target === ov && !ov.dataset.lock) close(); });
   }
-  ov.dataset.lock = "";
+  ov.dataset.lock = ""; ov.dataset.tab = "";
   ov.innerHTML = `<div class="mm-card${wide ? " wide" : ""}">${html}<button class="mm-x" aria-label="close">✕</button></div>`;
   ov.querySelector(".mm-x").onclick = close;
   ov.hidden = false;
@@ -131,37 +133,54 @@ const esc = s => ruby(String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "
 // ---------- naming ----------
 export function openSetup(rename) {
   const pick = S.name && S.name.every((k, i) => k < NAME_PARTS[i].length) ? S.name.slice() : [0, 0, 0];
-  const needWing = !rename && !S.wings.length;
-  let wing = null;
-  const card = overlay(`<h2>${rename ? "なまえを かえる" : "わたしの はくぶつかんを つくろう！"}</h2>
-    <div class="mm-en">${rename ? "Rename your museum" : "Let's make your own museum!"}</div>
-    <p class="mm-p">① ことばを えらんで、なまえを つけよう。 <i>Choose words to name your museum.</i></p>
+  const first = !rename && !S.name;
+  const card = overlay(`<div class="mm-step">${rename ? "" : `<span class="on">① なまえ <i>Name</i></span><span>② ウィング <i>Wing</i></span>`}</div>
+    <h2>${rename ? "なまえを かえる" : "あなたの はくぶつかんに なまえを つけよう！"}</h2>
+    <div class="mm-en">${rename ? "Rename your museum" : "Give your museum a name!"}</div>
     ${NAME_PARTS.map((part, r) => `<div class="mm-chips" data-r="${r}">${part.map(([ja, en], k) => `<button data-k="${k}"><b>${ja}</b><i>${en}</i></button>`).join("")}</div>`).join("")}
-    <div class="mm-preview"></div>
-    ${needWing ? `<p class="mm-p">② さいしょに ひらく ウィングを 1つ えらぼう。ほかの ウィングは あとで ⭐で ひらけるよ。 <i>Pick your first wing. You can open the others later with stars.</i></p>
-      <div class="mm-wings">${Object.entries(HALLS).map(([w, h]) => `<button data-w="${w}" style="--c:${h.c}"><span>${h.icon}</span><b>${esc(h.ja)}</b><i>${esc(h.en)}</i></button>`).join("")}</div>` : ""}
-    <button class="mm-go" ${needWing ? "disabled" : ""}>${needWing ? "↑ ウィングを えらんでね <span>Pick a wing</span>" : `${rename ? "これに する！" : "スタート！"} <span>${rename ? "OK" : "Start"}</span>`}</button>
-    ${rename ? "" : `<details class="mm-load"><summary>セーブコードで つづきから <i>Continue with a save code</i></summary>
-      <input placeholder="XXXX-XXXX-XXXX" maxlength="120"><button class="mm-loadbtn">よみこむ Load</button><div class="mm-err"></div></details>`}`, true);
-  if (!S.name || needWing) ov.dataset.lock = "1";
+    <div class="mm-namebar"><div class="mm-preview"></div>
+      <button class="mm-go">${rename ? "これに する！ <span>OK</span>" : "つぎへ ➜ <span>Next</span>"}</button></div>
+    ${first ? `<details class="mm-load"><summary>セーブコードで つづきから <i>Continue with a save code</i></summary>
+      <input placeholder="XXXX-XXXX-XXXX" maxlength="120"><button class="mm-loadbtn">よみこむ Load</button><div class="mm-err"></div></details>` : ""}`, true);
+  card.classList.add("mm-setup");
+  if (!S.name) ov.dataset.lock = "1";
   const paint = () => {
     card.querySelectorAll(".mm-chips").forEach(row => row.querySelectorAll("button").forEach(b => b.classList.toggle("on", +b.dataset.k === pick[+row.dataset.r])));
     card.querySelector(".mm-preview").innerHTML = `<b>${pick.map((k, i) => NAME_PARTS[i][k][0]).join(" ")}</b><i>${pick.map((k, i) => NAME_PARTS[i][k][1]).join(" ")}</i>`;
   };
   card.querySelectorAll(".mm-chips").forEach(row => row.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { pick[+row.dataset.r] = +b.dataset.k; paint(); } }));
-  card.querySelectorAll(".mm-wings button").forEach(b => b.onclick = () => {
-    wing = b.dataset.w; card.querySelectorAll(".mm-wings button").forEach(x => x.classList.toggle("on", x === b)); const g = card.querySelector(".mm-go"); g.disabled = false; g.innerHTML = `スタート！ <span>Start</span>`; });
   paint();
   card.querySelector(".mm-go").onclick = () => {
-    if (needWing && !wing) return;
-    S.name = pick; if (needWing) S.wings = [wing]; save(); ov.dataset.lock = ""; close(); refreshHud(); onChange("name"); if (needWing) onChange("unlock", wing);
+    S.name = pick; save(); refreshHud(); onChange("name");
+    if (!S.wings.length) openWingPick(); else { ov.dataset.lock = ""; close(); }
   };
   const lb = card.querySelector(".mm-loadbtn");
   if (lb) lb.onclick = () => {
     const ok = applyCode(card.querySelector(".mm-load input").value);
     if (!ok) { card.querySelector(".mm-err").textContent = "コードが ちがうみたい。 That code doesn't work."; return; }
-    ov.dataset.lock = ""; close(); refreshHud(); onChange("name"); onChange("unlock");
+    ov.dataset.lock = ""; refreshHud(); onChange("name"); onChange("unlock");
+    if (!S.wings.length) openWingPick(); else close();
     toast("✓", "つづきから はじめるよ！", "Welcome back!");
+  };
+}
+// step two: the first wing (free)
+function openWingPick() {
+  let wing = null;
+  const card = overlay(`<div class="mm-step"><span class="done">① なまえ ✓ <i>Name</i></span><span class="on">② ウィング <i>Wing</i></span></div>
+    <h2>さいしょに ひらく ウィングを 1つ えらぼう！</h2>
+    <div class="mm-en">Choose your first wing. You can open the others later with ⭐.</div>
+    <div class="mm-wings">${Object.entries(HALLS).map(([w, h]) => `<button data-w="${w}" style="--c:${h.c}"><span>${h.icon}</span><b>${esc(h.ja)}</b><i>${esc(h.en)}</i></button>`).join("")}</div>
+    <div class="mm-namebar"><button class="mm-back">⬅ もどる <span>Back</span></button><button class="mm-go" disabled>ウィングを えらんでね <span>Pick a wing</span></button></div>`, true);
+  card.classList.add("mm-setup"); ov.dataset.lock = "1";
+  card.querySelector(".mm-x").remove();
+  card.querySelectorAll(".mm-wings button").forEach(b => b.onclick = () => {
+    wing = b.dataset.w; card.querySelectorAll(".mm-wings button").forEach(x => x.classList.toggle("on", x === b));
+    const g = card.querySelector(".mm-go"); g.disabled = false; g.innerHTML = `スタート！ <span>Start</span>`; });
+  card.querySelector(".mm-back").onclick = () => openSetup(false);
+  card.querySelector(".mm-go").onclick = () => {
+    if (!wing) return;
+    S.wings = [wing]; save(); ov.dataset.lock = ""; close(); refreshHud(); onChange("unlock", wing);
+    toast(HALLS[wing].icon, `「${HALLS[wing].ja}」ウィングが ひらいた！`, `The ${HALLS[wing].en} wing is open!`); confetti(180, .5, .3); chime();
   };
 }
 
@@ -197,6 +216,20 @@ export function openShop(focusId) {
   card.querySelector(".focus")?.scrollIntoView({ block: "center" });
 }
 function roomIcon(h, id) { const g = h.gates.find(x => x[0] === id)?.[1] || "✨"; return g.startsWith("planet:") ? "🪐" : g; }
+
+// a big, happy "you got it!" on the item that was just bought
+function celebrate(card, key) {
+  const btn = card.querySelector(`[data-buy="${key}"]`), item = (btn || card.querySelector(`[data-id="${key.split(":")[1]}"]`) || card.querySelector(".gs-item.own:last-of-type"))?.closest(".gs-item");
+  const bal = card.querySelector(".mm-bal b");
+  if (bal) { bal.classList.remove("mm-pulse"); void bal.offsetWidth; bal.classList.add("mm-pulse"); }
+  if (!item) return;
+  item.classList.add("gs-got");
+  const pop = document.createElement("div"); pop.className = "gs-pop"; pop.innerHTML = `<b>+1</b><span>ゲット！</span>`; item.appendChild(pop);
+  const r = item.getBoundingClientRect();
+  confetti(70, (r.left + r.width / 2) / innerWidth, (r.top + r.height / 2) / innerHeight);
+  chime();
+  setTimeout(() => { item.classList.remove("gs-got"); pop.remove(); }, 1400);
+}
 
 // ---------- decorating a room: walls, floor, frames ----------
 const DECOR_TABS = [["walls", "🎨 かべ", "Walls"], ["floor", "🪵 ゆか", "Floor"], ["frames", "🖼️ がくぶち", "Frames"], ["mascot", "🐾 マスコット", "Mascots"]];
@@ -260,7 +293,8 @@ export const openColour = topic => openDecor(topic, "walls");
 
 // ---------- gift shop ----------
 const SHOP_TABS = [["paint", "🎨 ペンキ", "Paint"], ["floor", "🪵 ゆか", "Floors"], ["frames", "🖼️ がくぶち", "Frames"], ["mascot", "🐾 マスコット", "Mascots"]];
-export function openGiftShop(tab = "paint") {
+export function openGiftShop(tab = "paint", bought = null) {
+  const keep = ov && !ov.hidden && ov.querySelector(".gs-grid") && ov.dataset.tab === tab ? ov.querySelector(".mm-card").scrollTop : 0;
   const tabs = tabsHtml(SHOP_TABS, tab) + `<div class="gs-note"><span class="gs-steps"><b>① 買う</b><i>Buy</i></span>➜<span class="gs-steps"><b>② かざりたい へやに 行く</b><i>Go to the room</i></span>➜<span class="gs-steps"><b>③ 🎨 かざる を おす</b><i>Press 🎨 Decorate</i></span>
     <div>${tab === "mascot" ? "マスコットは 1つの へやに すむよ。" : "1つで 1つの へやだけ かざれるよ。"} <i>${tab === "mascot" ? "Each mascot lives in one room you choose." : "One item decorates one room only."}</i></div></div>`;
   let body = "", items = [];
@@ -270,11 +304,13 @@ export function openGiftShop(tab = "paint") {
     items = decorItems(tab); const p = tab === "floor" ? FLOOR_PRICE : FRAME_PRICE, bag = tab === "floor" ? S.floorInv : S.frameInv;
     body = `<div class="gs-grid">${items.map(it => itemCard(it, { html: buy(tab + ":" + it.id, p, bag[it.id] || 0) })).join("")}</div>`;
   } else body = `<div class="gs-grid mascots">${MASCOTS.map(([id, ja, en, p]) => { const own = S.mascots.includes(id);
-      return `<div class="gs-item${own ? " own" : ""}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
+      return `<div class="gs-item${own ? " own" : ""}" data-id="${id}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
       ${own ? `<em>✓ なかま <i>Yours!</i></em>` : `<button data-buy="mascot:${id}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`}</div>`; }).join("")}</div>`;
   const card = overlay(`<h2>🛍️ ギフトショップ</h2><div class="mm-en">Gift Shop</div>
     <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>⭐で へやの かざりや マスコットを 買おう！ <i>Spend your stars here!</i></span></div>${tabs}${body}`, true);
   fillPreviews(card, items);
+  ov.dataset.tab = tab; card.scrollTop = keep;
+  if (bought) celebrate(card, bought);
   card.querySelectorAll(".gs-tabs button").forEach(b => b.onclick = () => openGiftShop(b.dataset.t));
   card.querySelectorAll("[data-buy]").forEach(b => b.onclick = () => {
     const [kind, id] = b.dataset.buy.split(":");
@@ -282,8 +318,8 @@ export function openGiftShop(tab = "paint") {
     else if (kind === "floor") { if (!pay(FLOOR_PRICE)) return; S.floorInv[id] = (S.floorInv[id] || 0) + 1; toast("🪵", "ゆかを 買った！ へやに 行って 🎨で つかおう", "Got a floor! Go to a room and press 🎨"); }
     else if (kind === "frames") { if (!pay(FRAME_PRICE)) return; S.frameInv[id] = (S.frameInv[id] || 0) + 1; toast("🖼️", "がくぶちを 買った！ へやに 行って 🎨で つかおう", "Got frames! Go to a room and press 🎨"); }
     else { const m = MASCOTS.find(x => x[0] === id); if (S.mascots.includes(id) || !pay(m[3])) return; S.mascots.push(id);
-      toast("🐾", `${m[1]}が なかまに なった！ へやに 行って 🎨で よぼう`, `${m[2]} joined! Go to a room and press 🎨 to bring it there`); confetti(); chime(); }
-    save(); refreshHud(); openGiftShop(tab);
+      toast("🐾", `${m[1]}が なかまに なった！ へやに 行って 🎨で よぼう`, `${m[2]} joined! Go to a room and press 🎨 to bring it there`); }
+    save(); refreshHud(); openGiftShop(tab, b.dataset.buy);
   });
 }
 export const ownedMascots = () => active ? MASCOTS.filter(m => S.mascots.includes(m[0])) : [];
@@ -296,7 +332,7 @@ export function openTeacher() {
     <p class="mm-p">In teacher mode you have unlimited stars. These buttons only change <b>this</b> browser.</p>
     <div class="t-btns">
       <button data-a="mm">🏛️ Delete My Museum<small>name, stars, rooms, paint, mascots</small></button>
-      <button data-a="words">📓 Delete Free Roam progress<small>words collected, notebook</small></button>
+      <button data-a="words">📓 Delete words collected<small>notebook words, rooms seen</small></button>
       <button data-a="all">🧹 Delete everything<small>both of the above + settings</small></button>
     </div><div class="t-msg"></div>`);
   card.querySelectorAll(".t-btns button").forEach(b => b.onclick = () => {
@@ -459,6 +495,30 @@ function css() {
   .gs-can::before { content: ""; position: absolute; left: -2px; right: -2px; top: -6px; height: 10px; border-radius: 50%; background: #c7ccd2; border: 2px solid #8a9098; }
   .gs-can span { position: absolute; left: 0; right: 0; top: 22px; height: 34px; background: var(--c); }
   .gs-can span::after { content: ""; position: absolute; left: 22px; top: -12px; width: 26px; height: 16px; border-radius: 0 0 50% 50%; background: var(--c); }
+  .mm-card.mm-setup { width: min(1180px, 97vw); padding: 14px 22px 16px; }
+  .mm-setup h2 { font-size: 24px; margin: 2px 0 0; } .mm-setup .mm-en { margin-bottom: 4px; }
+  .mm-setup .mm-chips { margin: 5px 0; padding: 6px; gap: 5px; }
+  .mm-setup .mm-chips button { padding: 3px 9px; } .mm-setup .mm-chips button b { font-size: 15px; } .mm-setup .mm-chips button i { font-size: 11px; }
+  .mm-step { display: flex; justify-content: center; gap: 10px; margin-bottom: 4px; min-height: 4px; }
+  .mm-step span { padding: 3px 14px; border-radius: 999px; background: #eee6d6; color: #8a7a60; font-weight: 800; font-size: 14px; }
+  .mm-step span.on { background: #e8731c; color: #fff; } .mm-step span.on i { color: #fff3e0; } .mm-step span.done { background: #cfe8d4; color: #2f7a45; }
+  .mm-namebar { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 8px; }
+  .mm-namebar .mm-preview { margin: 0; } .mm-namebar .mm-go { margin: 0; }
+  .mm-back { border: 2px solid #d8c9ae; background: #fff; border-radius: 999px; padding: 9px 22px; font: inherit; font-weight: 800; font-size: 17px; color: #6b4d2c; cursor: pointer; }
+  .mm-back span { font-size: 13px; }
+  .mm-setup .mm-wings { gap: 10px; margin: 12px 0; }
+  .mm-setup .mm-wings button { padding: 10px 4px; } .mm-setup .mm-wings button span { font-size: 32px; } .mm-setup .mm-wings button b { font-size: 15px; } .mm-setup .mm-wings button i { font-size: 12px; }
+  .gs-item { position: relative; }
+  .gs-got { animation: gsGot 1.1s ease; z-index: 2; }
+  @keyframes gsGot { 0% { transform: scale(1); } 15% { transform: scale(1.18) rotate(-3deg); box-shadow: 0 0 0 6px #ffd34d, 0 0 30px #ffb300; }
+    35% { transform: scale(1.08) rotate(2deg); } 60% { transform: scale(1.12); box-shadow: 0 0 0 4px #ffd34d, 0 0 22px #ffb300; } 100% { transform: scale(1); } }
+  .gs-pop { position: absolute; left: 50%; top: 30%; transform: translate(-50%, 0); pointer-events: none; animation: gsPop 1.3s ease-out forwards;
+    background: #2fa24f; color: #fff; border-radius: 999px; padding: 6px 14px; box-shadow: 0 4px 14px rgba(0,0,0,.3); white-space: nowrap; }
+  .gs-pop b { font-size: 26px; margin-right: 4px; } .gs-pop span { font-size: 16px; font-weight: 800; }
+  @keyframes gsPop { 0% { opacity: 0; transform: translate(-50%, 20px) scale(.4); } 20% { opacity: 1; transform: translate(-50%, 0) scale(1.25); }
+    70% { opacity: 1; transform: translate(-50%, -30px) scale(1); } 100% { opacity: 0; transform: translate(-50%, -60px) scale(.9); } }
+  .mm-pulse { display: inline-block; animation: mmPulse .6s ease; }
+  @keyframes mmPulse { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.5); color: #e8731c; } }
   .gs-note { background: #fff4d6; border: 2px dashed #e0a840; border-radius: 12px; padding: 8px 12px; margin: 8px 0; text-align: center; font-size: 15px; line-height: 1.5; }
   .gs-note i { color: #2f6f9f; } .gs-note > div { margin-top: 4px; font-weight: 700; }
   .gs-steps { display: inline-flex; flex-direction: column; align-items: center; background: #fff; border-radius: 10px; padding: 3px 10px; margin: 0 6px; line-height: 1.25; }
@@ -501,6 +561,7 @@ function css() {
   .mm-opts button.dim { opacity: .45; }
   .mm-result .ok { color: #4f8a3c; font-size: 24px; } .mm-result .ng { color: #c0392b; font-size: 24px; }
   .mm-result .ans { font-size: 20px; margin: 4px 0; } .mm-result .ans b { font-family: 'Nunito', system-ui, sans-serif; color: #2f6f9f; }
+  body:has(#mm:not([hidden])) #mm-toast { top: auto; bottom: 18px; }
   #mm-toast { position: fixed; top: 64px; left: 50%; transform: translate(-50%, -12px); opacity: 0; z-index: 14; pointer-events: none; transition: .35s;
     background: #fff8e3; border: 3px solid #e8c25a; border-radius: 16px; padding: 8px 20px; display: flex; gap: 10px; align-items: baseline; box-shadow: 0 4px 14px rgba(0,0,0,.2); }
   #mm-toast.show { opacity: 1; transform: translate(-50%, 0); }
