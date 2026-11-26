@@ -268,7 +268,8 @@ function fillPreviews(card, items) {
     const k = Math.min(c.width / src.width, c.height / src.height), w = src.width * k, h = src.height * k; g.drawImage(src, (c.width - w) / 2, (c.height - h) / 2, w, h); });
 }
 export function openDecor(topic, tab = "walls") {
-  if (!topic || topic.hall || topic.lobby || !isUnlocked(topic.id) || !inMode(topic.id)) {
+  const ok = topic && (topic.lobby || (topic.hall ? isUnlocked(topic.id) : isUnlocked(topic.id) && inMode(topic.id)));
+  if (!ok) {
     overlay(`<h2>🎨 へやを かざる</h2><div class="mm-en">Decorate a room</div><p class="mm-p">かざりたい へやの 中で 🎨 を おしてね。 <i>Go into one of your rooms, then press 🎨.</i></p>`);
     return;
   }
