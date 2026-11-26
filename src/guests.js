@@ -85,7 +85,8 @@ export function spawnGuests(r, opts = {}) {
     const m = models[mi], obj = new THREE.Group(), body = skClone(m.scene);
     body.scale.setScalar(m.scale); obj.add(body);
     const sitting = !opts.noWheelchair && wheelchair && i === 1 && Math.random() < .35;
-    if (sitting) { const w = skClone(wheelchair); w.scale.setScalar(m.scale); obj.add(w); }
+    // the wheelchair-sit animation sits at floor level, so lift the person onto the seat
+    if (sitting) { const w = skClone(wheelchair); w.scale.setScalar(m.scale); obj.add(w); body.position.y = .24 * m.scale; }
     obj.position.set(spot.x, 0, spot.z);
     if (spot.look) obj.rotation.y = Math.atan2(spot.look.x - spot.x, spot.look.z - spot.z);
     else obj.rotation.y = Math.random() * Math.PI * 2;
