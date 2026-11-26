@@ -76,4 +76,4 @@ for f in FILES:
         changed += 1
         if "--check" not in sys.argv: open(f, "w", encoding="utf8").write(new)
 print("files changed:", changed, "| words marked:", len(log))
-json.dump(dict(sorted(log.items())), open(os.path.join(ROOT, "tools", "furigana_words.json"), "w", encoding="utf8"), ensure_ascii=False, indent=0)
+pass
