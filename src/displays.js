@@ -1,9 +1,10 @@
 // Display pieces for My Museum: one low-poly model per room, shown on a plinth in the middle of the room.
 // Every room that has one keeps an empty plinth with a sign until the piece is bought at the gift shop.
-// Models: Quaternius (CC0). Keep this list append-only: save codes store one bit per entry, in this order.
+// Models: Quaternius (CC0).
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { clone as skClone } from "three/examples/jsm/utils/SkeletonUtils.js";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 
 // [room, ja, en, stars, size]  size: S small object, M medium, L big animal or vehicle, XL dinosaur
 export const DISPLAYS = [
@@ -56,9 +57,54 @@ const TWEAK = { "middle-ages": { stand: true }, "solar-system": { float: .35, sp
 export const displayFor = id => DISPLAYS.find(d => d[0] === id) || null;
 export const plinthRadius = id => SIZE[displayFor(id)?.[4] || "M"][2];
 
+// ---------- a bright, toy-like look ----------
+// The models come with dull, half-metal materials that look muddy in our warm light.
+// Repaint them: livelier colours, a soft sheen, real shine on metal and gold, and a glow on gems.
+const SHINY = /metal|gold|silver|iron|steel|brass|chrome|armor|armour/i;
+const LOOK = { "middle-ages": "chrome", "rocks-gems": "gem", "money-history": "gold-bits", "maps-compass": "gold-bits", "spies-codes": "shine" };
+// extra colour for the big animals, so they read from across the room
+const POP = { dinosaurs: .9, "dinosaurs-2": .9, "earth-timeline": .9, "evolution-fossils": .9, "solar-system": .8, "whales-dolphins": .5, "sharks-rays": .5, ocean: .5, "ocean-2": .5 };
+// metal needs something to reflect: a small studio-style reflection, made once
+let env = null;
+export function setDisplayRenderer(r) {
+  if (env) return;
+  const pm = new THREE.PMREMGenerator(r); env = pm.fromScene(new RoomEnvironment(), .04).texture; pm.dispose();
+}
+const metal = (color, rough = .18) => env ? new THREE.MeshStandardMaterial({ color, metalness: 1, roughness: rough, envMap: env, envMapIntensity: 1.35 })
+  : new THREE.MeshPhongMaterial({ color, specular: "#ffffff", shininess: 140 });
+function lively(c, ds = .3, dl = .22, minS = 0) {
+  const h = {}; c.getHSL(h);
+  const s = h.s < .06 ? h.s : Math.max(minS, Math.min(1, h.s * (1 + ds) + .06));   // greys stay grey
+  return new THREE.Color().setHSL(h.h, s, Math.min(.82, h.l * (1 + dl) + .1));
+}
+export function brighten(root, id) {
+  const look = LOOK[id], done = new Map();
+  root.traverse(o => {
+    if (!o.isMesh) return;
+    const fix = m => {
+      if (done.has(m)) return done.get(m);
+      const base = m.color ? m.color.clone() : new THREE.Color("#cccccc"), name = m.name || "";
+      let n;
+      if (look === "chrome") n = metal("#e8eef6", .14);
+      else if (look === "gem") n = new THREE.MeshPhongMaterial({ color: lively(base, .6, .5), specular: "#ffffff", shininess: 160, emissive: lively(base, .5, .1).multiplyScalar(.45), transparent: true, opacity: .92 });
+      else if (look === "shine") n = metal("#c9d3de", .25);
+      else if (SHINY.test(name) || (look === "gold-bits" && base.r > base.b * 1.6 && base.g > base.b * 1.3)) {
+        const goldish = base.r > base.b * 1.4;
+        n = metal(goldish ? "#ffc93c" : "#dfe6ee", .2);
+      } else {
+        const c = lively(base, POP[id] ?? .3, id === "solar-system" ? -.25 : POP[id] ? .3 : .22, POP[id] ? .62 : 0);
+        n = new THREE.MeshPhongMaterial({ color: c, specular: "#3a3a3a", shininess: 28, emissive: c.clone().multiplyScalar(.14) });
+      }
+      n.name = name; n.flatShading = !!m.flatShading; n.vertexColors = !!m.vertexColors; n.side = m.side;
+      if (m.map) n.map = m.map;
+      done.set(m, n); return n;
+    };
+    o.material = Array.isArray(o.material) ? o.material.map(fix) : fix(o.material);
+  });
+}
 const loader = new GLTFLoader(), cache = {};
 function load(id) {
-  return cache[id] ||= new Promise(res => loader.load(`models/decor/${id}.glb`, g => res(g), undefined, () => res(null)));
+  return cache[id] ||= new Promise(res => loader.load(`models/decor/${id}.glb`, g => { brighten(g.scene, id); res(g); }, undefined, () => res(null)));
 }
 const live = new Set();   // spinning / animated pieces currently built
 

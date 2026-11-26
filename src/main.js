@@ -14,7 +14,7 @@ import { DETAILS } from "./details/index.js";
 import { plain, ruby } from "./text.js";
 import { loadGuests, spawnGuests, spawnMascots, updateGuests, clearGuests, newAsker, doneAsking, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
 import { startSfx, setSfx, setRoomSize, footstep, door, chime } from "./sfx.js";
-import { buildDisplay, displayFor, forgetDisplay, updateDisplays } from "./displays.js";
+import { buildDisplay, displayFor, forgetDisplay, updateDisplays, setDisplayRenderer } from "./displays.js";
 import { confetti } from "./confetti.js";
 import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
 import { startMusic, toggleMusic, musicOn } from "./music.js";
@@ -110,6 +110,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "lo
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 app.appendChild(renderer.domElement);
+setDisplayRenderer(renderer);
 const scene = new THREE.Scene();
 scene.background = new THREE.Color("#f1ece3");
 scene.fog = new THREE.Fog("#f1ece3", 34, 90);

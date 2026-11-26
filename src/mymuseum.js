@@ -7,16 +7,14 @@ import { confetti } from "./confetti.js";
 import { chime } from "./sfx.js";
 import { FLOORS, FRAMES, floorPreview, framePreview } from "./decor.js";
 import { wingRooms } from "./halls.js";
-import { ROOM_NO } from "./room_ids.js";
 import { DISPLAYS } from "./displays.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
 let S = null;              // saved state
-let GATE_IDS = [];         // every room that sits behind a wing-hall door, sorted (for save codes)
+let GATE_IDS = [];         // every room that sits behind a wing-hall door
 let STARTERS = new Set();  // the first room in each wing is open once the wing is open
 const WINGS_OF = {};
-let OLD_IDS = [];
 const KEY = "museum-mymuseum-v1";
 
 export const NAME_PARTS = [
@@ -55,7 +53,6 @@ function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { 
 
 export function init(opts) {
   ({ TOPICS: T, HALLS, drawPic, onChange } = opts);
-  OLD_IDS = [...new Set(Object.values(HALLS).flatMap(h => h.gates.map(g => g[0])).filter(id => T[id]))].sort(); // save codes v1–3
   GATE_IDS = [...new Set(Object.keys(HALLS).flatMap(wingRooms).filter(id => T[id]))].sort();
   for (const w of Object.keys(HALLS)) for (const id of wingRooms(w)) (WINGS_OF[id] ||= []).push(w);
   STARTERS = new Set(Object.values(HALLS).map(h => h.gates.map(g => g[0]).find(id => T[id])).filter(Boolean));
@@ -144,15 +141,13 @@ const esc = s => ruby(String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "
 // ---------- naming ----------
 export function openSetup(rename) {
   const pick = S.name && S.name.every((k, i) => k < NAME_PARTS[i].length) ? S.name.slice() : [0, 0, 0];
-  const first = !rename && !S.name;
   const card = overlay(`<div class="mm-step">${rename ? "" : `<span class="on">① なまえ <i>Name</i></span><span>② ウィング <i>Wing</i></span>`}</div>
     <h2>${rename ? "なまえを かえる" : "あなたの はくぶつかんに なまえを つけよう！"}</h2>
     <div class="mm-en">${rename ? "Rename your museum" : "Give your museum a name!"}</div>
     ${NAME_PARTS.map((part, r) => `<div class="mm-chips" data-r="${r}">${part.map(([ja, en], k) => `<button data-k="${k}"><b>${ja}</b><i>${en}</i></button>`).join("")}</div>`).join("")}
     <div class="mm-namebar"><div class="mm-preview"></div>
       <button class="mm-go">${rename ? "これに する！ <span>OK</span>" : "つぎへ ➜ <span>Next</span>"}</button></div>
-    ${first ? `<details class="mm-load"><summary>セーブコードで つづきから <i>Continue with a save code</i></summary>
-      <input placeholder="XXXX-XXXX-XXXX" maxlength="120"><button class="mm-loadbtn">よみこむ Load</button><div class="mm-err"></div></details>` : ""}`, true);
+`, true);
   card.classList.add("mm-setup");
   if (!S.name) ov.dataset.lock = "1";
   const paint = () => {
@@ -164,14 +159,6 @@ export function openSetup(rename) {
   card.querySelector(".mm-go").onclick = () => {
     S.name = pick; save(); refreshHud(); onChange("name");
     if (!S.wings.length) openWingPick(); else { ov.dataset.lock = ""; close(); }
-  };
-  const lb = card.querySelector(".mm-loadbtn");
-  if (lb) lb.onclick = () => {
-    const ok = applyCode(card.querySelector(".mm-load input").value);
-    if (!ok) { card.querySelector(".mm-err").textContent = "コードが ちがうみたい。 That code doesn't work."; return; }
-    ov.dataset.lock = ""; refreshHud(); onChange("name"); onChange("unlock");
-    if (!S.wings.length) openWingPick(); else close();
-    toast("✓", "つづきから はじめるよ！", "Welcome back!");
   };
 }
 // step two: the first wing (free)
@@ -207,8 +194,7 @@ export function openShop(focusId) {
         return `<div class="mm-room${open ? " open" : ""}${id === focusId ? " focus" : ""}" data-id="${id}" style="--c:${t.c}"><span class="ic">${roomIcon(h, id)}</span><b>${esc(t.ja)}</b><i>${esc(t.en)}</i>
         ${open ? `<em>✓ ひらいてる <i>Open</i></em>` : !wopen ? `<em class="wait">🔒</em>` : `<button ${canPay(p) ? "" : "disabled"}>🔒 ${p} ⭐</button>`}</div>`; }).join("")}
     </div></section>`; }).join("")}</div>
-    <div class="mm-foot"><button class="mm-rename">✏️ なまえを かえる <i>Rename</i></button>
-      <div class="mm-code">セーブコード <i>Save code</i>: <code>${code()}</code></div></div>`, true);
+    <div class="mm-foot"><button class="mm-rename">✏️ なまえを かえる <i>Rename</i></button></div>`, true);
   card.querySelectorAll(".mm-wingbuy").forEach(b => b.onclick = () => {
     const w = b.closest("section").dataset.w;
     if (isUnlocked(w) || !pay(WING_PRICE)) return;
@@ -415,51 +401,6 @@ export function offerGuide(item, wing, room, done) {
 }
 export function guideDone(item) { if (active) award(25, "あんない できた！", "You helped a guest!"); else toast("🎉", "あんない できた！", "You helped a guest!"); }
 
-// ---------- save codes ----------
-const B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
-export function code() {
-  const bits = [];
-  const put = (v, n) => { for (let i = n - 1; i >= 0; i--) bits.push((v >> i) & 1); };
-  const bought = S.bought.map(id => ROOM_NO.indexOf(id)).filter(i => i >= 0);
-  put(0, 2); put(5, 4); put(Math.min(4095, S.points), 12);    // version 0 + 4 bits = extended version (5)
-  const nm = S.name || [0, 0, 0]; nm.forEach(k => put(k, 4));
-  put(bought.length, 10); bought.forEach(i => put(i, 10));
-  COLOURS.forEach(([c]) => put(Math.min(15, S.paints[c] || 0), 4));
-  MASCOTS.forEach(([id]) => put(S.mascots.includes(id) ? 1 : 0, 1));
-  Object.keys(HALLS).forEach(w => put(S.wings.includes(w) ? 1 : 0, 1));
-  Object.keys(FLOORS).forEach(id => put(Math.min(15, S.floorInv[id] || 0), 4));
-  Object.keys(FRAMES).forEach(id => put(Math.min(15, S.frameInv[id] || 0), 4));
-  DISPLAYS.forEach(([id]) => put(S.displays.includes(id) ? 1 : 0, 1));
-  let sum = 0; for (let i = 0; i < bits.length; i++) sum = (sum * 3 + bits[i] + i) % 32; put(sum, 5);
-  while (bits.length % 5) bits.push(0);
-  let s = ""; for (let i = 0; i < bits.length; i += 5) s += B32[bits.slice(i, i + 5).reduce((a, b) => a * 2 + b, 0)];
-  return s.match(/.{1,4}/g).join("-");
-}
-export function applyCode(txt) {
-  const s = String(txt).toUpperCase().replace(/[^0-9A-Z]/g, "").replace(/O/g, "0").replace(/[IL]/g, "1");
-  if (s.length < 7) return false;
-  const bits = [];
-  for (const ch of s) { const v = B32.indexOf(ch); if (v < 0) return false; for (let i = 4; i >= 0; i--) bits.push((v >> i) & 1); }
-  let p = 0; const get = n => { let v = 0; for (let i = 0; i < n; i++) v = v * 2 + (bits[p++] || 0); return v; };
-  let ver = get(2); if (ver === 0) ver = get(4); if (ver < 1 || ver > 5) return false;
-  const wide = ver >= 4, ids = wide ? ROOM_NO : OLD_IDS;
-  const points = get(12), name = [get(4), get(4), get(4)], n = get(wide ? 10 : 8), bought = [], paints = {}, mascots = [], floorInv = {}, frameInv = {}, displays = [];
-  let wings = Object.keys(HALLS);
-  for (let i = 0; i < n; i++) bought.push(get(wide ? 10 : 8));
-  if (ver >= 2) { COLOURS.forEach(([c]) => { const k = get(4); if (k) paints[c] = k; }); MASCOTS.forEach(([id]) => { if (get(1)) mascots.push(id); }); }
-  if (ver >= 3) {
-    wings = Object.keys(HALLS).filter(() => get(1));
-    Object.keys(FLOORS).forEach(id => { const k = get(4); if (k) floorInv[id] = k; });
-    Object.keys(FRAMES).forEach(id => { const k = get(4); if (k) frameInv[id] = k; });
-  }
-  if (ver >= 5) DISPLAYS.forEach(([id]) => { if (get(1)) displays.push(id); });
-  const end = p; let sum = 0; for (let i = 0; i < end; i++) sum = (sum * 3 + bits[i] + i) % 32;
-  if (get(5) !== sum || p > bits.length) return false;
-  if (bought.some(i => i >= ids.length)) return false;
-  S = Object.assign(fresh(), { name: name.map((k, i) => Math.min(k, NAME_PARTS[i].length - 1)), points, bought: bought.map(i => ids[i]), paints, mascots, wings, floorInv, frameInv, displays }); save();
-  return true;
-}
-
 function css() {
   const st = document.createElement("style");
   st.textContent = `
@@ -479,10 +420,6 @@ function css() {
   .mm-preview b { font-size: 26px; } .mm-preview i { color: #ffe7a8; font-size: 18px; }
   .mm-go { display: block; margin: 10px auto 0; border: 0; border-radius: 999px; padding: 11px 34px; background: #e8731c; color: #fff; font: inherit; font-weight: 800; font-size: 20px; cursor: pointer; }
   .mm-go span { font-size: 14px; opacity: .9; }
-  .mm-load { margin-top: 14px; font-size: 14px; } .mm-load summary { cursor: pointer; color: #6b4d2c; font-weight: 700; }
-  .mm-load input { font: 700 18px monospace; padding: 6px 10px; border-radius: 8px; border: 2px solid #d8c9ae; margin: 8px; width: 60%; }
-  .mm-load button { border: 0; border-radius: 10px; padding: 8px 14px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
-  .mm-err { color: #c0392b; font-weight: 700; }
   .mm-bal { display: flex; gap: 12px; align-items: center; justify-content: center; background: #fff8e3; border: 2px solid #e8c25a; border-radius: 12px; padding: 8px 14px; margin-bottom: 10px; text-align: left; }
   .mm-bal > b { font-size: 28px; } .mm-bal span { font-size: 13.5px; }
   .mm-shop section { margin-bottom: 12px; text-align: left; }
@@ -497,7 +434,6 @@ function css() {
   .mm-room button:disabled { background: #c9bfae; cursor: default; }
   .mm-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; border-top: 2px dashed #e4d8c3; padding-top: 10px; font-size: 14px; }
   .mm-foot button { border: 0; border-radius: 10px; padding: 7px 12px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 700; cursor: pointer; } .mm-foot button i { color: #ffe7a8; }
-  .mm-code code { font: 800 18px monospace; background: #f6f1e7; padding: 4px 8px; border-radius: 8px; user-select: all; }
   .mm-swatches { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 14px 0; }
   .mm-swatches button { width: 54px; height: 54px; border-radius: 50%; border: 4px solid #fff; background: var(--c); box-shadow: 0 0 0 2px #d8c9ae; cursor: pointer; }
   .mm-swatches button.on { box-shadow: 0 0 0 4px #2c2118; }
