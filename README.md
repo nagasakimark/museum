@@ -71,6 +71,8 @@ Sound effects: RPG Audio by Kenney (www.kenney.nl), CC0.
 
 Mascots: Cube Pets by Kenney (www.kenney.nl), CC0 (party hats added in the app).
 
+Display pieces in My Museum: models by Quaternius (quaternius.com), CC0 (animations removed or trimmed, files compressed for the app).
+
 Notebook fonts: Patrick Hand (Patrick Wagesreiter) and Klee One (Fontworks), SIL Open Font License 1.1.
 
 Background music by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 3.0/4.0

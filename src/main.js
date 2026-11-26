@@ -14,6 +14,7 @@ import { DETAILS } from "./details/index.js";
 import { plain, ruby } from "./text.js";
 import { loadGuests, spawnGuests, spawnMascots, updateGuests, clearGuests, newAsker, doneAsking, setLines, setScene, startFollow, endFollow, following, say } from "./guests.js";
 import { startSfx, setSfx, setRoomSize, footstep, door, chime } from "./sfx.js";
+import { buildDisplay, displayFor, forgetDisplay, updateDisplays } from "./displays.js";
 import { confetti } from "./confetti.js";
 import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
 import { startMusic, toggleMusic, musicOn } from "./music.js";
@@ -121,6 +122,21 @@ function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h
 addEventListener("resize", resize); resize();
 
 // ================= textures =================
+// sign and name plate for a display plinth: lines = [[text, colour, px], ...], or "ring" for the dashed circle on an empty plinth
+function displayTex(lines, w, h) {
+  if (lines === "ring") return canvasTex(256, 256, (g, W) => {
+    g.strokeStyle = "rgba(107,77,44,.55)"; g.lineWidth = 7; g.setLineDash([18, 14]); g.beginPath(); g.arc(W / 2, W / 2, W / 2 - 10, 0, Math.PI * 2); g.stroke();
+    g.setLineDash([]); g.fillStyle = "rgba(107,77,44,.45)"; g.font = `bold 120px ${FONT}`; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("?", W / 2, W / 2 + 6);
+  });
+  const W = 600, H = Math.round(W * h / w);
+  return canvasTex(W, H, (g) => {
+    g.fillStyle = "#fffaf0"; g.beginPath(); g.roundRect(4, 4, W - 8, H - 8, 26); g.fill();
+    g.strokeStyle = "#c9a24a"; g.lineWidth = 8; g.stroke();
+    const total = lines.reduce((a, l) => a + l[2] * 1.25, 0); let y = (H - total) / 2;
+    g.textAlign = "center"; g.textBaseline = "top";
+    for (const [t, c, px] of lines) { g.fillStyle = c; fitFont(g, t, W - 50, px); g.fillText(t, W / 2, y + px * .1); y += px * 1.25; }
+  });
+}
 function canvasTex(w, h, draw) {
   const c = document.createElement("canvas"); c.width = w; c.height = h;
   draw(c.getContext("2d"), w, h);
@@ -919,19 +935,35 @@ function build(r) {
     }
   }
   const needPartition = !t.timeline && minDim >= 18 && (items.length > slots.length - 2 || (!t.lobby && items.length > 7));
+  // My Museum: rooms with a display piece keep a plinth for it in the middle of the floor
+  const hasDisplay = MM.active && !t.lobby && !t.hall && !!displayFor(t.id);
+  let dspot = null;
   if (needPartition) {
     if (r.layout === "wide" || r.layout === "hall") {
       const p1 = partition(r, longX ? -7.5 : 0, longX ? 0 : -7.5, !longX), p2 = partition(r, longX ? 7.5 : 0, longX ? 0 : 7.5, !longX);
       slots = [slots[0], ...p1.slots, ...p2.slots, ...slots.slice(1)];
-      addBench(r, r.x, r.z, longX);
+      if (hasDisplay) { dspot = [r.x, r.z]; addBench(r, r.x + (longX ? 0 : 3.6), r.z + (longX ? 3.6 : 0), longX); }
+      else addBench(r, r.x, r.z, longX);
     } else {
       const p = partition(r); slots = [slots[0], ...p.slots, ...slots.slice(1)];
-      const bx = p.alongX ? 0 : 4.2, bz = p.alongX ? 4.2 : 0;
+      // with a display, it stands on the entrance side of the partition (so you see it as you come in) and the bench moves behind
+      const [ex, ez] = DIRS[r.entry || "S"], sgn = hasDisplay ? -((p.alongX ? ez : ex) || 1) : 1;
+      const bx = p.alongX ? 0 : 4.2 * sgn, bz = p.alongX ? 4.2 * sgn : 0;
       addBench(r, r.x + bx, r.z + bz, p.alongX);
+      if (hasDisplay) dspot = [r.x - bx, r.z - bz];
     }
   } else if (!t.lobby) {
+    if (hasDisplay) dspot = [r.x, r.z];
     if (r.layout === "long") { const span = (longX ? r.hx : r.hz) - 8; for (let k = -span; k <= span; k += 11) addBench(r, r.x + (longX ? k : 0), r.z + (longX ? 0 : k), longX); }
-    else if (r.layout !== "small") addBench(r, r.x, r.z, longX);
+    else if (r.layout !== "small") {
+      if (!hasDisplay) addBench(r, r.x, r.z, longX);
+      else { const ax = r.hx >= r.hz; addBench(r, r.x + (ax ? 3.8 : 0), r.z + (ax ? 0 : 3.8), !ax); }   // beside the display, facing it
+    }
+  }
+  if (dspot) {
+    const [ex, ez] = DIRS[r.entry || "S"], facing = Math.atan2(ex, ez);
+    const d = buildDisplay(r, dspot[0], dspot[1], facing, MM.hasDisplay(t.id), mats, displayTex);
+    if (d) { r.colliders.push(d.collider); r.displaySight = d.sight; d.hit.userData.room = t.id; r.clickables.push(d.hit); }
   }
   if (!t.lobby) {
     const part = slots.filter(s => !s.wall);
@@ -945,6 +977,7 @@ function build(r) {
   // in halls, guests stop and look at the doorways and their banners
   r.sights = (r.gates || []).map(g => { const [sx, sz] = DIRS[g.side], along = sx === 0, inner = (along ? r.hz : r.hx) - WALL_T;
     return { pos: new THREE.Vector3(along ? r.x + g.o : r.x + sx * inner, 0, along ? r.z + sz * inner : r.z + g.o), normal: new THREE.Vector3(-sx, 0, -sz) }; });
+  if (r.displaySight) r.sights.push(r.displaySight);
   const guides = !following() && !guideReq && (t.lobby || t.hall || Math.random() < .3) && guideTargets(t.id).length ? 1 : 0;
   spawnGuests(r, { askers: MM.askersFor(t), guides, makeBubble: bubble });
   spawnMascots(r, MM.mascotsFor(t.id), true);
@@ -1051,7 +1084,7 @@ function dispose(r) {
     if (o.geometry && !o.geometry.userData.shared) o.geometry.dispose();
     if (o.material && o.material.userData.own) { o.material.map?.dispose(); o.material.dispose(); }
   });
-  clearGuests(r);
+  clearGuests(r); forgetDisplay(r); r.displaySight = null;
   scene.remove(r.group); r.group = null; r.colliders = []; r.clickables = []; r.floors = []; r.exhibits = [];
 }
 
@@ -1137,6 +1170,8 @@ function click(e) {
   if (lk) { MM.openShop(lk); return; }
   if (hit.object.userData.giftshop) { if (hit.distance < 9) openGift(); else player.target = new THREE.Vector3(GIFT.x, 0, GIFT.z - 2.2); return; }
   if (ms) { say(ms, `Hi! I'm ${ms.name[1]}!`, `${ms.name[0]}だよ！`, 3); return; }
+  const dp = hit.object.userData.display;
+  if (dp) { MM.displayHint(dp); return; }
   if (gu) {
     if (hit.distance < 7) talkTo(gu);
     else { const p = gu.obj.getWorldPosition(new THREE.Vector3()), d = new THREE.Vector3().subVectors(player.pos, p).setY(0).normalize(); player.target = p.addScaledVector(d, 1.8).setY(0); }
@@ -1293,7 +1328,7 @@ function frame() {
   }
   hint.hidden = !(focused || focusGuest || focusShop) || panelOpen() || MM.isOpen() || notebookOpen();
   const gl = guideCheck();
-  updateGuests(built(), dt, player.pos, player.yaw, gl);
+  updateGuests(built(), dt, player.pos, player.yaw, gl); updateDisplays(dt);
   if ((mapT += dt) > .12) { mapT = 0; drawMap(); }
   renderer.render(scene, camera); requestAnimationFrame(frame);
 }
@@ -1436,7 +1471,7 @@ document.getElementById("shop").addEventListener("click", () => { closePanel(); 
 document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openDecor(rooms[player.room].topic); });
 
 enterRoom(0);
-if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, build, dispose, MM, talkTo, built, guide: () => guideReq, openNotebook };
+if (location.search.includes("debug")) window.__m = { player, rooms, placeFar, LAYOUTS, openPanel, closePanel, TOPICS, enterRoom, build, dispose, MM, talkTo, built, guide: () => guideReq, openNotebook };
 window.__say = say;
 document.getElementById("loading").remove();
 const help = document.getElementById("help");

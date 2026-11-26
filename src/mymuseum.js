@@ -8,6 +8,7 @@ import { chime } from "./sfx.js";
 import { FLOORS, FRAMES, floorPreview, framePreview } from "./decor.js";
 import { wingRooms } from "./halls.js";
 import { ROOM_NO } from "./room_ids.js";
+import { DISPLAYS } from "./displays.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
@@ -43,7 +44,7 @@ const pay = n => { if (TEACHER) return true; if (S.points < n) return false; S.p
 const canPay = n => TEACHER || S.points >= n;
 
 const fresh = () => ({ name: null, points: 30, wings: [], bought: [], seen: [], visited: [], done: [], asked: {}, colors: {}, paints: {}, mascots: [],
-  floorInv: {}, frameInv: {}, floors: {}, frames: {}, mascotAt: {} });
+  floorInv: {}, frameInv: {}, floors: {}, frames: {}, mascotAt: {}, displays: [] });
 function load() {
   let raw = null; try { raw = JSON.parse(localStorage.getItem(KEY) || "null"); } catch { }
   S = Object.assign(fresh(), raw || {});
@@ -74,6 +75,12 @@ export const inMode = id => GATE_IDS.includes(id);               // rooms that e
 // cheap enough to open a few rooms in one 45-minute lesson
 export const price = id => HALLS[id] ? WING_PRICE : Math.min(35, Math.max(20, Math.round((12 + (T[id]?.list?.length || 8)) / 5) * 5));
 export const roomColour = id => active ? S.colors[id] : null;
+export const hasDisplay = id => active && (S.displays || []).includes(id);
+// clicking a display plinth
+export function displayHint(d) {
+  if (d.owned) toast("✨", `「${d.ja}」`, d.en);
+  else toast("🛍️", `ロビーの ギフトショップで 「${d.ja}」を 買えるよ`, `Buy the ${d.en} at the gift shop in the lobby`);
+}
 export const roomFloor = id => active ? S.floors[id] : null;
 export const roomFrame = id => active ? S.frames[id] : null;
 export const museumName = () => S?.name ? [S.name.map((k, i) => NAME_PARTS[i][k][0]).join(" "), S.name.map((k, i) => NAME_PARTS[i][k][1]).join(" ")] : null;
@@ -297,22 +304,31 @@ export function openDecor(topic, tab = "walls") {
 export const openColour = topic => openDecor(topic, "walls");
 
 // ---------- gift shop ----------
-const SHOP_TABS = [["paint", "🎨 ペンキ", "Paint"], ["floor", "🪵 ゆか", "Floors"], ["frames", "🖼️ がくぶち", "Frames"], ["mascot", "🐾 マスコット", "Mascots"]];
+const SHOP_TABS = [["paint", "🎨 ペンキ", "Paint"], ["floor", "🪵 ゆか", "Floors"], ["frames", "🖼️ がくぶち", "Frames"], ["display", "🦖 てんじひん", "Displays"], ["mascot", "🐾 マスコット", "Mascots"]];
 export function openGiftShop(tab = "paint", bought = null) {
   const keep = ov && !ov.hidden && ov.querySelector(".gs-grid") && ov.dataset.tab === tab ? ov.querySelector(".mm-card").scrollTop : 0;
   const tabs = tabsHtml(SHOP_TABS, tab) + `<div class="gs-note"><span class="gs-steps"><b>① 買う</b><i>Buy</i></span>➜<span class="gs-steps"><b>② かざりたい へやに 行く</b><i>Go to the room</i></span>➜<span class="gs-steps"><b>③ 🎨 かざる を おす</b><i>Press 🎨 Decorate</i></span>
     <div>${tab === "mascot" ? "マスコットは 1つの へやに すむよ。" : "1つで 1つの へやだけ かざれるよ。"} <i>${tab === "mascot" ? "Each mascot lives in one room you choose." : "One item decorates one room only."}</i></div></div>`;
+  const dispNote = `<div class="gs-note">🦖 てんじひんは その へやの まんなかの だいに かざられるよ。 買うと すぐに かざられる！ <i>Each display goes on the stand in the middle of its own room, as soon as you buy it.</i></div>`;
   let body = "", items = [];
   const buy = (key, p, n) => `<small>もっている <i>have</i>: ${TEACHER ? "∞" : n}</small><button data-buy="${key}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`;
   if (tab === "paint") body = `<div class="gs-grid">${COLOURS.map(([c, ja, en]) => itemCard({ id: c, ja, en, swatch: c }, { html: buy("paint:" + c, PAINT_PRICE, S.paints[c] || 0) })).join("")}</div>`;
   else if (tab === "floor" || tab === "frames") {
     items = decorItems(tab); const p = tab === "floor" ? FLOOR_PRICE : FRAME_PRICE, bag = tab === "floor" ? S.floorInv : S.frameInv;
     body = `<div class="gs-grid">${items.map(it => itemCard(it, { html: buy(tab + ":" + it.id, p, bag[it.id] || 0) })).join("")}</div>`;
+  } else if (tab === "display") {
+    const open = DISPLAYS.filter(([id]) => inMode(id) && isUnlocked(id)), shut = DISPLAYS.length - open.length;
+    body = (open.length ? `<div class="gs-grid mascots">${open.map(([id, ja, en, p]) => { const own = S.displays.includes(id), t = T[id];
+      return `<div class="gs-item${own ? " own" : ""}" data-id="${id}"><img src="models/decor/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
+      <small>📍 ${esc(t?.ja || "")} <i>${esc(t?.en || "")}</i></small>
+      ${own ? `<em>✓ かざったよ <i>On display!</i></em>` : `<button data-buy="display:${id}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`}</div>`; }).join("")}</div>`
+      : `<div class="gs-note">🔒 まだ ないよ。 <i>Nothing yet.</i></div>`)
+      + (shut ? `<p class="mm-p">🔓 へやを ひらくと、あと ${shut}こ ふえるよ！ <i>Open more rooms to find ${shut} more displays!</i></p>` : "");
   } else body = `<div class="gs-grid mascots">${MASCOTS.map(([id, ja, en, p]) => { const own = S.mascots.includes(id);
       return `<div class="gs-item${own ? " own" : ""}" data-id="${id}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
       ${own ? `<em>✓ なかま <i>Yours!</i></em>` : `<button data-buy="mascot:${id}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`}</div>`; }).join("")}</div>`;
   const card = overlay(`<h2>🛍️ ギフトショップ</h2><div class="mm-en">Gift Shop</div>
-    <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>⭐で へやの かざりや マスコットを 買おう！ <i>Spend your stars here!</i></span></div>${tabs}${body}`, true);
+    <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>⭐で へやの かざりや マスコットを 買おう！ <i>Spend your stars here!</i></span></div>${tab === "display" ? tabsHtml(SHOP_TABS, tab) + dispNote : tabs}${body}`, true);
   fillPreviews(card, items);
   ov.dataset.tab = tab; card.scrollTop = keep;
   if (bought) celebrate(card, bought);
@@ -322,6 +338,8 @@ export function openGiftShop(tab = "paint", bought = null) {
     if (kind === "paint") { if (!pay(PAINT_PRICE)) return; S.paints[id] = (S.paints[id] || 0) + 1; toast("🥫", "ペンキを 買った！ へやに 行って 🎨で ぬろう", "Got paint! Go to a room and press 🎨"); }
     else if (kind === "floor") { if (!pay(FLOOR_PRICE)) return; S.floorInv[id] = (S.floorInv[id] || 0) + 1; toast("🪵", "ゆかを 買った！ へやに 行って 🎨で つかおう", "Got a floor! Go to a room and press 🎨"); }
     else if (kind === "frames") { if (!pay(FRAME_PRICE)) return; S.frameInv[id] = (S.frameInv[id] || 0) + 1; toast("🖼️", "がくぶちを 買った！ へやに 行って 🎨で つかおう", "Got frames! Go to a room and press 🎨"); }
+    else if (kind === "display") { const d = DISPLAYS.find(x => x[0] === id); if (!d || S.displays.includes(id) || !isUnlocked(id) || !pay(d[3])) return; S.displays.push(id);
+      toast("🦖", `「${d[1]}」を かざったよ！ 「${T[id].ja}」に 見に いこう`, `The ${d[2]} is on display in ${T[id].en}!`); onChange("decor", [id]); }
     else { const m = MASCOTS.find(x => x[0] === id); if (S.mascots.includes(id) || !pay(m[3])) return; S.mascots.push(id);
       toast("🐾", `${m[1]}が なかまに なった！ へやに 行って 🎨で よぼう`, `${m[2]} joined! Go to a room and press 🎨 to bring it there`); }
     save(); refreshHud(); openGiftShop(tab, b.dataset.buy);
@@ -403,7 +421,7 @@ export function code() {
   const bits = [];
   const put = (v, n) => { for (let i = n - 1; i >= 0; i--) bits.push((v >> i) & 1); };
   const bought = S.bought.map(id => ROOM_NO.indexOf(id)).filter(i => i >= 0);
-  put(0, 2); put(4, 4); put(Math.min(4095, S.points), 12);    // version 0 + 4 bits = extended version (4)
+  put(0, 2); put(5, 4); put(Math.min(4095, S.points), 12);    // version 0 + 4 bits = extended version (5)
   const nm = S.name || [0, 0, 0]; nm.forEach(k => put(k, 4));
   put(bought.length, 10); bought.forEach(i => put(i, 10));
   COLOURS.forEach(([c]) => put(Math.min(15, S.paints[c] || 0), 4));
@@ -411,6 +429,7 @@ export function code() {
   Object.keys(HALLS).forEach(w => put(S.wings.includes(w) ? 1 : 0, 1));
   Object.keys(FLOORS).forEach(id => put(Math.min(15, S.floorInv[id] || 0), 4));
   Object.keys(FRAMES).forEach(id => put(Math.min(15, S.frameInv[id] || 0), 4));
+  DISPLAYS.forEach(([id]) => put(S.displays.includes(id) ? 1 : 0, 1));
   let sum = 0; for (let i = 0; i < bits.length; i++) sum = (sum * 3 + bits[i] + i) % 32; put(sum, 5);
   while (bits.length % 5) bits.push(0);
   let s = ""; for (let i = 0; i < bits.length; i += 5) s += B32[bits.slice(i, i + 5).reduce((a, b) => a * 2 + b, 0)];
@@ -422,9 +441,9 @@ export function applyCode(txt) {
   const bits = [];
   for (const ch of s) { const v = B32.indexOf(ch); if (v < 0) return false; for (let i = 4; i >= 0; i--) bits.push((v >> i) & 1); }
   let p = 0; const get = n => { let v = 0; for (let i = 0; i < n; i++) v = v * 2 + (bits[p++] || 0); return v; };
-  let ver = get(2); if (ver === 0) ver = get(4); if (ver < 1 || ver > 4) return false;
+  let ver = get(2); if (ver === 0) ver = get(4); if (ver < 1 || ver > 5) return false;
   const wide = ver >= 4, ids = wide ? ROOM_NO : OLD_IDS;
-  const points = get(12), name = [get(4), get(4), get(4)], n = get(wide ? 10 : 8), bought = [], paints = {}, mascots = [], floorInv = {}, frameInv = {};
+  const points = get(12), name = [get(4), get(4), get(4)], n = get(wide ? 10 : 8), bought = [], paints = {}, mascots = [], floorInv = {}, frameInv = {}, displays = [];
   let wings = Object.keys(HALLS);
   for (let i = 0; i < n; i++) bought.push(get(wide ? 10 : 8));
   if (ver >= 2) { COLOURS.forEach(([c]) => { const k = get(4); if (k) paints[c] = k; }); MASCOTS.forEach(([id]) => { if (get(1)) mascots.push(id); }); }
@@ -433,10 +452,11 @@ export function applyCode(txt) {
     Object.keys(FLOORS).forEach(id => { const k = get(4); if (k) floorInv[id] = k; });
     Object.keys(FRAMES).forEach(id => { const k = get(4); if (k) frameInv[id] = k; });
   }
+  if (ver >= 5) DISPLAYS.forEach(([id]) => { if (get(1)) displays.push(id); });
   const end = p; let sum = 0; for (let i = 0; i < end; i++) sum = (sum * 3 + bits[i] + i) % 32;
   if (get(5) !== sum || p > bits.length) return false;
   if (bought.some(i => i >= ids.length)) return false;
-  S = Object.assign(fresh(), { name: name.map((k, i) => Math.min(k, NAME_PARTS[i].length - 1)), points, bought: bought.map(i => ids[i]), paints, mascots, wings, floorInv, frameInv }); save();
+  S = Object.assign(fresh(), { name: name.map((k, i) => Math.min(k, NAME_PARTS[i].length - 1)), points, bought: bought.map(i => ids[i]), paints, mascots, wings, floorInv, frameInv, displays }); save();
   return true;
 }
 
