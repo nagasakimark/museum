@@ -161,6 +161,8 @@ export const FRAMES = {
 };
 const outer = f => Math.max(f.mat ? f.mat.b : 0, ...f.layers.map(l => (l.inset || 0) + l.b));
 function ringGeo(w, h, inset, b, d, bev) {
+  // the rounded edge eats into the ring from both sides; keep some flat width or the hole gets filled in
+  bev = Math.min(bev, b * .35);
   const hw = w / 2 + inset, hh = h / 2 + inset, ow = hw + b - bev, oh = hh + b - bev, iw = hw + bev, ih = hh + bev;
   const s = new THREE.Shape(); s.moveTo(-ow, -oh); s.lineTo(ow, -oh); s.lineTo(ow, oh); s.lineTo(-ow, oh); s.closePath();
   const hole = new THREE.Path(); hole.moveTo(-iw, -ih); hole.lineTo(-iw, ih); hole.lineTo(iw, ih); hole.lineTo(iw, -ih); hole.closePath(); s.holes.push(hole);
