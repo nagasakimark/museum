@@ -1,0 +1,76 @@
+art-mediums|sculpture
+art|sculpture
+art-movements|Baroque
+christmas-world|Christmas in Japan
+climate-zones|dry climate
+club-origins-culture|brass band
+club-origins-culture|choir
+club-origins-sports|ekiden
+club-origins-sports|judo
+communication-history|smoke signals
+dance-japan|nihon buyo
+desert-2|long-eared jerboa
+edo-life|public baths
+fast-slow|sailfish
+festival-food|Diwali sweets
+festivals-world|Lunar New Year
+games-world|jump rope
+ghost-festivals|Obon
+holidays-world|Christmas in Japan
+holidays-world|Lunar New Year
+holidays-world|Thanksgiving
+household-spirits|menehune
+houses-world|igloo
+houses-world|adobe house
+insects|cricket
+inside-japanese-school|the library
+inside-japanese-school|the gym
+instruments|shamisen
+japan-traditions|Bon dance
+japanese-holidays|Golden Week
+japanese-holidays|Sports Day
+martial-arts|karate
+martial-arts|capoeira
+money|pound
+money|cashless payment
+mushrooms|the largest living thing
+music-genres|salsa
+mythical-creatures|mermaid
+mythical-creatures|baku
+nagasaki-city|streetcars
+nagasaki-city|Peace Park
+nagasaki-festivals|Lantern Festival
+olympics|gold medal
+olympics|judo
+paintings-france|The Snail
+paintings-netherlands|The Milkmaid
+paintings-netherlands|View of Delft
+paintings-netherlands|Sunflowers
+paintings-netherlands|The Bedroom
+playground-world|tug of war
+regional-dishes|frankfurter
+school-events|sports day
+school-events|music festival
+school-events|graduation ceremony
+sculpture-world|The Little Mermaid
+spices|black pepper
+spices|ginger
+spices|turmeric
+spooky-science|St. Elmo's fire
+summer-japan|Obon
+tea-world|yerba mate
+town|police box
+town|post office
+tropical-fruits|mangosteen
+tropical-fruits|coconut
+tropical-fruits|papaya
+vegetables|corn
+video-games-history|Spacewar!
+video-games-history|Pong
+video-games-history|chiptune music
+world-dance|Bon odori
+world-dance|ballet
+world-dance|haka
+world-theatre|ancient Greek theatre
+world-theatre|musicals
+yokai|baku

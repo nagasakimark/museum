@@ -18,6 +18,7 @@ import { confetti } from "./confetti.js";
 import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
 import { startMusic, toggleMusic, musicOn } from "./music.js";
 import * as MM from "./mymuseum.js";
+import { buildFrame, floorMaterial } from "./decor.js";
 
 // ================= content =================
 const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS, ...HALLS };
@@ -815,14 +816,19 @@ function addExhibit(r, slot, ex) {
     return;
   }
   const W = slot.small ? 2.3 : 2.7, H = slot.small ? 1.75 : 2.05;
-  // gilt frame with a darker inner lip
-  const frame = new THREE.Mesh(shared.frameGeo ||= (() => { const g = new THREE.BoxGeometry(1, 1, 1); g.userData.shared = true; return g; })(), mats.gold);
-  frame.scale.set(W + .3, H + .3, .09); frame.position.set(0, cy, .02); grp.add(frame);
-  const lip = new THREE.Mesh(shared.frameGeo, mats.black); lip.scale.set(W + .06, H + .06, .1); lip.position.set(0, cy, .025); grp.add(lip);
+  const style = MM.roomFrame(r.topic.id) || "gold";
+  let frame = null;
   const pm = own(new THREE.MeshBasicMaterial({ color: "#fff" }));
-  const pic = new THREE.Mesh(new THREE.PlaneGeometry(W, H), pm); pic.position.set(0, cy, .078); grp.add(pic);
+  const pic = new THREE.Mesh(new THREE.PlaneGeometry(W, H), pm); pic.position.set(0, cy, .066); grp.add(pic);
   const lb = new THREE.Mesh(new THREE.PlaneGeometry(1.5, .47), own(new THREE.MeshBasicMaterial({ map: labelTex(ex.ja, ex.en, ex.status, ex.year) })));
-  lb.position.set(0, cy - H / 2 - .42, .01); grp.add(lb);
+  grp.add(lb);
+  const setFrame = (w, h) => {
+    if (frame) { grp.remove(frame); frame.traverse(o => { if (o.geometry) o.geometry.dispose(); }); r.clickables = r.clickables.filter(m => m.parent !== frame); }
+    frame = buildFrame(style, w, h); frame.position.y = cy; grp.add(frame);
+    frame.children.forEach(m => { m.userData.exhibit = ex; r.clickables.push(m); });
+    lb.position.set(0, cy - h / 2 - frame.userData.outer - .3, .01);
+  };
+  setFrame(W, H);
   if (ex.img) {
     pm.color.set("#cfcfcf");
     new THREE.TextureLoader().load(ex.img, tx => {
@@ -830,12 +836,11 @@ function addExhibit(r, slot, ex) {
       tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 4; const a = tx.image.width / tx.image.height;
       let w = W, h = W / a; if (h > H) { h = H; w = H * a; }
       pic.geometry.dispose(); pic.geometry = new THREE.PlaneGeometry(w, h);
-      frame.scale.set(w + .3, h + .3, .09); lip.scale.set(w + .06, h + .06, .1);
-      lb.position.y = cy - h / 2 - .42;
+      setFrame(w, h);
       pm.color.set("#fff"); pm.map = tx; pm.needsUpdate = true;
     });
   } else { pm.map = picTex(ex, (TOPICS[ex.topic] || r.topic).c); pm.needsUpdate = true; }
-  for (const m of [pic, frame, lip, lb]) { m.userData.exhibit = ex; r.clickables.push(m); }
+  for (const m of [pic, lb]) { m.userData.exhibit = ex; r.clickables.push(m); }
 }
 function build(r) {
   if (r.group) return;
@@ -843,12 +848,13 @@ function build(r) {
   const t = r.topic; r.group = new THREE.Group(); r.colliders = []; r.clickables = []; r.floors = []; r.exhibits = []; r.kit = new Map();
   scene.add(r.group);
   const H = r.h, W2 = r.hx * 2, D2 = r.hz * 2;
-  const fmat = shared["floor" + W2 + "x" + D2] ||= (() => { const tx = floorMap.clone(); tx.repeat.set(W2 / 6, D2 / 6); tx.needsUpdate = true; return new THREE.MeshPhongMaterial({ map: tx, specular: "#5a4a3a", shininess: 60 }); })();
+  const myFloor = MM.roomFloor(t.id);
+  const fmat = myFloor ? floorMaterial(myFloor, W2, D2) : shared["floor" + W2 + "x" + D2] ||= (() => { const tx = floorMap.clone(); tx.repeat.set(W2 / 6, D2 / 6); tx.needsUpdate = true; return new THREE.MeshPhongMaterial({ map: tx, specular: "#5a4a3a", shininess: 60 }); })();
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(W2, D2), fmat);
   floor.rotation.x = -Math.PI / 2; floor.position.set(r.x, 0, r.z); floor.userData.floor = true; r.group.add(floor); r.floors.push(floor);
   buildRoof(r); decorateWalls(r);
   // a pale stone runner down the middle of long galleries
-  if (r.layout === "long" || (r.layout === "hall" && !t.lobby)) {
+  if (!myFloor && (r.layout === "long" || (r.layout === "hall" && !t.lobby))) {
     const longX = r.hx > r.hz, L = (longX ? r.hx : r.hz) * 2 - .1, w = Math.min(r.hx, r.hz) * (r.layout === "long" ? .62 : .42);
     const sm = shared["stone" + L + "x" + w] ||= (() => { const tx = stoneMap.clone(); tx.repeat.set(longX ? L / 2.4 : w / 2.4, longX ? w / 2.4 : L / 2.4); tx.needsUpdate = true; return new THREE.MeshPhongMaterial({ map: tx, specular: "#444", shininess: 40 }); })();
     const run = new THREE.Mesh(new THREE.PlaneGeometry(longX ? L : w, longX ? w : L), sm); run.rotation.x = -Math.PI / 2; run.position.set(r.x, .003, r.z);
@@ -1364,8 +1370,8 @@ function talkTo(g) {
 function rebuildAll() { built().forEach(dispose); stream(); updateHud(); }
 MM.init({ TOPICS, HALLS, drawPic, onChange: (what, id) => {
   if (what === "name") { if (rooms[0].group) { dispose(rooms[0]); stream(); } }
-  else if (what === "colour") { const r = rooms[player.room]; dispose(r); stream(); }
-  else if (what === "unlock") { built().filter(r => r.topic.hall).forEach(dispose); stream(); }
+  else if (what === "colour" || what === "decor") { const r = rooms[player.room]; dispose(r); stream(); }
+  else if (what === "unlock") { built().filter(r => r.topic.hall || r.topic.lobby).forEach(dispose); stream(); }
   else if (what === "mascot") { const m = MM.MASCOTS.find(x => x[0] === id); spawnMascots(rooms[player.room], [m], true); }
   updateHud();
 } });
@@ -1399,7 +1405,7 @@ const teachBtn = document.getElementById("teacher");
 if (MM.TEACHER) { teachBtn.hidden = false; teachBtn.addEventListener("click", () => { closePanel(); MM.openTeacher(); }); }
 syncMusicBtn();
 document.getElementById("shop").addEventListener("click", () => { closePanel(); MM.openShop(); });
-document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openColour(rooms[player.room].topic); });
+document.getElementById("paint").addEventListener("click", () => { closePanel(); MM.openDecor(rooms[player.room].topic); });
 
 enterRoom(0);
 if (location.search.includes("debug")) window.__m = { player, rooms, openPanel, closePanel, TOPICS, enterRoom, makeWarp, build, dispose, MM, talkTo, built, guide: () => guideReq, openNotebook };

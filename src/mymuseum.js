@@ -5,22 +5,27 @@ import { makeQuestion } from "./questions.js";
 import { ruby } from "./text.js";
 import { confetti } from "./confetti.js";
 import { chime } from "./sfx.js";
+import { FLOORS, FRAMES, floorPreview, framePreview } from "./decor.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
 let S = null;              // saved state
 let GATE_IDS = [];         // every room that sits behind a wing-hall door, sorted (for save codes)
-let STARTERS = new Set();  // the first room in each wing is open from the start
+let STARTERS = new Set();  // the first room in each wing is open once the wing is open
+const WINGS_OF = {};       // room id -> wings it is in
 const KEY = "museum-mymuseum-v1";
 
 export const NAME_PARTS = [
-  [["ふしぎな", "Amazing"], ["きらきら", "Sparkling"], ["ひみつの", "Secret"], ["せかいいちの", "Greatest"], ["わくわく", "Exciting"], ["ちいさな", "Little"], ["おおきな", "Giant"], ["にじいろの", "Rainbow"], ["ゆかいな", "Happy"], ["まほうの", "Magic"]],
-  [["どうぶつ", "Animal"], ["うちゅう", "Space"], ["せかい", "World"], ["たべもの", "Food"], ["アート", "Art"], ["サイエンス", "Science"], ["ゆめ", "Dream"], ["たから", "Treasure"], ["ながさき", "Nagasaki"], ["みらい", "Future"]],
-  [["はくぶつかん", "Museum"], ["ギャラリー", "Gallery"], ["やかた", "Mansion"], ["おしろ", "Castle"], ["ラボ", "Lab"], ["パレス", "Palace"]],
+  [["ふしぎな", "Amazing"], ["きらきら", "Sparkling"], ["すてきな", "Wonderful"], ["グランド", "Grand"], ["ロイヤル", "Royal"], ["にじいろの", "Rainbow"], ["ひみつの", "Secret"],
+   ["ほしぞらの", "Starry"], ["おうごんの", "Golden"], ["ハッピー", "Happy"], ["わくわく", "Exciting"], ["まほうの", "Magical"], ["せかいいちの", "World's Best"]],
+  [["ながさき", "Nagasaki"], ["とまち", "Tomachi"], ["せかい", "World"], ["どうぶつ", "Animal"], ["うちゅう", "Space"], ["きょうりゅう", "Dinosaur"], ["うみ", "Ocean"],
+   ["さくら", "Sakura"], ["たからもの", "Treasure"], ["ゆめ", "Dream"], ["みらい", "Future"], ["れきし", "History"], ["アート", "Art"], ["サイエンス", "Science"]],
+  [["はくぶつかん", "Museum"], ["びじゅつかん", "Art Museum"], ["かがくかん", "Science Museum"], ["ギャラリー", "Gallery"], ["はっけんかん", "Discovery Center"], ["ワンダーランド", "Wonderland"]],
 ];
 export const COLOURS = [["#d9534f", "あか", "red"], ["#e8731c", "オレンジ", "orange"], ["#e0b100", "きいろ", "yellow"], ["#4f8a3c", "みどり", "green"], ["#2f8fb0", "みずいろ", "light blue"],
   ["#34407a", "あお", "blue"], ["#8e44ad", "むらさき", "purple"], ["#d16ba5", "ピンク", "pink"], ["#8a5a2b", "ちゃいろ", "brown"], ["#5b6470", "グレー", "gray"]];
-export const PAINT_PRICE = 15;
+export const PAINT_PRICE = 15, FLOOR_PRICE = 25, FRAME_PRICE = 25, WING_PRICE = 30;
+export { FLOORS, FRAMES };
 // mascots (Kenney Cube Pets), in costume size
 export const MASCOTS = [
   ["cat", "ねこの ミケ", "Mike the Cat", 60], ["dog", "いぬの ポチ", "Pochi the Dog", 60], ["bunny", "うさぎの モモ", "Momo the Bunny", 60],
@@ -34,24 +39,38 @@ export const TEACHER = new URLSearchParams(location.search).has("teacher");
 const pay = n => { if (TEACHER) return true; if (S.points < n) return false; S.points -= n; return true; };
 const canPay = n => TEACHER || S.points >= n;
 
-const fresh = () => ({ name: null, points: 30, bought: [], seen: [], visited: [], done: [], asked: {}, colors: {}, paints: {}, mascots: [] });
-function load() { try { S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || "null") || {}); } catch { S = fresh(); } }
+const fresh = () => ({ name: null, points: 30, wings: [], bought: [], seen: [], visited: [], done: [], asked: {}, colors: {}, paints: {}, mascots: [],
+  floorInv: {}, frameInv: {}, floors: {}, frames: {} });
+function load() {
+  let raw = null; try { raw = JSON.parse(localStorage.getItem(KEY) || "null"); } catch { }
+  S = Object.assign(fresh(), raw || {});
+  // museums made before wings could be locked keep every wing open
+  if (raw && raw.name && !Array.isArray(raw.wings)) S.wings = Object.keys(HALLS);
+}
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { } }
 
 export function init(opts) {
   ({ TOPICS: T, HALLS, drawPic, onChange } = opts);
   GATE_IDS = [...new Set(Object.values(HALLS).flatMap(h => h.gates.map(g => g[0])).filter(id => T[id]))].sort();
+  for (const [w, h] of Object.entries(HALLS)) for (const [id] of h.gates) (WINGS_OF[id] ||= []).push(w);
   STARTERS = new Set(Object.values(HALLS).map(h => h.gates.map(g => g[0]).find(id => T[id])).filter(Boolean));
   load(); css();
 }
-export function start() { active = true; if (!S.name) openSetup(); refreshHud(); }
+export function start() { active = true; if (!S.name || !S.wings.length) openSetup(); refreshHud(); }
 
 // ---------- rules ----------
-export const isUnlocked = id => !active || !GATE_IDS.includes(id) || STARTERS.has(id) || S.bought.includes(id);
+export const isUnlocked = id => {
+  if (!active) return true;
+  if (HALLS[id]) return S.wings.includes(id);                                   // a wing
+  if (!GATE_IDS.includes(id)) return true;
+  return (WINGS_OF[id] || []).some(w => S.wings.includes(w)) && (STARTERS.has(id) || S.bought.includes(id));
+};
 export const inMode = id => GATE_IDS.includes(id);               // rooms that exist in My Museum
 // cheap enough to open a few rooms in one 45-minute lesson
-export const price = id => Math.min(35, Math.max(20, Math.round((12 + (T[id]?.list?.length || 8)) / 5) * 5));
+export const price = id => HALLS[id] ? WING_PRICE : Math.min(35, Math.max(20, Math.round((12 + (T[id]?.list?.length || 8)) / 5) * 5));
 export const roomColour = id => active ? S.colors[id] : null;
+export const roomFloor = id => active ? S.floors[id] : null;
+export const roomFrame = id => active ? S.frames[id] : null;
 export const museumName = () => S?.name ? [S.name.map((k, i) => NAME_PARTS[i][k][0]).join(" "), S.name.map((k, i) => NAME_PARTS[i][k][1]).join(" ")] : null;
 export const askersFor = topic => !active || topic.hall || topic.lobby || (topic.list || []).filter(x => !x.text).length < 3 ? 0
   : Math.max(0, Math.min(2, 8 - (S.asked[topic.id] || 0)));
@@ -80,7 +99,7 @@ export function hud(el) { hudEl = el; refreshHud(); }
 function refreshHud() {
   if (!hudEl || !active) return;
   const open = GATE_IDS.filter(isUnlocked).length;
-  hudEl.innerHTML = `⭐ <b>${TEACHER ? "∞" : S.points}</b>　🔓 ${open} / ${GATE_IDS.length} へや`;
+  hudEl.innerHTML = `⭐ <b>${TEACHER ? "∞" : S.points}</b>　🏛️ ${S.wings.length}/${Object.keys(HALLS).length}　🔓 ${open} へや`;
 }
 let toastT;
 function toast(big, ja, en) {
@@ -111,23 +130,32 @@ const esc = s => ruby(String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "
 
 // ---------- naming ----------
 export function openSetup(rename) {
-  const pick = S.name ? S.name.slice() : [0, 2, 0];
+  const pick = S.name && S.name.every((k, i) => k < NAME_PARTS[i].length) ? S.name.slice() : [0, 0, 0];
+  const needWing = !rename && !S.wings.length;
+  let wing = null;
   const card = overlay(`<h2>${rename ? "なまえを かえる" : "わたしの はくぶつかんを つくろう！"}</h2>
     <div class="mm-en">${rename ? "Rename your museum" : "Let's make your own museum!"}</div>
-    <p class="mm-p">ことばを えらんで、はくぶつかんに なまえを つけよう。 <i>Choose words to name your museum.</i></p>
+    <p class="mm-p">① ことばを えらんで、なまえを つけよう。 <i>Choose words to name your museum.</i></p>
     ${NAME_PARTS.map((part, r) => `<div class="mm-chips" data-r="${r}">${part.map(([ja, en], k) => `<button data-k="${k}"><b>${ja}</b><i>${en}</i></button>`).join("")}</div>`).join("")}
     <div class="mm-preview"></div>
-    <button class="mm-go">${rename ? "これに する！" : "スタート！"} <span>${rename ? "OK" : "Start"}</span></button>
+    ${needWing ? `<p class="mm-p">② さいしょに ひらく ウィングを 1つ えらぼう。ほかの ウィングは あとで ⭐で ひらけるよ。 <i>Pick your first wing. You can open the others later with stars.</i></p>
+      <div class="mm-wings">${Object.entries(HALLS).map(([w, h]) => `<button data-w="${w}" style="--c:${h.c}"><span>${h.icon}</span><b>${esc(h.ja)}</b><i>${esc(h.en)}</i></button>`).join("")}</div>` : ""}
+    <button class="mm-go" ${needWing ? "disabled" : ""}>${needWing ? "↑ ウィングを えらんでね <span>Pick a wing</span>" : `${rename ? "これに する！" : "スタート！"} <span>${rename ? "OK" : "Start"}</span>`}</button>
     ${rename ? "" : `<details class="mm-load"><summary>セーブコードで つづきから <i>Continue with a save code</i></summary>
-      <input placeholder="XXXX-XXXX-XXXX" maxlength="80"><button class="mm-loadbtn">よみこむ Load</button><div class="mm-err"></div></details>`}`, true);
-  if (!S.name) ov.dataset.lock = "1";
+      <input placeholder="XXXX-XXXX-XXXX" maxlength="120"><button class="mm-loadbtn">よみこむ Load</button><div class="mm-err"></div></details>`}`, true);
+  if (!S.name || needWing) ov.dataset.lock = "1";
   const paint = () => {
     card.querySelectorAll(".mm-chips").forEach(row => row.querySelectorAll("button").forEach(b => b.classList.toggle("on", +b.dataset.k === pick[+row.dataset.r])));
     card.querySelector(".mm-preview").innerHTML = `<b>${pick.map((k, i) => NAME_PARTS[i][k][0]).join(" ")}</b><i>${pick.map((k, i) => NAME_PARTS[i][k][1]).join(" ")}</i>`;
   };
   card.querySelectorAll(".mm-chips").forEach(row => row.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { pick[+row.dataset.r] = +b.dataset.k; paint(); } }));
+  card.querySelectorAll(".mm-wings button").forEach(b => b.onclick = () => {
+    wing = b.dataset.w; card.querySelectorAll(".mm-wings button").forEach(x => x.classList.toggle("on", x === b)); const g = card.querySelector(".mm-go"); g.disabled = false; g.innerHTML = `スタート！ <span>Start</span>`; });
   paint();
-  card.querySelector(".mm-go").onclick = () => { S.name = pick; save(); ov.dataset.lock = ""; close(); refreshHud(); onChange("name"); };
+  card.querySelector(".mm-go").onclick = () => {
+    if (needWing && !wing) return;
+    S.name = pick; if (needWing) S.wings = [wing]; save(); ov.dataset.lock = ""; close(); refreshHud(); onChange("name"); if (needWing) onChange("unlock", wing);
+  };
   const lb = card.querySelector(".mm-loadbtn");
   if (lb) lb.onclick = () => {
     const ok = applyCode(card.querySelector(".mm-load input").value);
@@ -139,16 +167,25 @@ export function openSetup(rename) {
 
 // ---------- shop ----------
 export function openShop(focusId) {
-  const wings = Object.entries(HALLS).map(([wid, h]) => ({ h, rooms: h.gates.map(g => g[0]).filter(id => T[id]) }));
-  const card = overlay(`<h2>🔑 へやを ひらく</h2><div class="mm-en">Open new rooms</div>
+  const wings = Object.entries(HALLS).map(([wid, h]) => ({ wid, h, rooms: h.gates.map(g => g[0]).filter(id => T[id]) }));
+  const card = overlay(`<h2>🔑 へやを ひらく</h2><div class="mm-en">Open new wings and rooms</div>
     <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>へやを 見たり、ゲストの しつもんに こたえたり して ⭐を ためよう！ <i>Explore and answer guests' questions to earn stars.</i></span></div>
-    <div class="mm-shop">${wings.map(({ h, rooms }) => `<section><h3 style="--c:${h.c}">${h.icon} ${esc(h.ja)} <i>${esc(h.en)}</i></h3><div class="mm-rooms">
-      ${rooms.map(id => { const t = T[id], open = isUnlocked(id), p = price(id);
+    <div class="mm-shop">${wings.map(({ wid, h, rooms }) => { const wopen = isUnlocked(wid);
+      return `<section class="${wopen ? "" : "locked"}${wid === focusId ? " focus" : ""}" data-w="${wid}"><h3 style="--c:${h.c}">${h.icon} ${esc(h.ja)} <i>${esc(h.en)}</i>
+        ${wopen ? "" : `<button class="mm-wingbuy" ${canPay(WING_PRICE) ? "" : "disabled"}>🔒 ウィングを ひらく <i>Open wing</i> ${WING_PRICE} ⭐</button>`}</h3>
+      <div class="mm-rooms">${rooms.map(id => { const t = T[id], open = isUnlocked(id), p = price(id);
         return `<div class="mm-room${open ? " open" : ""}${id === focusId ? " focus" : ""}" data-id="${id}" style="--c:${t.c}"><span class="ic">${roomIcon(h, id)}</span><b>${esc(t.ja)}</b><i>${esc(t.en)}</i>
-        ${open ? `<em>✓ ひらいてる <i>Open</i></em>` : `<button ${canPay(p) ? "" : "disabled"}>🔒 ${p} ⭐</button>`}</div>`; }).join("")}
-    </div></section>`).join("")}</div>
+        ${open ? `<em>✓ ひらいてる <i>Open</i></em>` : !wopen ? `<em class="wait">🔒</em>` : `<button ${canPay(p) ? "" : "disabled"}>🔒 ${p} ⭐</button>`}</div>`; }).join("")}
+    </div></section>`; }).join("")}</div>
     <div class="mm-foot"><button class="mm-rename">✏️ なまえを かえる <i>Rename</i></button>
       <div class="mm-code">セーブコード <i>Save code</i>: <code>${code()}</code></div></div>`, true);
+  card.querySelectorAll(".mm-wingbuy").forEach(b => b.onclick = () => {
+    const w = b.closest("section").dataset.w;
+    if (isUnlocked(w) || !pay(WING_PRICE)) return;
+    S.wings.push(w); save(); refreshHud();
+    toast("🏛️", `「${HALLS[w].ja}」ウィングが ひらいた！`, `The ${HALLS[w].en} wing is open!`); confetti(180, .5, .3); chime();
+    onChange("unlock", w); openShop(w);
+  });
   card.querySelectorAll(".mm-room button").forEach(b => b.onclick = () => {
     const id = b.closest(".mm-room").dataset.id, p = price(id);
     if (isUnlocked(id) || !pay(p)) return;
@@ -157,48 +194,75 @@ export function openShop(focusId) {
     onChange("unlock", id); openShop(id);
   });
   card.querySelector(".mm-rename").onclick = () => openSetup(true);
-  card.querySelector(".mm-room.focus")?.scrollIntoView({ block: "center" });
+  card.querySelector(".focus")?.scrollIntoView({ block: "center" });
 }
 function roomIcon(h, id) { const g = h.gates.find(x => x[0] === id)?.[1] || "✨"; return g.startsWith("planet:") ? "🪐" : g; }
 
-// ---------- colours ----------
-export function openColour(topic) {
-  if (!topic || topic.hall || !isUnlocked(topic.id) || !inMode(topic.id)) {
-    overlay(`<h2>🎨 へやの 色</h2><div class="mm-en">Room colour</div><p class="mm-p">ぬりたい へやの 中で 🎨 を おしてね。 <i>Go into one of your rooms, then press 🎨.</i></p>`);
+// ---------- decorating a room: walls, floor, frames ----------
+const DECOR_TABS = [["walls", "🎨 かべ", "Walls"], ["floor", "🪵 ゆか", "Floor"], ["frames", "🖼️ がくぶち", "Frames"]];
+const inv = { walls: () => S.paints, floor: () => S.floorInv, frames: () => S.frameInv };
+const used = { walls: () => S.colors, floor: () => S.floors, frames: () => S.frames };
+function decorItems(tab) {
+  if (tab === "walls") return COLOURS.map(([c, ja, en]) => ({ id: c, ja, en, swatch: c }));
+  if (tab === "floor") return Object.entries(FLOORS).filter(([id]) => id !== "oak").map(([id, f]) => ({ id, ja: f.ja, en: f.en, img: () => floorPreview(id) }));
+  return Object.entries(FRAMES).filter(([id]) => id !== "gold").map(([id, f]) => ({ id, ja: f.ja, en: f.en, img: () => framePreview(id) }));
+}
+function itemCard(it, extra) {
+  return `<div class="gs-item${extra.cls || ""}" data-id="${it.id}">
+    ${it.swatch ? `<div class="gs-can" style="--c:${it.swatch}"><span></span></div>` : `<canvas class="gs-prev" data-prev="${it.id}" width="160" height="120"></canvas>`}
+    <b>${esc(it.ja)}</b><i>${esc(it.en)}</i>${extra.html}</div>`;
+}
+function fillPreviews(card, items) {
+  card.querySelectorAll("canvas[data-prev]").forEach(c => { const it = items.find(x => x.id === c.dataset.prev); if (!it) return;
+    const src = it.img(), g = c.getContext("2d"); g.fillStyle = "#f6f1e7"; g.fillRect(0, 0, c.width, c.height);
+    const k = Math.min(c.width / src.width, c.height / src.height), w = src.width * k, h = src.height * k; g.drawImage(src, (c.width - w) / 2, (c.height - h) / 2, w, h); });
+}
+export function openDecor(topic, tab = "walls") {
+  if (!topic || topic.hall || topic.lobby || !isUnlocked(topic.id) || !inMode(topic.id)) {
+    overlay(`<h2>🎨 へやを かざる</h2><div class="mm-en">Decorate a room</div><p class="mm-p">かざりたい へやの 中で 🎨 を おしてね。 <i>Go into one of your rooms, then press 🎨.</i></p>`);
     return;
   }
-  const cur = S.colors[topic.id];
-  const have = c => TEACHER ? "∞" : (S.paints[c] || 0);
-  const card = overlay(`<h2>🎨 「${esc(topic.ja)}」の かべの 色</h2><div class="mm-en">Choose a wall colour for ${esc(topic.en)}</div>
-    <p class="mm-p">ペンキを 1つ つかうよ。ペンキは ロビーの ギフトショップで 買えるよ。 <i>Each paint can paints one room. Buy paint at the gift shop in the lobby.</i></p>
-    <div class="mm-swatches">${COLOURS.map(([c, ja, en]) => `<button data-c="${c}" style="--c:${c}" class="${c === cur ? "on" : ""}" ${have(c) === 0 ? "disabled" : ""} title="${en}">
-      <span class="can">🥫×${have(c)}</span><small>${ja}</small></button>`).join("")}</div>
-    <button class="mm-reset">もとに もどす <i>Reset</i></button>`);
-  card.querySelectorAll(".mm-swatches button").forEach(b => b.onclick = () => {
-    const c = b.dataset.c; if (c === cur) return close();
-    if (!TEACHER) { if (!(S.paints[c] > 0)) return; S.paints[c]--; }
-    S.colors[topic.id] = c; save(); onChange("colour", topic.id); close(); confetti(90); chime();
+  const items = decorItems(tab), have = id => TEACHER ? "∞" : (inv[tab]()[id] || 0), cur = used[tab]()[topic.id];
+  const card = overlay(`<h2>🎨 「${esc(topic.ja)}」を かざろう</h2><div class="mm-en">Decorate ${esc(topic.en)}</div>
+    <div class="gs-tabs">${DECOR_TABS.map(([t, ja, en]) => `<button data-t="${t}" class="${t === tab ? "on" : ""}">${ja} <i>${en}</i></button>`).join("")}</div>
+    <p class="mm-p">1つの へやに 1つ つかうよ。ロビーの 🛍️ ギフトショップで 買えるよ。 <i>Each one decorates one room. Buy more at the gift shop in the lobby.</i></p>
+    <div class="gs-grid">${items.map(it => itemCard(it, { cls: it.id === cur ? " own" : "", html: it.id === cur ? `<em>✓ いま <i>Now</i></em>`
+      : `<small>もっている <i>have</i>: ${have(it.id)}</small><button data-use="${it.id}" ${have(it.id) === 0 ? "disabled" : ""}>つかう <i>Use</i></button>` })).join("")}</div>
+    <button class="mm-reset">もとに もどす <i>Back to normal</i></button>`, true);
+  fillPreviews(card, items);
+  card.querySelectorAll(".gs-tabs button").forEach(b => b.onclick = () => openDecor(topic, b.dataset.t));
+  card.querySelectorAll("[data-use]").forEach(b => b.onclick = () => {
+    const id = b.dataset.use, bag = inv[tab]();
+    if (!TEACHER) { if (!(bag[id] > 0)) return; bag[id]--; }
+    used[tab]()[topic.id] = id; save(); onChange("decor", topic.id); close(); confetti(90); chime();
   });
-  card.querySelector(".mm-reset").onclick = () => { delete S.colors[topic.id]; save(); onChange("colour", topic.id); close(); };
+  card.querySelector(".mm-reset").onclick = () => { delete used[tab]()[topic.id]; save(); onChange("decor", topic.id); close(); };
 }
+export const openColour = topic => openDecor(topic, "walls");
 
 // ---------- gift shop ----------
+const SHOP_TABS = [["paint", "🎨 ペンキ", "Paint"], ["floor", "🪵 ゆか", "Floors"], ["frames", "🖼️ がくぶち", "Frames"], ["mascot", "🐾 マスコット", "Mascots"]];
 export function openGiftShop(tab = "paint") {
-  const tabs = `<div class="gs-tabs"><button data-t="paint" class="${tab === "paint" ? "on" : ""}">🎨 ペンキ <i>Paint</i></button><button data-t="mascot" class="${tab === "mascot" ? "on" : ""}">🐾 マスコット <i>Mascots</i></button></div>`;
-  let body = "";
-  if (tab === "paint") body = `<div class="gs-grid paints">${COLOURS.map(([c, ja, en]) => `<div class="gs-item">
-      <div class="gs-can" style="--c:${c}"><span></span></div><b>${ja}</b><i>${en}</i><small>もっている <i>have</i>: ${TEACHER ? "∞" : (S.paints[c] || 0)}</small>
-      <button data-buy="paint:${c}" ${canPay(PAINT_PRICE) ? "" : "disabled"}>${PAINT_PRICE} ⭐</button></div>`).join("")}</div>`;
-  else body = `<p class="mm-p">マスコットは はくぶつかんの 中を さんぽするよ！ <i>Mascots walk around your museum!</i></p>
+  const tabs = `<div class="gs-tabs">${SHOP_TABS.map(([t, ja, en]) => `<button data-t="${t}" class="${t === tab ? "on" : ""}">${ja} <i>${en}</i></button>`).join("")}</div>`;
+  let body = "", items = [];
+  const buy = (key, p, n) => `<small>もっている <i>have</i>: ${TEACHER ? "∞" : n}</small><button data-buy="${key}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`;
+  if (tab === "paint") body = `<div class="gs-grid">${COLOURS.map(([c, ja, en]) => itemCard({ id: c, ja, en, swatch: c }, { html: buy("paint:" + c, PAINT_PRICE, S.paints[c] || 0) })).join("")}</div>`;
+  else if (tab === "floor" || tab === "frames") {
+    items = decorItems(tab); const p = tab === "floor" ? FLOOR_PRICE : FRAME_PRICE, bag = tab === "floor" ? S.floorInv : S.frameInv;
+    body = `<p class="mm-p">1つで 1つの へやを かざれるよ。 <i>One decorates one room.</i></p><div class="gs-grid">${items.map(it => itemCard(it, { html: buy(tab + ":" + it.id, p, bag[it.id] || 0) })).join("")}</div>`;
+  } else body = `<p class="mm-p">マスコットは はくぶつかんの 中を さんぽするよ！ <i>Mascots walk around your museum!</i></p>
     <div class="gs-grid mascots">${MASCOTS.map(([id, ja, en, p]) => { const own = S.mascots.includes(id);
       return `<div class="gs-item${own ? " own" : ""}"><img src="models/pets/preview/${id}.png" alt=""><b>${ja}</b><i>${en}</i>
       ${own ? `<em>✓ なかま <i>Yours!</i></em>` : `<button data-buy="mascot:${id}" ${canPay(p) ? "" : "disabled"}>${p} ⭐</button>`}</div>`; }).join("")}</div>`;
   const card = overlay(`<h2>🛍️ ギフトショップ</h2><div class="mm-en">Gift Shop</div>
-    <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>⭐で ペンキや マスコットを 買おう！ <i>Spend your stars here!</i></span></div>${tabs}${body}`, true);
+    <div class="mm-bal">⭐ <b>${TEACHER ? "∞" : S.points}</b> <span>⭐で へやの かざりや マスコットを 買おう！ <i>Spend your stars here!</i></span></div>${tabs}${body}`, true);
+  fillPreviews(card, items);
   card.querySelectorAll(".gs-tabs button").forEach(b => b.onclick = () => openGiftShop(b.dataset.t));
   card.querySelectorAll("[data-buy]").forEach(b => b.onclick = () => {
     const [kind, id] = b.dataset.buy.split(":");
     if (kind === "paint") { if (!pay(PAINT_PRICE)) return; S.paints[id] = (S.paints[id] || 0) + 1; toast("🥫", "ペンキを 買った！", "You got paint!"); }
+    else if (kind === "floor") { if (!pay(FLOOR_PRICE)) return; S.floorInv[id] = (S.floorInv[id] || 0) + 1; toast("🪵", "ゆかを 買った！", "You got a floor!"); }
+    else if (kind === "frames") { if (!pay(FRAME_PRICE)) return; S.frameInv[id] = (S.frameInv[id] || 0) + 1; toast("🖼️", "がくぶちを 買った！", "You got frames!"); }
     else { const m = MASCOTS.find(x => x[0] === id); if (S.mascots.includes(id) || !pay(m[3])) return; S.mascots.push(id);
       toast("🐾", `${m[1]}が なかまに なった！`, `${m[2]} joined your museum!`); confetti(); chime(); onChange("mascot", id); }
     save(); refreshHud(); openGiftShop(tab);
@@ -274,34 +338,43 @@ export function guideDone(item) { if (active) award(25, "あんない できた�
 
 // ---------- save codes ----------
 const B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
-function code() {
+export function code() {
   const bits = [];
   const put = (v, n) => { for (let i = n - 1; i >= 0; i--) bits.push((v >> i) & 1); };
   const bought = S.bought.map(id => GATE_IDS.indexOf(id)).filter(i => i >= 0);
-  put(2, 2); put(Math.min(4095, S.points), 12);
+  put(3, 2); put(Math.min(4095, S.points), 12);
   const nm = S.name || [0, 0, 0]; nm.forEach(k => put(k, 4));
   put(bought.length, 8); bought.forEach(i => put(i, 8));
   COLOURS.forEach(([c]) => put(Math.min(15, S.paints[c] || 0), 4));
   MASCOTS.forEach(([id]) => put(S.mascots.includes(id) ? 1 : 0, 1));
+  Object.keys(HALLS).forEach(w => put(S.wings.includes(w) ? 1 : 0, 1));
+  Object.keys(FLOORS).forEach(id => put(Math.min(15, S.floorInv[id] || 0), 4));
+  Object.keys(FRAMES).forEach(id => put(Math.min(15, S.frameInv[id] || 0), 4));
   let sum = 0; for (let i = 0; i < bits.length; i++) sum = (sum * 3 + bits[i] + i) % 32; put(sum, 5);
   while (bits.length % 5) bits.push(0);
   let s = ""; for (let i = 0; i < bits.length; i += 5) s += B32[bits.slice(i, i + 5).reduce((a, b) => a * 2 + b, 0)];
   return s.match(/.{1,4}/g).join("-");
 }
-function applyCode(txt) {
+export function applyCode(txt) {
   const s = String(txt).toUpperCase().replace(/[^0-9A-Z]/g, "").replace(/O/g, "0").replace(/[IL]/g, "1");
   if (s.length < 7) return false;
   const bits = [];
   for (const ch of s) { const v = B32.indexOf(ch); if (v < 0) return false; for (let i = 4; i >= 0; i--) bits.push((v >> i) & 1); }
   let p = 0; const get = n => { let v = 0; for (let i = 0; i < n; i++) v = v * 2 + (bits[p++] || 0); return v; };
-  const ver = get(2); if (ver !== 1 && ver !== 2) return false;
-  const points = get(12), name = [get(4), get(4), get(4)], n = get(8), bought = [], paints = {}, mascots = [];
+  const ver = get(2); if (ver < 1) return false;
+  const points = get(12), name = [get(4), get(4), get(4)], n = get(8), bought = [], paints = {}, mascots = [], floorInv = {}, frameInv = {};
+  let wings = Object.keys(HALLS);
   for (let i = 0; i < n; i++) bought.push(get(8));
-  if (ver === 2) { COLOURS.forEach(([c]) => { const k = get(4); if (k) paints[c] = k; }); MASCOTS.forEach(([id]) => { if (get(1)) mascots.push(id); }); }
+  if (ver >= 2) { COLOURS.forEach(([c]) => { const k = get(4); if (k) paints[c] = k; }); MASCOTS.forEach(([id]) => { if (get(1)) mascots.push(id); }); }
+  if (ver >= 3) {
+    wings = Object.keys(HALLS).filter(() => get(1));
+    Object.keys(FLOORS).forEach(id => { const k = get(4); if (k) floorInv[id] = k; });
+    Object.keys(FRAMES).forEach(id => { const k = get(4); if (k) frameInv[id] = k; });
+  }
   const end = p; let sum = 0; for (let i = 0; i < end; i++) sum = (sum * 3 + bits[i] + i) % 32;
   if (get(5) !== sum || p > bits.length) return false;
-  if (name.some((k, i) => k >= NAME_PARTS[i].length) || bought.some(i => i >= GATE_IDS.length)) return false;
-  S = Object.assign(fresh(), { name, points, bought: bought.map(i => GATE_IDS[i]), paints, mascots }); save();
+  if (bought.some(i => i >= GATE_IDS.length)) return false;
+  S = Object.assign(fresh(), { name: name.map((k, i) => Math.min(k, NAME_PARTS[i].length - 1)), points, bought: bought.map(i => GATE_IDS[i]), paints, mascots, wings, floorInv, frameInv }); save();
   return true;
 }
 
@@ -366,6 +439,19 @@ function css() {
   .gs-can::before { content: ""; position: absolute; left: -2px; right: -2px; top: -6px; height: 10px; border-radius: 50%; background: #c7ccd2; border: 2px solid #8a9098; }
   .gs-can span { position: absolute; left: 0; right: 0; top: 22px; height: 34px; background: var(--c); }
   .gs-can span::after { content: ""; position: absolute; left: 22px; top: -12px; width: 26px; height: 16px; border-radius: 0 0 50% 50%; background: var(--c); }
+  .gs-prev { width: 140px; height: 105px; border-radius: 8px; margin: 4px 0; }
+  .gs-item button i { color: #fff; }
+  .mm-wings { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 6px 0 4px; }
+  .mm-wings button { border: 2px solid #e4d8c3; background: #fff; border-radius: 12px; padding: 6px 4px; cursor: pointer; font: inherit; display: flex; flex-direction: column; align-items: center; line-height: 1.2; }
+  .mm-wings button span { font-size: 26px; } .mm-wings button b { font-size: 13px; } .mm-wings button i { font-size: 11px; }
+  .mm-wings button.on { border-color: var(--c); box-shadow: 0 0 0 3px var(--c); background: color-mix(in srgb, var(--c) 12%, white); }
+  .mm-go:disabled { background: #c9bfae; cursor: default; }
+  .mm-shop section.locked .mm-room { opacity: .55; }
+  .mm-shop section.focus h3 { box-shadow: 0 0 0 3px #e8731c; }
+  .mm-shop h3 { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .mm-wingbuy { margin-left: auto; border: 0; border-radius: 999px; padding: 4px 12px; background: #fff; color: #6b4d2c; font: inherit; font-weight: 800; font-size: 14px; cursor: pointer; }
+  .mm-wingbuy:disabled { opacity: .6; cursor: default; } .mm-wingbuy i { color: #2f6f9f !important; }
+  .mm-room em.wait { color: #9a8a70; }
   .t-btns { display: flex; flex-direction: column; gap: 10px; align-items: stretch; max-width: 420px; margin: 10px auto 0; }
   .t-btns button { border: 0; border-radius: 12px; padding: 10px 14px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 800; font-size: 17px; cursor: pointer; display: flex; flex-direction: column; }
   .t-btns button small { font-weight: 600; font-size: 12.5px; opacity: .85; }
