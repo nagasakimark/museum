@@ -1087,7 +1087,7 @@ function move(dx, dz) {
   if (!collide(player.pos.x, player.pos.z + dz)) { player.pos.z += dz; m = true; }
   return m;
 }
-let lastDoor = 0, stepAcc = 0;
+let lastDoor = 0, stepAcc = 0, lastStepT = 0;
 function enterRoom(i) {
   const r = rooms[i]; const first = !r.seen;
   if (player.room !== i && performance.now() - lastDoor > 1500) { lastDoor = performance.now(); door(); }
@@ -1264,7 +1264,8 @@ function frame() {
     }
   }
   const moved = Math.hypot(player.pos.x - lastPos.x, player.pos.z - lastPos.z);
-  if (moved < 1) { stepAcc += moved; if (stepAcc > .9) { stepAcc = 0; footstep(); } } else stepAcc = 0;
+  // Leisurely footsteps: about 1.6 steps a second at full walking speed, never closer than 0.55s apart.
+  if (moved < 1) { stepAcc += moved; const now = performance.now(); if (stepAcc > 2.7 && now - lastStepT > 550) { stepAcc = 0; lastStepT = now; footstep(); } } else stepAcc = 0;
   lastPos.copy(player.pos);
   const ri = roomAt(player.pos); if (ri !== player.room) enterRoom(ri);
   camera.position.set(player.pos.x, EYE, player.pos.z); camera.rotation.set(player.pitch, player.yaw, 0, "YXZ");

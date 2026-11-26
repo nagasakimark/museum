@@ -3526,3 +3526,202 @@ Derivative work: Rehman | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Th
 | hiragana and katakana | www.jojikanehira.com | classroom use | http://www.jojikanehira.com/archives/13864894.html |
 | hyakumonogatari | thehorrorofbeingemily.com | classroom use | https://thehorrorofbeingemily.com/blog/hyaku-monogatari-one-hundred-candles/ |
 | zashiki-warashi | kids.yokai.jp | classroom use | https://kids.yokai.jp/ |
+| nihonium | www.beniya-print.co.jp | classroom use | https://www.beniya-print.co.jp/media/2017/08/10/125 |
+| Thai script | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShxnmDl58ZBG6shlySxcr8Y3OlLhPwfxesUsd9k6FGZ4d7s9/ |
+| time flies when you're having fun | www.artsculpturegallery.com | classroom use | https://www.artsculpturegallery.com/salvador-dali-bronze-melting-clock-sculpture.html |
+| the elements | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShyPJ5l77o6DP_TbR5qnQ-w_z_2YfkwDVjRkie6PsIg-g6xg/ |
+| I know until you ask | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShzzk8-J8IFugplfONlhssJ5KmiZnlHvyVNW3RLMxii1Bm7NUQ/ |
+| how volcanoes form | figviz.com | classroom use | https://figviz.com/tools/volcano-diagram-generator?coupon=FIGVIZ20 |
+| France | www.craiyon.com | classroom use | https://www.craiyon.com/en/image/72hyhu6MTqCrmGwGc8exCQ |
+| rust | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShz-N_LU1P_5V0xNhxp7EUquH7PrSmG7pCX4FBKwzb6bNdzO/ |
+| manga, anime | japanoncloudnine.com | classroom use | https://japanoncloudnine.com/what-to-do-in-shinjuku-shibuya-ginza-asakusa-akihabara-harajuku/ |
+| alphabet | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShw3E8Nm8TrWEpmL6-CQeoYB3cV_aMfvrHYtxGh0HWxGZkZn/ |
+| the periodic table | www.ebay.com | classroom use | https://www.ebay.com/itm/820289953527 |
+| Marie Curie | en.wikipedia.org | classroom use | https://en.wikipedia.org/wiki/Relationship_between_chemistry_and_physics |
+| gravity | whybricks.com | classroom use | https://whybricks.com/lesson-set/but-why/ |
+| inertia | www.geeksforgeeks.org | classroom use | https://www.geeksforgeeks.org/physics/why-does-a-passenger-move-outward-when-the-bus-turns/ |
+| Newton's apple | bigthink.com | classroom use | https://bigthink.com/strange-maps/newton-gravity-trees/ |
+| action and reaction | www.kennedyspacecenter.com | classroom use | https://www.kennedyspacecenter.com/launches-and-events/see-a-launch/launch-viewing/ |
+| Galileo's experiment | www.finestresullarte.info | classroom use | https://www.finestresullarte.info/en/news-focus/between-science-and-legend-galileo-s-experiment-from-the-tower-of-pisa |
+| firework colours | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShyOmhJB04EUdBz0IXWHGgkemDnMPweFBSuemOqZy_EZrHjv/ |
+| baking soda | commons.wikimedia.org | classroom use | https://commons.wikimedia.org/wiki/File:Blue_acid_reaction.jpg |
+| fossils | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShzweMdK_QcaWML9dTTb6jT694td_LeeAkpjYliCIuSrNMcn/ |
+| spinning forces | dreamlandamusements.com | classroom use | https://dreamlandamusements.com/carnival-ride-rentals/tea-cups/ |
+| Futabasaurus | www.dino-tail.com | classroom use | https://www.dino-tail.com/extinct/futabasaurus/futabasaurus.html |
+| Mary Anning | www.britannica.com | classroom use | https://www.britannica.com/biography/Mary-Anning |
+| acids and bases | flatworldknowledge.lardbucket.org | classroom use | https://flatworldknowledge.lardbucket.org/books/principles-of-general-chemistry-v1.0m/s20-05-acid-base-titrations.html |
+| DNA | www.genome.gov | classroom use | https://www.genome.gov/sites/default/files/tg/en/illustration/double_helix.jpg |
+| Darwin and the Galapagos | commons.wikimedia.org | classroom use | https://commons.wikimedia.org/wiki/File:Darwin%27s_finches_by_Gould.jpg |
+| Mendel's peas | ukskushwaha.blogspot.com | classroom use | https://ukskushwaha.blogspot.com/2025/11/why-gregor-mendel-chose-pea-plant.html?spref=pi |
+| living fossils | allthatsinteresting.com | classroom use | https://allthatsinteresting.com/coelacanth |
+| ammonites | rockseeker.com | classroom use | https://rockseeker.com/ammonite-fossils/ |
+| balance | business.walmart.com | classroom use | https://business.walmart.com/ip/Outsunny-Kids-Seesaw-Swivel-Teeter-Totter-360-Spinning-4-Seater-Outdoor-Playground-Equipment-Backyard-Boys-Girls-Aged-3-8-Years-Old/647207796?classType=REGULAR |
+| friction | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShzKHoCSzVwsHrzJycu-l-dSjW_MUqUm9uSwdyNgsNdKLvSw_A/ |
+| brushing teeth | pixabay.com | classroom use | https://pixabay.com/images/search/toothbasta/ |
+| sunflower spirals | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShylxijDJUWY9ojLVQts7Da0JvjlPnSspF1Awl0yvB6GCVwR/ |
+| washing hands | www.foodandwine.com | classroom use | https://www.foodandwine.com/hand-soap-recall-2026-toxicologist-approved-swaps-amazon-12140764 |
+| Florence Nightingale | quotesgram.com | classroom use | http://quotesgram.com/florence-nightingale-quotes-nursing-art/ |
+| honeycomb hexagons | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShxiKpaDlLdshAaeUmKFeLvrsXx8J1qKvoTrNe4D7klsvcAc/ |
+| Pythagoras | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShwTP3NqO44C9USLm3DvLY5br0NJNCqTiG8wGWlULrb8yTia/ |
+| Kitasato Shibasaburo | asunaro-a.com | classroom use | https://asunaro-a.com/tips/94760/ |
+| snowflakes | www.pinterest.com | classroom use | https://www.pinterest.com/pin/macro-photos-of-real-snowflakes-alexey-kljatov-photography-on-instagram-snowflakes-macro-crystals-decora-in-2023--549509592045379104/ |
+| symmetry | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShyLlG9z1pEcXtcbnduB5IOf1nH5RPAmWcqGLqdyEOw1weI9/ |
+| penicillin | kids.britannica.com | classroom use | https://kids.britannica.com/kids/article/Alexander-Fleming/476259 |
+| sleep | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShwCZ2Weurbg0z_MpBnrmIeEVYnTgsVnlSpKCUUfiHSXWqPDSw/ |
+| germs | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShxM40M3pDwftvFraOp-8KjES57XM3e1It9avyzNOdEzhCdM/ |
+| Seki Takakazu | mebuki.jp | classroom use | https://mebuki.jp/1852/ |
+| vaccines | www.abpischools.org.uk | classroom use | https://www.abpischools.org.uk/topics/history-of-medicine/1796-vaccination/ |
+| the invention of zero | thetemplescience.blogspot.com | classroom use | https://thetemplescience.blogspot.com/2019/07/worlds-first-zero-in-Bakhshali-Manuscript-Ancient-Indian-Mathematics.html |
+| Ada Lovelace | fineartamerica.com | classroom use | https://fineartamerica.com/shop/posters/arithmetician |
+| Japan at the same time | www.crossroadfukuoka.jp | classroom use | https://www.crossroadfukuoka.jp/feature/genko |
+| castles | pixabay.com | classroom use | https://pixabay.com/photos/bodiam-castle-moat-architecture-8058600/ |
+| hand-made books | www.sothebys.com | classroom use | http://www.sothebys.com/en/auctions/ecatalogue/2012/western-manuscripts-miniatures/lot.12.html |
+| camel caravans | www.pexels.com | classroom use | https://www.pexels.com/photo/camel-caravan-crossing-majestic-desert-dunes-34239912/ |
+| knights | www.flickr.com | classroom use | https://www.flickr.com/photos/23165290@N00/17755546195 |
+| Magna Carta | www.archives.gov | classroom use | https://www.archives.gov/exhibits/featured-documents/magna-carta |
+| Shosoin | ameblo.jp | classroom use | https://ameblo.jp/f308gtb1977/entry-12727450308.html |
+| the spice routes | stockcake.com | classroom use | https://stockcake.com/i/colorful-spice-market_1378658_1012304 |
+| the Silk Road | map.jace.org.uk | classroom use | https://map.jace.org.uk/silk-road-map-printable |
+| trade today | www.pexels.com | classroom use | https://www.pexels.com/photo/large-container-ship-in-port-with-cranes-41151140/ |
+| Dejima | ameblo.jp | classroom use | https://ameblo.jp/pajero4900/entry-12792222727.html |
+| cathedrals | www.restauronsnotredame.org | classroom use | https://www.restauronsnotredame.org/post/la-rose-ouest-de-notre-dame-visible-%C3%A0-nouveau-int%C3%A9gralement |
+| how paper travelled | stockcake.com | classroom use | https://stockcake.com/i/handcrafted-paper-layers_4088981_1812314 |
+| Vikings | www.pointsandtravel.com | classroom use | https://www.pointsandtravel.com/viking-queen-viking-ship-museum-in-oslo-norway/ |
+| Marco Polo | antiquemapsfans.com | classroom use | https://antiquemapsfans.com/en/shop/travel-marco-polo-n-67/ |
+| the Greek alphabet | sia.undiknas.ac.id | classroom use | https://sia.undiknas.ac.id/greek-alphabet-printable.html |
+| the Parthenon | tophinhanhdep.com | classroom use | https://tophinhanhdep.com/wallpapers/parthenon-athens-temple-hd-wallpaper-467632/ |
+| the Colosseum | www.getyourguide.com | classroom use | https://www.getyourguide.com/colosseum-l2619/ |
+| the first Olympics | ancientolympiamuseum.com | classroom use | https://ancientolympiamuseum.com/index.php/el/2026/02/04/to-stadio/ |
+| Aesop's fables | fairytalez.com | classroom use | https://fairytalez.com/the-hare-and-the-tortoise/ |
+| democracy | madainproject.com | classroom use | https://madainproject.com/pnyx |
+| Roman roads | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShwXpuebLK3F5_0RGVFcT4OzWOGwc9Trb0D0T3TnyXTVUOHh/ |
+| Greek vases | theancienthome.com | classroom use | https://theancienthome.com/products/black-figure-greek-amphora-vase-fighting-scene |
+| Archimedes | f.mtr.cool | classroom use | https://f.mtr.cool/puxrdec59k |
+| Pompeii | www.britannica.com | classroom use | https://www.britannica.com/place/How-many-people-lived-in-Pompeii-before-Mount-Vesuvius-erupted |
+| Roman baths | fortrip.ai | classroom use | https://fortrip.ai/itinerary-selection/6-day-england-itinerary |
+| Roman numerals | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShybU2Rf7L_P3yKci9XBEbEsasgbLAk5-tNSUkPsod6xlabI/ |
+| July and August | www.thecollector.com | classroom use | https://www.thecollector.com/roman-consuls-political-power-ancient-rome/ |
+| Greek theatres | www.poseidonion.com | classroom use | https://www.poseidonion.com/en/ancient-epidaurus-theatre |
+| aqueducts | www.britannica.com | classroom use | https://www.britannica.com/topic/Pont-du-Gard |
+| Maui | oceanianfolktales.com | classroom use | https://oceanianfolktales.com/the-fishhook-of-maui-manaiakalani-hawaiian-folktale/ |
+| Pangu | manmythmagic.blogspot.com | classroom use | https://manmythmagic.blogspot.com/2014/12/creation-mythology-china.html |
+| Tutankhamun's tomb | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShwQbbRaXRlzaot6ghfaS0T3g1ceRvqrsBD1wpFsNur2cg30/ |
+| Pegasus | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShzrN_t1fCtIev8H2Cvo9XPfjKe__PLIzDKYFHKHmalvuzwcEQ/ |
+| the Rosetta Stone | khentiamentiu.blogspot.com | classroom use | http://khentiamentiu.blogspot.com/2017/07/everything-you-ever-wanted-to-know.html |
+| Sannai-Maruyama | hugkum.sho.jp | classroom use | https://hugkum.sho.jp/478991 |
+| Amaterasu | medievaltrail.com | classroom use | https://medievaltrail.com/all-art-is-born-from-stories/ |
+| Zeus | wfo.terminator-die-erloesung.de | classroom use | https://wfo.terminator-die-erloesung.de/phidias-zeusstatue-zeus-statue-des-phidias/ |
+| the Terracotta Army | compagnie-d-elite.de | classroom use | https://compagnie-d-elite.de/terracotta-army-found-terracotta-army-excavation-stages-and-discovered-pits/ |
+| Machu Picchu | planetaexo.com | classroom use | https://planetaexo.com/fr/blog/circuits-machu-picchu-routes-billets |
+| dating old things | sciencenotes.org | classroom use | https://sciencenotes.org/carbon-dating-or-radiocarbon-dating-explained/ |
+| underwater archaeology | cdn.southampton.ac.uk | classroom use | https://cdn.southampton.ac.uk/news/2026/11/medieval-armour-discovered-on-centuries-old-danish-shipwreck.page |
+| silent films | www.pinterest.com | classroom use | https://www.pinterest.com/garden0457/silent-films-piano-players-/ |
+| Chojugiga | media.thisisgallery.com | classroom use | https://media.thisisgallery.com/20214261 |
+| Japanese animation studios | hirokuasaku.net | classroom use | https://hirokuasaku.net/archives/4121 |
+| bande dessinée | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShwZaKyE0XNmHJaMrq1pmytPUC6Yvcwx5uUSw-pOAKUJK4U0/ |
+| the first films | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShz7CdOMtw4FEVQWkjJoQF_zAVA95_3lYEagqvjrv7eBFiQ/ |
+| sound effects | www.grunge.com | classroom use | https://www.grunge.com/1135354/what-is-a-foley-artist/ |
+| webtoons | applestan.com | classroom use | https://applestan.com/blog/posts/read-webtoons-on-iphone/ |
+| flipbooks | en.creativosonline.org | classroom use | https://en.creativosonline.org/Create-interactive-flipbooks-in-InDesign-effortlessly.html |
+| American comics | www.pinterest.com | classroom use | https://www.pinterest.com/pin/greatshedplansinfo--1618549859590968/ |
+| computer animation | www.whizzystudios.com | classroom use | https://www.whizzystudios.com/post/how-to-work-with-a-3d-animation-studio |
+| speech bubbles | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShxavzh9KXmaghloThqQKxYdr48pnm5Dtv_qC2S-WjXmHDvAQw/ |
+| comic festivals | www.lepopulaire.fr | classroom use | https://www.lepopulaire.fr/angouleme-16000/loisirs/la-foule-de-retour-pour-les-50-ans-du-festival-bd-dangouleme_14254066/ |
+| reading direction | manga-with-stef.com | classroom use | https://manga-with-stef.com/manga-panelling-basics |
+| make your own comic | dirttransfer.lavoixdanna.com | classroom use | https://dirttransfer.lavoixdanna.com/how-to-draw-comic-strip-people.html |
+| stop-motion | clayanimation.es | classroom use | http://clayanimation.es/ |
+| universal design | zatugaku-gimonn.com | classroom use | https://zatugaku-gimonn.com/entry90.html |
+| the potter's wheel | unsplash.com | classroom use | https://unsplash.com/photos/hands-shaping-clay-on-potters-wheel-6fb_NJUXxeI |
+| upcycled fashion | www.etsy.com | classroom use | https://www.etsy.com/listing/4620592539/one-of-a-kind-reclaimed-denim-patchwork |
+| Jomon pottery | www.kaen-heritage.com | classroom use | http://www.kaen-heritage.com/doki/ |
+| fonts | www.pinterest.com | classroom use | https://www.pinterest.com/pin/vintage-letterpress-wood-type-typeset-printing-blocks-typography-lot-antique-etsy-in-2025--438397345001254271/ |
+| fashion shows | bbmlive.com | classroom use | https://bbmlive.com/fashion-weeks-2027-calendar-every-runway-date-you-need/ |
+| jeans | www.lyst.com | classroom use | https://www.lyst.com/clothing/icon-denim-jeans-with-faded-details/ |
+| make your own pot | stockcake.com | classroom use | https://stockcake.com/i/kids-creating-pottery_664959_1012991 |
+| posters | www.1stdibs.com | classroom use | https://www.1stdibs.com/art/prints-works-on-paper/more-prints-works-on-paper/alphonse-mucha-original-antique-travel-poster-monaco-monte-carlo-alphonse-mucha-art-nouveau/id-a_14807342/ |
+| kintsugi | stockcake.com | classroom use | https://stockcake.com/i/kintsugi-art-bowl_331101_501997 |
+| logos | picstank.com | classroom use | https://picstank.com/explore/20-best-logos-with-hidden-meanings |
+| Arita and Hasami ware | page.auctions.yahoo.co.jp | classroom use | https://page.auctions.yahoo.co.jp/jp/auction/k1086605921 |
+| Delftware | www.etsy.com | classroom use | https://www.etsy.com/listing/1682490458/royal-delft-blue-handpainted-plate-1971 |
+| Coco Chanel | www.1920s-fashion-and-music.com | classroom use | https://www.1920s-fashion-and-music.com/coco-chanel.html |
+| Talavera pottery | www.tripsavvy.com | classroom use | https://www.tripsavvy.com/talavera-poblana-pottery-1589065 |
+| Chinese porcelain | www.orientalartauctions.com | classroom use | https://www.orientalartauctions.com/object/art1009277-a-chinese-blue-and-white-dragon-meiping-vase-ming-dynasty-1368-1644-or-later |
+| passports | ameblo.jp | classroom use | https://ameblo.jp/s-rumikoro/entry-12933469327.html |
+| rules and laws | ph.pinterest.com | classroom use | https://ph.pinterest.com/pin/778278379389345086/ |
+| children's councils | www.city.hidaka.lg.jp | classroom use | https://www.city.hidaka.lg.jp/soshiki/sogoseisaku/seisakuhisho/hisho/shichoshitsu/shichonokatsudofuto/30/10130.html |
+| parliaments | www.pexels.com | classroom use | https://www.pexels.com/photo/iconic-view-of-big-ben-and-westminster-palace-30624825/ |
+| Singapore | www.headout.com | classroom use | https://www.headout.com/blog/singapore-gardens-by-the-bay-christmas/ |
+| Lagos | www.westend61.de | classroom use | https://www.westend61.de/de/foto/AAEF40854/luftaufnahme-der-schoenen-skyline-mit-der-lekki-ikoyi-link-bridge-ueber-wasser-und-staedtischen-gebaeuden-lagos-nigeria |
+| the city office | tabi-mag.jp | classroom use | https://tabi-mag.jp/ai0411/ |
+| Tokyo | en.miyakodori-geisha.com | classroom use | https://en.miyakodori-geisha.com/2026/11/06/tokyo-3-day-itinerary/ |
+| Mexico City | wtfchilango.com | classroom use | https://wtfchilango.com/guia-rapida-para-que-no-te-cobren-de-mas-en-las-trajineras-de-xochimilco/ |
+| Dubai | www.pexels.com | classroom use | https://www.pexels.com/photo/aerial-view-of-dubai-skyline-with-burj-khalifa-29470840/ |
+| elections | www.whitehorsedc.gov.uk | classroom use | https://www.whitehorsedc.gov.uk/vale-of-white-horse-district-council/local-democracy-and-elections/elections-and-voting/first-time-voters-guide/casting-your-vote-in-a-polling-station/ |
+| New York | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShxRTvLO94ZDS8lykaA4FgPcp4ai6pBO0wHaTviU9k8OzjRyCg/ |
+| Venice | www.venise.style | classroom use | https://www.venise.style/en/2021/venices-gondolas/1543438/ |
+| how a city runs | www.itv.com | classroom use | https://www.itv.com/news/london/2021-03-04/next-generation-london-underground-trains-design-unveiled |
+| shipyards | worldheritagesite.xyz | classroom use | https://worldheritagesite.xyz/contents/giant-cantilever-crane/ |
+| bike safety | www.namibian.com.na | classroom use | https://www.namibian.com.na/?n=30966617 |
+| crosswalks | commons.wikimedia.org | classroom use | https://commons.wikimedia.org/wiki/File:Abbey_Road_zebra_crossing,_London_2007-03-31.jpg |
+| dugout canoes | susquehanna-wcha.net | classroom use | https://susquehanna-wcha.net/dugout.htm |
+| driving on the left or right | dobijacreative.co | classroom use | https://dobijacreative.co/product/road-sign-keep-left/ |
+| Hashima Island | bs.tbs.co.jp | classroom use | https://bs.tbs.co.jp/culture/gunkanjima/ |
+| reflectors | s.click.aliexpress.com | classroom use | https://s.click.aliexpress.com/deep_link.htm?dl_target_url=https%3A%2F%2Fwww.aliexpress.com%2Fssr%2F300001872%2Fpinterest-all%3FdisableNav%3DYES%26pha_manifest%3Dssr%26_immersiveMode%3Dtrue%26businessCode%3Dug%26productIds%3D3256813291885165&src=pinterest&isdl=y |
+| container ships and ports | www.logisticsmiddleeast.com | classroom use | https://www.logisticsmiddleeast.com/transport/maritime/34547-liebherr-container-cranes-ltd-delivers-three-rtgs-to-csx-intermodal-terminals |
+| road signs | www.pics4learning.com | classroom use | https://www.pics4learning.com/details.php?img=stopsign.jpg |
+| lighthouses | www.pexels.com | classroom use | https://www.pexels.com/search/lighthouse/ |
+| lollipop ladies | www.independent.co.uk | classroom use | https://www.independent.co.uk/news/uk/children-northern-ireland-b2359271.html |
+| sailing ships | sato-umi.com | classroom use | https://sato-umi.com/2025/10/20/kaiwomaru-park-shinminato/ |
+| school zones | lanelight.com | classroom use | https://lanelight.com/blog/making-winter-school-bus-stops-safer-with-lanelights-bus-alert/ |
+| cups and balls | www.mastermagictricks.com | classroom use | https://www.mastermagictricks.com/cups-balls-eddy-ray |
+| Japanese magic | jp.neold.co.jp | classroom use | https://jp.neold.co.jp/experience-options/options-tezuma-quick |
+| misdirection | www.facebook.com | classroom use | https://www.facebook.com/lextremesurvival/?r=5404902914 |
+| the magician's code | storage.googleapis.com | classroom use | https://storage.googleapis.com/dqximqifyzzoke/magician-top-hat-and-wand.html |
+| why did the chicken cross the road? | blogdontlie.com | classroom use | https://blogdontlie.com/f1-cartoon-chicken-crossing-road/ |
+| Pepper's ghost | www.pinterest.com | classroom use | https://www.pinterest.com/pin/peppers-ghost-hologram-illusion-science-world--440930619775069427/ |
+| knock-knock jokes | www.pexels.com | classroom use | https://www.pexels.com/photo/woman-holding-orange-envelope-knocking-on-front-door-of-house-16401903/ |
+| puns | www.etsy.com | classroom use | https://www.etsy.com/listing/1479890840/funny-motivational-pun-set-of-11 |
+| the riddle of the Sphinx | www.pexels.com | classroom use | https://www.pexels.com/photo/great-sphinx-of-giza-in-egypt-15272091/ |
+| riddles around the world | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShyXhMRxTwgWzqaNV45VFbbh92lArSpSkV7WWuMxGYjuFIQF5w/ |
+| the vanishing coin | www.masterclass.com | classroom use | https://www.masterclass.com/articles/magic-101-what-is-a-french-drop-learn-magic-coin-tricks-to-try-at-home |
+| Houdini | www.nationalgeographic.com | classroom use | https://www.nationalgeographic.com/history/article/harry-houdini-magician-death-myths |
+| card tricks | decemberboys.com.ua | classroom use | https://decemberboys.com.ua/en/tutorials/one-card-production/ |
+| don't cut your nails at night | www.amazon.com.au | classroom use | https://www.amazon.com.au/Clippers-Scissors-Grooming-Pedicure-Manicure/dp/B0HKKBKQ25 |
+| cipher wheels | tiendamia.com.uy | classroom use | https://tiendamia.com.uy/p/amz/b08p3tljhx/creative-escape-rooms-wooden-caesar-cipher-secret-decoder-wheel |
+| four-leaf clovers | vocal.media | classroom use | https://vocal.media/poets/amongst-the-others-three |
+| make your own code | picklebums.com | classroom use | https://picklebums.com/secret-codes-for-kids/ |
+| Friday the 13th | www.goodto.com | classroom use | https://www.goodto.com/family/why-is-friday-13th-unlucky |
+| invisible ink | www.diy-project.com | classroom use | https://www.diy-project.com/make/kids/lemon-juice-invisible-ink/ |
+| the Enigma machine | www.tnmoc.org | classroom use | https://www.tnmoc.org/bh-2-the-enigma-machine |
+| knocking on wood | www.upworthy.com | classroom use | https://www.upworthy.com/scientists-finally-explain-the-real-reason-people-knock-on-wood/ |
+| passwords today | play.google.com | classroom use | https://play.google.com/store/apps/details?id=com.Linux.Console.TimePasswordLockScreen&hl=en-US |
+| spy gadgets | www.theguardian.com | classroom use | https://www.theguardian.com/us-news/gallery/2019/jan/30/new-york-manhattan-kgb-spy-museum-in-pictures?page=with%3Aimg-3#img-3 |
+| the Caesar cipher | demo.gigamonkeys.com | classroom use | https://demo.gigamonkeys.com/projects/caesar-cipher/ |
+| black cats | www.petmd.com | classroom use | https://www.petmd.com/cat/general-health/black-cat-breeds |
+| the pigpen cipher | www.thesquaremagazine.com | classroom use | https://www.thesquaremagazine.com/mag/article/202104on-the-level/ |
+| the paper bridge challenge | kidsactivitiesblog.com | classroom use | https://kidsactivitiesblog.com/26605/build-a-bridge/ |
+| the egg drop | archive.thepocketlab.com | classroom use | https://archive.thepocketlab.com/educators/lesson/egg-drop-experiment-data |
+| building bricks | funblast.in | classroom use | https://funblast.in/products/diy-plastic-building-blocks-for-kids-puzzle-games-for-kids-toys-for-girls-boys-250-blocks-with-38-wheels |
+| think like an engineer | www.pinterest.com.au | classroom use | https://www.pinterest.com.au/pin/431430839282869418/ |
+| the marshmallow challenge | hiddendoor.com.au | classroom use | https://hiddendoor.com.au/icebreaker-1-spaghetti-tower/ |
+| arches | www.nagasaki-tabinet.com | classroom use | https://www.nagasaki-tabinet.com/guide/95 |
+| chain-reaction machines | www.whimsicalwidgets.com | classroom use | https://www.whimsicalwidgets.com/our-first-rube-goldberg-machine/ |
+| triangles are strong | www.lookphotos.com | classroom use | https://www.lookphotos.com/en-us/images/14366355-Close-up-of-the-intricate-Eiffel-Tower-wrought-iron-lattice-work-The-Eiffel-Tower-is-the-most-visited-paid |
+| Latin | www.pinterest.com | classroom use | https://www.pinterest.com/pin/109916047130540096/ |
+| stories in the stars | www.amazon.com | classroom use | https://www.amazon.com/clp/B07RQK9F52 |
+| the first feature cartoons | www.radiofrance.fr | classroom use | https://www.radiofrance.fr/franceculture/podcasts/les-nuits-de-france-culture/connaitre-le-cinema-le-cinema-d-animation-1ere-diffusion-30-04-1966-chaine-parisienne-5938145 |
+| canals | stockcake.com | classroom use | https://stockcake.com/i/amsterdam-canal-view_190141_33460 |
+| taxes | www.24matins.fr | classroom use | https://www.24matins.fr/dici-quelques-mois-de-nombreux-pel-seront-fermes-doffice-faites-vous-partie-des-concernes-1393503 |
+| Thor | www.inspiraggio.com | classroom use | https://www.inspiraggio.com/products/thors-fight-with-the-giants-marten-eskil-winge-1872 |
+| an archaeological dig | stockcake.com | classroom use | https://stockcake.com/i/archaeological-dig-excavation_1264058_413788 |
+| market towns | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShxCwfORKPAcR8_FJYdi0_Lp_G1GEYg5r7v1KCHM_ABV8Djd/ |
+| Ra, the Egyptian sun god | anthropologyreview.org | classroom use | https://anthropologyreview.org/history/ancient-egypt/ra-egyptian-god/ |
+| the United Nations | media.un.org | classroom use | https://media.un.org/photo/en/asset/oun7/oun7487120 |
+| jobs at sea | unsplash.com | classroom use | https://unsplash.com/photos/fishermen-are-pulling-a-fishing-net-onto-their-boat-kRZrn5BbZ6s |
+| traffic lights | www.bbc.co.uk | classroom use | https://www.bbc.co.uk/news/uk-politics-66292145 |
+| animal jokes | www.adaptnetwork.com | classroom use | https://www.adaptnetwork.com/planet/nature/funny-animal-pictures-from-the-comedy-wildlife-photography-awards/ |
+| is it true? | americanprofessionguide.com | classroom use | https://americanprofessionguide.com/climatology-fieldwork-laboratory-research/ |
+| walking under a ladder | www.pinterest.com | classroom use | https://www.pinterest.com/pin/e1_AfqPShyIZZheidw_oBmIAhy3Jxdi6p6nmUHR35RLYYqQ1ZxoocS3/ |
+| word riddles | www.classpoint.io | classroom use | https://www.classpoint.io/blog/what-am-i-riddles |
+| laughter is universal | staging-wp68918.wpdns.ca | classroom use | https://staging-wp68918.wpdns.ca/ |
+| after a sneeze | curiousclinicians.com | classroom use | https://curiousclinicians.com/2026/06/20/episode-127-achoo-the-sunlit-sneeze/ |
