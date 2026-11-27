@@ -1245,9 +1245,31 @@ function openPanel(ex) {
       ${ex.status ? statusScale(ex.status, ex.statusSource) : ""}</div>`;
     const c = body.querySelector("canvas");
     if (c) { const g = c.getContext("2d"); drawPic(g, ex.pic, 280, 280, 520); }
-    markSeen(ex.key); MM.openedExhibit(ex);
+    startReading(ex, body);
   }
   panel.hidden = false;
+}
+// stars only come after the exhibit window has been open for 5 seconds (counted only while the tab is visible)
+const READ_MS = 5000;
+let readTimer = null;
+function startReading(ex, body) {
+  clearInterval(readTimer); readTimer = null;
+  if (seen.has(ex.key) && !(MM.active && !MM.hasSeen(ex.key))) return;
+  const bar = document.createElement("div"); bar.className = "readbar";
+  bar.innerHTML = `<div class="rb-fill"></div><span>📖 よんでね… <i>Keep reading…</i></span>`;
+  body.querySelector(".info")?.prepend(bar);
+  const fill = bar.firstElementChild; let t = 0, last = performance.now();
+  readTimer = setInterval(() => {
+    const now = performance.now(), dt = now - last; last = now;
+    if (panelEx !== ex || panel.hidden) { clearInterval(readTimer); readTimer = null; return; }
+    if (document.visibilityState === "visible") t += Math.min(dt, 250);
+    fill.style.width = Math.min(100, t / READ_MS * 100) + "%";
+    if (t >= READ_MS) {
+      clearInterval(readTimer); readTimer = null;
+      markSeen(ex.key); MM.openedExhibit(ex);
+      bar.classList.add("done"); bar.querySelector("span").innerHTML = MM.active ? "⭐ よくできました！ <i>Well done!</i>" : "✓";
+    }
+  }, 100);
 }
 function statusScale(st, src) {
   return `<div class="status">${src === "japan" ? `<div class="src">日本の レッドリスト(かんきょうしょう)</div>` : ""}

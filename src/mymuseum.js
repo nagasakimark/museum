@@ -94,6 +94,7 @@ export function enteredRoom(topic) {
   if (!active || topic.hall || S.visited.includes(topic.id)) return;
   S.visited.push(topic.id); award(10, "はじめての へや！", "New room!");
 }
+export const hasSeen = key => S.seen.includes(key);
 export function openedExhibit(ex) {
   if (!active || !ex.key || ex.text || S.seen.includes(ex.key)) return;
   S.seen.push(ex.key); award(3, "見つけた！", "Discovered!");

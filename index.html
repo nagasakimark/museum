@@ -53,6 +53,11 @@
   .en.big { font-family: 'Nunito', 'Trebuchet MS', system-ui, sans-serif; font-size: 26px; font-weight: 800; color: #2f6f9f; margin-bottom: 10px; }
   .row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #e4d8c3; font-size: 17px; line-height: 1.5; }
   .row .k { flex: none; width: 150px; color: #6b4d2c; font-weight: 700; }
+  .readbar { position: relative; height: 30px; border-radius: 15px; background: #efe7d6; overflow: hidden; margin: 0 52px 10px 0; }
+  .readbar .rb-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #ffd65c, #ffb52e); transition: width .1s linear; }
+  .readbar span { position: relative; display: block; text-align: center; line-height: 30px; font-weight: 800; font-size: 15px; color: #6b4d2c; }
+  .readbar span i { font-weight: 600; color: #8a6a44; }
+  .readbar.done .rb-fill { background: linear-gradient(90deg, #8fdc7a, #5cc36a); }
   .fact { background: #fff3d1; border-radius: 10px; padding: 10px 14px; font-size: 18px; line-height: 1.6; margin: 12px 0; }
   .ptext { padding: 30px 40px; font-size: 22px; line-height: 1.8; overflow-y: auto; width: 100%; }
   .ptext .en { font-weight: 800; color: #2f6f9f; font-size: 22px; }
