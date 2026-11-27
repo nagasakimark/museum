@@ -1143,8 +1143,6 @@ addEventListener("keydown", e => {
   if (e.key === "n" && !panelOpen()) { openNotebook(); e.preventDefault(); return; }
   if (panelOpen()) {
     if (["Escape", "Enter", " "].includes(e.key)) { closePanel(); e.preventDefault(); }
-    else if (e.key === "ArrowRight") { stepPanel(1); e.preventDefault(); }
-    else if (e.key === "ArrowLeft") { stepPanel(-1); e.preventDefault(); }
     return;
   }
   if ((e.key === "Enter" || e.key === " ") && focusShop) { openGift(); e.preventDefault(); return; }
@@ -1257,18 +1255,7 @@ function statusScale(st, src) {
     <div class="label" style="color:${STATUS[st].c}">${STATUS[st].ja} <i>${STATUS[st].en}</i></div></div>`;
 }
 function closePanel() { panel.hidden = true; panelEx = null; }
-function stepPanel(d) {
-  if (!panelEx) return;
-  const list = rooms[player.room].exhibits.filter(x => !x.ex.text);
-  const i = list.findIndex(x => x.ex === panelEx); if (i < 0 || !list.length) return;
-  const next = list[(i + d + list.length) % list.length];
-  openPanel(next.ex);
-  player.pos.copy(next.pos).addScaledVector(next.normal, 3.2);
-  player.yaw = Math.atan2(next.normal.x, next.normal.z);
-}
 document.getElementById("close").addEventListener("click", closePanel);
-document.getElementById("prev").addEventListener("click", () => stepPanel(-1));
-document.getElementById("next").addEventListener("click", () => stepPanel(1));
 panel.addEventListener("click", e => { if (e.target === panel) closePanel(); });
 
 // ================= loop =================
