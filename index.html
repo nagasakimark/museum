@@ -53,11 +53,19 @@
   .en.big { font-family: 'Nunito', 'Trebuchet MS', system-ui, sans-serif; font-size: 26px; font-weight: 800; color: #2f6f9f; margin-bottom: 10px; }
   .row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #e4d8c3; font-size: 17px; line-height: 1.5; }
   .row .k { flex: none; width: 150px; color: #6b4d2c; font-weight: 700; }
-  .readbar { position: relative; height: 30px; border-radius: 15px; background: #efe7d6; overflow: hidden; margin: 0 52px 10px 0; }
-  .readbar .rb-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #ffd65c, #ffb52e); transition: width .1s linear; }
-  .readbar span { position: relative; display: block; text-align: center; line-height: 30px; font-weight: 800; font-size: 15px; color: #6b4d2c; }
-  .readbar span i { font-weight: 600; color: #8a6a44; }
-  .readbar.done .rb-fill { background: linear-gradient(90deg, #8fdc7a, #5cc36a); }
+  .quizbox { margin: 14px 0 4px; text-align: center; }
+  .qbtn { font: inherit; font-weight: 800; font-size: 19px; color: #fff; background: linear-gradient(#ffb02e, #f08c00); border: 0; border-radius: 999px; padding: 12px 26px; cursor: pointer; box-shadow: 0 3px 0 #b86a00; }
+  .qbtn i { font-weight: 600; opacity: .9; font-size: 15px; } .qbtn:hover { filter: brightness(1.06); }
+  .qhint { font-size: 13px; color: #8a6a44; margin-top: 6px; } .qhint i { color: #a08560; }
+  .qdone { display: inline-block; font-weight: 800; color: #2e8b3a; background: #e6f6e3; border-radius: 999px; padding: 8px 18px; } .qdone i { font-weight: 600; color: #4a9a52; }
+  .quiz h3 { font-size: 22px; margin: 6px 48px 2px 0; color: #3a2a18; } .quiz .en { color: #2f6f9f; font-weight: 700; margin-bottom: 10px; }
+  .qopt { display: flex; gap: 10px; align-items: flex-start; width: 100%; text-align: left; font: inherit; font-size: 17px; line-height: 1.6; background: #fff8e8; border: 2px solid #ecd9b0; border-radius: 12px; padding: 10px 12px; margin: 8px 0; cursor: pointer; color: #3a2a18; }
+  .qopt b { flex: none; width: 28px; height: 28px; border-radius: 50%; background: #c9a24a; color: #fff; display: grid; place-items: center; font-size: 15px; margin-top: 1px; }
+  .qopt:hover:not(:disabled) { border-color: #f0a020; background: #fff1cc; } .qopt:disabled { cursor: default; opacity: .75; }
+  .qopt.right { border-color: #4caf50; background: #e6f6e3; opacity: 1; } .qopt.right b { background: #4caf50; }
+  .qopt.wrong { border-color: #e05252; background: #fde8e8; opacity: 1; } .qopt.wrong b { background: #e05252; }
+  .qok, .qno { font-weight: 800; font-size: 18px; margin: 8px 0; } .qok { color: #2e8b3a; } .qno { color: #c0392b; } .qok i, .qno i { font-weight: 600; }
+  .qback { font: inherit; font-weight: 800; background: #fff; border: 2px solid #c9a24a; color: #6b4d2c; border-radius: 999px; padding: 8px 18px; cursor: pointer; } .qback i { font-weight: 600; }
   .fact { background: #fff3d1; border-radius: 10px; padding: 10px 14px; font-size: 18px; line-height: 1.6; margin: 12px 0; }
   .ptext { padding: 30px 40px; font-size: 22px; line-height: 1.8; overflow-y: auto; width: 100%; }
   .ptext .en { font-weight: 800; color: #2f6f9f; font-size: 22px; }

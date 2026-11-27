@@ -1142,6 +1142,7 @@ addEventListener("keydown", e => {
   if (MM.isOpen() || notebookOpen()) return;
   if (e.key === "n" && !panelOpen()) { openNotebook(); e.preventDefault(); return; }
   if (panelOpen()) {
+    if ((e.key === "Enter" || e.key === " ") && document.activeElement?.closest?.("#pbody button")) return;   // let the quiz buttons work
     if (["Escape", "Enter", " "].includes(e.key)) { closePanel(); e.preventDefault(); }
     return;
   }
@@ -1245,31 +1246,54 @@ function openPanel(ex) {
       ${ex.status ? statusScale(ex.status, ex.statusSource) : ""}</div>`;
     const c = body.querySelector("canvas");
     if (c) { const g = c.getContext("2d"); drawPic(g, ex.pic, 280, 280, 520); }
-    startReading(ex, body);
+    addQuiz(ex, body);
   }
   panel.hidden = false;
 }
-// stars only come after the exhibit window has been open for 5 seconds (counted only while the tab is visible)
-const READ_MS = 5000;
-let readTimer = null;
-function startReading(ex, body) {
-  clearInterval(readTimer); readTimer = null;
-  if (seen.has(ex.key) && !(MM.active && !MM.hasSeen(ex.key))) return;
-  const bar = document.createElement("div"); bar.className = "readbar";
-  bar.innerHTML = `<div class="rb-fill"></div><span>📖 よんでね… <i>Keep reading…</i></span>`;
-  body.querySelector(".info")?.prepend(bar);
-  const fill = bar.firstElementChild; let t = 0, last = performance.now();
-  readTimer = setInterval(() => {
-    const now = performance.now(), dt = now - last; last = now;
-    if (panelEx !== ex || panel.hidden) { clearInterval(readTimer); readTimer = null; return; }
-    if (document.visibilityState === "visible") t += Math.min(dt, 250);
-    fill.style.width = Math.min(100, t / READ_MS * 100) + "%";
-    if (t >= READ_MS) {
-      clearInterval(readTimer); readTimer = null;
+// ---------- exhibit quiz ----------
+// Stars only come from answering a simple question about the exhibit. The text is hidden while you answer,
+// so you need to read it first. The question: which of these facts was about this exhibit?
+// The other two answers are facts from other exhibits in the same room.
+function quizChoices(ex) {
+  const name = plain(ex.ja);
+  const pool = rooms[player.room]?.exhibits.map(x => x.ex) || [];
+  let others = pool.filter(x => !x.text && x.fact && x !== ex && x.fact !== ex.fact && !plain(x.fact).includes(name));
+  if (others.length < 2) others = others.concat((TOPICS[ex.topic]?.list || []).filter(x => !x.text && x.fact && x.fact !== ex.fact && !others.includes(x)));
+  const wrong = others.sort(() => Math.random() - .5).slice(0, 2).map(x => x.fact);
+  return [ex.fact, ...wrong].sort(() => Math.random() - .5);
+}
+function addQuiz(ex, body) {
+  const info = body.querySelector(".info"); if (!info) return;
+  const done = seen.has(ex.key) && (!MM.active || MM.hasSeen(ex.key));
+  const box = document.createElement("div"); box.className = "quizbox";
+  if (done) { box.innerHTML = `<div class="qdone">✓ クイズ クリア！ <i>Quiz done!</i></div>`; info.append(box); return; }
+  box.innerHTML = `<button class="qbtn">❓ クイズに こたえる <i>Answer the quiz</i></button>
+    <div class="qhint">よく 読んでから おしてね！ <i>Read carefully first!</i></div>`;
+  info.append(box);
+  box.querySelector(".qbtn").onclick = () => askQuiz(ex, body, info);
+}
+function askQuiz(ex, body, info) {
+  const q = document.createElement("div"); q.className = "info quiz";
+  const ch = quizChoices(ex);
+  q.innerHTML = `<div class="crumb">❓ クイズ <i>Quiz</i></div>
+    <h3>「${esc(ex.ja)}」に ついて 書いて あったのは どれ？</h3><div class="en">What did it say about ${esc(ex.en)}?</div>
+    ${ch.map((f, i) => `<button class="qopt" data-i="${i}"><b>${"ABC"[i]}</b><span>${esc(f)}</span></button>`).join("")}
+    <div class="qmsg"></div>`;
+  info.hidden = true; info.after(q);
+  q.querySelectorAll(".qopt").forEach(b => b.onclick = () => {
+    const ok = ch[+b.dataset.i] === ex.fact;
+    q.querySelectorAll(".qopt").forEach(x => x.disabled = true);
+    b.classList.add(ok ? "right" : "wrong");
+    const msg = q.querySelector(".qmsg");
+    if (ok) {
+      msg.innerHTML = `<div class="qok">⭕ せいかい！ <i>Correct!</i></div>`;
       markSeen(ex.key); MM.openedExhibit(ex);
-      bar.classList.add("done"); bar.querySelector("span").innerHTML = MM.active ? "⭐ よくできました！ <i>Well done!</i>" : "✓";
+      setTimeout(() => { if (panelEx !== ex) return; q.remove(); info.hidden = false; info.querySelector(".quizbox").innerHTML = `<div class="qdone">✓ クイズ クリア！ <i>Quiz done!</i></div>`; }, 1400);
+    } else {
+      msg.innerHTML = `<div class="qno">❌ ざんねん！ もう一度 読んで みよう <i>Not quite — read it again!</i></div><button class="qback">📖 もどって 読む <i>Back to reading</i></button>`;
+      msg.querySelector(".qback").onclick = () => { q.remove(); info.hidden = false; };
     }
-  }, 100);
+  });
 }
 function statusScale(st, src) {
   return `<div class="status">${src === "japan" ? `<div class="src">日本の レッドリスト(かんきょうしょう)</div>` : ""}
