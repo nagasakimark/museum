@@ -8,6 +8,7 @@ import { chime } from "./sfx.js";
 import { FLOORS, FRAMES, floorPreview, framePreview } from "./decor.js";
 import { wingRooms } from "./halls.js";
 import { DISPLAYS } from "./displays.js";
+import { LANG, setLang } from "./lang.js";
 
 let T = null, HALLS = null, drawPic = null, onChange = () => { };
 export let active = false;
@@ -340,11 +341,19 @@ export const mascotsFor = id => active ? MASCOTS.filter(m => S.mascots.includes(
 export function openTeacher() {
   const card = overlay(`<h2>🧑‍🏫 せんせい メニュー</h2><div class="mm-en">Teacher tools</div>
     <p class="mm-p">In teacher mode you have unlimited stars. These buttons only change <b>this</b> browser.</p>
+    <h3 class="t-h">🌐 Exhibit language</h3>
+    <div class="t-lang">${[["ja", "日本語", "Japanese only"], ["both", "日本語 + English", "Japanese with English under it"], ["en", "English", "English only"]]
+      .map(([v, a, b]) => `<button data-l="${v}" class="${LANG === v ? "on" : ""}">${a}<small>${b}</small></button>`).join("")}</div>
+    <p class="mm-p">Saved in this browser. To set it for a class, add <code>?lang=en</code> or <code>?lang=both</code> to the museum link.</p>
+    <h3 class="t-h">🧹 Reset</h3>
     <div class="t-btns">
       <button data-a="mm">🏛️ Delete My Museum<small>name, stars, rooms, paint, mascots</small></button>
       <button data-a="words">📓 Delete words collected<small>notebook words, rooms seen</small></button>
       <button data-a="all">🧹 Delete everything<small>both of the above + settings</small></button>
     </div><div class="t-msg"></div>`);
+  card.querySelectorAll(".t-lang button").forEach(b => b.onclick = () => {
+    setLang(b.dataset.l); const u = new URL(location.href); u.searchParams.delete("lang"); location.href = u.toString();
+  });
   card.querySelectorAll(".t-btns button").forEach(b => b.onclick = () => {
     const a = b.dataset.a;
     if (!b.dataset.sure) { b.dataset.sure = "1"; b.classList.add("sure"); b.firstChild.textContent = "⚠️ Click again to delete"; return; }
@@ -500,6 +509,11 @@ function css() {
   .mm-wingbuy { margin-left: auto; border: 0; border-radius: 999px; padding: 4px 12px; background: #fff; color: #6b4d2c; font: inherit; font-weight: 800; font-size: 14px; cursor: pointer; }
   .mm-wingbuy:disabled { opacity: .6; cursor: default; } .mm-wingbuy i { color: #2f6f9f !important; }
   .mm-room em.wait { color: #9a8a70; }
+  .t-h { margin: 14px 0 4px; font-size: 18px; color: #6b4d2c; text-align: center; }
+  .t-lang { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .t-lang button { border: 2px solid #c9a24a; border-radius: 12px; padding: 8px 14px; background: #fffaf0; color: #3a2a18; font: inherit; font-weight: 800; font-size: 16px; cursor: pointer; display: flex; flex-direction: column; }
+  .t-lang button small { font-weight: 600; font-size: 12px; color: #8a6a44; }
+  .t-lang button.on { background: #c9a24a; color: #fff; } .t-lang button.on small { color: #fff; }
   .t-btns { display: flex; flex-direction: column; gap: 10px; align-items: stretch; max-width: 420px; margin: 10px auto 0; }
   .t-btns button { border: 0; border-radius: 12px; padding: 10px 14px; background: #6b4d2c; color: #fff; font: inherit; font-weight: 800; font-size: 17px; cursor: pointer; display: flex; flex-direction: column; }
   .t-btns button small { font-weight: 600; font-size: 12.5px; opacity: .85; }

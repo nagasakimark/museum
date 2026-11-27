@@ -20,6 +20,8 @@ import { initNotebook, openNotebook, notebookOpen } from "./notebook.js";
 import { startMusic, toggleMusic, musicOn } from "./music.js";
 import * as MM from "./mymuseum.js";
 import { buildFrame, floorMaterial } from "./decor.js";
+import { LANG, enFor, enIntro, enReady } from "./lang.js";
+await enReady;   // English mode: have the translations before any wall text is drawn
 
 // ================= content =================
 const TOPICS = { ...NATURE, ...WORLD, ...MORE, ...ART, ...PHILOSOPHY, ...BATCH1, ...WINGS, ...HALLS };
@@ -846,7 +848,7 @@ function addExhibit(r, slot, ex) {
   r.exhibits.push(rec);
   if (ex.text) {
     // museum wall text: big title and a paragraph printed straight on the wall
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), own(new THREE.MeshBasicMaterial({ map: wallTextTex(ex.ja, ex.en, ex.fact, ex.color || r.topic.c), transparent: true })));
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), own(new THREE.MeshBasicMaterial({ map: wallTextTex(ex.ja, ex.en, (LANG === "en" && enIntro(ex.intro)) || ex.fact, ex.color || r.topic.c), transparent: true })));
     m.position.set(0, 2.35, .02); grp.add(m); m.userData.exhibit = ex; r.clickables.push(m);
     return;
   }
@@ -914,7 +916,7 @@ function build(r) {
   // a wing hall shows one highlight from each of its rooms, to tempt you through
   if (t.hall && !t.lobby && !r.featured) r.featured = shuffle(r.gates.map(g => rand(rooms[g.child].topic.list.filter(x => !x.text)))).filter(Boolean).slice(0, 13);
   const items = t.lobby ? t.list.map(x => ({ ...x, color: "#6b4d2c" }))
-    : [{ text: true, ja: t.ja, en: t.en, fact: t.intro, color: t.c }, ...t.list, ...(r.featured || [])];
+    : [{ text: true, ja: t.ja, en: t.en, fact: t.intro, intro: t.id, color: t.c }, ...t.list, ...(r.featured || [])];
   // intro text goes on a door-free wall centre; then walls; then partition
   const wallSlots = slotsFor(r);
   const centre = wallSlots.find(s => !s.door && s.o === 0) || wallSlots[0];
@@ -1230,18 +1232,25 @@ function drawMap() {
 // ================= panel =================
 let panelEx = null;
 const esc = s => ruby(String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])));
+// a passage in the chosen language: Japanese, Japanese + English, or English (Japanese if no translation yet)
+function bi(ja, en, inline) {
+  const tag = inline ? "span" : "p";
+  if (LANG === "en" && en) return `<${tag} class="t-en">${esc(en)}</${tag}>`;
+  if (LANG === "both" && en) return `<${tag}>${esc(ja)}</${tag}><${tag} class="t-en sub">${esc(en)}</${tag}>`;
+  return `<${tag}>${esc(ja)}</${tag}>`;
+}
 function openPanel(ex) {
   panelEx = ex; keys.clear(); btnHeld.clear(); player.target = null;
   const body = document.getElementById("pbody");
   if (ex.text) {
-    body.innerHTML = `<div class="ptext"><h2>${esc(ex.ja)}</h2><div class="en">${esc(ex.en)}</div><p>${esc(ex.fact || "")}</p></div>`;
+    body.innerHTML = `<div class="ptext"><h2>${esc(ex.ja)}</h2><div class="en">${esc(ex.en)}</div>${bi(ex.fact || "", enIntro(ex.intro))}</div>`;
   } else {
     const t = TOPICS[ex.topic];
     const pic = ex.img ? `<img src="${ex.img}" alt="">` : `<div class="bigpic" style="--c:${t.c}"><canvas width="560" height="560"></canvas></div>`;
-    body.innerHTML = `${pic}<div class="info"><div class="crumb">${esc(t.ja)} ・ ${esc(t.en)}</div><h2>${esc(ex.ja)}</h2><div class="en big">${esc(ex.en)}</div>
+    body.innerHTML = `${pic}<div class="info"><div class="crumb">${esc(t.ja)} ・ ${esc(t.en)}</div>${LANG === "en" ? `<h2>${esc(ex.en)}</h2><div class="en big ja2">${esc(ex.ja)}</div>` : `<h2>${esc(ex.ja)}</h2><div class="en big">${esc(ex.en)}</div>`}
       ${ex.rows.map(([k, j, e]) => `<div class="row"><span class="k">${esc(k)}</span><span>${esc(j)} <i>${esc(e)}</i></span></div>`).join("")}
-      <p class="fact">💡 ${esc(ex.fact)}</p>
-      ${ex.about ? `<div class="about">${ex.about.split("\n").map(p => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
+      <div class="fact">💡 ${bi(ex.fact, enFor(ex.key)?.fact, true)}</div>
+      ${ex.about ? `<div class="about">${ex.about.split("\n").map((p, i) => bi(p, enFor(ex.key)?.about?.split("\n")[i])).join("")}</div>` : ""}
       ${ex.say?.length ? `<div class="say"><div class="say-h">🗣️ 英語で 言って みよう！ <i>Let's say it!</i></div>${ex.say.map(([e, j]) => `<div class="line"><b>${esc(e)}</b><span>${esc(j || "")}</span></div>`).join("")}</div>` : ""}
       ${ex.status ? statusScale(ex.status, ex.statusSource) : ""}</div>`;
     const c = body.querySelector("canvas");
@@ -1256,11 +1265,11 @@ function openPanel(ex) {
 // The other two answers are facts from other exhibits in the same room.
 function quizChoices(ex) {
   const name = plain(ex.ja);
-  const pool = rooms[player.room]?.exhibits.map(x => x.ex) || [];
+  const pool = rooms[player.room]?.exhibits.map(x => x.ex) || [];  // other exhibits in this room
   let others = pool.filter(x => !x.text && x.fact && x !== ex && x.fact !== ex.fact && !plain(x.fact).includes(name));
   if (others.length < 2) others = others.concat((TOPICS[ex.topic]?.list || []).filter(x => !x.text && x.fact && x.fact !== ex.fact && !others.includes(x)));
-  const wrong = others.sort(() => Math.random() - .5).slice(0, 2).map(x => x.fact);
-  return [ex.fact, ...wrong].sort(() => Math.random() - .5);
+  const wrong = others.sort(() => Math.random() - .5).slice(0, 2);
+  return [ex, ...wrong].sort(() => Math.random() - .5);
 }
 function addQuiz(ex, body) {
   const info = body.querySelector(".info"); if (!info) return;
@@ -1276,12 +1285,13 @@ function askQuiz(ex, body, info) {
   const q = document.createElement("div"); q.className = "info quiz";
   const ch = quizChoices(ex);
   q.innerHTML = `<div class="crumb">❓ クイズ <i>Quiz</i></div>
-    <h3>「${esc(ex.ja)}」に ついて 書いて あったのは どれ？</h3><div class="en">What did it say about ${esc(ex.en)}?</div>
-    ${ch.map((f, i) => `<button class="qopt" data-i="${i}"><b>${"ABC"[i]}</b><span>${esc(f)}</span></button>`).join("")}
+    ${LANG === "en" ? `<h3>What did it say about ${esc(ex.en)}?</h3><div class="en">「${esc(ex.ja)}」に ついて 書いて あったのは どれ？</div>`
+      : `<h3>「${esc(ex.ja)}」に ついて 書いて あったのは どれ？</h3><div class="en">What did it say about ${esc(ex.en)}?</div>`}
+    ${ch.map((x, i) => `<button class="qopt" data-i="${i}"><b>${"ABC"[i]}</b><span>${bi(x.fact, enFor(x.key)?.fact, true)}</span></button>`).join("")}
     <div class="qmsg"></div>`;
   info.hidden = true; info.after(q);
   q.querySelectorAll(".qopt").forEach(b => b.onclick = () => {
-    const ok = ch[+b.dataset.i] === ex.fact;
+    const ok = ch[+b.dataset.i] === ex;
     q.querySelectorAll(".qopt").forEach(x => x.disabled = true);
     b.classList.add(ok ? "right" : "wrong");
     const msg = q.querySelector(".qmsg");
