@@ -21,6 +21,7 @@ import { startMusic, toggleMusic, musicOn } from "./music.js";
 import * as MM from "./mymuseum.js";
 import { buildFrame, floorMaterial } from "./decor.js";
 import { LANG, enFor, enIntro, enReady } from "./lang.js";
+import { initTouch, stick } from "./touch.js";
 await enReady;   // English mode: have the translations before any wall text is drawn
 
 // ================= content =================
@@ -1317,15 +1318,29 @@ panel.addEventListener("click", e => { if (e.target === panel) closePanel(); });
 // ================= loop =================
 let focused = null, focusGuest = null, focusShop = false, mapT = 0;
 const lastPos = new THREE.Vector3();
+// phones: thumb stick + look pad + an action button that does what tapping the middle of the screen would
+const centreTap = () => ({ clientX: innerWidth / 2, clientY: innerHeight / 2 });
+const touchHud = initTouch({
+  look: (dx, dy) => { player.yaw -= dx * .006; player.pitch = Math.max(-.9, Math.min(.7, player.pitch - dy * .005)); player.target = null; },
+  act: () => { if (panelEx) closePanel(); else click(centreTap()); },
+  label: () => {
+    if (panelEx) return "✖ とじる";
+    const hit = pick(centreTap(), built().flatMap(r => r.clickables)); if (!hit) return "";
+    const u = hit.object.userData;
+    return u.locked ? "🔑 ひらく" : u.giftshop ? "🛍️ おみせ" : u.guest || u.mascot ? "💬 はなす" : u.exhibit ? (hit.distance < 9 ? "👀 見る" : "🚶 ちかづく") : u.display ? "❓" : "";
+  },
+});
+let touchT = 0;
 const fwd = new THREE.Vector3(), timer = new THREE.Timer();
 function frame() {
   timer.update(); const dt = Math.min(timer.getDelta(), .05);
+  if ((touchT += dt) > .2) { touchT = 0; touchHud(); }
   if (!panelEx && !MM.isOpen() && !notebookOpen()) {
     const k = n => keys.has(n) || btnHeld.has(n);
     player.yaw += ((k("arrowleft") || k("q") ? 1 : 0) - (k("arrowright") || k("e") ? 1 : 0)) * dt * 1.9;
-    const f = (k("arrowup") || k("w") ? 1 : 0) - (k("arrowdown") || k("s") ? 1 : 0), s = (k("d") ? 1 : 0) - (k("a") ? 1 : 0);
+    const f = (k("arrowup") || k("w") ? 1 : 0) - (k("arrowdown") || k("s") ? 1 : 0) + stick.y, s = (k("d") ? 1 : 0) - (k("a") ? 1 : 0) + stick.x;
     const sp = 4.4 * dt, sin = Math.sin(player.yaw), cos = Math.cos(player.yaw);
-    if (f || s) { player.target = null; move((-sin * f + cos * s) * sp, (-cos * f - sin * s) * sp); }
+    if (Math.abs(f) > .08 || Math.abs(s) > .08) { player.target = null; move((-sin * f + cos * s) * sp, (-cos * f - sin * s) * sp); }
     else if (player.target) {
       const d = new THREE.Vector3().subVectors(player.target, player.pos); d.y = 0; const dist = d.length();
       if (dist < .15) player.target = null;
